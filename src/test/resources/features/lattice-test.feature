@@ -13,7 +13,7 @@ Feature: Training Management Module Automation
 
 
   @addCompany
-  Scenario: Should be able to cooperate type company
+  Scenario: Should be able to Technical type company
     Given User is on "lattice.url" page
     Then User is at home screen after login with "username" and "password"
     Then User is on "trainingManagement.url" page
@@ -22,7 +22,7 @@ Feature: Training Management Module Automation
     Then User fills up the 'Technical' type company details
 
   @addCompany
-  Scenario: Should be able to cooperate type company
+  Scenario: Should be able to Audit type company
     Given User is on "lattice.url" page
     Then User is at home screen after login with "username" and "password"
     Then User is on "trainingManagement.url" page
