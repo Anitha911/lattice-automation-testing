@@ -49,7 +49,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Aug 9, 2025 08:11:09 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Aug 9, 2025 10:50:36 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -76,8 +76,8 @@
 				<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@trainingLevel</a></li>
 					<li><a href='#'>@trainingManagement</a></li>
+					<li><a href='#'>@trainingVenues</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -158,7 +158,7 @@
                 </div>
                 <div class='block text-small'>
                     <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>7</span> steps passed</span>
+                    <span class='strong'>8</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -188,7 +188,7 @@
 				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Training Management Module Automation</span>
-						<span class='test-time'>Aug 9, 2025 08:11:09 PM</span>
+						<span class='test-time'>Aug 9, 2025 10:50:37 PM</span>
 						<span class='test-status right pass'>Pass</span>
 					</div>
 					<div class='test-content hide'>
@@ -201,15 +201,15 @@
 
 <div class='scenario node' test-id='2' status='pass'>
 
-	<span class='duration right label'>00 00 25.048</span>
+	<span class='duration right label'>00 00 33.255</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a course</div>
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a Training Venues</div>
 	</div>
 	
 	
 		<div class='category-list'>
-				<span class='category label'>@trainingLevel</span>
 				<span class='category label'>@trainingManagement</span>
+				<span class='category label'>@trainingVenues</span>
 		</div>
 	
 	<ul class='steps'>
@@ -229,22 +229,27 @@
 
 		</li>
 		<li test-id='10' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Levels' tab</div>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Venues' tab</div>
 
 
 		</li>
 		<li test-id='12' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Level'</div>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Venue'</div>
 
 
 		</li>
 		<li test-id='14' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheLevelDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the level details</div>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheTrainingVenueDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the training venue details</div>
 
 
 		</li>
 		<li test-id='16' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='18' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_training_frequency_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the training frequency is created</div>
 
 
 		</li>
@@ -294,39 +299,6 @@
 			<ul id='category-collection' class='category-collection'>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@trainingLevel</span>
-						<span class='category-status right'>
-						<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Aug 9, 2025 08:11:09 PM</td>
-										<td class='linked' test-id='2'>Should be able to add a course</td>
-										<td><span class='test-status Pass'>Pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
 						<span class='category-name'>@trainingManagement</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
@@ -349,8 +321,41 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 9, 2025 08:11:09 PM</td>
-										<td class='linked' test-id='2'>Should be able to add a course</td>
+										<td>Aug 9, 2025 10:50:37 PM</td>
+										<td class='linked' test-id='2'>Should be able to add a Training Venues</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@trainingVenues</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Aug 9, 2025 10:50:37 PM</td>
+										<td class='linked' test-id='2'>Should be able to add a Training Venues</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -387,25 +392,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>7</div>
+					<div class='panel-lead'>8</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Aug 9, 2025 08:11:09 PM</div>
+					<div class='panel-lead'>Aug 9, 2025 10:50:36 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Aug 9, 2025 08:11:35 PM</div>
+			 		<div class='panel-lead'>Aug 9, 2025 10:51:11 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 25.889</div>
+					<div class='panel-lead'>00 00 34.738</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -421,7 +426,7 @@
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>@trainingLevel</td>
+							<td>@trainingManagement</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -430,7 +435,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>@trainingManagement</td>
+							<td>@trainingVenues</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -464,8 +469,8 @@
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 7,
-				passGrandChild: 7,
+				grandChildCount: 8,
+				passGrandChild: 8,
 				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
@@ -477,7 +482,7 @@
 		
 		<script>
 			var timeline = {
-			        "Training Management Module Automation":25.048
+			        "Training Management Module Automation":33.255
 			};
 		</script>
 		
