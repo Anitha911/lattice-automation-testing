@@ -77,6 +77,7 @@ public class ElementUtils {
     }
 
 
+
     public void takeScreenshot(String fileName) {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
