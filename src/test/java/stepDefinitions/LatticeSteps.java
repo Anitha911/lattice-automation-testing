@@ -13,12 +13,15 @@ import java.time.Duration;
 
 
 public class LatticeSteps {
+    public static String generatedCompanyName;
+    public static String generatedCourseName;
 
     private final WebDriver driver = DriverFactory.getDriver();
 //    ElementUtils utils = new ElementUtils(driver);
 //    Actions actions = new Actions(driver);
     LatticePage latticePage = new LatticePage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
+
 
 
 
@@ -67,15 +70,60 @@ public class LatticeSteps {
 
     @Then("User fills up the {string} type company details")
     public void user_fill_up_the_coperate_company_details(String type) {
-        latticePage.enterCompanyName(dataGen.generateCompanyName());
+        generatedCompanyName = dataGen.generateCompanyName();
+        latticePage.enterCompanyName(generatedCompanyName);
         latticePage.selectCompanyType(type);
         latticePage.enterContactNumber(dataGen.generatePhoneNumber());
         latticePage.enterContactName(dataGen.generateRandomName());
         latticePage.enterDesignation(dataGen.generateDesignation());
         latticePage.enterEmail(dataGen.generateTimestampedEmail());
         latticePage.enterAddress(dataGen.generateAddress());
+    }
+
+    @Then("User clicks on save button")
+    public void userClicksOnSaveButton() {
         latticePage.clickSaveButton();
     }
 
+    @Then("User verify if the company is created")
+    public void user_verify_the_success_message_after_creating_company() {
+        latticePage.verifyCompanyName(generatedCompanyName);
+    }
 
+    @Then("User verify if the course is created")
+    public void user_verify_course_creation() {
+        latticePage.verifyCourseName(generatedCourseName);
+    }
+
+    @Then("User verify if the company is deleted")
+    public void user_verify_company_deleted() {
+        latticePage.verifyCompanyDeleted(generatedCompanyName);
+    }
+
+    @Then("User clicks on first available company to edit")
+    public void user_clicks_on_first_available_company_to_edit() {
+        latticePage.clickCompanytoEdit();
+    }
+
+    @Then("User clicks on first available company to delete")
+    public void user_clicks_on_first_available_company_to_delete() {
+        latticePage.clickCompanytoDelete();
+    }
+
+    @Then("User fills up the course details for {string} days validity")
+    public void userFillsUpTheCourseDetailsForDaysValidity(String days) {
+        generatedCourseName = dataGen.generateCompanyName();
+        latticePage.enterCourseName(generatedCourseName);
+
+        latticePage.enterCourseTopicDetails(dataGen.generateCourseDetails());
+        latticePage.enterCourseCategory(dataGen.generateCourseCategory());
+        latticePage.enterCourseLink(dataGen.generateCourseLink());
+        latticePage.enterCourseValidityDays(days);
+    }
+
+    @Then("User fills up the level details")
+    public void userFillsUpTheLevelDetails() {
+        latticePage.enterLevelName(dataGen.generateLevelName());
+        latticePage.enterWeightage(dataGen.generateWeightage());
+    }
 }
