@@ -15,6 +15,8 @@ import java.time.Duration;
 public class LatticeSteps {
     public static String generatedCompanyName;
     public static String generatedCourseName;
+    public static String generateLevelName;
+    public static String generateFrequencyName;
 
     private final WebDriver driver = DriverFactory.getDriver();
 //    ElementUtils utils = new ElementUtils(driver);
@@ -95,6 +97,16 @@ public class LatticeSteps {
         latticePage.verifyCourseName(generatedCourseName);
     }
 
+    @Then("User verify if the training level is created")
+    public void user_verify_training_level_creation() {
+        latticePage.verifyTrainingLevel(generateLevelName);
+    }
+
+    @Then("User verify if the training frequency is created")
+    public void user_verify_training_frequency_creation() {
+        latticePage.verifyTrainingLevel(generateFrequencyName);
+    }
+
     @Then("User verify if the company is deleted")
     public void user_verify_company_deleted() {
         latticePage.verifyCompanyDeleted(generatedCompanyName);
@@ -123,7 +135,28 @@ public class LatticeSteps {
 
     @Then("User fills up the level details")
     public void userFillsUpTheLevelDetails() {
-        latticePage.enterLevelName(dataGen.generateLevelName());
+        generateLevelName = dataGen.generateLevelName();
+        latticePage.enterLevelName(generateLevelName);
         latticePage.enterWeightage(dataGen.generateWeightage());
+    }
+
+    @Then("User fills up the training level details")
+    public void userFillsUpTheTrainingLevelDetails() {
+        generateFrequencyName = dataGen.generateFrequencyName();
+        latticePage.enterFrequencyName(generateFrequencyName);
+    }
+
+    @Then("User fills up the training venue details")
+    public void userFillsUpTheTrainingVenueDetails() {
+        latticePage.enterVenueContact(
+                dataGen.generatePhoneNumber(),
+                dataGen.generateTimestampedEmail(),
+                dataGen.generateAddress()
+        );
+        latticePage.enterVenueName(dataGen.generateVenueName());
+        latticePage.enterMaxNoParticipants(dataGen.generateMaxNoParticipants());
+        latticePage.selectVenueType("Dubai");
+        latticePage.selectCountry("United Arab Emirates");
+        latticePage.selectCity("Dubai");
     }
 }

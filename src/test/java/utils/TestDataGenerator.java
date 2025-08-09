@@ -85,4 +85,20 @@ public class TestDataGenerator {
         return String.valueOf(random.nextInt(101)); // 0–100
     }
 
+    // Generate a unique frequency name
+    public String generateFrequencyName() {
+        String[] frequencies = {"Daily", "Weekly", "Monthly", "Quarterly", "Yearly"};
+        return frequencies[random.nextInt(frequencies.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
+    // Generate a unique frequency name
+    public String generateVenueName() {
+        String[] venues = {"Main Hall", "Conference Room", "Auditorium", "Training Center", "Lab 1"};
+        return venues[random.nextInt(venues.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
+    public String generateMaxNoParticipants() {
+        return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
+    }
+
 }

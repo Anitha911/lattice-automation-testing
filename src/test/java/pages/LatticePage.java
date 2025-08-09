@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import utils.ConfigReader;
 import utils.ElementUtils;
+import utils.JavaScriptExeUtil;
 
 public class LatticePage {
     private final WebDriver driver;
@@ -27,13 +28,19 @@ public class LatticePage {
     public static final By ADDRESS_INPUT = By.id("radtxtAddress");
     public static final By COMPANY_TYPE_OPTS = By.xpath("//li[@class='rcbItem' and contains(text(), 'Corporate')]");
     public static final By COMPANY_TYPE_DD = By.cssSelector("[value='Select company type']");
+    public static final By VENUE_TYPE_DD = By.cssSelector("[value='Select Venue Type']");
+    public static final By COUNTRY_DD = By.cssSelector("[value='Select Country']");
+    public static final By CITY_DD = By.cssSelector("[value='Select City']");
     public static final By SAVE_BUTTON_COMPANY = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_btnTrainingComOk");
     public static final By SAVE_BUTTON_COURSE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCour_C_btnTrainingCourOk");
     public static final By SAVE_BUTTON_TRAINING_LEVEL = By.id("ctl00_ContentPlaceHolder1_RadWinTraininglevel_C_btnTrainingLevelOk");
+    public static final By SAVE_BUTTON_TRAINING_FREQUENCY = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingFrequency_C_btnTrainingFrequencyOk");
+    public static final By SAVE_BUTTON_VANUE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingVenue_C_btnTrainingVenueSave");
     public static final By FIRST_COMPANY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00__0");
     public static final By DELETE_FIRST_COMPANY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00_ctl04_imgDelete");
     public static final By SEARCH_COMPANY = By.cssSelector("[alt='Filter CompanyName column']");
     public static final By SEARCH_COURSE = By.cssSelector("[alt='Filter CourseName column']");
+    public static final By SEARCH_TRAINING_LEVEL = By.cssSelector("[alt='Filter Name column']");
 
     public static final By COURSE_NAME = By.id("radtxtCourseName");
     public static final By COURSE_TOPIC_DETAILS = By.id("radtxtTopicDetails");
@@ -43,6 +50,16 @@ public class LatticePage {
 
     public static final By LEVEL_NAME = By.id("radtxtLevelName");
     public static final By WEIGHTAGE = By.id("RadtxtWeightage");
+
+    public static final By FREQUENCY_NAME = By.id("radtxtFrequencyName");
+
+    public static final By VENUE_NAME = By.id("radtxtVenueName");
+    public static final By MAX_NO_PARTICIPANTS = By.id("radtxtMaxNoParticipants");
+    public static final By CONTACT_NUM = By.id("radtxtContactnum");
+    public static final By EMAIL = By.id("RadtxtEmail");
+    public static final By ADDRESS = By.id("radtxtAddress");
+
+
 
 
     public void loginReflexionCafm(String un, String pw) throws InterruptedException {
@@ -75,7 +92,41 @@ public class LatticePage {
         }
     }
 
+    public void selectVenueType(String companyTitle) {
+        try {
+            utils.clickElement(VENUE_TYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
+            utils.clickElement(locator);
+            System.out.println("Clicked on the tab: " + companyTitle);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the tab: " + companyTitle);
+            throw e;
+        }
+    }
 
+    public void selectCountry(String companyTitle) {
+        try {
+            utils.clickElement(COUNTRY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
+            utils.clickElement(locator);
+            System.out.println("Clicked on the tab: " + companyTitle);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the tab: " + companyTitle);
+            throw e;
+        }
+    }
+
+    public void selectCity(String companyTitle) {
+        try {
+            utils.clickElement(CITY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
+            utils.clickElement(locator);
+            System.out.println("Clicked on the tab: " + companyTitle);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the tab: " + companyTitle);
+            throw e;
+        }
+    }
 
     public void clickOnButton(String buttonTitle) {
         try {
@@ -112,7 +163,7 @@ public class LatticePage {
         utils.enterText(ADDRESS_INPUT, address);
     }
     public void clickSaveButton() {
-        By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL};
+        By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE};
 
         for (By button : saveButtons) {
             if (utils.isElementPresent(button)) {
@@ -142,6 +193,18 @@ public class LatticePage {
     public void verifyCourseName(String expectedTitle) {
         utils.enterText(SEARCH_COURSE,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingCour_ctl00__0'] td[title='%s']", expectedTitle));
+        utils.isElementPresent(locator);
+    }
+
+    public void verifyTrainingLevel(String expectedTitle) {
+        utils.enterText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
+        By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingLevel_ctl00__0'] td[title='%s']", expectedTitle));
+        utils.isElementPresent(locator);
+    }
+
+    public void verifyFrequencyLevel(String expectedTitle) {
+        utils.enterText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
+        By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingFrequency_ctl00__0'] td[title='%s']", expectedTitle));
         utils.isElementPresent(locator);
     }
 
@@ -177,5 +240,23 @@ public class LatticePage {
 
     public void enterWeightage(String weightage) {
         utils.enterText(WEIGHTAGE, weightage);
+    }
+
+    public void enterFrequencyName(String frequencyName) {
+        utils.enterText(FREQUENCY_NAME, frequencyName);
+    }
+
+    public void enterVenueName(String venueName) {
+        utils.enterText(VENUE_NAME, venueName);
+    }
+
+    public void enterMaxNoParticipants(String maxParticipants) {
+        utils.enterText(MAX_NO_PARTICIPANTS, maxParticipants);
+    }
+
+    public void enterVenueContact(String contactNum, String email, String address) {
+        utils.enterText(CONTACT_NUM, contactNum);
+        utils.enterText(EMAIL, email);
+        utils.enterText(ADDRESS, address);
     }
 }

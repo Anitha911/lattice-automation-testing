@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
                 "pretty"
         },
         monochrome = true,
-        tags = "@trainingLevel",
+        tags = "@trainingVenues",
         dryRun = false
 )
 @Test

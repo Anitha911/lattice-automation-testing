@@ -71,7 +71,7 @@ Feature: Training Management Module Automation
     Then User verify if the course is created
 
   @trainingLevel
-  Scenario: Should be able to add a course
+  Scenario: Should be able to add a training level
     Given User is on "lattice.url" page
     Then User is at home screen after login with "username" and "password"
     Then User is on "trainingManagement.url" page
@@ -79,4 +79,26 @@ Feature: Training Management Module Automation
     Then User clicks on button 'Add Level'
     Then User fills up the level details
     Then User clicks on save button
-#    Then User verify if the course is created
+    Then User verify if the training level is created
+
+  @trainingFrequency
+  Scenario: Should be able to add a training frequency
+    Given User is on "lattice.url" page
+    Then User is at home screen after login with "username" and "password"
+    Then User is on "trainingManagement.url" page
+    Then User clicks on the 'Training Frequency' tab
+    Then User clicks on button 'Add Frequency'
+    Then User fills up the training level details
+    Then User clicks on save button
+    Then User verify if the training frequency is created
+
+  @trainingVenues
+  Scenario: Should be able to add a Training Venues
+    Given User is on "lattice.url" page
+    Then User is at home screen after login with "username" and "password"
+    Then User is on "trainingManagement.url" page
+    Then User clicks on the 'Training Venues' tab
+    Then User clicks on button 'Add Venue'
+    Then User fills up the training venue details
+    Then User clicks on save button
+    Then User verify if the training frequency is created
