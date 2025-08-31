@@ -50,14 +50,16 @@ public class LatticePage {
 
     public static final By LEVEL_NAME = By.id("radtxtLevelName");
     public static final By WEIGHTAGE = By.id("RadtxtWeightage");
-
     public static final By FREQUENCY_NAME = By.id("radtxtFrequencyName");
-
     public static final By VENUE_NAME = By.id("radtxtVenueName");
     public static final By MAX_NO_PARTICIPANTS = By.id("radtxtMaxNoParticipants");
     public static final By CONTACT_NUM = By.id("radtxtContactnum");
-    public static final By EMAIL = By.id("RadtxtEmail");
     public static final By ADDRESS = By.id("radtxtAddress");
+
+//    public static final By TRAINER_NAME = By.id("radtxtTrainerName");
+//    public static final By CONTACT_NUM  = By.id("radttContactNum");
+//    public static final By TRAINING_COMPANY = By.xpath("//*[@value='Select Training Company']");
+
 
 
 
@@ -256,7 +258,7 @@ public class LatticePage {
 
     public void enterVenueContact(String contactNum, String email, String address) {
         utils.enterText(CONTACT_NUM, contactNum);
-        utils.enterText(EMAIL, email);
+        utils.enterText(EMAIL_INPUT, email);
         utils.enterText(ADDRESS, address);
     }
 }

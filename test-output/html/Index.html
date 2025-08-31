@@ -40,6 +40,7 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 			<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
@@ -49,7 +50,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Aug 9, 2025 10:50:36 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Sep 1, 2025 02:03:51 AM</span>
 			</a>
 		</ul>
 	</div>
@@ -64,7 +65,7 @@
 				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+										<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -76,6 +77,12 @@
 				<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>@CompanyDelete</a></li>
+					<li><a href='#'>@trainingCourses</a></li>
+					<li><a href='#'>@trainingFrequency</a></li>
+					<li><a href='#'>@addCompany</a></li>
+					<li><a href='#'>@trainingLevel</a></li>
+					<li><a href='#'>@CompanyEdit</a></li>
 					<li><a href='#'>@trainingManagement</a></li>
 					<li><a href='#'>@trainingVenues</a></li>
 					<li class='divider'></li>
@@ -119,12 +126,12 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='$100%'>
-                    <span class='strong'>1</span> features passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='$0%'>
+                    <span class='strong'>0</span> features passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> features failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
+                    1</span> features failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped
                 </div>
@@ -137,12 +144,12 @@
                     <canvas id='child-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>1</span> scenarios passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='66%'>
+                    <span class='strong'>6</span> scenarios passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> scenarios failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='33%'>
+                    3</span> scenarios failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -157,14 +164,14 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>8</span> steps passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='66%'>
+                    <span class='strong'>52</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> steps failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='3%'>
+                    3</span> steps failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='29%'>
+                    23</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> others
                 </div>
@@ -185,11 +192,11 @@
 	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Training Management Module Automation</span>
-						<span class='test-time'>Aug 9, 2025 10:50:37 PM</span>
-						<span class='test-status right pass'>Pass</span>
+						<span class='test-time'>Sep 1, 2025 02:03:53 AM</span>
+						<span class='test-status right fail'>Fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class="sr-filters bdd-filters">
@@ -199,9 +206,565 @@
 	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
 </div>
 
-<div class='scenario node' test-id='2' status='pass'>
+<div class='scenario node' test-id='2' status='fail'>
 
-	<span class='duration right label'>00 00 33.255</span>
+	<span class='duration right label'>00 00 07.844</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario: Should be able to add cooperate type company</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@addCompany</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='4' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='6' class='node then Fail' status='Fail'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+					<textarea disabled class="code-block">org.junit.ComparisonFailure: Expected title: "Reflexion CAFM Suite - Home - Main Menu - Navigator" but got: "Reflexion CAFM Suite - Login" expected:<...lexion CAFM Suite - [Login]> but was:<...lexion CAFM Suite - [Home - Main Menu - Navigator]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at utils.ElementUtils.assertPageTitle(ElementUtils.java:100)
+	at pages.LatticePage.loginReflexionCafm(LatticePage.java:71)
+	at stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(LatticeSteps.java:46)
+	at ✽.User is at home screen after login with "username" and "password"(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:7)
+</textarea>
+		</li>
+		<li test-id='7' class='node * Pass' status='Pass'>
+			<div class="step-name" title="(AFTER_STEP)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>hooks.Hooks.afterStep(io.cucumber.java.Scenario)</div>
+
+
+					<div class="node-step">screenshot</div>
+					<div class='screenshots'>
+						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded1.png' src='./screenshots/embedded1.png'>
+					</div>
+					<div class="node-step">screenshot</div>
+					<div class='screenshots'>
+						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded2.png' src='./screenshots/embedded2.png'>
+					</div>
+		</li>
+		<li test-id='8' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='10' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on the 'Training Company' tab</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='12' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on button 'Add Company'</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='14' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User fills up the 'Corporate' type company details</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='16' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on save button</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='18' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_the_success_message_after_creating_company())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User verify if the company is created</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='21' status='pass'>
+
+	<span class='duration right label'>00 00 34.018</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add Technical type company</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@addCompany</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='23' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='25' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+		</li>
+		<li test-id='27' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+		</li>
+		<li test-id='29' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Company' tab</div>
+
+
+		</li>
+		<li test-id='31' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Company'</div>
+
+
+		</li>
+		<li test-id='33' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the 'Technical' type company details</div>
+
+
+		</li>
+		<li test-id='35' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='37' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_the_success_message_after_creating_company())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company is created</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='40' status='pass'>
+
+	<span class='duration right label'>00 00 25.571</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add Audit type company</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@addCompany</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='42' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='44' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+		</li>
+		<li test-id='46' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+		</li>
+		<li test-id='48' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Company' tab</div>
+
+
+		</li>
+		<li test-id='50' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Company'</div>
+
+
+		</li>
+		<li test-id='52' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the 'Audit' type company details</div>
+
+
+		</li>
+		<li test-id='54' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='56' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_the_success_message_after_creating_company())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company is created</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='59' status='pass'>
+
+	<span class='duration right label'>00 00 26.192</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to edit a company</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@CompanyEdit</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='61' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='63' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+		</li>
+		<li test-id='65' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+		</li>
+		<li test-id='67' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Company' tab</div>
+
+
+		</li>
+		<li test-id='69' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_first_available_company_to_edit())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on first available company to edit</div>
+
+
+		</li>
+		<li test-id='71' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the 'Audit' type company details</div>
+
+
+		</li>
+		<li test-id='73' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='75' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_the_success_message_after_creating_company())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company is created</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='78' status='fail'>
+
+	<span class='duration right label'>00 00 08.339</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario: Should be able to delete a company</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@CompanyDelete</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='80' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='82' class='node then Fail' status='Fail'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+					<textarea disabled class="code-block">org.junit.ComparisonFailure: Expected title: "Reflexion CAFM Suite - Home - Main Menu - Navigator" but got: "Reflexion CAFM Suite - Login" expected:<...lexion CAFM Suite - [Login]> but was:<...lexion CAFM Suite - [Home - Main Menu - Navigator]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at utils.ElementUtils.assertPageTitle(ElementUtils.java:100)
+	at pages.LatticePage.loginReflexionCafm(LatticePage.java:71)
+	at stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(LatticeSteps.java:46)
+	at ✽.User is at home screen after login with "username" and "password"(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:51)
+</textarea>
+		</li>
+		<li test-id='83' class='node * Pass' status='Pass'>
+			<div class="step-name" title="(AFTER_STEP)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>hooks.Hooks.afterStep(io.cucumber.java.Scenario)</div>
+
+
+					<div class="node-step">screenshot</div>
+					<div class='screenshots'>
+						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded3.png' src='./screenshots/embedded3.png'>
+					</div>
+					<div class="node-step">screenshot</div>
+					<div class='screenshots'>
+						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded4.png' src='./screenshots/embedded4.png'>
+					</div>
+		</li>
+		<li test-id='84' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='86' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on the 'Training Company' tab</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='88' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_first_available_company_to_edit())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on first available company to edit</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='90' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User fills up the 'Audit' type company details</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='92' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on save button</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='94' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_the_success_message_after_creating_company())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User verify if the company is created</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='96' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_waits_for_seconds(int))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User waits for 3 seconds</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='98' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_first_available_company_to_delete())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on first available company to delete</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='100' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_company_deleted())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User verify if the company is deleted</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='103' status='fail'>
+
+	<span class='duration right label'>00 00 01.687</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario: Should be able to add a course</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@trainingCourses</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='104' class='node * Fail' status='Fail'>
+			<div class="step-name" title="(BEFORE)"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>hooks.Hooks.setUp(io.cucumber.java.Scenario)</div>
+
+
+					<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: unknown error: JavaScript code failed
+from unknown command: 'Runtime.evaluate' wasn't found
+  (Session info: chrome=139.0.7258.140)
+Build info: version: '4.23.0', revision: '4df0a231af'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [11b836f8a5a674bd7b10938ea71688cb, maximizeCurrentWindow {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.140, chrome: {chromedriverVersion: 139.0.7258.154 (9e0d6b2b47f..., userDataDir: C:\Users\AZHER-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50896}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50896/devtoo..., se:cdpVersion: 139.0.7258.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 11b836f8a5a674bd7b10938ea71688cb
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:604)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:1043)
+	at utils.DriverFactory.initializeDriver(DriverFactory.java:41)
+	at hooks.Hooks.setUp(Hooks.java:21)
+</textarea>
+		</li>
+		<li test-id='105' class='node given Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Given User is on "lattice.url" page</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='107' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='109' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='111' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on the 'Training Courses' tab</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='113' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on button 'Add Course'</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='115' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheCourseDetailsForDaysValidity(java.lang.String))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User fills up the course details for '15' days validity</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='117' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on save button</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+		<li test-id='119' class='node then Skip' status='Skip'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_course_creation())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User verify if the course is created</div>
+
+
+					<div class="node-step">Step skipped</div>
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='122' status='pass'>
+
+	<span class='duration right label'>00 00 26.039</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a training level</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@trainingLevel</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='124' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='126' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+		</li>
+		<li test-id='128' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+		</li>
+		<li test-id='130' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Levels' tab</div>
+
+
+		</li>
+		<li test-id='132' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Level'</div>
+
+
+		</li>
+		<li test-id='134' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheLevelDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the level details</div>
+
+
+		</li>
+		<li test-id='136' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='138' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_training_level_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the training level is created</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='141' status='pass'>
+
+	<span class='duration right label'>00 00 25.163</span>
+	<div class="bdd-test">
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a training frequency</div>
+	</div>
+	
+	
+		<div class='category-list'>
+				<span class='category label'>@trainingFrequency</span>
+				<span class='category label'>@trainingManagement</span>
+		</div>
+	
+	<ul class='steps'>
+		<li test-id='143' class='node given Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
+
+
+		</li>
+		<li test-id='145' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+
+
+		</li>
+		<li test-id='147' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
+
+
+		</li>
+		<li test-id='149' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Frequency' tab</div>
+
+
+		</li>
+		<li test-id='151' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Frequency'</div>
+
+
+		</li>
+		<li test-id='153' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheTrainingLevelDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the training level details</div>
+
+
+		</li>
+		<li test-id='155' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='157' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_training_frequency_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the training frequency is created</div>
+
+
+		</li>
+	</ul>
+</div>
+<div class='scenario node' test-id='160' status='pass'>
+
+	<span class='duration right label'>00 01 29.165</span>
 	<div class="bdd-test">
 		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a Training Venues</div>
 	</div>
@@ -213,42 +776,42 @@
 		</div>
 	
 	<ul class='steps'>
-		<li test-id='4' class='node given Pass' status='Pass'>
+		<li test-id='162' class='node given Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given User is on "lattice.url" page</div>
 
 
 		</li>
-		<li test-id='6' class='node then Pass' status='Pass'>
+		<li test-id='164' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
 
 
 		</li>
-		<li test-id='8' class='node then Pass' status='Pass'>
+		<li test-id='166' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_is_on_login_page(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is on "trainingManagement.url" page</div>
 
 
 		</li>
-		<li test-id='10' class='node then Pass' status='Pass'>
+		<li test-id='168' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Venues' tab</div>
 
 
 		</li>
-		<li test-id='12' class='node then Pass' status='Pass'>
+		<li test-id='170' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Venue'</div>
 
 
 		</li>
-		<li test-id='14' class='node then Pass' status='Pass'>
+		<li test-id='172' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.userFillsUpTheTrainingVenueDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the training venue details</div>
 
 
 		</li>
-		<li test-id='16' class='node then Pass' status='Pass'>
+		<li test-id='174' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
 
 
 		</li>
-		<li test-id='18' class='node then Pass' status='Pass'>
+		<li test-id='176' class='node then Pass' status='Pass'>
 			<div class="step-name" title="(stepDefinitions.LatticeSteps.user_verify_training_frequency_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the training frequency is created</div>
 
 
@@ -299,7 +862,73 @@
 			<ul id='category-collection' class='category-collection'>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@trainingManagement</span>
+						<span class='category-name'>@CompanyDelete</span>
+						<span class='category-status right'>
+						<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:05:26 AM</td>
+										<td class='linked' test-id='78'>Should be able to delete a company</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@trainingCourses</span>
+						<span class='category-status right'>
+						<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:05:35 AM</td>
+										<td class='linked' test-id='103'>Should be able to add a course</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@trainingFrequency</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
 						</span>
@@ -321,8 +950,192 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 9, 2025 10:50:37 PM</td>
-										<td class='linked' test-id='2'>Should be able to add a Training Venues</td>
+										<td>Sep 1, 2025 02:06:02 AM</td>
+										<td class='linked' test-id='141'>Should be able to add a training frequency</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@addCompany</span>
+						<span class='category-status right'>
+						<span class='label pass'>2</span>
+						<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 2</span>
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:03:53 AM</td>
+										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:04:00 AM</td>
+										<td class='linked' test-id='21'>Should be able to add Technical type company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:04:34 AM</td>
+										<td class='linked' test-id='40'>Should be able to add Audit type company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@trainingLevel</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:05:36 AM</td>
+										<td class='linked' test-id='122'>Should be able to add a training level</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@CompanyEdit</span>
+						<span class='category-status right'>
+						<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:05:00 AM</td>
+										<td class='linked' test-id='59'>Should be able to edit a company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@trainingManagement</span>
+						<span class='category-status right'>
+						<span class='label pass'>6</span>
+						<span class='label fail'>3</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 6</span>
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 3</span>
+							
+						</div>
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:03:53 AM</td>
+										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:04:00 AM</td>
+										<td class='linked' test-id='21'>Should be able to add Technical type company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:04:34 AM</td>
+										<td class='linked' test-id='40'>Should be able to add Audit type company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:05:00 AM</td>
+										<td class='linked' test-id='59'>Should be able to edit a company</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:05:26 AM</td>
+										<td class='linked' test-id='78'>Should be able to delete a company</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:05:35 AM</td>
+										<td class='linked' test-id='103'>Should be able to add a course</td>
+										<td><span class='test-status Fail'>Fail</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:05:36 AM</td>
+										<td class='linked' test-id='122'>Should be able to add a training level</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:06:02 AM</td>
+										<td class='linked' test-id='141'>Should be able to add a training frequency</td>
+										<td><span class='test-status Pass'>Pass</span></td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:06:27 AM</td>
+										<td class='linked' test-id='160'>Should be able to add a Training Venues</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -354,8 +1167,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Aug 9, 2025 10:50:37 PM</td>
-										<td class='linked' test-id='2'>Should be able to add a Training Venues</td>
+										<td>Sep 1, 2025 02:06:27 AM</td>
+										<td class='linked' test-id='160'>Should be able to add a Training Venues</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -372,7 +1185,133 @@
 		</div>
 	</div>
 </div>
-<!-- category view --><div id='dashboard-view' class='view hide'>
+<!-- category view --><div id='exception-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='exception-collection' class='exception-collection'>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.junit.ComparisonFailure</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>2</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>StackTrace</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:03:57 AM</td>
+										<td class='linked' test-id='6'>Then User is at home screen after login with "username" and "password"</td>
+										<td>
+											<textarea disabled class="code-block">org.junit.ComparisonFailure: Expected title: "Reflexion CAFM Suite - Home - Main Menu - Navigator" but got: "Reflexion CAFM Suite - Login" expected:<...lexion CAFM Suite - [Login]> but was:<...lexion CAFM Suite - [Home - Main Menu - Navigator]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at utils.ElementUtils.assertPageTitle(ElementUtils.java:100)
+	at pages.LatticePage.loginReflexionCafm(LatticePage.java:71)
+	at stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(LatticeSteps.java:46)
+	at ✽.User is at home screen after login with "username" and "password"(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:7)
+</textarea>
+										</td>
+									</tr>
+									<tr>
+										<td>Sep 1, 2025 02:05:29 AM</td>
+										<td class='linked' test-id='82'>Then User is at home screen after login with "username" and "password"</td>
+										<td>
+											<textarea disabled class="code-block">org.junit.ComparisonFailure: Expected title: "Reflexion CAFM Suite - Home - Main Menu - Navigator" but got: "Reflexion CAFM Suite - Login" expected:<...lexion CAFM Suite - [Login]> but was:<...lexion CAFM Suite - [Home - Main Menu - Navigator]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at utils.ElementUtils.assertPageTitle(ElementUtils.java:100)
+	at pages.LatticePage.loginReflexionCafm(LatticePage.java:71)
+	at stepDefinitions.LatticeSteps.user_is_at_home_screen_after_login_with_and(LatticeSteps.java:46)
+	at ✽.User is at home screen after login with "username" and "password"(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:7)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.openqa.selenium.WebDriverException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>StackTrace</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Sep 1, 2025 02:05:35 AM</td>
+										<td class='linked' test-id='104'>hooks.Hooks.setUp(io.cucumber.java.Scenario)</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.WebDriverException: unknown error: JavaScript code failed
+from unknown command: 'Runtime.evaluate' wasn't found
+  (Session info: chrome=139.0.7258.140)
+Build info: version: '4.23.0', revision: '4df0a231af'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [11b836f8a5a674bd7b10938ea71688cb, maximizeCurrentWindow {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.140, chrome: {chromedriverVersion: 139.0.7258.154 (9e0d6b2b47f..., userDataDir: C:\Users\AZHER-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50896}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50896/devtoo..., se:cdpVersion: 139.0.7258.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 11b836f8a5a674bd7b10938ea71688cb
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:604)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:1043)
+	at utils.DriverFactory.initializeDriver(DriverFactory.java:41)
+	at hooks.Hooks.setUp(Hooks.java:21)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='exception-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -386,31 +1325,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Scenarios
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>9</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>8</div>
+					<div class='panel-lead'>78</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Aug 9, 2025 10:50:36 PM</div>
+					<div class='panel-lead'>Sep 1, 2025 02:03:51 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Aug 9, 2025 10:51:11 PM</div>
+			 		<div class='panel-lead'>Sep 1, 2025 02:07:57 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 34.738</div>
+					<div class='panel-lead'>00 04 05.767</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -426,12 +1365,66 @@
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>@trainingManagement</td>
+							<td>@CompanyDelete</td>
+							<td>0</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									0%
+							</td>
+						</tr>
+						<tr>
+							<td>@trainingCourses</td>
+							<td>0</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									0%
+							</td>
+						</tr>
+						<tr>
+							<td>@trainingFrequency</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
 							<td>
 									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@addCompany</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									66.667%
+							</td>
+						</tr>
+						<tr>
+							<td>@trainingLevel</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@CompanyEdit</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>@trainingManagement</td>
+							<td>6</td>
+							<td>3</td>
+							<td>0</td>
+							<td>
+									66.667%
 							</td>
 						</tr>
 						<tr>
@@ -455,34 +1448,34 @@
 		<script>
 			var statusGroup = {
                 parentCount: 1,
-				passParent: 1,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				childCount: 1,
-				passChild: 1,
-				failChild: 0,
+				childCount: 9,
+				passChild: 6,
+				failChild: 3,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 8,
-				passGrandChild: 8,
-				failGrandChild: 0,
+				grandChildCount: 78,
+				passGrandChild: 52,
+				failGrandChild: 3,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 0,
+				skipGrandChild: 23,
 				infoGrandChild: 0,
 			};
 			</script>
 		
 		<script>
 			var timeline = {
-			        "Training Management Module Automation":33.255
+			        "Training Management Module Automation":244.127
 			};
 		</script>
 		

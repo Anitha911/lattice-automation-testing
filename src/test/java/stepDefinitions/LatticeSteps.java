@@ -25,9 +25,6 @@ public class LatticeSteps {
     TestDataGenerator dataGen = new TestDataGenerator();
 
 
-
-
-
     @Given("User is on {string} page")
     public void user_is_on_login_page(String url) {
         url = ConfigReader.getProperty(url);
