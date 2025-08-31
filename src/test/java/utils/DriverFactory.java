@@ -21,20 +21,28 @@ public class DriverFactory {
         WebDriver webDriver = switch (browser.toLowerCase()) {
             case "firefox" -> {
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless");
+                firefoxOptions.addArguments("--headless=new");
                 firefoxOptions.addArguments("--disable-gpu");
+                firefoxOptions.addArguments("--no-sandbox");
+                firefoxOptions.addArguments("--disable-dev-shm-usage");
                 yield new FirefoxDriver(firefoxOptions);
             }
             case "edge" -> {
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--headless");
+                edgeOptions.addArguments("--headless=new");
                 edgeOptions.addArguments("--disable-gpu");
+                edgeOptions.addArguments("--no-sandbox");
+                edgeOptions.addArguments("--disable-dev-shm-usage");
                 yield new EdgeDriver(edgeOptions);
             }
             default -> {
                 ChromeOptions chromeOptions = new ChromeOptions();
-//                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless=new");           // important for CI
+                chromeOptions.addArguments("--no-sandbox");             // required in Linux containers
+                chromeOptions.addArguments("--disable-dev-shm-usage");  // avoids limited /dev/shm space
                 chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--disable-extensions");
+                chromeOptions.addArguments("--remote-allow-origins=*"); // avoids origin issues
                 yield new ChromeDriver(chromeOptions);
             }
         };
