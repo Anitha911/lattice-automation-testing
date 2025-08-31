@@ -40,7 +40,7 @@ public class DriverFactory {
             }
             default -> {
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new"); // uncomment for CI
+//                chromeOptions.addArguments("--headless=new"); // uncomment for CI
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
