@@ -1,21 +1,18 @@
 package pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
-import utils.ElementUtils;
-import utils.JavaScriptExeUtil;
+import utils.ExcelUtils;
 
-public class LatticePage {
-    private final WebDriver driver;
-    private final ElementUtils utils;
+import java.io.IOException;
 
-    // Constructor
-    public LatticePage(WebDriver driver) {
-        this.driver = driver;
-        this.utils = new ElementUtils(driver);
+public class TrainingManagementPage extends BasePage {
+    public TrainingManagementPage(WebDriver driver) {
+        super(driver);
     }
-
-
     public static final By USERNAME_INPUT = By.id("LoginUser_UserName");
     public static final By PASSWORD_INPUT = By.id("LoginUser_Password");
     public static final By LOGIN_BUTTON = By.id("LoginUser_LoginButton");
@@ -56,25 +53,21 @@ public class LatticePage {
     public static final By CONTACT_NUM = By.id("radtxtContactnum");
     public static final By ADDRESS = By.id("radtxtAddress");
 
+
+    public static final By TRAINER_NAME = By.id("radtxtTrainerName");
+    public static final By TRAINER_CONTACT = By.id("radttContactNum");
+    public static final By SELECT_COMPANY_ARROW = By.cssSelector("ctl00_ContentPlaceHolder1_RadWinTrainer_C_raddrpTrainingServiceProviders_Arrow");
+    public static final By SELECT_COMPANY_INPUT = By.cssSelector("[value='Select Training Company']");
+
 //    public static final By TRAINER_NAME = By.id("radtxtTrainerName");
 //    public static final By CONTACT_NUM  = By.id("radttContactNum");
 //    public static final By TRAINING_COMPANY = By.xpath("//*[@value='Select Training Company']");
 
 
-
-
-
-    public void loginReflexionCafm(String un, String pw) throws InterruptedException {
-        utils.enterText(USERNAME_INPUT, ConfigReader.getProperty(un));
-        utils.enterText(PASSWORD_INPUT, ConfigReader.getProperty(pw));
-        utils.clickElement(LOGIN_BUTTON);
-        utils.assertPageTitle("Reflexion CAFM Suite - Home - Main Menu - Navigator");
-    }
-
     public void clickOnTabByTitle(String tabTitle) {
         try {
             By locator = By.xpath(String.format("//div[@id='tab-hse-activities']//a[text()='%s']", tabTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + tabTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + tabTitle);
@@ -84,9 +77,9 @@ public class LatticePage {
 
     public void selectCompanyType(String companyTitle) {
         try {
-            utils.clickElement(COMPANY_TYPE_DD);
+            utils.click(COMPANY_TYPE_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + companyTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + companyTitle);
@@ -96,9 +89,9 @@ public class LatticePage {
 
     public void selectVenueType(String companyTitle) {
         try {
-            utils.clickElement(VENUE_TYPE_DD);
+            utils.click(VENUE_TYPE_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + companyTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + companyTitle);
@@ -108,9 +101,9 @@ public class LatticePage {
 
     public void selectCountry(String companyTitle) {
         try {
-            utils.clickElement(COUNTRY_DD);
+            utils.click(COUNTRY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + companyTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + companyTitle);
@@ -120,9 +113,9 @@ public class LatticePage {
 
     public void selectCity(String companyTitle) {
         try {
-            utils.clickElement(CITY_DD);
+            utils.click(CITY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", companyTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + companyTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + companyTitle);
@@ -133,7 +126,7 @@ public class LatticePage {
     public void clickOnButton(String buttonTitle) {
         try {
             By locator = By.cssSelector(String.format("button[value='%s']", buttonTitle));
-            utils.clickElement(locator);
+            utils.click(locator);
             System.out.println("Clicked on the tab: " + buttonTitle);
         } catch (Exception e) {
             System.out.println("Failed to click on the tab: " + buttonTitle);
@@ -142,34 +135,34 @@ public class LatticePage {
     }
 
     public void enterCompanyName(String name) {
-        utils.enterText(COMPANY_NAME_INPUT, name);
+        utils.typeText(COMPANY_NAME_INPUT, name);
     }
 
     public void enterContactNumber(String number) {
-        utils.enterText(CONTACT_NUM_INPUT, number);
+        utils.typeText(CONTACT_NUM_INPUT, number);
     }
 
     public void enterContactName(String name) {
-        utils.enterText(CONTACT_NAME_INPUT, name);
+        utils.typeText(CONTACT_NAME_INPUT, name);
     }
 
     public void enterDesignation(String designation) {
-        utils.enterText(DESIGNATION_INPUT, designation);
+        utils.typeText(DESIGNATION_INPUT, designation);
     }
 
     public void enterEmail(String email) {
-        utils.enterText(EMAIL_INPUT, email);
+        utils.typeText(EMAIL_INPUT, email);
     }
 
     public void enterAddress(String address) {
-        utils.enterText(ADDRESS_INPUT, address);
+        utils.typeText(ADDRESS_INPUT, address);
     }
     public void clickSaveButton() {
         By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE};
 
         for (By button : saveButtons) {
-            if (utils.isElementPresent(button)) {
-                utils.clickElement(button);
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
                 return;
             }
         }
@@ -177,88 +170,102 @@ public class LatticePage {
     }
 
     public void clickCompanytoEdit() {
-        utils.clickElement(FIRST_COMPANY_IN_LIST);
+        utils.click(FIRST_COMPANY_IN_LIST);
     }
 
     public void clickCompanytoDelete() {
-        utils.clickElement(DELETE_FIRST_COMPANY_IN_LIST);
+        utils.click(DELETE_FIRST_COMPANY_IN_LIST);
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
 
     public void verifyCompanyName(String expectedTitle) {
-        utils.enterText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementPresent(locator);
+        utils.isElementVisible(locator);
     }
 
     public void verifyCourseName(String expectedTitle) {
-        utils.enterText(SEARCH_COURSE,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_COURSE,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingCour_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementPresent(locator);
+        utils.isElementVisible(locator);
     }
 
     public void verifyTrainingLevel(String expectedTitle) {
-        utils.enterText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingLevel_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementPresent(locator);
+        utils.isElementVisible(locator);
     }
 
     public void verifyFrequencyLevel(String expectedTitle) {
-        utils.enterText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingFrequency_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementPresent(locator);
+        utils.isElementVisible(locator);
     }
 
     public void verifyCompanyDeleted(String expectedTitle) {
-        utils.enterText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
-        utils.isElementPresent(locator);
+        utils.isElementVisible(locator);
     }
 
     public void enterCourseName(String name) {
-        utils.enterText(COURSE_NAME, name);
+        utils.typeText(COURSE_NAME, name);
     }
 
     public void enterCourseTopicDetails(String details) {
-        utils.enterText(COURSE_TOPIC_DETAILS, details);
+        utils.typeText(COURSE_TOPIC_DETAILS, details);
     }
 
     public void enterCourseCategory(String category) {
-        utils.enterText(COURSE_CATEGORY, category);
+        utils.typeText(COURSE_CATEGORY, category);
     }
 
     public void enterCourseLink(String link) {
-        utils.enterText(COURSE_LINK, link);
+        utils.typeText(COURSE_LINK, link);
     }
 
     public void enterCourseValidityDays(String days) {
-        utils.enterText(COURSE_VALIDITY_DAYS, days);
+        utils.typeText(COURSE_VALIDITY_DAYS, days);
     }
 
     public void enterLevelName(String levelName) {
-        utils.enterText(LEVEL_NAME, levelName);
+        utils.typeText(LEVEL_NAME, levelName);
     }
 
     public void enterWeightage(String weightage) {
-        utils.enterText(WEIGHTAGE, weightage);
+        utils.typeText(WEIGHTAGE, weightage);
     }
 
     public void enterFrequencyName(String frequencyName) {
-        utils.enterText(FREQUENCY_NAME, frequencyName);
+        utils.typeText(FREQUENCY_NAME, frequencyName);
     }
 
     public void enterVenueName(String venueName) {
-        utils.enterText(VENUE_NAME, venueName);
+        utils.typeText(VENUE_NAME, venueName);
     }
 
     public void enterMaxNoParticipants(String maxParticipants) {
-        utils.enterText(MAX_NO_PARTICIPANTS, maxParticipants);
+        utils.typeText(MAX_NO_PARTICIPANTS, maxParticipants);
     }
 
     public void enterVenueContact(String contactNum, String email, String address) {
-        utils.enterText(CONTACT_NUM, contactNum);
-        utils.enterText(EMAIL_INPUT, email);
-        utils.enterText(ADDRESS, address);
+        utils.typeText(CONTACT_NUM, contactNum);
+        utils.typeText(EMAIL_INPUT, email);
+        utils.typeText(ADDRESS, address);
+    }
+
+    public void trainersAssessorsDetails(String companyName) throws IOException {
+        ExcelUtils.setExcelFile("src/test/resources/TrainerData.xlsx", "Sheet1");
+        String trainerName = ExcelUtils.getCellData(1, 0);
+        String contact = ExcelUtils.getCellData(1, 1);
+        String email = ExcelUtils.getCellData(1, 2);
+        String company = ExcelUtils.getCellData(1, 3);
+
+        utils.typeText(TRAINER_NAME, trainerName);
+        utils.typeText(TRAINER_CONTACT, contact);
+        utils.typeText(EMAIL_INPUT, email);
+        utils.typeText(SELECT_COMPANY_INPUT, companyName);
+
     }
 }

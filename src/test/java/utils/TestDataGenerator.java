@@ -6,9 +6,7 @@ import java.util.Random;
 import java.util.UUID;
 
 public class TestDataGenerator {
-
     private final Random random = new Random();
-
     // Generate a unique email with timestamp and UUID
     public String generateTimestampedEmail() {
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
@@ -100,5 +98,4 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
-
 }
