@@ -3,7 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.*;
-import pages.BasePage;
+import pages.HomePage;
 import pages.LoginPage;
 import utils.DriverFactory;
 import utils.ElementUtils;
@@ -19,8 +19,8 @@ public class LoginSteps {
     private final WebDriver driver = DriverFactory.getDriver();
     ElementUtils utils = new ElementUtils(driver);
     LoginPage latticePage = new LoginPage(driver);
+    HomePage hp = new HomePage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
-
 
     @Given("User navigates to {string} page")
     public void user_is_on_login_page(String url) {

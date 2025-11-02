@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -55,11 +57,21 @@ public class DriverFactory {
             default -> {
                 LOGGER.info("[BROWSER] LAUNCHING CHROME BROWSER.");
                 ChromeOptions chromeOptions = new ChromeOptions();
-                // UNCOMMENT FOR CI PIPELINE USAGE
+
+                // OPTIONAL: enable headless for CI/CD environments
                 // chromeOptions.addArguments("--headless=new");
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-infobars");
+                chromeOptions.addArguments("--disable-notifications");
+                chromeOptions.addArguments("--disable-save-password-bubble");
+
+                // 🔒 Disable password manager & credentials service (fix for “Change password” popup)
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("credentials_enable_service", false);
+                prefs.put("profile.password_manager_enabled", false);
+                chromeOptions.setExperimentalOption("prefs", prefs);
 
                 // FIX FOR "USER-DATA-DIR ALREADY IN USE"
                 try {
