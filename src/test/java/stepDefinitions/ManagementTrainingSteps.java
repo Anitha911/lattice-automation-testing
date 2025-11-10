@@ -43,14 +43,12 @@ public class ManagementTrainingSteps {
 
     @Then("User fills up the {string} type company details")
     public void user_fill_up_the_coperate_company_details(String type) throws IOException {
-
-        ExcelUtils.setExcelFile("src/test/resources/CompanyData.xlsx", "Sheet1");
-        companyName = ExcelUtils.getCellData(1, 0);
-        String contactNumber = ExcelUtils.getCellData(1, 2);
-        String contactName = ExcelUtils.getCellData(1, 3);
-        String designation = ExcelUtils.getCellData(1, 4);
-        String email = ExcelUtils.getCellData(1, 5);
-        String address = ExcelUtils.getCellData(1, 6);
+        companyName = dataGen.generateCompanyName();
+        String contactNumber = dataGen.generatePhoneNumber();
+        String contactName = dataGen.generatePersonName();
+        String designation = dataGen.generateDesignation();
+        String email = dataGen.generateTimestampedEmail();
+        String address = dataGen.generateAddress();
 
         tmp.enterCompanyName(companyName);
         tmp.selectCompanyType(type);
@@ -103,23 +101,15 @@ public class ManagementTrainingSteps {
 
     @Then("User fills up the course details for {string} days validity")
     public void userFillsUpTheCourseDetailsForDaysValidity(String days) throws Exception {
-        ExcelUtils.setExcelFile("src/test/resources/CourseData.xlsx", "Sheet1");
-        int totalRows = ExcelUtils.getRowCount();
-
-        for (int i = 1; i < totalRows; i++) {
-            courseName = ExcelUtils.getCellData(i, 0);
-            String topicDetails = ExcelUtils.getCellData(i, 1);
-            String category = ExcelUtils.getCellData(i, 2);
-            String link = ExcelUtils.getCellData(i, 3);
-            String validity = ExcelUtils.getCellData(i, 4);
-
-            // Fill up the course details
-            tmp.enterCourseName(courseName);
-            tmp.enterCourseTopicDetails(topicDetails);
-            tmp.enterCourseCategory(category);
-            tmp.enterCourseLink(link);
-            tmp.enterCourseValidityDays(validity);
-        }
+        courseName = dataGen.generateCourseName();
+        String topicDetails = dataGen.generateCourseDetails();
+        String category = dataGen.generateCourseCategory();
+        String link = dataGen.generateCourseLink();
+        tmp.enterCourseName(courseName);
+        tmp.enterCourseTopicDetails(topicDetails);
+        tmp.enterCourseCategory(category);
+        tmp.enterCourseLink(link);
+        tmp.enterCourseValidityDays(days);
     }
 
     @Then("User fills up the level details")
@@ -129,7 +119,7 @@ public class ManagementTrainingSteps {
         tmp.enterWeightage(dataGen.generateWeightage());
     }
 
-    @Then("User fills up the training level details")
+    @Then("User fills up the training frequency level details")
     public void userFillsUpTheTrainingLevelDetails() {
         generateFrequencyName = dataGen.generateFrequencyName();
         tmp.enterFrequencyName(generateFrequencyName);

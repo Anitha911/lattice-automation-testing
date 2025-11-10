@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
 import utils.ExcelUtils;
+import utils.TestDataGenerator;
 
 import java.io.IOException;
 
@@ -266,6 +267,5 @@ public class TrainingManagementPage extends BasePage {
         utils.typeText(TRAINER_CONTACT, contact);
         utils.typeText(EMAIL_INPUT, email);
         utils.typeText(SELECT_COMPANY_INPUT, companyName);
-
     }
 }

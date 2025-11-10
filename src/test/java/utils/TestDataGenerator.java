@@ -19,7 +19,7 @@ public class TestDataGenerator {
     }
 
     // Generate a unique random name
-    public String generateRandomName() {
+    public String generatePersonName() {
         String[] names = {"John", "Jane", "Alice", "Bob", "Charlie", "Daisy"};
         return names[random.nextInt(names.length)] + " " + (char)(random.nextInt(26) + 'A') + "."
                 + UUID.randomUUID().toString().substring(0, 3);

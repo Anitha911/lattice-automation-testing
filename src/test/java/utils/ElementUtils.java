@@ -81,7 +81,7 @@ public class ElementUtils {
                 return this;
             } catch (ElementClickInterceptedException e) {
                 LOGGER.warning("[RETRY " + attempt + "] CLICK INTERCEPTED: " + locator);
-                performJsClick(waitUntilClickable(locator)); // fallback
+                performJsClick(waitUntilClickable(locator));
                 return this;
             } catch (Exception e) {
                 LOGGER.log(Level.WARNING, "[RETRY " + attempt + "] FAILED TO CLICK ELEMENT: " + locator, e);
