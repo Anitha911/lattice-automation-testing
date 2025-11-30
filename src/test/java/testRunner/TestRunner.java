@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
                 "pretty"
         },
         monochrome = true,
-        tags = "@addCompany1",
+        tags = "@api",
         dryRun = false
 )
 @Test
