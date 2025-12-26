@@ -20,4 +20,3 @@
 #Then User clicks on save button
 #Then User verify if the company is created
 
-  Anitha

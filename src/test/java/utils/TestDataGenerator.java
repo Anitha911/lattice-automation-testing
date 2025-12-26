@@ -98,4 +98,12 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
+    public String generateCompanyType() {
+        String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
+        return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateDuplicateCompanyType() {
+        String[] levels = {"Technical Training", "Soft Skills Training", "Leadership Development", "Management Training", "Facility Management Training"};
+        return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID();
+    }
 }

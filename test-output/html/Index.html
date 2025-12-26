@@ -49,7 +49,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Nov 3, 2025 02:48:56 AM</span>
+			<span class='label blue darken-3 suite-start-time'>Dec 26, 2025 01:37:33 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -76,8 +76,8 @@
 				<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@addCompany1</a></li>
-					<li><a href='#'>@trainingManagement</a></li>
+					<li><a href='#'>@trainingManagementMasters</a></li>
+					<li><a href='#'>@EditTrainingCompanyTypeMasters</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -158,7 +158,7 @@
                 </div>
                 <div class='block text-small'>
                     <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>8</span> steps passed</span>
+                    <span class='strong'>15</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -187,8 +187,8 @@
 			<ul id='test-collection' class='test-collection'>
 				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Training Management Module Automation</span>
-						<span class='test-time'>Nov 3, 2025 02:48:57 AM</span>
+						<span class='test-name'>Training Management Masters Automation</span>
+						<span class='test-time'>Dec 26, 2025 01:37:34 PM</span>
 						<span class='test-status right pass'>Pass</span>
 					</div>
 					<div class='test-content hide'>
@@ -201,15 +201,15 @@
 
 <div class='scenario node' test-id='2' status='pass'>
 
-	<span class='duration right label'>00 00 16.523</span>
+	<span class='duration right label'>00 00 44.129</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add cooperate type company</div>
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add Training company type</div>
 	</div>
 	
 	
 		<div class='category-list'>
-				<span class='category label'>@addCompany1</span>
-				<span class='category label'>@trainingManagement</span>
+				<span class='category label'>@EditTrainingCompanyTypeMasters</span>
+				<span class='category label'>@trainingManagementMasters</span>
 		</div>
 	
 	<ul class='steps'>
@@ -218,38 +218,73 @@
 
 
 		</li>
-		<li test-id='6' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.LoginSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User is at home screen after login with "username" and "password"</div>
+		<li test-id='6' class='node when Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.LoginSteps.user_is_at_home_screen_after_login_with_and(java.lang.String,java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>When User is at home screen after login with "username" and "password"</div>
 
 
 		</li>
-		<li test-id='8' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.HomePageSteps.user_click_on_navigation_item(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on 'Training Management' in navigation panel</div>
+		<li test-id='8' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.HomePageSteps.user_click_on_navigation_item(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on 'Data Configurations' in navigation panel</div>
 
 
 		</li>
-		<li test-id='10' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Company' tab</div>
+		<li test-id='10' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.userClicksOnHamburgerIcon())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on hamburger icon</div>
 
 
 		</li>
-		<li test-id='12' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Company'</div>
+		<li test-id='12' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on the 'Training Company' tab in data configuration page</div>
 
 
 		</li>
-		<li test-id='14' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the 'Corporate' type company details</div>
+		<li test-id='14' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on button 'Add'</div>
 
 
 		</li>
-		<li test-id='16' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+		<li test-id='16' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.userFillsUpTheCompanyTypeDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User fills up the company type details</div>
 
 
 		</li>
 		<li test-id='18' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_verify_the_success_message_after_creating_company())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company is created</div>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+
+
+		</li>
+		<li test-id='20' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.user_verify_company_type_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company type is created or updated</div>
+
+
+		</li>
+		<li test-id='22' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.user_clicks_on_first_available_company_type_to_edit())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on first available company type to edit</div>
+
+
+		</li>
+		<li test-id='24' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.userFillsUpTheCompanyTypeDetails())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User fills up the company type details</div>
+
+
+		</li>
+		<li test-id='26' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_waits_for_seconds(int))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User waits for 10 seconds</div>
+
+
+		</li>
+		<li test-id='28' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.userClicksOnUpdateButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on update button</div>
+
+
+		</li>
+		<li test-id='30' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_waits_for_seconds(int))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User waits for 10 seconds</div>
+
+
+		</li>
+		<li test-id='32' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.TrainingManagementMastersSteps.user_verify_company_type_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company type is created or updated</div>
 
 
 		</li>
@@ -299,7 +334,7 @@
 			<ul id='category-collection' class='category-collection'>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@addCompany1</span>
+						<span class='category-name'>@trainingManagementMasters</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
 						</span>
@@ -321,8 +356,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Nov 3, 2025 02:48:57 AM</td>
-										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td>Dec 26, 2025 01:37:34 PM</td>
+										<td class='linked' test-id='2'>Should be able to add Training company type</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -332,7 +367,7 @@
 				</li>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@trainingManagement</span>
+						<span class='category-name'>@EditTrainingCompanyTypeMasters</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
 						</span>
@@ -354,8 +389,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Nov 3, 2025 02:48:57 AM</td>
-										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td>Dec 26, 2025 01:37:34 PM</td>
+										<td class='linked' test-id='2'>Should be able to add Training company type</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -392,25 +427,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>8</div>
+					<div class='panel-lead'>15</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Nov 3, 2025 02:48:56 AM</div>
+					<div class='panel-lead'>Dec 26, 2025 01:37:33 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Nov 3, 2025 02:49:13 AM</div>
+			 		<div class='panel-lead'>Dec 26, 2025 01:38:19 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 17.666</div>
+					<div class='panel-lead'>00 00 45.995</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -426,7 +461,7 @@
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>@addCompany1</td>
+							<td>@trainingManagementMasters</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -435,7 +470,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>@trainingManagement</td>
+							<td>@EditTrainingCompanyTypeMasters</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -469,8 +504,8 @@
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 8,
-				passGrandChild: 8,
+				grandChildCount: 15,
+				passGrandChild: 15,
 				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
@@ -482,7 +517,7 @@
 		
 		<script>
 			var timeline = {
-			        "Training Management Module Automation":16.528
+			        "Training Management Masters Automation":44.136
 			};
 		</script>
 		

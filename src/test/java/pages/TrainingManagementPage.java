@@ -34,6 +34,7 @@ public class TrainingManagementPage extends BasePage {
     public static final By SAVE_BUTTON_TRAINING_LEVEL = By.id("ctl00_ContentPlaceHolder1_RadWinTraininglevel_C_btnTrainingLevelOk");
     public static final By SAVE_BUTTON_TRAINING_FREQUENCY = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingFrequency_C_btnTrainingFrequencyOk");
     public static final By SAVE_BUTTON_VANUE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingVenue_C_btnTrainingVenueSave");
+    public static final By SAVE_BUTTON_TRAINING_COMPANY = By.id("ctl00_ContentPlaceHolder1_RadWinCompanyType_C_btnCompanyTypeOk");
     public static final By FIRST_COMPANY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00__0");
     public static final By DELETE_FIRST_COMPANY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00_ctl04_imgDelete");
     public static final By SEARCH_COMPANY = By.cssSelector("[alt='Filter CompanyName column']");
@@ -159,7 +160,7 @@ public class TrainingManagementPage extends BasePage {
         utils.typeText(ADDRESS_INPUT, address);
     }
     public void clickSaveButton() {
-        By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE};
+        By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE,SAVE_BUTTON_TRAINING_COMPANY};
 
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
@@ -169,7 +170,6 @@ public class TrainingManagementPage extends BasePage {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
-
     public void clickCompanytoEdit() {
         utils.click(FIRST_COMPANY_IN_LIST);
     }
@@ -268,4 +268,14 @@ public class TrainingManagementPage extends BasePage {
         utils.typeText(EMAIL_INPUT, email);
         utils.typeText(SELECT_COMPANY_INPUT, companyName);
     }
+
+//    public void verifySuccessMessage(String expectedMessage) {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement successMsg = wait.until(
+//                ExpectedConditions.visibilityOfElementLocated(
+//                        By.xpath("//div[contains(@class,'success') or contains(text(),'successfully')]")
+//                )
+//        );
+//        Assert.assertEquals(successMsg.getText().trim(), expectedMessage);
+//    }
 }
