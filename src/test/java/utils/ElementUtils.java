@@ -35,6 +35,7 @@ public class ElementUtils {
     private WebElement waitUntilVisible(By locator) {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
         } catch (TimeoutException e) {
             String msg = "[TIMEOUT] ELEMENT NOT VISIBLE AFTER " + DEFAULT_WAIT_SECONDS + "S: " + locator;
             LOGGER.log(Level.SEVERE, msg, e);
@@ -112,7 +113,7 @@ public class ElementUtils {
     /**
      * Checks if the element is present and visible on the DOM.
      */
-    public boolean isElementVisible(By locator) {
+    public boolean isElementVisible(By locator, int i) {
         LOGGER.info("[CHECK] CHECKING VISIBILITY OF ELEMENT: " + locator);
         WebElement element = findElementSafely(locator);
         boolean isVisible = element != null && element.isDisplayed();
@@ -123,7 +124,7 @@ public class ElementUtils {
     /**
      * Waits until the element is clickable.
      */
-    public ElementUtils waitForElementToBeClickable(By locator) {
+    public ElementUtils waitForElementToBeClickable(By locator, int i) {
         LOGGER.info("[WAIT] WAITING FOR ELEMENT TO BE CLICKABLE: " + locator);
         waitUntilClickable(locator);
         LOGGER.info("[SUCCESS] ELEMENT IS NOW CLICKABLE.");
@@ -274,4 +275,11 @@ public class ElementUtils {
         LOGGER.info("[RESULT] CLEANED TEXT FOR ELEMENT " + locator + ": '" + cleanedText + "'");
         return cleanedText;
     }
+
+    public void waitForElement(By locator)
+    {
+        waitUntilClickable(locator);
+    }
+
+
 }

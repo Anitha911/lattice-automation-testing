@@ -4,9 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import utils.ConfigReader;
 import utils.ExcelUtils;
-import utils.TestDataGenerator;
 
 import java.io.IOException;
 
@@ -162,7 +160,7 @@ public class TrainingManagementPage extends BasePage {
         By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE};
 
         for (By button : saveButtons) {
-            if (utils.isElementVisible(button)) {
+            if (utils.isElementVisible(button, 5)) {
                 utils.click(button);
                 return;
             }
@@ -183,31 +181,31 @@ public class TrainingManagementPage extends BasePage {
     public void verifyCompanyName(String expectedTitle) {
         utils.typeText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingCompany_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementVisible(locator);
+        utils.isElementVisible(locator, 5);
     }
 
     public void verifyCourseName(String expectedTitle) {
         utils.typeText(SEARCH_COURSE,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingCour_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementVisible(locator);
+        utils.isElementVisible(locator, 5);
     }
 
     public void verifyTrainingLevel(String expectedTitle) {
         utils.typeText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingLevel_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementVisible(locator);
+        utils.isElementVisible(locator, 5);
     }
 
     public void verifyFrequencyLevel(String expectedTitle) {
         utils.typeText(SEARCH_TRAINING_LEVEL,expectedTitle + Keys.ENTER);
         By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_grdTrainingFrequency_ctl00__0'] td[title='%s']", expectedTitle));
-        utils.isElementVisible(locator);
+        utils.isElementVisible(locator, 5);
     }
 
     public void verifyCompanyDeleted(String expectedTitle) {
         utils.typeText(SEARCH_COMPANY,expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
-        utils.isElementVisible(locator);
+        utils.isElementVisible(locator, 5);
     }
 
     public void enterCourseName(String name) {

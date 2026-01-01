@@ -98,4 +98,12 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
+    public String generateCityName()
+    {
+        String[] cities = {"Dubai", "Abu Dhabi", "Sharjah", "Fujairah", "Ajman", "Ras Al Khaimah", "Umm Al Quwain", "Kalba"};
+        return cities[random.nextInt(cities.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+
+
+
 }
