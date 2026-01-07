@@ -43,10 +43,11 @@ public class ManageLocationMasterSteps {
     }
 
     @Then("User enters the {string} details")
-    public void user_fill_up_the_city_details(String type) throws IOException {
+    public void user_fill_up_the_city_details(String type) throws IOException
+    {
+        tmp.selectCountry("United Arab Emirates");
         cityName = dataGen.generateCityName();
         tmp.enterCityName(cityName);
-        tmp.selectCountry("United Arab Emirates");
     }
 
     @Then("User clicks on save action button")

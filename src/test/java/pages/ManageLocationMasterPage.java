@@ -23,9 +23,14 @@ public class ManageLocationMasterPage extends BasePage
     public static final By HOME_TAB = By.id("tab-home");
     public static final By CITY_NAME_INPUT = By.id("radtxtCityName");
     public static final By COUNTRY_DD = By.id("radDrpCountry");
-    public static final By SAVE_BUTTON_CITY = By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk");
-    public static final By UPDATE_BUTTON_CITY = By.xpath("//button[contains(@id, 'btnCityOk')]");
-    //By.xpath("//div[@class='text-end']//span[text()='UPDATE']");
+    public static final By SAVE_BUTTON_CITY =
+            By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk");
+
+    public static final By UPDATE_BUTTON_CITY =
+            //By.xpath("//div[@class='text-end']//button[@value='SAVE']");
+            By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk");
+            //xpath("//button[contains(@id, 'btnCityOk')]");
+
     public static final By CANCEL_BUTTON_CITY = By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityClose_ClientState");
     public static final By FIRST_CITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCity_ctl00__0");
     public static final By DELETE_FIRST_CITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCity_ctl00_ctl04_ImageButton2");
@@ -128,11 +133,12 @@ public class ManageLocationMasterPage extends BasePage
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         By[] updateButtons = {UPDATE_BUTTON_CITY};
 
-        for (By button : updateButtons)
+        for (By button2 : updateButtons)
         {
-            if (utils.isElementVisible(button, 2))
+            if (utils.isElementVisible(button2, 5))
             {
-                utils.click(button);
+                utils.waitForElementToBeClickable(button2,10);
+                utils.click(button2);
                 return;
             }
             //if (utils.isElementVisible(locator, 5))
@@ -153,15 +159,15 @@ public class ManageLocationMasterPage extends BasePage
 
     public void clickSaveActionButton()
     {
-       // By[] saveButtons = {SAVE_BUTTON_CITY};
+       By[] saveButtons = {SAVE_BUTTON_CITY};
 
-       // for (By button : saveButtons)
-        try
-        {
-            utils.waitForElementToBeClickable(SAVE_BUTTON_CITY, 3);
-            utils.click(SAVE_BUTTON_CITY);
-        }
-        catch (Exception e)
+        for (By button : saveButtons)
+            if (utils.isElementVisible(button, 5))
+            {
+                utils.click(button);
+                return;
+            }
+        else
         {
             throw new RuntimeException("No save button is present on the page.");
         }
