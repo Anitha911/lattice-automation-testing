@@ -79,18 +79,6 @@ Feature: Training Management Module Automation
     Then User verify if the training frequency is created
 
 
-  @TrainingSchedules
-  Scenario: Should be able to add a Training Schedules
-    Given User navigates to 'lattice.url' page
-    Then User is at home screen after login with "username" and "password"
-    Then User clicks on 'Training Management' in navigation panel
-    Then User clicks on the 'Training Schedules' tab
-    Then User clicks on button 'Add Schedule'
-    Then User fills up the Training Schedules details
-    Then User clicks on save button
-    Then User verify if the training frequency is created
-
-
   @CompanyDelete
   Scenario: Should be able to delete a company
     Given User navigates to 'lattice.url' page
@@ -104,6 +92,19 @@ Feature: Training Management Module Automation
     Then User waits for 3 seconds
     Then User clicks on first available company to delete
     Then User verify if the company is deleted
+
+
+  @TrainingSchedules123
+  Scenario: Should be able to add a Training Schedules
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Training Management' in navigation panel
+    Then User clicks on the 'Training Schedules' tab
+    Then User clicks on button 'Add Schedule'
+    Then User fills up the Training Schedules details
+    Then User fills start and end time and date
+    Then User clicks on save button
+    Then User verify if the training frequency is created
 
     @ClosedScheduleWithoutEffectiveness
     Scenario: Should be able to Close the schedule
