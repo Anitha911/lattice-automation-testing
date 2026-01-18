@@ -2,10 +2,9 @@ package utils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -102,32 +101,47 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
-
-
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy", Locale.ENGLISH);
-
-    public static String getFormattedDate(LocalDate date) {
-        return date.format(FORMATTER);
+    public String generateCompanyType() {
+        String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
+        return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateDuplicateCompanyType() {
+        String[] levels = {"Technical Training", "Soft Skills Training", "Leadership Development", "Management Training", "Facility Management Training"};
+        return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID();
+    }
+    public String generateCurrentDate() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return currentDate.format(formatter);
     }
 
-    public static String getPlusOneDayDate() {
-        return getFormattedDate(LocalDate.now().plusDays(0));
+    // Generate current time in HH:mm format
+    public String generateCurrentTime() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return currentTime.format(formatter);
     }
 
-    public static String getPlusFifteenDaysDate() {
-        return getFormattedDate(LocalDate.now().plusDays(7));
+    // Generate future date (current date + days) in dd/MM/yyyy format
+    public String generateFutureDate(int daysToAdd) {
+        LocalDate futureDate = LocalDate.now().plusDays(daysToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return futureDate.format(formatter);
     }
 
-    private static final DateTimeFormatter TIME_FORMATTER =
-            DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
-
-    public static String getCurrentTime() {
-        return LocalTime.now().format(TIME_FORMATTER);
+    // Generate future time (current time + hours) in HH:mm format
+    public String generateFutureTime(int hoursToAdd) {
+        LocalDateTime futureTime = LocalDateTime.now().plusHours(hoursToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return futureTime.format(formatter);
     }
+    public String generateRandomRemarks() {
+        String[] prefixes = {"Testing", "Verification", "Automation", "Schedule"};
+        String[] suffixes = {"Confirmed", "Review Pending", "Success", "Draft"};
+        Random random = new Random();
 
-    public static String getCurrentTimePlus3Minutes() {
-        return LocalTime.now().plusMinutes(3).format(TIME_FORMATTER);
+        return prefixes[random.nextInt(prefixes.length)] + " " +
+                suffixes[random.nextInt(suffixes.length)] + " " +
+                UUID.randomUUID().toString().substring(0, 5);
     }
-
 }

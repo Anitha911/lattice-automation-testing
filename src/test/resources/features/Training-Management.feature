@@ -105,3 +105,41 @@ Feature: Training Management Module Automation
     Then User fills start and end time and date
     Then User clicks on save button
     Then User verify if the training frequency is created
+
+    @ClosedScheduleWithoutEffectiveness
+    Scenario: Should be able to Close the schedule
+      Given User navigates to 'lattice.url' page
+      Then User is at home screen after login with "username" and "password"
+      Then User clicks on 'Training Management' in navigation panel
+      Then User clicks on the 'Training Schedules' tab
+#      Then User clicks on button 'Add Schedule'
+#      And User fills up the training schedule details
+#      Then User clicks on save button
+      Then User clicks on first available schedule record
+      Then User clicks on the 'Participants Planning' tab in training schedule page
+      Then User clicks on 'Include Participants' button in training Schedule page
+      And User waits for 5 seconds
+      And User selects the planned participants
+      Then User clicks on save button
+      Then User clicks on button 'Status Update'
+      And User updates the training status to 'Scheduled'
+      And User clicks on update button
+      Then User clicks on button 'Status Update'
+      And User updates the training status to 'Active'
+      And User clicks on update button
+      Then User clicks on the 'Actual Participants' tab in training schedule page
+      Then User clicks on 'Include Staff from Planned Participants' button in training Schedule page
+      And User selects the planned participants
+      Then User clicks on save button
+      Then User clicks on 'Include Staff From Others' button in training Schedule page
+      And User selects the planned participants
+      Then User clicks on save button
+      Then User clicks on button 'Status Update'
+      And User updates the training status to 'Training Completed'
+      Then User clicks on button 'Closure'
+
+
+
+
+
+
