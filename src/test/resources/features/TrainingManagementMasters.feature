@@ -64,5 +64,3 @@ Feature: Training Management Masters Automation
 #    Then verify the message as "Record Saved Successfully"
 #    Then User clicks on first available company type to delete
 #    Then User verify if the record is deleted
-
-
