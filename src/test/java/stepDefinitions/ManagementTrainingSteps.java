@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pages.TrainingManagementPage;
 import utils.DriverFactory;
@@ -8,6 +9,9 @@ import utils.ExcelUtils;
 import utils.TestDataGenerator;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Date;
+import java.util.UUID;
 
 public class ManagementTrainingSteps {
     public static String generatedCompanyName;
@@ -16,6 +20,8 @@ public class ManagementTrainingSteps {
     public static String courseName;
     public static String generateLevelName;
     public static String generateFrequencyName;
+    public static String fillTrainingScheduleDetails;
+    public static String enterRemarks;
     private final WebDriver driver = DriverFactory.getDriver();
     TrainingManagementPage tmp = new TrainingManagementPage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
@@ -126,7 +132,7 @@ public class ManagementTrainingSteps {
     }
 
     @Then("User fills up the training venue details")
-    public void userFillsUpTheTrainingVenueDetails() {
+    public void usFillsUpTheTrainingVenueDetails() {
         tmp.enterVenueContact(
                 dataGen.generatePhoneNumber(),
                 dataGen.generateTimestampedEmail(),
@@ -144,8 +150,51 @@ public class ManagementTrainingSteps {
         tmp.trainersAssessorsDetails(companyName);
     }
 
-    @Then("User fills up the Training Schedules details")
-    public void fillsTrainingSchedules() throws Exception {
-        tmp.trainersAssessorsDetails(companyName);
+//        @When("User fills up the training schedule with random details")
+//        public void fillTrainingScheduleDetails() {
+//
+//            tmp.selectAllRandomDropdowns();
+//
+//            String startDate = dataGen.generateCurrentDate(); // Today
+//            String endDate = dataGen.generateFutureDate(2);   // 2 days later
+//
+//            // 3. Fill Dates and Times (Start < End)
+//            tmp.fillScheduleDatesAndTimes(startDate, endDate, "09:00 AM", "05:00 PM");
+//
+//            // 4. Fill Remarks
+//            tmp.enterRemarks("Automated Schedule: " + dataGen.generateRandomRemarks());
+//        }
+   @Then("User clicks on first available schedule record")
+   public void user_clicks_on_first_available_record() {
+    tmp.clickOnFirstScheduleData();
+   }
+    @Then("User clicks on the {string} tab in training schedule page")
+    public void userClicksOnSubMenu(String tabTitle) {
+        tmp.clickOnSubMenuByTitle(tabTitle);
     }
-}
+    @Then("User clicks on {string} button in training Schedule page")
+    public void userClicksOnButton(String button) {
+        tmp.clickOnButtonInSchedulePage(button);
+    }
+    @Then("User selects the planned participants")
+    public void selectPlannedParticipants() {
+        tmp.selectPlannedParticipants();
+    }
+    @Then("User selects the planned participants")
+    public void selectActualParticipants() {
+        tmp.selectPlannedParticipants();
+    }
+    @Then("User selects the planned participants")
+    public void selectOtherParticipants() {
+        tmp.selectPlannedParticipants();
+    }
+    @When("User updates the training status to {string}")
+    public void user_updates_the_training_status_to(String status) {
+        tmp.selectNewStatus(status.trim());
+    }
+    @Then("User accepts the warning popup")
+    public void acceptWarningPopup() {
+        tmp.acceptWarningPopup();
+    }
+    }
+

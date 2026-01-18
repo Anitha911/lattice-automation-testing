@@ -73,10 +73,5 @@ public class TrainingManagementMastersPage extends BasePage {
         utils.click(UPDATE_BUTTON);
 
     }
-
-//    public void DuplicateCompanyType(String levelName) {
-//        utils.typeText(COMPANY_TYPE, levelName);
-//    }
-
     }
 

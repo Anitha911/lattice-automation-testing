@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
                 "pretty"
         },
         monochrome = true,
-        tags = "@EditTrainingCompanyTypeMasters",
+        tags = "@ClosedSchedule",
         dryRun = false
 )
 @Test

@@ -1,6 +1,9 @@
 package utils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -105,5 +108,40 @@ public class TestDataGenerator {
     public String generateDuplicateCompanyType() {
         String[] levels = {"Technical Training", "Soft Skills Training", "Leadership Development", "Management Training", "Facility Management Training"};
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID();
+    }
+    public String generateCurrentDate() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return currentDate.format(formatter);
+    }
+
+    // Generate current time in HH:mm format
+    public String generateCurrentTime() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return currentTime.format(formatter);
+    }
+
+    // Generate future date (current date + days) in dd/MM/yyyy format
+    public String generateFutureDate(int daysToAdd) {
+        LocalDate futureDate = LocalDate.now().plusDays(daysToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return futureDate.format(formatter);
+    }
+
+    // Generate future time (current time + hours) in HH:mm format
+    public String generateFutureTime(int hoursToAdd) {
+        LocalDateTime futureTime = LocalDateTime.now().plusHours(hoursToAdd);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return futureTime.format(formatter);
+    }
+    public String generateRandomRemarks() {
+        String[] prefixes = {"Testing", "Verification", "Automation", "Schedule"};
+        String[] suffixes = {"Confirmed", "Review Pending", "Success", "Draft"};
+        Random random = new Random();
+
+        return prefixes[random.nextInt(prefixes.length)] + " " +
+                suffixes[random.nextInt(suffixes.length)] + " " +
+                UUID.randomUUID().toString().substring(0, 5);
     }
 }
