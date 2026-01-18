@@ -146,6 +146,11 @@ public class ManagementTrainingSteps {
 
     @Then("User fills up the Training Schedules details")
     public void fillsTrainingSchedules() throws Exception {
-        tmp.trainersAssessorsDetails(companyName);
+        tmp.scheduleDetails();
+    }
+
+    @Then("User fills start and end time and date")
+    public void fillsTimeAndDate() throws Exception {
+        tmp.timeAndDate();
     }
 }

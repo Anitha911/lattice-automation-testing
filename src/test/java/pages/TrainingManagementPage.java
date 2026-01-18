@@ -4,7 +4,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import utils.ConfigReader;
 import utils.ExcelUtils;
 import utils.TestDataGenerator;
 
@@ -63,6 +62,23 @@ public class TrainingManagementPage extends BasePage {
 //    public static final By TRAINER_NAME = By.id("radtxtTrainerName");
 //    public static final By CONTACT_NUM  = By.id("radttContactNum");
 //    public static final By TRAINING_COMPANY = By.xpath("//*[@value='Select Training Company']");
+
+    public static final By COURSEDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpCourse_Input");
+    public static final By LEVELDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpLevel_Input");
+    public static final By TRAINERDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpTrainer_Input");
+    public static final By VENUEDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpVenue_Input");
+    public static final By PLATFORMDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpPlatform_Input");
+    public static final By FREQUENCYDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpFrequency_Input");
+    public static final By REMARKS = By.id("radtxtRemark");
+    public static final By DDOPTIONS = By.xpath("(//li[@class='rcbItem'])[1]");
+    public static final By STARTDATE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadStartDate_popupButton");
+    public static final By ENDDATE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadEndDate_popupButton");
+    public static final By STARTTIMEICON = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_timePopupLink");
+    public static final By STARTTIME = By.xpath("(//*[@id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_timeView_tdl']//a)[1]");
+
+    public static final By ENDTIMEICON = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_timePopupLink");
+    public static final By ENDTIME = By.xpath("(//*[@id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_timeView_tdl']//a)[3]");
+
 
 
     public void clickOnTabByTitle(String tabTitle) {
@@ -267,5 +283,45 @@ public class TrainingManagementPage extends BasePage {
         utils.typeText(TRAINER_CONTACT, contact);
         utils.typeText(EMAIL_INPUT, email);
         utils.typeText(SELECT_COMPANY_INPUT, companyName);
+    }
+
+    public void scheduleDetails() throws IOException {
+        utils.click(COURSEDD);
+        utils.click(DDOPTIONS);
+        utils.click(LEVELDD);
+        utils.click(DDOPTIONS);
+        utils.click(TRAINERDD);
+        utils.click(DDOPTIONS);
+        utils.click(VENUEDD);
+        utils.click(DDOPTIONS);
+        utils.click(PLATFORMDD);
+        utils.click(DDOPTIONS);
+        utils.click(FREQUENCYDD);
+        utils.click(DDOPTIONS);
+        utils.typeText(REMARKS, "Testing the schedule");
+    }
+
+    public void timeAndDate() throws IOException {
+        String dateToSelect1 = TestDataGenerator.getPlusOneDayDate();
+        String dateToSelect2= TestDataGenerator.getPlusFifteenDaysDate();
+
+        By dateCell1 = By.cssSelector(
+                "[id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadStartDate_calendar_Top'] " +
+                        "td[title='" + dateToSelect1 + "']"
+        );
+
+        utils.click(STARTDATE);
+        utils.click(dateCell1);
+
+        By dateCell2 = By.cssSelector(
+                "[id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadEndDate_calendar_Top'] " +
+                        "td[title='" + dateToSelect2 + "']"
+        );
+
+        utils.click(ENDDATE);
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
+        utils.click(dateCell2);
+
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
     }
 }

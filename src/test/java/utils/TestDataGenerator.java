@@ -1,7 +1,11 @@
 package utils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -98,4 +102,32 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
+
+
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy", Locale.ENGLISH);
+
+    public static String getFormattedDate(LocalDate date) {
+        return date.format(FORMATTER);
+    }
+
+    public static String getPlusOneDayDate() {
+        return getFormattedDate(LocalDate.now().plusDays(0));
+    }
+
+    public static String getPlusFifteenDaysDate() {
+        return getFormattedDate(LocalDate.now().plusDays(7));
+    }
+
+    private static final DateTimeFormatter TIME_FORMATTER =
+            DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+
+    public static String getCurrentTime() {
+        return LocalTime.now().format(TIME_FORMATTER);
+    }
+
+    public static String getCurrentTimePlus3Minutes() {
+        return LocalTime.now().plusMinutes(3).format(TIME_FORMATTER);
+    }
+
 }
