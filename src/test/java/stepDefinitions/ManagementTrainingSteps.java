@@ -196,5 +196,15 @@ public class ManagementTrainingSteps {
     public void acceptWarningPopup() {
         tmp.acceptWarningPopup();
     }
+
+    @Then("User fills up the Training Schedules details")
+    public void fillsTrainingSchedules() throws Exception {
+        tmp.scheduleDetails();
     }
+
+    @Then("User fills start and end time and date")
+    public void fillsTimeAndDate() throws Exception {
+        tmp.timeAndDate();
+    }
+}
 

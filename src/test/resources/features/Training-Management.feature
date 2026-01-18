@@ -94,7 +94,7 @@ Feature: Training Management Module Automation
     Then User verify if the company is deleted
 
 
-  @TrainingSchedules123
+  @TrainingSchedules
   Scenario: Should be able to add a Training Schedules
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
