@@ -160,7 +160,7 @@ public class TestDataGenerator {
     }
 
     public static String getPlusFifteenDaysDate() {
-        return getFormattedDate(LocalDate.now().plusDays(7));
+        return getFormattedDate(LocalDate.now().plusDays(0));
     }
 
     private static final DateTimeFormatter TIME_FORMATTER =
@@ -171,7 +171,7 @@ public class TestDataGenerator {
     }
 
     public static String getCurrentTimePlus3Minutes() {
-        return LocalTime.now().plusMinutes(3).format(TIME_FORMATTER);
+        return LocalTime.now().plusMinutes(120).format(TIME_FORMATTER);
     }
 
 }

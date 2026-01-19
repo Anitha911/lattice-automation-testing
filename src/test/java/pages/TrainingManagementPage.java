@@ -325,9 +325,10 @@ public class TrainingManagementPage extends BasePage {
         utils.click(locator);
     }
     public void scheduleDetails() throws IOException {
-        utils.click(LEVELDD);
-        utils.click(DDOPTIONS);
+
         utils.click(COURSEDD);
+        utils.click(DDOPTIONS);
+        utils.click(LEVELDD);
         utils.click(DDOPTIONS);
         utils.click(TRAINERDD);
         utils.click(DDOPTIONS);
