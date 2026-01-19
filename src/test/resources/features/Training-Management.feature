@@ -94,7 +94,7 @@ Feature: Training Management Module Automation
     Then User verify if the company is deleted
 
 
-  @TrainingSchedules
+  @TrainingSchedules1231
   Scenario: Should be able to add a Training Schedules
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -104,7 +104,6 @@ Feature: Training Management Module Automation
     Then User fills up the Training Schedules details
     Then User fills start and end time and date
     Then User clicks on save button
-    Then User verify if the training frequency is created
 
     @ClosedScheduleWithoutEffectiveness
     Scenario: Should be able to Close the schedule

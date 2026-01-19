@@ -32,6 +32,7 @@ public class TrainingManagementPage extends BasePage {
     public static final By COUNTRY_DD = By.cssSelector("[value='Select Country']");
     public static final By CITY_DD = By.cssSelector("[value='Select City']");
     public static final By SAVE_BUTTON_COMPANY = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_btnTrainingComOk");
+    public static final By SAVE_BUTTON_SCDHEULE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_btnTrainingScheOk");
     public static final By SAVE_BUTTON_COURSE = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCour_C_btnTrainingCourOk");
     public static final By SAVE_BUTTON_TRAINING_LEVEL = By.id("ctl00_ContentPlaceHolder1_RadWinTraininglevel_C_btnTrainingLevelOk");
     public static final By SAVE_BUTTON_TRAINING_FREQUENCY = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingFrequency_C_btnTrainingFrequencyOk");
@@ -192,7 +193,7 @@ public class TrainingManagementPage extends BasePage {
     }
 
     public void clickSaveButton() {
-        By[] saveButtons = {SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE, SAVE_BUTTON_TRAINING_COMPANY, SAVE_BUTTON_PARTICIPANTS};
+        By[] saveButtons = {SAVE_BUTTON_SCDHEULE,SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE, SAVE_BUTTON_TRAINING_COMPANY, SAVE_BUTTON_PARTICIPANTS};
 
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
@@ -369,23 +370,28 @@ public class TrainingManagementPage extends BasePage {
     }
 
 
-    public void scheduleDetails() throws IOException {
-        utils.click(COURSEDD);
-        utils.click(DDOPTIONS);
+    public void scheduleDetails() throws IOException, InterruptedException {
         utils.click(LEVELDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
+        utils.click(COURSEDD);
+        utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(TRAINERDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(VENUEDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(PLATFORMDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(FREQUENCYDD);
         utils.click(DDOPTIONS);
         utils.typeText(REMARKS, "Testing the schedule");
     }
 
-    public void timeAndDate() throws IOException {
+    public void timeAndDate() throws IOException, InterruptedException {
         String dateToSelect1 = TestDataGenerator.getPlusOneDayDate();
         String dateToSelect2= TestDataGenerator.getPlusFifteenDaysDate();
 
@@ -396,16 +402,19 @@ public class TrainingManagementPage extends BasePage {
 
         utils.click(STARTDATE);
         utils.click(dateCell1);
+        Thread.sleep(1000);
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
 
         By dateCell2 = By.cssSelector(
                 "[id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadEndDate_calendar_Top'] " +
                         "td[title='" + dateToSelect2 + "']"
         );
-
+        Thread.sleep(1000);
         utils.click(ENDDATE);
-        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
         utils.click(dateCell2);
-        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
+        Thread.sleep(1000);
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
+
     }
 }
 

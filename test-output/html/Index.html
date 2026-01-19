@@ -40,7 +40,6 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 			<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
-			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
@@ -50,7 +49,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Jan 18, 2026 08:14:00 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Jan 19, 2026 03:49:23 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -65,7 +64,7 @@
 				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -77,8 +76,8 @@
 				<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@TrainingSchedules123</a></li>
 					<li><a href='#'>@trainingManagement</a></li>
+					<li><a href='#'>@TrainingSchedules1231</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -120,12 +119,12 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='$0%'>
-                    <span class='strong'>0</span> features passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='$100%'>
+                    <span class='strong'>1</span> features passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
-                    1</span> features failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> features failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped
                 </div>
@@ -138,12 +137,12 @@
                     <canvas id='child-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='0%'>
-                    <span class='strong'>0</span> scenarios passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
+                    <span class='strong'>1</span> scenarios passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
-                    1</span> scenarios failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> scenarios failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -158,14 +157,14 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='63%'>
-                    <span class='strong'>7</span> steps passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
+                    <span class='strong'>8</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='9%'>
-                    1</span> steps failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='27%'>
-                    3</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> steps failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
+                    0</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> others
                 </div>
@@ -186,11 +185,11 @@
 	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Training Management Module Automation</span>
-						<span class='test-time'>Jan 18, 2026 08:14:00 PM</span>
-						<span class='test-status right fail'>Fail</span>
+						<span class='test-time'>Jan 19, 2026 03:49:25 PM</span>
+						<span class='test-status right pass'>Pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class="sr-filters bdd-filters">
@@ -200,16 +199,16 @@
 	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
 </div>
 
-<div class='scenario node' test-id='2' status='fail'>
+<div class='scenario node' test-id='2' status='pass'>
 
-	<span class='duration right label'>00 00 52.641</span>
+	<span class='duration right label'>00 00 34.366</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario: Should be able to add a Training Schedules</div>
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add a Training Schedules</div>
 	</div>
 	
 	
 		<div class='category-list'>
-				<span class='category label'>@TrainingSchedules123</span>
+				<span class='category label'>@TrainingSchedules1231</span>
 				<span class='category label'>@trainingManagement</span>
 		</div>
 	
@@ -244,68 +243,15 @@
 
 
 		</li>
-		<li test-id='16' class='node then Fail' status='Fail'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.fillsTimeAndDate())"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Then User fills start and end time and date</div>
+		<li test-id='16' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.fillsTimeAndDate())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills start and end time and date</div>
 
 
-					<textarea disabled class="code-block">org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
-  (Session info: chrome=143.0.7499.193)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: '4.23.0', revision: '4df0a231af'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [3f55811bc2fba05fa6ab88acc44cfb5d, sendKeysToElement {id=f.F7CC7188D6393E9F69BE72EE2FB90D1F.d.1329F087F1C368B98FB5D121B82B591F.e.274, value=[Ljava.lang.CharSequence;@28f9fedd}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.193, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\AZHER-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52649}, goog:processID: 33536, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52649/devtoo..., se:cdpVersion: 143.0.7499.193, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (3f55811bc2fba05fa6ab88acc44cfb5d)] -> id: ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput]
-Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:110)
-	at utils.ElementUtils.typeText(ElementUtils.java:102)
-	at pages.TrainingManagementPage.timeAndDate(TrainingManagementPage.java:325)
-	at stepDefinitions.ManagementTrainingSteps.fillsTimeAndDate(ManagementTrainingSteps.java:154)
-	at ✽.User fills start and end time and date(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:105)
-</textarea>
 		</li>
-		<li test-id='17' class='node * Pass' status='Pass'>
-			<div class="step-name" title="(AFTER_STEP)"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>hooks.Hooks.afterStep(io.cucumber.java.Scenario)</div>
+		<li test-id='18' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
 
 
-					<div class="node-step">screenshot</div>
-					<div class='screenshots'>
-						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded1.png' src='./screenshots/embedded1.png'>
-					</div>
-					<div class="node-step">screenshot</div>
-					<div class='screenshots'>
-						<img width='80' height='40' onerror='this.style.display="none"' data-featherlight='./screenshots/embedded2.png' src='./screenshots/embedded2.png'>
-					</div>
-		</li>
-		<li test-id='18' class='node then Skip' status='Skip'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_waits_for_seconds(int))"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User waits for 312 seconds</div>
-
-
-					<div class="node-step">Step skipped</div>
-		</li>
-		<li test-id='20' class='node then Skip' status='Skip'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnSaveButton())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User clicks on save button</div>
-
-
-					<div class="node-step">Step skipped</div>
-		</li>
-		<li test-id='22' class='node then Skip' status='Skip'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_verify_training_frequency_creation())"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then User verify if the training frequency is created</div>
-
-
-					<div class="node-step">Step skipped</div>
 		</li>
 	</ul>
 </div>
@@ -353,15 +299,15 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 			<ul id='category-collection' class='category-collection'>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@TrainingSchedules123</span>
+						<span class='category-name'>@trainingManagement</span>
 						<span class='category-status right'>
-						<span class='label fail'>1</span>
+						<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 						<div class='category-tests'>
@@ -375,9 +321,9 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Jan 18, 2026 08:14:00 PM</td>
+										<td>Jan 19, 2026 03:49:25 PM</td>
 										<td class='linked' test-id='2'>Should be able to add a Training Schedules</td>
-										<td><span class='test-status Fail'>Fail</span></td>
+										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -386,15 +332,15 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 				</li>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@trainingManagement</span>
+						<span class='category-name'>@TrainingSchedules1231</span>
 						<span class='category-status right'>
-						<span class='label fail'>1</span>
+						<span class='label pass'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
+							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
 							
-							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 						<div class='category-tests'>
@@ -408,9 +354,9 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 								</thead>
 								<tbody>
 									<tr>
-										<td>Jan 18, 2026 08:14:00 PM</td>
+										<td>Jan 19, 2026 03:49:25 PM</td>
 										<td class='linked' test-id='2'>Should be able to add a Training Schedules</td>
-										<td><span class='test-status Fail'>Fail</span></td>
+										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -426,88 +372,7 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 		</div>
 	</div>
 </div>
-<!-- category view --><div id='exception-view' class='view hide'>
-	<section id='controls'>
-		<div class='controls grey lighten-4'>
-			<!-- search -->
-			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
-				<a href="#" class='search-div'>
-				<i class='material-icons'>search</i> Search
-				</a>
-				<div class='input-field left hide'>
-					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-				</div>
-			</div>
-			<!-- search -->
-		</div>
-	</section>
-	<div class='subview-left left'>
-		<div class='view-summary'>
-			<ul id='exception-collection' class='exception-collection'>
-				<li class='exception displayed active'>
-					<div class='exception-heading'>
-						<span class='exception-name'>org.openqa.selenium.StaleElementReferenceException</span>
-						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
-					</div>
-					<div class='exception-content hide'>
-						<div class='exception-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>StackTrace</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jan 18, 2026 08:14:51 PM</td>
-										<td class='linked' test-id='16'>Then User fills start and end time and date</td>
-										<td>
-											<textarea disabled class="code-block">org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
-  (Session info: chrome=143.0.7499.193)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: '4.23.0', revision: '4df0a231af'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [3f55811bc2fba05fa6ab88acc44cfb5d, sendKeysToElement {id=f.F7CC7188D6393E9F69BE72EE2FB90D1F.d.1329F087F1C368B98FB5D121B82B591F.e.274, value=[Ljava.lang.CharSequence;@28f9fedd}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.193, chrome: {chromedriverVersion: 143.0.7499.192 (be2c1f4fd45..., userDataDir: C:\Users\AZHER-~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52649}, goog:processID: 33536, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52649/devtoo..., se:cdpVersion: 143.0.7499.193, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (3f55811bc2fba05fa6ab88acc44cfb5d)] -> id: ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput]
-Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:110)
-	at utils.ElementUtils.typeText(ElementUtils.java:102)
-	at pages.TrainingManagementPage.timeAndDate(TrainingManagementPage.java:325)
-	at stepDefinitions.ManagementTrainingSteps.fillsTimeAndDate(ManagementTrainingSteps.java:154)
-	at ✽.User fills start and end time and date(file:///C:/Users/azher-dev/IdeaProjects/lattice-automation-testing/src/test/resources/features/Training-Management.feature:105)
-</textarea>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class='subview-right left'>
-		<div class='view-summary'>
-			<h5 class='exception-name'></h5>
-		</div>
-	</div>
-</div>
-<!-- exception view --><div id='dashboard-view' class='view hide'>
+<!-- category view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -527,25 +392,25 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>11</div>
+					<div class='panel-lead'>8</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jan 18, 2026 08:14:00 PM</div>
+					<div class='panel-lead'>Jan 19, 2026 03:49:23 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jan 18, 2026 08:14:54 PM</div>
+			 		<div class='panel-lead'>Jan 19, 2026 03:50:00 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 54.108</div>
+					<div class='panel-lead'>00 00 36.808</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -561,21 +426,21 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>@TrainingSchedules123</td>
-							<td>0</td>
+							<td>@trainingManagement</td>
 							<td>1</td>
 							<td>0</td>
+							<td>0</td>
 							<td>
-									0%
+									100%
 							</td>
 						</tr>
 						<tr>
-							<td>@trainingManagement</td>
-							<td>0</td>
+							<td>@TrainingSchedules1231</td>
 							<td>1</td>
 							<td>0</td>
+							<td>0</td>
 							<td>
-									0%
+									100%
 							</td>
 						</tr>
 					</table>
@@ -590,34 +455,34 @@ Session ID: 3f55811bc2fba05fa6ab88acc44cfb5d
 		<script>
 			var statusGroup = {
                 parentCount: 1,
-				passParent: 0,
-				failParent: 1,
+				passParent: 1,
+				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
 				childCount: 1,
-				passChild: 0,
-				failChild: 1,
+				passChild: 1,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 11,
-				passGrandChild: 7,
-				failGrandChild: 1,
+				grandChildCount: 8,
+				passGrandChild: 8,
+				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 3,
+				skipGrandChild: 0,
 				infoGrandChild: 0,
 			};
 			</script>
 		
 		<script>
 			var timeline = {
-			        "Training Management Module Automation":52.645
+			        "Training Management Module Automation":34.379
 			};
 		</script>
 		
