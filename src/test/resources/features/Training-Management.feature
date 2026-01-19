@@ -112,13 +112,14 @@ Feature: Training Management Module Automation
       Then User is at home screen after login with "username" and "password"
       Then User clicks on 'Training Management' in navigation panel
       Then User clicks on the 'Training Schedules' tab
-#      Then User clicks on button 'Add Schedule'
-#      And User fills up the training schedule details
-#      Then User clicks on save button
+      Then User clicks on button 'Add Schedule'
+      Then User fills up the Training Schedules details
+     Then User fills start and end time and date
+      Then User waits for 5 seconds
+      Then User clicks on save button
       Then User clicks on first available schedule record
       Then User clicks on the 'Participants Planning' tab in training schedule page
       Then User clicks on 'Include Participants' button in training Schedule page
-      And User waits for 5 seconds
       And User selects the planned participants
       Then User clicks on save button
       Then User clicks on button 'Status Update'
@@ -129,14 +130,19 @@ Feature: Training Management Module Automation
       And User clicks on update button
       Then User clicks on the 'Actual Participants' tab in training schedule page
       Then User clicks on 'Include Staff from Planned Participants' button in training Schedule page
-      And User selects the planned participants
+      And User selects the actual participants
       Then User clicks on save button
       Then User clicks on 'Include Staff From Others' button in training Schedule page
-      And User selects the planned participants
+      And User selects the other participants
       Then User clicks on save button
       Then User clicks on button 'Status Update'
       And User updates the training status to 'Training Completed'
+      And User clicks on update button
       Then User clicks on button 'Closure'
+      Then User clicks on save button
+      And User clicks on hamburger icon
+      Then User clicks on the 'Closed Trainings' tab
+
 
 
 

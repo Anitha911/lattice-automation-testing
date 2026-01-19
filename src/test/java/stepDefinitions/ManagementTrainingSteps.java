@@ -180,23 +180,18 @@ public class ManagementTrainingSteps {
     public void selectPlannedParticipants() {
         tmp.selectPlannedParticipants();
     }
-    @Then("User selects the planned participants")
+    @Then("User selects the actual participants")
     public void selectActualParticipants() {
-        tmp.selectPlannedParticipants();
+        tmp.selectActualParticipants();
     }
-    @Then("User selects the planned participants")
+    @Then("User selects the other participants")
     public void selectOtherParticipants() {
-        tmp.selectPlannedParticipants();
+        tmp.selectOtherParticipants();
     }
     @When("User updates the training status to {string}")
     public void user_updates_the_training_status_to(String status) {
         tmp.selectNewStatus(status.trim());
     }
-    @Then("User accepts the warning popup")
-    public void acceptWarningPopup() {
-        tmp.acceptWarningPopup();
-    }
-
     @Then("User fills up the Training Schedules details")
     public void fillsTrainingSchedules() throws Exception {
         tmp.scheduleDetails();
