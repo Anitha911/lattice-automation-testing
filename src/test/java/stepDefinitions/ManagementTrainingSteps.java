@@ -176,14 +176,7 @@ public class ManagementTrainingSteps {
     public void userClicksOnButton(String button) {
         tmp.clickOnButtonInSchedulePage(button);
     }
-    @Then("User selects the planned participants")
-    public void selectPlannedParticipants() {
-        tmp.selectPlannedParticipants();
-    }
-    @Then("User selects the planned participants")
-    public void selectActualParticipants() {
-        tmp.selectPlannedParticipants();
-    }
+
     @Then("User selects the planned participants")
     public void selectOtherParticipants() {
         tmp.selectPlannedParticipants();
