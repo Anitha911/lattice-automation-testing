@@ -2,16 +2,14 @@ package stepDefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.TrainingManagementPage;
 import utils.DriverFactory;
-import utils.ExcelUtils;
+import utils.HelperUtils;
 import utils.TestDataGenerator;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.util.Date;
-import java.util.UUID;
 
 public class ManagementTrainingSteps {
     public static String generatedCompanyName;
@@ -24,6 +22,7 @@ public class ManagementTrainingSteps {
     public static String enterRemarks;
     private final WebDriver driver = DriverFactory.getDriver();
     TrainingManagementPage tmp = new TrainingManagementPage(driver);
+    HelperUtils helperUtils = new HelperUtils(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
 
     @Then("User waits for {int} seconds")
@@ -198,6 +197,82 @@ public class ManagementTrainingSteps {
     @Then("User fills start and end time and date")
     public void fillsTimeAndDate() throws Exception {
         tmp.timeAndDate();
+    }
+
+
+    @When("user verify the chars min len as {int} and max len as {int} on Company Name")
+    public void user_verify_chars_len_companyName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCompanyName"),minLen, maxLen);
+    }
+
+    @When("user verify the chars min len as {int} and max len as {int} on Contact Name")
+    public void user_verify_chars_len_ContactName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    }
+
+    @When("user verify the chars min len as {int} and max len as {int} on Designation")
+    public void user_verify_chars_len_Designation(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtDesignation"),minLen, maxLen);
+    }
+
+    @When("user verify the chars max len as {int} on Contact Number")
+    public void user_verify_chars_len_1(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    }
+
+    @When("user verify the chars max len as {int} on Company Address")
+    public void user_verify_chars_len_2(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    }
+
+    @When("user verify the chars max len as {int} on Email")
+    public void user_verify_chars_len_3(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    }
+
+    @When("user verify the inline error message {string} on Company Name")
+    public void userVerifyInlineErrorMessageOnCompanyName(String expectedErrorMessage) {
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_RequiredFieldValidator2");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+
+    @When("user verify the inline error message {string} on Company Type")
+    public void userVerifyInlineErrorMessageOnCompanyType(String expectedErrorMessage) {
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_RequiredFieldValidator4");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+
+
+    @When("the user clears the text field")
+    public void clear_text_field() {
+    }
+
+    @When("the user leaves the selection field empty")
+    public void leave_selection_empty() {
+    }
+
+    @When("the user enters more than 20 characters in the short text field")
+    public void enter_more_than_20_characters() {
+    }
+
+    @When("the user enters special characters in the text field")
+    public void enter_special_characters() {
+    }
+
+    @When("the user enters an invalid email format")
+    public void enter_invalid_email() {
+    }
+
+    @When("the user clicks on the Save button")
+    public void click_save_button() {
+    }
+
+    @Then("the system should not allow the form to be saved")
+    public void verify_form_not_saved() {
+    }
+
+    @Then("appropriate validation error messages should be displayed for each invalid field")
+    public void verify_validation_messages() {
     }
 }
 

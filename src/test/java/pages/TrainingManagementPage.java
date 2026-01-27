@@ -1,6 +1,8 @@
 package pages;
 
+import org.json.JSONObject;
 import org.openqa.selenium.*;
+import org.testng.Assert;
 import utils.ExcelUtils;
 import utils.TestDataGenerator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -414,8 +416,20 @@ public class TrainingManagementPage extends BasePage {
         utils.click(dateCell2);
         Thread.sleep(1000);
         utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
-
     }
+
+    public void enterTextPlusTenAndVerifyRadValue(By locator, int chars) {
+        String text = "A".repeat(chars + 10);
+        WebElement element = driver.findElement(locator);
+        element.clear();
+        element.sendKeys(text);
+        String jsonValue = element.getAttribute("value");
+        JSONObject jsonObject = new JSONObject(jsonValue);
+        String actualText = jsonObject.getString("valueAsString");
+        Assert.assertEquals(actualText.length(), chars, "RadTextBox input length validation failed");
+    }
+
+
 }
 
 
