@@ -202,32 +202,32 @@ public class ManagementTrainingSteps {
 
     @When("user verify the chars min len as {int} and max len as {int} on Company Name")
     public void user_verify_chars_len_companyName(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("radtxtCompanyName"),minLen, maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCompanyName"),maxLen, minLen);
     }
 
     @When("user verify the chars min len as {int} and max len as {int} on Contact Name")
     public void user_verify_chars_len_ContactName(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),maxLen, minLen);
     }
 
     @When("user verify the chars min len as {int} and max len as {int} on Designation")
     public void user_verify_chars_len_Designation(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtDesignation"),minLen, maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("txtDesignation"),maxLen, minLen);
     }
 
     @When("user verify the chars max len as {int} on Contact Number")
-    public void user_verify_chars_len_1(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    public void user_verify_chars_len_1(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtContactNum"),maxLen, null);
     }
 
     @When("user verify the chars max len as {int} on Company Address")
-    public void user_verify_chars_len_2(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    public void user_verify_chars_len_2(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtAddress"),maxLen, null);
     }
 
     @When("user verify the chars max len as {int} on Email")
-    public void user_verify_chars_len_3(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),minLen, maxLen);
+    public void user_verify_chars_len_3(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtEmail"),maxLen, null);
     }
 
     @When("user verify the inline error message {string} on Company Name")
