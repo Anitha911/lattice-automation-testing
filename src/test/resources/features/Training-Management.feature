@@ -136,9 +136,3 @@ Feature: Training Management Module Automation
       Then User clicks on button 'Status Update'
       And User updates the training status to 'Training Completed'
       Then User clicks on button 'Closure'
-
-
-
-
-
-
