@@ -324,25 +324,31 @@ public class TrainingManagementPage extends BasePage {
         By locator = By.xpath(String.format("//li[normalize-space()='%s']", statusName));
         utils.click(locator);
     }
-    public void scheduleDetails() throws IOException {
+    public void scheduleDetails() throws IOException, InterruptedException {
+
 
         utils.click(COURSEDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(LEVELDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(TRAINERDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(VENUEDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(PLATFORMDD);
         utils.click(DDOPTIONS);
+        Thread.sleep(1000);
         utils.click(FREQUENCYDD);
         utils.click(DDOPTIONS);
         utils.typeText(REMARKS, "Testing the schedule");
     }
 
 
-    public void timeAndDate() throws IOException {
+    public void timeAndDate() throws IOException, InterruptedException {
         String dateToSelect1 = TestDataGenerator.getPlusOneDayDate();
         String dateToSelect2= TestDataGenerator.getPlusFifteenDaysDate();
 
@@ -353,16 +359,18 @@ public class TrainingManagementPage extends BasePage {
 
         utils.click(STARTDATE);
         utils.click(dateCell1);
+        Thread.sleep(1000);
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
 
         By dateCell2 = By.cssSelector(
                 "[id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadEndDate_calendar_Top'] " +
                         "td[title='" + dateToSelect2 + "']"
         );
-
+        Thread.sleep(1000);
         utils.click(ENDDATE);
-        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
-        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
         utils.click(dateCell2);
+        Thread.sleep(1000);
+        utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_dateInput"), TestDataGenerator.getCurrentTimePlus3Minutes());
     }
 
 }
