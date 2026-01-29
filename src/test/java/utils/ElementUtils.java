@@ -282,4 +282,9 @@ public class ElementUtils {
     }
 
 
+    public void waitForInvisibility(By locator, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
 }

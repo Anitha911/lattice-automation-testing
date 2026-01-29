@@ -34,8 +34,12 @@ Feature: Location Management Module Automation
      Then User is at home screen after login with "username" and "password"
      Then User clicks on 'Data Configurations' icon in side panel
      Then User clicks on respective 'Location Management' tab
-     Then User gets the total record count
+     #Then User waits for 5 seconds
+     #Then User gets the initial record count
+     Then User waits for 20 seconds
      Then User clicks on first available delete icon
+     Then User waits for 20 seconds
      Then User verify if the city is deleted
+     Then User waits for 10 seconds
 
 

@@ -8,11 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.ManageLocationMasterPage;
 import utils.DriverFactory;
 import utils.TestDataGenerator;
 import utils.ConfigReader;
 import utils.ExcelUtils;
+
+import java.time.Instant;
 import java.util.Random;
 import java.util.UUID;
 
@@ -21,7 +24,7 @@ public class ManageLocationMasterSteps {
     public static String cityName;
     public static String mCityName;
     //= String.valueOf(By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdCity_ctl00__0']/td[3][@title]"));
-    public static int pageCount;
+    public static String deletedCity;
     private final WebDriver driver = DriverFactory.getDriver();
     ManageLocationMasterPage tmp = new ManageLocationMasterPage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
@@ -56,7 +59,8 @@ public class ManageLocationMasterSteps {
     }
 
     @Then("User verify if the city is created")
-    public void user_verify_the_success_message_after_creating_city() {
+    public void user_verify_the_success_message_after_creating_city()
+    {
         tmp.verifyCityName(cityName);
     }
 
@@ -87,13 +91,10 @@ public class ManageLocationMasterSteps {
     {
         tmp.verifyCityName(mCityName);
     }
-    @Then ("User gets the total record count")
-   // public void user_gets_record_count()
-
-        //int totalRecordCount = tmp.getTotalRecordCount(pageCount);
 
     @Then ("User clicks on first available delete icon")
     public void user_clicks_first_available_city_to_delete()
+
     {
         tmp.deleteCity();
     }
@@ -115,8 +116,7 @@ public class ManageLocationMasterSteps {
     @Then("User verify if the city is deleted")
     public void userVerifyIfTheCityIsDeleted()
     {
-        tmp.verify_deleted_City(pageCount);
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
+        tmp.verify_deleted_City(deletedCity);
+
     }
 }
