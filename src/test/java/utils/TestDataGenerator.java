@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class TestDataGenerator {
     private final Random random = new Random();
+
     // Generate a unique email with timestamp and UUID
     public String generateTimestampedEmail() {
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
@@ -21,7 +22,7 @@ public class TestDataGenerator {
     // Generate a unique random name
     public String generatePersonName() {
         String[] names = {"John", "Jane", "Alice", "Bob", "Charlie", "Daisy"};
-        return names[random.nextInt(names.length)] + " " + (char)(random.nextInt(26) + 'A') + "."
+        return names[random.nextInt(names.length)] + " " + (char) (random.nextInt(26) + 'A') + "."
                 + UUID.randomUUID().toString().substring(0, 3);
     }
 
@@ -98,4 +99,108 @@ public class TestDataGenerator {
     public String generateMaxNoParticipants() {
         return String.valueOf(random.nextInt(100) + 1); // 1 to 100 participants
     }
+
+    //Generate Incident Type Code
+    public String generateIncident_Type_Code() {
+        String[] codes = {"TRA1", "UI78", "IPJK6", "COG07", "JIN9", "PAM1"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    //Generate Incident Type
+    public String generateIncident_Type() {
+        String[] incidentType = {
+                "Fire Incident",
+                "Medical",
+                "Security Incident",
+                "Workplace Incident",
+                "Chemical Spill Hazard",
+                "Power Incident",
+                "Network Incident",
+                "Unauthorized Access Hazard",
+                "Nature Hazard",
+                "Equipment Malfunction "
+        };
+        return incidentType[random.nextInt(incidentType.length)];
+    }
+
+    //Generate Incident Sub Type Code
+    public String generateIncident_Sub_Type_Code() {
+        String[] codes = {"SK", "U7", "56", "C6", "L7", "P3"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    //Generate Incident Sub Type
+    public String generateIncident_Sub_Type() {
+        String[] incidentSubType = {
+                "Plane",
+                "Medical",
+                "Security",
+                "Work",
+                "Chemical",
+                "Power",
+                "Network",
+                "Spill",
+                "Nature",
+                "Equip"
+        };
+        return incidentSubType[random.nextInt(incidentSubType.length)];
+    }
+
+    public String generateIncident_Severity() {
+        String[] codes = {"P5", "P1", "P2", "P3", "P4", "P6"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateAffected_Group() {
+        String[] codes = {"Children", "Family Members", "Victims/Employees", "Local Residents", "Organization", "Coworkers"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateCaused_By() {
+        String[] codes = {"Human Factors", "Negligent Acts", "System Failures", "Faulty equipments", "Improper supervision", "Ignoring safety protocols"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateImpact_Type() {
+        String[] codes = {"Critical", "Low", "None", "High", "Informational", "Maintenance"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public int generateImpact_Type_Sort_Order() {
+        int[] codes = {1, 2, 3, 4, 5, 6};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateSection_Name() {
+        String[] codes = {"Resolution Details", "Incident Details", "Business Impact", "Related Records", "Activity/Notes", "Impact/Urgency/Priority"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public int generateSection_Sort_Order() {
+        int[] codes = {1, 2, 3, 4, 5, 6};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateField_Name() {
+        String[] codes = {"Description of the Incident", "Incident Details", "Who Caused The Incident", "Incident Photos", "Reason for the Incident Happened", "Where the Incident happens"};
+        return codes[random.nextInt(codes.length)];
+    }
+
+    public String generateList_of_Values() {
+        String[] LOV = {"LOV1", "LOV2", "LOV3", "LOV4", "LOV5", "LOV6"};
+        return LOV[random.nextInt(LOV.length)];
+    }
+
+    public String generateRegulatory_Body() {
+        String[] Regulatory_Body = {"RGB1", "RGB2", "RGB3", "RGB4", "RGB5", "RGB6"};
+        return Regulatory_Body[random.nextInt(Regulatory_Body.length)];
+    }
+
+    public String generateDescription() {
+        String[] Description = {"RBD1", "RBD2", "RBD3", "RBD4", "RBD5", "RBD6"};
+        return Description[random.nextInt(Description.length)];
+    }
 }
+
+
+

@@ -49,7 +49,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Nov 3, 2025 02:48:56 AM</span>
+			<span class='label blue darken-3 suite-start-time'>Jan 21, 2026 10:11:02 AM</span>
 			</a>
 		</ul>
 	</div>
@@ -76,8 +76,8 @@
 				<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@addCompany1</a></li>
-					<li><a href='#'>@trainingManagement</a></li>
+					<li><a href='#'>@IncidentManagementMaster</a></li>
+					<li><a href='#'>@addIncidentSub-Type</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -158,7 +158,7 @@
                 </div>
                 <div class='block text-small'>
                     <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>8</span> steps passed</span>
+                    <span class='strong'>10</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -187,8 +187,8 @@
 			<ul id='test-collection' class='test-collection'>
 				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Training Management Module Automation</span>
-						<span class='test-time'>Nov 3, 2025 02:48:57 AM</span>
+						<span class='test-name'>Incident Management Master Module Automation</span>
+						<span class='test-time'>Jan 21, 2026 10:11:03 AM</span>
 						<span class='test-status right pass'>Pass</span>
 					</div>
 					<div class='test-content hide'>
@@ -201,15 +201,15 @@
 
 <div class='scenario node' test-id='2' status='pass'>
 
-	<span class='duration right label'>00 00 16.523</span>
+	<span class='duration right label'>00 00 53.231</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to add cooperate type company</div>
+		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario: Should be able to create a new Incident Sub-Type</div>
 	</div>
 	
 	
 		<div class='category-list'>
-				<span class='category label'>@addCompany1</span>
-				<span class='category label'>@trainingManagement</span>
+				<span class='category label'>@addIncidentSub-Type</span>
+				<span class='category label'>@IncidentManagementMaster</span>
 		</div>
 	
 	<ul class='steps'>
@@ -224,32 +224,42 @@
 
 		</li>
 		<li test-id='8' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.HomePageSteps.user_click_on_navigation_item(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on 'Training Management' in navigation panel</div>
+			<div class="step-name" title="(stepDefinitions.HomePageSteps.user_click_on_navigation_item(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on 'Data Configurations' in navigation panel</div>
 
 
 		</li>
 		<li test-id='10' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on the 'Training Company' tab</div>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.userClicksOnHamburgerIcon())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on hamburger icon</div>
 
 
 		</li>
-		<li test-id='12' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add Company'</div>
+		<li test-id='12' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.userClicksOnTheTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on the 'Incident Management' tab in data configuration page</div>
 
 
 		</li>
 		<li test-id='14' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_fill_up_the_coperate_company_details(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills up the 'Corporate' type company details</div>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.userClicksOnTab(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on 'Incident Sub-Type' tab</div>
 
 
 		</li>
 		<li test-id='16' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.userClicksOnSaveButton())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on save button</div>
+			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_clicks_on_button(java.lang.String))"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User clicks on button 'Add'</div>
 
 
 		</li>
 		<li test-id='18' class='node then Pass' status='Pass'>
-			<div class="step-name" title="(stepDefinitions.ManagementTrainingSteps.user_verify_the_success_message_after_creating_company())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the company is created</div>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.user_Add_incident_sub_type_details())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User fills the Incident Sub-Type details</div>
+
+
+		</li>
+		<li test-id='20' class='node and Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.user_clicks_on_button_Incident_save())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>And User clicks on Incident Save button</div>
+
+
+		</li>
+		<li test-id='22' class='node then Pass' status='Pass'>
+			<div class="step-name" title="(stepDefinitions.IncidentManagementMastersSteps.user_verify_Incident_Sub_Type_creation())"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Then User verify if the Incident Sub-Type is created</div>
 
 
 		</li>
@@ -299,7 +309,7 @@
 			<ul id='category-collection' class='category-collection'>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@addCompany1</span>
+						<span class='category-name'>@IncidentManagementMaster</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
 						</span>
@@ -321,8 +331,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Nov 3, 2025 02:48:57 AM</td>
-										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td>Jan 21, 2026 10:11:03 AM</td>
+										<td class='linked' test-id='2'>Should be able to create a new Incident Sub-Type</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -332,7 +342,7 @@
 				</li>
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@trainingManagement</span>
+						<span class='category-name'>@addIncidentSub-Type</span>
 						<span class='category-status right'>
 						<span class='label pass'>1</span>
 						</span>
@@ -354,8 +364,8 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Nov 3, 2025 02:48:57 AM</td>
-										<td class='linked' test-id='2'>Should be able to add cooperate type company</td>
+										<td>Jan 21, 2026 10:11:03 AM</td>
+										<td class='linked' test-id='2'>Should be able to create a new Incident Sub-Type</td>
 										<td><span class='test-status Pass'>Pass</span></td>
 									</tr>
 								</tbody>
@@ -392,25 +402,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>8</div>
+					<div class='panel-lead'>10</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Nov 3, 2025 02:48:56 AM</div>
+					<div class='panel-lead'>Jan 21, 2026 10:11:02 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Nov 3, 2025 02:49:13 AM</div>
+			 		<div class='panel-lead'>Jan 21, 2026 10:11:57 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 17.666</div>
+					<div class='panel-lead'>00 00 54.333</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -426,7 +436,7 @@
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>@addCompany1</td>
+							<td>@IncidentManagementMaster</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -435,7 +445,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>@trainingManagement</td>
+							<td>@addIncidentSub-Type</td>
 							<td>1</td>
 							<td>0</td>
 							<td>0</td>
@@ -469,8 +479,8 @@
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 8,
-				passGrandChild: 8,
+				grandChildCount: 10,
+				passGrandChild: 10,
 				failGrandChild: 0,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
@@ -482,7 +492,7 @@
 		
 		<script>
 			var timeline = {
-			        "Training Management Module Automation":16.528
+			        "Incident Management Master Module Automation":53.238
 			};
 		</script>
 		

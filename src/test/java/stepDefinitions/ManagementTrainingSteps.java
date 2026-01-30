@@ -42,8 +42,8 @@ public class ManagementTrainingSteps {
     }
 
     @Then("User fills up the {string} type company details")
-    public void user_fill_up_the_coperate_company_details(String type) throws IOException {
-        companyName = dataGen.generateCompanyName();
+    public void user_fill_up_the_corporate_company_details(String type) throws IOException {
+        String companyName = dataGen.generateCompanyName();
         String contactNumber = dataGen.generatePhoneNumber();
         String contactName = dataGen.generatePersonName();
         String designation = dataGen.generateDesignation();

@@ -274,4 +274,12 @@ public class ElementUtils {
         LOGGER.info("[RESULT] CLEANED TEXT FOR ELEMENT " + locator + ": '" + cleanedText + "'");
         return cleanedText;
     }
+
+    public void clearAndType(By by, String value) {
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        el.click();
+        el.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        el.sendKeys(Keys.DELETE);
+        el.sendKeys(value);
+    }
 }
