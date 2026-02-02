@@ -14,6 +14,8 @@ public class InventoryMasterPage  extends BasePage {
     public static final By SAVE_BUTTON_ITEMTYPE = By.id("ctl00_ContentPlaceHolder1_RadWinItemType_C_btnTypeOk");
     public static final By SEARCH_ITEMTYPE = By.cssSelector("[alt='Filter ItemTypeCode column']");
     public static final By SEARCH_FIRST_ITEM_TYPE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdItemType_ctl00__0");
+    public static final By DELETE_FIRST_ITEM_TYPE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdItemType_ctl00_ctl04_imgDelete");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             //By locator = By.xpath(String.format("//*[@class='nav-link active' and @id='10']", dataConfiguration));
@@ -71,4 +73,29 @@ public class InventoryMasterPage  extends BasePage {
     public void clickActiveItemTypetoEdit() {
         utils.click(SEARCH_FIRST_ITEM_TYPE_EDIT);
     }
+
+    public void clickActiveItemTypetoDelete() {
+        utils.click(DELETE_FIRST_ITEM_TYPE_IN_LIST);
+        //driver.switchTo().activeElement();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyItemTypeDelete(String expectedTitle) {
+        utils.typeText(SEARCH_ITEMTYPE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        //By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_GrdModes_ctl00__0 td[title='%s']//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    public void ItemTypeclickExportToExcel(String clickOnExporttoExcelItemtypeButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelItemtypeButton));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Item  Type Button: " + clickOnExporttoExcelItemtypeButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Item Type Button: " + clickOnExporttoExcelItemtypeButton);
+            throw e;
+        }
+    }
+
+
 }

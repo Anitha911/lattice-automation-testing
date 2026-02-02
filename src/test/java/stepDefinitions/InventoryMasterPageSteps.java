@@ -50,4 +50,18 @@ public class InventoryMasterPageSteps {
     public void user_clicks_on_first_active_Item_Type_to_edit() {
         tmp.clickActiveItemTypetoEdit();
     }
+    @Then("User clicks on active Item Type in the grid to delete")
+    public void user_clicks_on_first_active_Item_Type_to_delete() {
+        tmp.clickActiveItemTypetoDelete();
+    }
+    @Then("User verify if the Item Type is deleted")
+    public void user_Verify_first_active_Item_type_to_delete() {
+        tmp.verifyItemTypeDelete(generateItemType);
+    }
+    @Then ("User clicks on Inventory Item Type Export to Excel button")
+    public void user_clicks_on_item_type_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.ItemTypeclickExportToExcel(xpath);
+    }
+
 }
