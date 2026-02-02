@@ -1,0 +1,113 @@
+@GuardPatrolManagementTransaction
+Feature: Guard Patrol Management Transaction Module Automation
+
+  @addPatrolRoute
+  Scenario: Should be able to add a Patrol Route
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on Patrol Route button 'Add patrol Route'
+    Then User fills up the Patrol Route button details
+    Then User waits patrol route 2 seconds
+    Then User clicks on Patrol Route save button
+    Then User verify if the Guard Patrol Route is created
+
+  @EditPatrolRoute
+  Scenario: Should be able to Edit a Patrol Route
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on active Patrol Route in the grid
+    Then User clicks on Patrol Route Edit button
+    Then User clicks on Patrol Route Update button
+
+  @EditPatrolRouteUpdateStatus
+  Scenario: Should be able to Edit a Patrol Route Status
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on active Patrol Route in the grid
+    Then User clicks on Patrol Route Update Status button
+    Then User fills up the Patrol Route Update Status details
+    Then User clicks on Patrol Route Status Save button
+
+  @EditPatrolRouteAddRouteCheckPoints
+  Scenario: Should be able to Add a Patrol Route Checkpoint in the Patrol Route Edit screen
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on active Patrol Route in the grid
+    Then User clicks on active Patrol Route Check Points in the grid
+    Then User fills up the Patrol Route Check Points details
+    Then User clicks the Patrol Route Check Points Save Button
+
+  @EditPatrolRouteAddRouteTimings
+  Scenario: Should be able to Add a Patrol Route Timings in the Patrol Route Edit screen
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on active Patrol Route in the grid
+    Then User clicks on  Patrol Route Timings ADD Button
+    Then User fills up the Patrol Route Timings details
+    Then User fills up the Patrol Route Timings Save Button
+
+  @DeletePatrolRoute
+  Scenario: Should be able to delete a Patrol Route
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on valid Patrol Route to Delete
+    Then User verify if the Guard Patrol Route is deleted
+
+  @ExportToExcelPatrolRoute
+  Scenario: Should be able to export to excel  Patrol Route
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    Then User clicks on PatrolRoute Export to Excel button
+
+  @AddPatrolSchedule
+  Scenario: Should be able to add a Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    Then User clicks on Patrol Schedule button 'Add patrol Schedule'
+    Then User fills up the Patrol Schedule details
+    Then User clicks on Patrol Schedule save button
+    Then User verify if the Guard Patrol Schedule is created
+
+  @ExportToExcelPatrolSchedule
+  Scenario: Should be able to export to excel a Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    Then User Clicks on Patrol Schedule Export to Excel Button
+
+  @PatrolScheduleDetailPageViewUpdateButtonClick
+  Scenario: Should be able to Update Status Button in detail page Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    Then User clicks on active Patrol Schedule in the grid
+    Then User clicks on Update Patrol Schedule Status
+    Then User Enters data in Patrol Schedule Status
+    Then User clicks on Patrol Schedule Status Save button
+
+  @PatrolScheduleLeftSideMenu
+  Scenario: Should be able to Update Status Button in detail page Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    Then User clicks on active Patrol Schedule in the grid
+    Then User clicks on Left side menus

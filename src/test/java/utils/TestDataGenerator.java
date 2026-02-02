@@ -162,4 +162,13 @@ public class TestDataGenerator {
         String[] schedule = {"tstSchedule1", "tstSchedule2", "tstSchedule3", "tstSchedule4", "tstSchedule5"};
         return schedule[random.nextInt(schedule.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //Inventory-Item type
+    public String generateItemTypeCode() {
+        String[] mode = {"ITCd1", "ITCd2", "ITCd3", "ITCd4", "ITCd5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateItemTypeCodeName() {
+        String[] mode = {"tstItemTypeName1", "tstItemTypeName2", "tstItemTypeName3", "tstItemTypeName4", "tstItemTypeName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 }

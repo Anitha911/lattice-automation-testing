@@ -1,0 +1,516 @@
+package pages;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+
+public class GuardPatrollingManagementPage extends BasePage  {
+    public GuardPatrollingManagementPage(WebDriver driver) {
+        super(driver);
+    }
+    public static final By ROUTE_CODE = By.id("radtxtShortName");
+    public static final By ROUTE_NAME = By.id("radtxtPatrollingRoutename");
+    public static final By ROUTE_DESC = By.id("radtxtDescription");
+    public static final By PATROLROUTECLIENT_DD = By.cssSelector("[value='Select Client']");
+    public static final By PATROLROUTECLIENTCONTRACT_DD = By.cssSelector("[value='Select Client Contract']");
+    public static final By PATROLROUTETYPE_DD = By.cssSelector("[value='Select Route Type']");
+    public static final By PATROLROUTESTATUS_DD = By.cssSelector("[value='Select Status']");
+    public static final By SAVE_BUTTON_PATROLROUTE=By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingRoutes_C_btnSavePatrolRoute");
+    public static final By SAVE_BUTTON_PATROLROUTESTATUS=By.id("ctl00_ContentPlaceHolder1_RadWinUpdateStatus_C_btnStatusSave");
+    public static final By SEARCH_PATROLROUTE = By.cssSelector("[alt='Filter Name column']");
+    public static final By SEARCH_FIRST_PATROLROUTE = By.id("ctl00_ContentPlaceHolder1_GrdRoutes_ctl00__0");
+    public static final By UPDATE_BUTTON_PATROL_ROUTE_INPUT = By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By UPDATE_BUTTON_PATROL_ROUTE_STATUS = By.id("ctl00_ContentPlaceHolder1_btnUpdateStatus");
+    public static final By EDIT_BUTTON_PATROL_ROUTE_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingRoutes_C_btnSavePatrolRoute");
+    public static final By SEARCH_FIRST_PATROLROUTE_TODELETE = By.id("ctl00_ContentPlaceHolder1_GrdRoutes_ctl00_ctl04_ImageButton1");
+    public static final By PATROL_ROUTE_CHECKPOINT_CLICk = By.className("icon-plus1");
+    public static final By PATROLROUTECHECKPOINTSAREA_DD=By.cssSelector("[value='Select Area']");
+    public static final By PATROLROUTECHECKPOINTSPROPERTY_DD=By.cssSelector("[value='Select Property']");
+    public static final By PATROLROUTE_ZONE=By.id("ctl00_ContentPlaceHolder1_RadWinCheckPoints_C_grdBaseUnit_ctl00_ctl04_chk_BaseUnitName");
+    public static final By SAVE_BUTTON_PATROLROUTECHECKPOINTS=By.id("ctl00_ContentPlaceHolder1_RadWinCheckPoints_C_btnSaveCheckPoints");
+    public static final By PATROL_ROUTE_TIMINGS_CLICK = By.xpath("//*[@id='ContentPlaceHolder1_Span1']/span");
+    public static final By PATROLROUTETIMINGSMODE_DD=By.cssSelector("[value='Select Mode']");
+    public static final By PATROLROUTE_TIMINGACTIVE=By.id("chkRouteActive");
+    public static final By ROUTE_TIMINGDURATION=By.id("ctl00_ContentPlaceHolder1_RadWinTiming_C_radtxtDuration");
+    public static final By SAVE_BUTTON_PATROLROUTETIMINGS=By.id("ctl00_ContentPlaceHolder1_RadWinTiming_C_btnTimingSave");
+
+    public static final By GUARD_SCHEDULE_NAME_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radtxtScheduleName");
+    public static final By PATROLSCHEDULECLIENT_DD = By.cssSelector("[value='Select Client']");
+    public static final By PATROLSCHEDULECLIENTCONTRACT_DD = By.cssSelector("[value='Select Client Contract']");
+    public static final By PATROLSCHEDULEMODE_DD = By.cssSelector("[value='Select Mode']");
+    public static final By PATROLSCHEDULEROUTETYPE_DD = By.cssSelector("[value='Select Route Type']");
+    public static final By PATROLSCHEDULEROUTE_DD = By.cssSelector("[value='Select Route']");
+    public static final By PATROLSCHEDULESHIFT_DD = By.cssSelector("[value='Select Shift']");
+    public static final By PATROLSCHEDULEFREQ_DD = By.cssSelector("[value='Select frequency']");
+    public static final By GUARD_SCHEDULE_FROMDATE_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchStartDate_dateInput");
+    public static final By GUARD_SCHEDULE_TODATE_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchEndDate_dateInput");
+    public static final By GUARD_SCHEDULE_STARTTIME_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpStarttime_dateInput");
+    public static final By GUARD_SCHEDULE_ENDTIME_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpEndtime_dateInput");
+    public static final By GUARD_SCHEDULE_SAVE=By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_btnSave");
+    public static final By SEARCH_PATROLSCHEDULE = By.cssSelector("[alt='Filter Name column']");
+    public static final By SEARCH_FIRST_SCHEDULE = By.id("ctl00_ContentPlaceHolder1_GrdSchedule_ctl00__0");
+    public static final By PATROLSCHDULESTATUS_DD = By.cssSelector("[value='Select Status']");
+    public static final By SAVE_BUTTON_PATROLSCHDULESTATUS=By.id("ctl00_ContentPlaceHolder1_RadWinUpdateStatus_C_btnStatusSave");
+    public static final By UPDATE_BUTTON_PATROL_SCHDEULE_STATUS = By.id("ctl00_ContentPlaceHolder1_btnUpdateStatus");
+    public static final By LEFTSIDEMENU_COMPLETED_PATROL = By.id("tdCompletedPatrols");
+    public static final By LEFTSIDEMENU_INPROGRESS = By.id("tdOngoingPatrols");
+    public static final By LEFTSIDEMENU_ELAPSED_PATROL = By.id("tdElapsedPatrols");
+    public static final By LEFTSIDEMENU_SCHEDULE_HISTORY = By.id("tdHistory");
+
+
+    public void clickOnGuardMenu(String GuardMenu) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='14']"));
+            utils.click(locator);
+            System.out.println("Clicked on the GuardMenu: " + GuardMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Guard Menu" +GuardMenu);
+            throw e;
+        }
+    }
+    public void clickOnPatrolRoute(String GuardMenu) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[1]/li[2]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the Patrol Route: " + GuardMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Patrol Route" +GuardMenu);
+            throw e;
+        }
+    }
+    public void clickOnAddPatrolRoute(String btnAddPatrolRoute) {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']", btnAddPatrolRoute));
+            utils.click(locator);
+            System.out.println("Clicked on the Add Patrol Route Button: " + btnAddPatrolRoute);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Add Patrol Route Button:: " + btnAddPatrolRoute);
+            throw e;
+        }
+    }
+    public void enterRouteCode(String RouteCode) {
+        utils.typeText(ROUTE_CODE, RouteCode);
+    }
+    public void enterRouteName(String RouteName) {
+        utils.typeText(ROUTE_NAME, RouteName);
+    }
+    public void enterRouteDesc(String RouteDesc) {
+        utils.typeText(ROUTE_DESC, RouteDesc);
+    }
+    //Dropdown Check
+    public void selectPatrolRouteClient(String PatrolRouteClient) {
+        try {
+            utils.click(PATROLROUTECLIENT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteClient));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteClient);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteClient);
+            throw e;
+        }
+    }
+    public void selectClientContract(String PatrolRouteClientContract) {
+        try {
+            utils.click(PATROLROUTECLIENTCONTRACT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteClientContract));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteClientContract);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteClientContract);
+            throw e;
+        }
+    }
+    public void selectRouteType(String PatrolRouteType) {
+        try {
+            utils.click(PATROLROUTETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteType);
+            throw e;
+        }
+    }
+    public void ClickPatrolRouteSave() {
+        By[] saveButtons = {SAVE_BUTTON_PATROLROUTE};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyPatrolRoutecreation(String PatrolRoute) {
+        utils.typeText(SEARCH_PATROLROUTE,PatrolRoute + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdRoutes_ctl00__0']/td[2]",PatrolRoute));
+        utils.isElementVisible(locator);
+    }
+    public void clickActivePatrolRoutetoEdit() {
+        utils.click(SEARCH_FIRST_PATROLROUTE);
+    }
+    public void clickActivePatrolRouteEditButton() {
+        utils.click(UPDATE_BUTTON_PATROL_ROUTE_INPUT);
+    }
+    public void clickPatrolRouteUpdateButton() {
+        By[] saveButtons = {EDIT_BUTTON_PATROL_ROUTE_INPUT};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No update button is present on the page.");
+    }
+    public void clickPatrolRouteUpdateStatusButton() {
+        utils.click(UPDATE_BUTTON_PATROL_ROUTE_STATUS);
+    }
+    public void selectRouteStatus(String PatrolRouteStatus) {
+        try {
+            utils.click(PATROLROUTESTATUS_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteStatus));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteStatus);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteStatus);
+            throw e;
+        }
+    }
+    public void ClickPatrolRouteStatusSave() {
+        By[] saveButtons = {SAVE_BUTTON_PATROLROUTESTATUS};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Checkpoints
+    public void clickPatrolRouteCheckpointclick() {
+        utils.click(PATROL_ROUTE_CHECKPOINT_CLICk);
+    }
+    public void selectRouteCheckpointsArea(String PatrolRouteCheckpointsArea) {
+        try {
+            utils.click(PATROLROUTECHECKPOINTSAREA_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteCheckpointsArea));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteCheckpointsArea);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteCheckpointsArea);
+            throw e;
+        }
+    }
+    public void selectRouteCheckpointsProperty(String PatrolRouteCheckpointsProperty) {
+        try {
+            utils.click(PATROLROUTECHECKPOINTSPROPERTY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteCheckpointsProperty));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteCheckpointsProperty);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteCheckpointsProperty);
+            throw e;
+        }
+    }
+    public void clickActivepatrolRouteZone() {
+        utils.click(PATROLROUTE_ZONE);
+    }
+    public void ClickPatrolRouteCheckPointsSave() {
+        By[] saveButtons = {SAVE_BUTTON_PATROLROUTECHECKPOINTS};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+//Patrol Route Timings
+public void clickPatrolRouteTimingsClick() {
+    utils.click(PATROL_ROUTE_TIMINGS_CLICK);
+}
+public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
+        try {
+            utils.click(PATROLROUTETIMINGSMODE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolRouteselectRouteTimingsMode));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolRouteselectRouteTimingsMode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolRouteselectRouteTimingsMode);
+            throw e;
+        }
+    }
+    public void clickActive() {
+        utils.click(PATROLROUTE_TIMINGACTIVE);
+    }
+    public void enterRouteTimingDuration() {
+        utils.typeText(ROUTE_TIMINGDURATION, "10");
+    }
+    public void ClickPatrolRouteTimingsSave() {
+        By[] saveButtons = {SAVE_BUTTON_PATROLROUTETIMINGS};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+
+
+
+    public void clickActivepatrolRoutetoDelete() {
+        utils.click(SEARCH_FIRST_PATROLROUTE_TODELETE);
+        //driver.switchTo().activeElement();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyPatrolRouteDelete(String expectedTitle) {
+        utils.typeText(SEARCH_PATROLROUTE,expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        //By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_GrdModes_ctl00__0 td[title='%s']//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    public void PatrolRouteclickExportToExcel(String clickOnExporttoExcelPatrolrouteButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelPatrolrouteButton));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Patrol mode Button: " + clickOnExporttoExcelPatrolrouteButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Export to excel Patrol mode Button:: " + clickOnExporttoExcelPatrolrouteButton);
+            throw e;
+        }
+    }
+    //patrol Schedule
+    public void clickOnPatrolSchedule(String GuardMenu) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[2]/li[2]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the Patrol Schedule: " + GuardMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Patrol Schedule" +GuardMenu);
+            throw e;
+        }
+    }
+    public void clickOnAddPatrolSchedule(String btnAddPatrolSchedule) {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']", btnAddPatrolSchedule));
+            utils.click(locator);
+            System.out.println("Clicked on the Add Patrol Schedule Button: " + btnAddPatrolSchedule);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Add Patrol Schedule Button:: " + btnAddPatrolSchedule);
+            throw e;
+        }
+    }
+    public void PatrolScheduleName(String name) {
+        utils.typeText(GUARD_SCHEDULE_NAME_INPUT, name);
+    }
+    public void selectPatrolScheduleClient(String PatrolScheduleClient) {
+        try {
+            utils.click(PATROLSCHEDULECLIENT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleClient));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleClient);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleClient);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleClientContract(String PatrolScheduleClientContract) {
+        try {
+            //slow here
+            utils.click(PATROLSCHEDULECLIENTCONTRACT_DD);
+            //Thread.sleep(5000);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleClientContract));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleClientContract);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleClientContract);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleMode(String PatrolScheduleMode) {
+        try {
+            utils.click(PATROLSCHEDULEMODE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleMode));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleMode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleMode);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleRouteType(String PatrolScheduleRouteType) {
+        try {
+            utils.click(PATROLSCHEDULEROUTETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleRouteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleRouteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleRouteType);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleRoute(String PatrolScheduleRoute) {
+        try {
+            utils.click(PATROLSCHEDULEROUTE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleRoute));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleRoute);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleRoute);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleShift(String PatrolScheduleShift) {
+        try {
+            utils.click(PATROLSCHEDULESHIFT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleShift));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleShift);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleShift);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleFrequency(String PatrolSchedulefrequency) {
+        try {
+            utils.click(PATROLSCHEDULEFREQ_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolSchedulefrequency));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolSchedulefrequency);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolSchedulefrequency);
+            throw e;
+        }
+    }
+
+    public void enterPatrolScheduleFromDate(String name) {
+        utils.typeText(GUARD_SCHEDULE_FROMDATE_INPUT, name);
+    }
+    public void enterPatrolScheduleToDate(String name) {
+        utils.typeText(GUARD_SCHEDULE_TODATE_INPUT, name);
+    }
+    public void enterPatrolScheduleEstStartTime(String name) {
+        utils.typeText(GUARD_SCHEDULE_STARTTIME_INPUT, name);
+    }
+    public void enterPatrolScheduleEstEndTime(String name) {
+        utils.typeText(GUARD_SCHEDULE_ENDTIME_INPUT, name);
+    }
+
+    //to check
+    public void selectPatrolScheduleFromDate(String FromDate) {
+        try {
+            utils.click(GUARD_SCHEDULE_FROMDATE_INPUT);
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchStartDate_dateInput']", FromDate));
+            utils.click(locator);
+            System.out.println("Clicked on the From date: " + FromDate);
+        } catch (Exception e) {
+            System.out.println("Failed to click on From date: " + FromDate);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleToDate(String ToDate) {
+        try {
+            utils.click(GUARD_SCHEDULE_TODATE_INPUT);
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchEndDate_dateInput']", ToDate));
+            utils.click(locator);
+            System.out.println("Clicked on the Start time: " + ToDate);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Start time: " + ToDate);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleEstStartTime(String Starttime) {
+        try {
+            utils.click(GUARD_SCHEDULE_STARTTIME_INPUT);
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpStarttime_timePopupLink']", Starttime));
+            utils.click(locator);
+            System.out.println("Clicked on the Start time: " + Starttime);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Start time: " + Starttime);
+            throw e;
+        }
+    }
+    public void selectPatrolScheduleEstEndTime(String Endtime) {
+        try {
+            utils.click(GUARD_SCHEDULE_ENDTIME_INPUT);
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpEndtime_dateInput']", Endtime));
+            utils.click(locator);
+            System.out.println("Clicked on the End time: " + Endtime);
+        } catch (Exception e) {
+            System.out.println("Failed to click on End time: " + Endtime);
+            throw e;
+        }
+    }
+    //to check
+
+    public void userClicksOnPatrolScheduleSaveButton() {
+        By[] saveButtons = {GUARD_SCHEDULE_SAVE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyPatrolSchedulecreation(String PatrolSchedule) {
+        utils.typeText(SEARCH_PATROLSCHEDULE,PatrolSchedule + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdRoutes_ctl00__0']/td[2]",PatrolSchedule));
+        utils.isElementVisible(locator);
+    }
+    public void PatrolScheduleExportToExcel(String clickOnExporttoExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='radbtnExport']", clickOnExporttoExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Patrol Schedule : " + clickOnExporttoExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Patrol Schedule : " + clickOnExporttoExcel);
+            throw e;
+        }
+    }
+    public void clickActiveSchduledetailtoEdit() {
+        utils.click(SEARCH_FIRST_SCHEDULE);
+    }
+    public void ClickPatrolScheduleUpdateStatusSave() {
+        utils.click(UPDATE_BUTTON_PATROL_SCHDEULE_STATUS);
+    }
+    public void selectScheduleStatus(String PatrolScheduleStatus) {
+        try {
+            utils.click(PATROLSCHDULESTATUS_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleStatus));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PatrolScheduleStatus);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PatrolScheduleStatus);
+            throw e;
+        }
+    }
+    //Schedule status save
+     public void ClickPatrolScheduleStatusSave() {
+        By[] saveButtons = {SAVE_BUTTON_PATROLSCHDULESTATUS};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Left side menu click
+    public void ClickPatrolScheduleLeftSideMenus() {
+        utils.click(LEFTSIDEMENU_COMPLETED_PATROL);
+        utils.click(LEFTSIDEMENU_INPROGRESS);
+        utils.click(LEFTSIDEMENU_ELAPSED_PATROL);
+        utils.click(LEFTSIDEMENU_SCHEDULE_HISTORY);
+    }
+    //Patrol Schedule
+}
