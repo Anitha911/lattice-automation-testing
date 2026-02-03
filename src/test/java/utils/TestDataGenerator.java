@@ -185,6 +185,15 @@ public class TestDataGenerator {
         String[] mode = {"tstItemCategoryName1", "tstItemCategoryName2", "tstItemCategoryName3", "tstItemCategoryName4", "tstItemCategoryName5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //Inventory-Item SubCategory
+    public String generateItemSubCategoryCode() {
+        String[] mode = {"ISCd1", "ISCd2", "ISCd3", "ISCd4", "ISCd5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateItemSubCategoryCodeName() {
+        String[] mode = {"tstItemSubCatName1", "tstItemSubCatName2", "tstItemSubCatName3", "tstItemSubCatName4", "tstItemSubCatName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};

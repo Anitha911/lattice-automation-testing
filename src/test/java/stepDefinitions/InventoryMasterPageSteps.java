@@ -15,6 +15,8 @@ public class InventoryMasterPageSteps {
         public static String generateItemTypeName;
         public static String generateItemCatCde;
         public static String generateItemCatName;
+        public static String generateItemSubCatCde;
+        public static String generateItemSubCatName;
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -107,6 +109,30 @@ public class InventoryMasterPageSteps {
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.ItemCategoryclickExportToExcel(xpath);
     }
-
-
+   //item SubCategory
+   @Then ("User clicks on the Inventory master Item SubCategory {string} in side menu")
+   public void user_click_on_Item_SubCat(String title) throws InterruptedException {
+       String xpath = "//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[3]";
+       tmp.clickOnItemSubCategory(xpath);
+   }
+    @Then("User clicks on button Item SubCategory add {string}")
+    public void user_click_on_Item_SubCategoryAdd(String btnAddItemSubCategory) throws InterruptedException {
+        tmp.clickOnAddItemSubCategory(btnAddItemSubCategory);
+    }
+    @Then("User fills up the {string} Item SubCategory details")
+    public void user_fills_up_ItemSubCategory(String type) throws IOException {
+        tmp.selectItemCategory("FIRE");
+        generateItemSubCatCde = dataGen.generateItemSubCategoryCode();
+        tmp.enterItemSubCatCDE(generateItemSubCatCde);
+        generateItemSubCatName = dataGen.generateItemSubCategoryCodeName();
+        tmp.enterItemSubCatname(generateItemSubCatName);
+    }
+    @Then("User clicks on Item SubCategory save button")
+    public void userClicksOnItemSubCatSaveButton() {
+        tmp.userClicksOnItemSubCatSaveButton();
+    }
+    @Then ("User verify if the Item SubCategory is created")
+    public void userVerifyIfTheItemSubCatIsCreated() throws InterruptedException {
+        tmp.verifyItemSubCatcreation(generateItemSubCatCde);
+    }
 }

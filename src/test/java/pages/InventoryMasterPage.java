@@ -21,7 +21,11 @@ public class InventoryMasterPage  extends BasePage {
     public static final By SEARCH_ITEMCAT = By.cssSelector("[alt='Filter idlink column']");
     public static final By SEARCH_FIRST_ITEM_CAT_EDIT = By.id("ctl00_ContentPlaceHolder1_grdItemCategory_ctl00__0");
     public static final By DELETE_FIRST_ITEM_CATEGORY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdItemCategory_ctl00_ctl04_imgDelete");
-
+    public static final By ITEM_CATEGORY_DD = By.cssSelector("[value='Select Item Category']");
+    public static final By ITEMSUBCAT_CODE = By.id("radtxtSubCategoryCode");
+    public static final By ITEMSUBCAT_NAME = By.id("radtxtSubCategoryName");
+    public static final By SAVE_BUTTON_ITEMSUBCAT = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_btnSubcategoryOk");
+    public static final By SEARCH_ITEMSUBCAT = By.cssSelector("[alt='Filter SubGroup_Name column']");
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -169,5 +173,58 @@ public class InventoryMasterPage  extends BasePage {
             System.out.println("Failed to click on Export to Excel Item Type Button: " + clickOnExporttoExcelItemCatButton);
             throw e;
         }
+    }
+    //Item SubCategory
+    public void clickOnItemSubCategory(String clickOnItemSubCategory) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[3]", clickOnItemSubCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the Item category: " + clickOnItemSubCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Item Category " + clickOnItemSubCategory);
+            throw e;
+        }
+    }
+    public void clickOnAddItemSubCategory(String btnAddItemSubCategory) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddItemSubCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add Item SubCategory Button: " + btnAddItemSubCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add Item SubCategory Button: " + btnAddItemSubCategory);
+            throw e;
+        }
+    }
+    public void selectItemCategory(String InvenItemCategory) {
+        try {
+            utils.click(ITEM_CATEGORY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", InvenItemCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + InvenItemCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + InvenItemCategory);
+            throw e;
+        }
+    }
+    public void enterItemSubCatCDE(String name) {
+        utils.typeText(ITEMSUBCAT_CODE, name);
+    }
+    public void enterItemSubCatname(String name) {
+        utils.typeText(ITEMSUBCAT_NAME, name);
+    }
+    public void userClicksOnItemSubCatSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_ITEMSUBCAT};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyItemSubCatcreation(String expectedTitle) {
+        utils.typeText(SEARCH_ITEMSUBCAT, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
     }
 }

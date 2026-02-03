@@ -88,3 +88,15 @@ Feature: Inventory data configuration Module Automation
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master Item Category 'string' in side menu
     Then User clicks on Inventory Item Category Export to Excel button
+
+  @addItemSubCategory
+  Scenario: Should be able to add Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on button Item SubCategory add 'Add'
+    Then User fills up the 'Item SubCategory' Item SubCategory details
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
