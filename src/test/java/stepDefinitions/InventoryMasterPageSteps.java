@@ -13,6 +13,8 @@ public class InventoryMasterPageSteps {
         TestDataGenerator dataGen = new TestDataGenerator();
         public static String generateItemType;
         public static String generateItemTypeName;
+        public static String generateItemCatCde;
+        public static String generateItemCatName;
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -25,7 +27,7 @@ public class InventoryMasterPageSteps {
     public void user_click_on_additional_masters_Inventory(String title) throws InterruptedException {
         //String xpath="//*[@class='nav-link active' and @id='10']";
         String xpath = "//*[@id='tab-datasetup']/div[2]/div/ul[2]/li[4]/a";
-        tmp.clickOnadditionalmastersSales(xpath);
+        tmp.clickOnadditionalmastersInventory(xpath);
     }
     @Then("User clicks on button Item Type add {string}")
     public void user_click_on_Item_TypesAdd(String btnAddItemTypes) throws InterruptedException {
@@ -63,5 +65,48 @@ public class InventoryMasterPageSteps {
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.ItemTypeclickExportToExcel(xpath);
     }
+    //Item Category
+    @Then ("User clicks on the Inventory master Item Category {string} in side menu")
+    public void user_click_on_Item_Cat(String title) throws InterruptedException {
+        String xpath = "//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[2]";
+        tmp.clickOnItemCategory(xpath);
+    }
+    @Then("User clicks on button Item Category add {string}")
+    public void user_click_on_Item_CategoryAdd(String btnAddItemCategory) throws InterruptedException {
+        tmp.clickOnAddItemCategory(btnAddItemCategory);
+    }
+    @Then("User fills up the {string} Item Category details")
+    public void user_fills_up_ItemCategory(String type) throws IOException {
+        generateItemCatCde = dataGen.generateItemCategoryCode();
+        tmp.enterItemCatCDE(generateItemCatCde);
+        generateItemCatName = dataGen.generateItemCategoryCodeName();
+        tmp.enterItemCatname(generateItemCatName);
+    }
+    @Then("User clicks on Item Category save button")
+    public void userClicksOnItemCatSaveButton() {
+        tmp.userClicksOnItemCatSaveButton();
+    }
+    @Then ("User verify if the Item Category is created")
+    public void userVerifyIfTheItemCatIsCreated() throws InterruptedException {
+        tmp.verifyItemCatcreation(generateItemCatCde);
+    }
+    @Then("User clicks on active Item Category in the grid")
+    public void user_clicks_on_first_active_Item_Cat_to_edit() {
+        tmp.clickActiveItemCattoEdit();
+    }
+    @Then("User clicks on active Item Category in the grid to delete")
+    public void user_clicks_on_first_active_Item_Category_to_delete() {
+        tmp.clickActiveItemCategorytoDelete();
+    }
+    @Then("User verify if the Item Category is deleted")
+    public void user_Verify_first_active_Item_Category_to_delete() {
+        tmp.verifyItemCategoryDelete(generateItemCatCde);
+    }
+    @Then ("User clicks on Inventory Item Category Export to Excel button")
+    public void user_clicks_on_item_category_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.ItemCategoryclickExportToExcel(xpath);
+    }
+
 
 }
