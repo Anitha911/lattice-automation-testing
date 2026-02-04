@@ -17,6 +17,8 @@ public class InventoryMasterPageSteps {
         public static String generateItemCatName;
         public static String generateItemSubCatCde;
         public static String generateItemSubCatName;
+        public static String generateConvFactor;
+
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -134,5 +136,51 @@ public class InventoryMasterPageSteps {
     @Then ("User verify if the Item SubCategory is created")
     public void userVerifyIfTheItemSubCatIsCreated() throws InterruptedException {
         tmp.verifyItemSubCatcreation(generateItemSubCatCde);
+    }
+    @Then("User clicks on active Item SubCategory in the grid")
+    public void user_clicks_on_first_active_Item_SubCat_to_edit() {
+        tmp.clickActiveItemSubCattoEdit();
+    }
+    @Then("User clicks on active Item SubCategory in the grid to delete")
+    public void user_clicks_on_first_active_Item_SubCategory_to_delete() {
+        tmp.clickActiveItemSubCategorytoDelete();
+    }
+    @Then("User verify if the Item SubCategory is deleted")
+    public void user_Verify_first_active_Item_SubCategory_to_delete() {
+        tmp.verifyItemSubCategoryDelete(generateItemSubCatCde);
+    }
+    @Then ("User clicks on Inventory Item SubCategory Export to Excel button")
+    public void user_clicks_on_item_Subcategory_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.ItemclickExportToExcel(xpath);
+    }
+    //Unit Conversion
+    @Then ("User clicks on the Inventory master Unit Conversion {string} in side menu")
+    public void user_click_on_UnitConversion(String title) throws InterruptedException {
+        String xpath = "//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[4]";
+        tmp.clickOnUnitConversion(xpath);
+    }
+    @Then("User clicks on button Unit Conversion add {string}")
+    public void user_click_on_UCAdd(String btnAddUC) throws InterruptedException {
+        tmp.clickOnAddUC(btnAddUC);
+    }
+    @Then("User fills up the {string} Unit Conversion details")
+    public void user_fills_up_UC(String type) throws IOException {
+        tmp.selectFromUnit("CYL");
+        tmp.selectToUnit("CYL");
+        generateConvFactor = dataGen.generateConvFactor();
+        tmp.enterConvFactor(generateConvFactor);
+    }
+    @Then("User clicks on Unit Conversion save button")
+    public void userClicksOnUCSaveButton() {
+        tmp.userClicksOnUCSaveButton();
+    }
+    @Then ("User verify if the Unit Conversion is created")
+    public void userVerifyIfUCIsCreated() throws InterruptedException {
+        tmp.verifyUCcreation(generateConvFactor);
+    }
+    @Then("User clicks on active Unit Conversion in the grid")
+    public void user_clicks_on_first_active_UC_to_edit() {
+        tmp.clickActiveUCtoEdit();
     }
 }

@@ -26,6 +26,15 @@ public class InventoryMasterPage  extends BasePage {
     public static final By ITEMSUBCAT_NAME = By.id("radtxtSubCategoryName");
     public static final By SAVE_BUTTON_ITEMSUBCAT = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_btnSubcategoryOk");
     public static final By SEARCH_ITEMSUBCAT = By.cssSelector("[alt='Filter SubGroup_Name column']");
+    public static final By SEARCH_FIRST_ITEM_SUBCAT_EDIT = By.id("ctl00_ContentPlaceHolder1_grdItemSubCategory_ctl00__0");
+    public static final By DELETE_FIRST_ITEM_SUBCATEGORY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdItemSubCategory_ctl00_ctl04_imgDelete");
+    public static final By FROM_UNIT_DD = By.cssSelector("[value='Select From Unit']");
+    public static final By TO_UNIT_DD = By.cssSelector("[value='Select To Unit']");
+    public static final By CONVFACTOR_NAME = By.id("radtxtConvFactor");
+    public static final By SAVE_BUTTON_UC = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_btnUnitConversionOk");
+    public static final By SEARCH_UC = By.cssSelector("[alt='Filter ConversionFactor column']");
+    public static final By SEARCH_FIRST_UC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdUnitConversion_ctl00__0");
+
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -154,14 +163,12 @@ public class InventoryMasterPage  extends BasePage {
     }
     public void clickActiveItemCategorytoDelete() {
         utils.click(DELETE_FIRST_ITEM_CATEGORY_IN_LIST);
-        //driver.switchTo().activeElement();
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
     public void verifyItemCategoryDelete(String expectedTitle) {
         utils.typeText(SEARCH_ITEMCAT, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
-        //By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_GrdModes_ctl00__0 td[title='%s']//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
     public void ItemCategoryclickExportToExcel(String clickOnExporttoExcelItemCatButton) throws InterruptedException {
@@ -226,5 +233,92 @@ public class InventoryMasterPage  extends BasePage {
         utils.typeText(SEARCH_ITEMSUBCAT, expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
         utils.isElementVisible(locator);
+    }
+    public void clickActiveItemSubCattoEdit() {
+        utils.click(SEARCH_FIRST_ITEM_SUBCAT_EDIT);
+    }
+    public void clickActiveItemSubCategorytoDelete() {
+        utils.click(DELETE_FIRST_ITEM_SUBCATEGORY_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyItemSubCategoryDelete(String expectedTitle) {
+        utils.typeText(SEARCH_ITEMSUBCAT, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    public void ItemclickExportToExcel(String clickOnExporttoExcelItemCatButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelItemCatButton));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Item  Type Button: " + clickOnExporttoExcelItemCatButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Item Type Button: " + clickOnExporttoExcelItemCatButton);
+            throw e;
+        }
+    }
+    //Unit Conversion
+    public void clickOnUnitConversion(String clickOnUnitConversion) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[4]", clickOnUnitConversion));
+            utils.click(locator);
+            System.out.println("Clicked on the Item category: " + clickOnUnitConversion);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Item Category " + clickOnUnitConversion);
+            throw e;
+        }
+    }
+    public void clickOnAddUC(String btnAddUC) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddUC));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add UC Button: " + btnAddUC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add UC: " + btnAddUC);
+            throw e;
+        }
+    }
+    public void selectFromUnit(String InvenFromUnit) {
+        try {
+            utils.click(FROM_UNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", InvenFromUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + InvenFromUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + InvenFromUnit);
+            throw e;
+        }
+    }
+    public void selectToUnit(String InvenToUnit) {
+        try {
+            utils.click(TO_UNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", InvenToUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + InvenToUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + InvenToUnit);
+            throw e;
+        }
+    }
+    public void enterConvFactor(String name) {
+        utils.typeText(CONVFACTOR_NAME, name);
+    }
+    public void userClicksOnUCSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_UC};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyUCcreation(String expectedTitle) {
+        utils.typeText(SEARCH_UC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveUCtoEdit() {
+        utils.click(SEARCH_FIRST_UC_EDIT);
     }
 }

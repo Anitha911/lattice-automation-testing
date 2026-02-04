@@ -100,3 +100,64 @@ Feature: Inventory data configuration Module Automation
     Then User fills up the 'Item SubCategory' Item SubCategory details
     Then User clicks on Item SubCategory save button
     Then User verify if the Item SubCategory is created
+
+  @EditItemSubCategory
+  Scenario: Should be able to Edit Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on button Item SubCategory add 'Add'
+    Then User fills up the 'Item SubCategory' Item SubCategory details
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
+    Then User clicks on active Item SubCategory in the grid
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
+
+  @DeleteItemSubCategory
+  Scenario: Should be able to Delete Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on active Item SubCategory in the grid to delete
+    Then User verify if the Item SubCategory is deleted
+
+  @ExportToExcelItemSubCategory
+  Scenario: Should be able to Export to Excel Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on Inventory Item SubCategory Export to Excel button
+
+  @addUnitConversion
+  Scenario: Should be able to add Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+
+  @EditUnitConversion
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+    Then User clicks on active Unit Conversion in the grid
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
