@@ -161,3 +161,49 @@ Feature: Inventory data configuration Module Automation
     Then User clicks on active Unit Conversion in the grid
     Then User clicks on Unit Conversion save button
     Then User verify if the Unit Conversion is created
+
+  @DeleteUnitConversion
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on active Unit Conversion in the grid to delete
+    Then User verify if the Unit Conversion is deleted
+
+  @ExportToExcelUnitConversion
+  Scenario: Should be able to Export to Excel Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addStoreGroup
+  Scenario: Should be able to add Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+
+  @EditStoreGroup
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+    Then User clicks on active Store Group in the grid
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created

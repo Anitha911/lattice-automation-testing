@@ -18,7 +18,7 @@ public class InventoryMasterPageSteps {
         public static String generateItemSubCatCde;
         public static String generateItemSubCatName;
         public static String generateConvFactor;
-
+        public static String generateStoreGroup;
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -182,5 +182,45 @@ public class InventoryMasterPageSteps {
     @Then("User clicks on active Unit Conversion in the grid")
     public void user_clicks_on_first_active_UC_to_edit() {
         tmp.clickActiveUCtoEdit();
+    }
+    @Then("User clicks on active Unit Conversion in the grid to delete")
+    public void user_clicks_on_first_active_UC_to_delete() {
+        tmp.clickActiveUCtoDelete();
+    }
+    @Then("User verify if the Unit Conversion is deleted")
+    public void user_Verify_first_active_UC_to_delete() {
+        tmp.verifyUCDelete(generateConvFactor);
+    }
+    @Then ("User clicks on Inventory Export to Excel button")
+    public void user_clicks_on_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.ItemclickExportToExcel(xpath);
+    }
+    //Store Group
+    @Then ("User clicks on the Inventory master Store Group {string} in side menu")
+    public void user_click_on_Store_Group(String title) throws InterruptedException {
+        String xpath = "//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[5]";
+        tmp.clickOnStoreGroup(xpath);
+    }
+    @Then("User clicks on button Store Group add {string}")
+    public void user_click_on_SGAdd(String btnAddSG) throws InterruptedException {
+        tmp.clickOnAddStoreGroup(btnAddSG);
+    }
+    @Then("User fills up the {string} Store Group details")
+    public void user_fills_up_SG(String type) throws IOException {
+        generateStoreGroup = dataGen.generateStoreGroup();
+        tmp.enterStoreGroup(generateStoreGroup);
+    }
+    @Then("User clicks on Store Group save button")
+    public void userClicksOnSGSaveButton() {
+        tmp.userClicksOnSGSaveButton();
+    }
+    @Then ("User verify if the Store Group is created")
+    public void userVerifyIfSGIsCreated() throws InterruptedException {
+        tmp.verifySGcreation(generateStoreGroup);
+    }
+    @Then("User clicks on active Store Group in the grid")
+    public void user_clicks_on_first_active_SG_to_edit() {
+        tmp.clickActiveSGtoEdit();
     }
 }

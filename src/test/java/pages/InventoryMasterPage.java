@@ -34,7 +34,11 @@ public class InventoryMasterPage  extends BasePage {
     public static final By SAVE_BUTTON_UC = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_btnUnitConversionOk");
     public static final By SEARCH_UC = By.cssSelector("[alt='Filter ConversionFactor column']");
     public static final By SEARCH_FIRST_UC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdUnitConversion_ctl00__0");
-
+    public static final By DELETE_FIRST_UC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdUnitConversion_ctl00_ctl04_imgDelete");
+    public static final By STORE_GROUP_NAME = By.id("radtxtStoreGrp");
+    public static final By SAVE_BUTTON_SG = By.id("ctl00_ContentPlaceHolder1_RadWinStoreGrp_C_btnStoreGrpSave");
+    public static final By SEARCH_SG = By.cssSelector("[alt='Filter StoreGroupName column']");
+    public static final By SEARCH_FIRST_SG_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_StoreGrp_ctl00__0");
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -155,7 +159,7 @@ public class InventoryMasterPage  extends BasePage {
     }
     public void verifyItemCatcreation(String expectedTitle) {
         utils.typeText(SEARCH_ITEMCAT, expectedTitle + Keys.ENTER);
-        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemCategory_ctl00__0]/td[1]", expectedTitle));
         utils.isElementVisible(locator);
     }
     public void clickActiveItemCattoEdit() {
@@ -231,7 +235,7 @@ public class InventoryMasterPage  extends BasePage {
     }
     public void verifyItemSubCatcreation(String expectedTitle) {
         utils.typeText(SEARCH_ITEMSUBCAT, expectedTitle + Keys.ENTER);
-        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemSubCategory_ctl00__0]/td[1]", expectedTitle));
         utils.isElementVisible(locator);
     }
     public void clickActiveItemSubCattoEdit() {
@@ -315,10 +319,62 @@ public class InventoryMasterPage  extends BasePage {
     }
     public void verifyUCcreation(String expectedTitle) {
         utils.typeText(SEARCH_UC, expectedTitle + Keys.ENTER);
-        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdItemType_ctl00__0]/td[1]", expectedTitle));
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdUnitConversion_ctl00__0]/td[5]", expectedTitle));
         utils.isElementVisible(locator);
     }
     public void clickActiveUCtoEdit() {
         utils.click(SEARCH_FIRST_UC_EDIT);
+    }
+    public void clickActiveUCtoDelete() {
+        utils.click(DELETE_FIRST_UC_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyUCDelete(String expectedTitle) {
+        utils.typeText(SEARCH_UC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //Store Group
+    public void clickOnStoreGroup(String clickOnStoreGroup) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='form1']/div[5]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div/a[5]", clickOnStoreGroup));
+            utils.click(locator);
+            System.out.println("Clicked on the Item category: " + clickOnStoreGroup);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Item Category " + clickOnStoreGroup);
+            throw e;
+        }
+    }
+    public void clickOnAddStoreGroup(String btnAddSG) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddSG));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add SG Button: " + btnAddSG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add SG: " + btnAddSG);
+            throw e;
+        }
+    }
+    public void enterStoreGroup(String name) {
+        utils.typeText(STORE_GROUP_NAME, name);
+    }
+    public void userClicksOnSGSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_SG};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifySGcreation(String expectedTitle) {
+        utils.typeText(SEARCH_SG, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grd_StoreGrp_ctl00__0]/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveSGtoEdit() {
+        utils.click(SEARCH_FIRST_SG_EDIT);
     }
 }

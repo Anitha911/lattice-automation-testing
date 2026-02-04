@@ -198,6 +198,11 @@ public class TestDataGenerator {
     public String generateConvFactor() {
         return String.valueOf(random.nextInt(1000000000));
     }
+    //Inventory-Service Group
+    public String generateStoreGroup() {
+        String[] mode = {"tstStoreGrp1", "tstStoreGrp2", "tstStoreGrp3", "tstStoreGrp4", "tstStoreGrp5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
