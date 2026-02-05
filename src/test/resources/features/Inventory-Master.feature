@@ -207,3 +207,114 @@ Feature: Inventory data configuration Module Automation
     Then User clicks on active Store Group in the grid
     Then User clicks on Store Group save button
     Then User verify if the Store Group is created
+
+  @DeleteStoreGroup
+  Scenario: Should be able to Delete Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on active Store Group in the grid to delete
+    Then User verify if the Store Group is deleted
+
+  @ExportToExcelStoreGroup
+  Scenario: Should be able to Export To Excel Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addUOM
+  Scenario: Should be able to add UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @EditUOM
+  Scenario: Should be able to Edit UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+    Then User clicks on active UOM in the grid
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @DeleteUOM
+  Scenario: Should be able to delete UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on active UOM in the grid to delete
+    Then User verify if the UOM is deleted
+
+  @ExportToExcelUOM
+  Scenario: Should be able to Export to Excel UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addSupplierType
+  Scenario: Should be able to add Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @EditSupplierType
+  Scenario: Should be able to Edit Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+    Then User clicks on active Supplier Type in the grid
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @DeleteSupplierType
+  Scenario: Should be able to Delete Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on active Supplier Type in the grid to delete
+    Then User verify if the Supplier Type is deleted
+
+  @ExportToExcelSuppliertype
+  Scenario: Should be able to Export to Excel Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on Inventory Export to Excel button

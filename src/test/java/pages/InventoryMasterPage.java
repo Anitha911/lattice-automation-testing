@@ -39,6 +39,19 @@ public class InventoryMasterPage  extends BasePage {
     public static final By SAVE_BUTTON_SG = By.id("ctl00_ContentPlaceHolder1_RadWinStoreGrp_C_btnStoreGrpSave");
     public static final By SEARCH_SG = By.cssSelector("[alt='Filter StoreGroupName column']");
     public static final By SEARCH_FIRST_SG_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_StoreGrp_ctl00__0");
+    public static final By DELETE_FIRST_SG_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grd_StoreGrp_ctl00_ctl04_imgDelete");
+    public static final By UOM_CODE = By.id("radtxtUnitCode");
+    public static final By UOM_NAME = By.id("radtxtUnitName");
+    public static final By SAVE_BUTTON_UOM = By.id("ctl00_ContentPlaceHolder1_RadWinUnit_C_btnUnitOk");
+    public static final By SEARCH_UOM = By.cssSelector("[alt='Filter idlink column']");
+    public static final By SEARCH_FIRST_UOM_EDIT = By.id("ctl00_ContentPlaceHolder1_grdUOM_ctl00__0");
+    public static final By DELETE_FIRST_UOM_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdUOM_ctl00_ctl04_imgDelete");
+    public static final By SUPPLIER_TYPE = By.id("radtxtSupplierType");
+    public static final By SAVE_BUTTON_SUPPLIERTYPE = By.id("ctl00_ContentPlaceHolder1_RadWinSupplierType_C_btnSupplierTypeOk");
+    public static final By SEARCH_SUPPLIERTYPE = By.cssSelector("[alt='Filter SupplierType_Name column']");
+    public static final By SEARCH_FIRST_ST_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSupplierType_ctl00__0");
+    public static final By DELETE_FIRST_ST_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSupplierType_ctl00_ctl06_imgDelete");
+
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -376,5 +389,125 @@ public class InventoryMasterPage  extends BasePage {
     }
     public void clickActiveSGtoEdit() {
         utils.click(SEARCH_FIRST_SG_EDIT);
+    }
+    public void clickActiveSGtoDelete() {
+        utils.click(DELETE_FIRST_SG_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifySGDelete(String expectedTitle) {
+        utils.typeText(SEARCH_SG, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //UOM
+    public void clickOnUOM(String clickOnUOM) throws InterruptedException {
+        try {
+            //By locator = By.xpath(String.format("/html/body/form/div[6]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[2]/div/a[1]", clickOnUOM));
+            //By locator =   By.xpath(String.format("//*[@id='form1']/div[6]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[2]/div/a[1]",clickOnUOM));
+            By locator=By.xpath(String.format("//a[contains(@href,'SubMenuItemsId=30')]"));
+            utils.click(locator);
+            System.out.println("Clicked on UOM: " + clickOnUOM);
+        } catch (Exception e) {
+            System.out.println("Failed to click on UOM " + clickOnUOM);
+            throw e;
+        }
+    }
+    public void clickOnAddUOM(String btnAddUOM) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddUOM));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add UOM Button: " + btnAddUOM);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add UOM: " + btnAddUOM);
+            throw e;
+        }
+    }
+    public void enterUOMCode(String name) {
+        utils.typeText(UOM_CODE, name);
+    }
+    public void enterUOMName(String name) {
+        utils.typeText(UOM_NAME, name);
+    }
+    public void userClicksOnUOMSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_UOM};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyUOMcreation(String expectedTitle) {
+        utils.typeText(SEARCH_UOM, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdUOM_ctl00__0']/td[1]", expectedTitle));
+
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveUOMtoEdit() {
+        utils.click(SEARCH_FIRST_UOM_EDIT);
+    }
+    public void clickActiveUOMtoDelete() {
+        utils.click(DELETE_FIRST_UOM_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyUOMDelete(String expectedTitle) {
+        utils.typeText(SEARCH_UOM, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //Supplier Type
+    public void clickOnSupplierType(String clickSupplierType) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//a[contains(@href,'SubMenuItemsId=35')]"));
+            utils.click(locator);
+            System.out.println("Clicked on UOM: " + clickSupplierType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on UOM " + clickSupplierType);
+            throw e;
+        }
+    }
+    public void clickOnAddSupplierType(String btnAddSupplierType) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddSupplierType));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add Supplier Type Button: " + btnAddSupplierType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add Supplier Type: " + btnAddSupplierType);
+            throw e;
+        }
+    }
+    public void enterSupplierType(String name) {
+        utils.typeText(SUPPLIER_TYPE, name);
+    }
+    public void userClicksOnSupplierTypeSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_SUPPLIERTYPE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifySupplierTypecreation(String expectedTitle) {
+        utils.typeText(SEARCH_SUPPLIERTYPE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdSupplierType_ctl00__0]/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveSTtoEdit() {
+        utils.click(SEARCH_FIRST_ST_EDIT);
+    }
+    public void clickActiveSTtoDelete() {
+        utils.click(DELETE_FIRST_ST_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifySTDelete(String expectedTitle) {
+        utils.typeText(SEARCH_SUPPLIERTYPE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
     }
 }

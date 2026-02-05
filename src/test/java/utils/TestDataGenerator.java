@@ -203,7 +203,21 @@ public class TestDataGenerator {
         String[] mode = {"tstStoreGrp1", "tstStoreGrp2", "tstStoreGrp3", "tstStoreGrp4", "tstStoreGrp5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
-
+    //Inventory UOM code
+    public String generateUOMCode() {
+        String[] mode = {"tsUOM1", "tsUOM2", "tsUOM3", "tsUOM4", "tsUOM5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    //Inventory UOM Name
+    public String generateUOMName() {
+        String[] mode = {"tstUOMName1", "tstUOMName2", "tstUOMName3", "tstUOMName4", "tstUOMName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    //Inventory SupplierType
+    public String generateSupplierType() {
+        String[] mode = {"tstSupplerType1", "tstSupplerType2", "tstSupplerType3", "tstSupplerType4", "tstSupplerType5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);

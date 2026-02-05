@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.InventoryMasterPage;
 import utils.DriverFactory;
@@ -19,6 +20,9 @@ public class InventoryMasterPageSteps {
         public static String generateItemSubCatName;
         public static String generateConvFactor;
         public static String generateStoreGroup;
+        public static String generateUOMCode;
+        public static String generateUOMName;
+        public static String generateSupplierType;
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -222,5 +226,87 @@ public class InventoryMasterPageSteps {
     @Then("User clicks on active Store Group in the grid")
     public void user_clicks_on_first_active_SG_to_edit() {
         tmp.clickActiveSGtoEdit();
+    }
+    @Then("User clicks on active Store Group in the grid to delete")
+    public void user_clicks_on_first_active_SG_to_delete() {
+        tmp.clickActiveSGtoDelete();
+    }
+    @Then("User verify if the Store Group is deleted")
+    public void user_Verify_first_active_SG_to_delete() {
+        tmp.verifySGDelete(generateStoreGroup);
+    }
+    //UOM
+    @Then ("User clicks on the Inventory master UOM {string} in side menu")
+    public void user_click_on_Store_UOM(String title) throws InterruptedException {
+        //String xpath = "//*[@id='form1']/div[6]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[2]/div/a[1]";
+        //String xpath="/html/body/form/div[6]/div/div[2]/div[1]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[2]/div/a[1]";
+       String xpath="//a[contains(@href,'SubMenuItemsId=30')]";
+       tmp.clickOnUOM(xpath);
+    }
+    @Then("User clicks on button UOM add {string}")
+    public void user_click_on_UOMAdd(String btnAddUOM) throws InterruptedException {
+        tmp.clickOnAddUOM(btnAddUOM);
+    }
+    @Then("User fills up the {string} UOM details")
+    public void user_fills_up_UOM(String type) throws IOException {
+        generateUOMCode = dataGen.generateUOMCode();
+        tmp.enterUOMCode(generateUOMCode);
+        generateUOMName = dataGen.generateUOMName();
+        tmp.enterUOMName(generateUOMName);
+    }
+    @Then("User clicks on UOM save button")
+    public void userClicksOnUOMSaveButton() {
+        tmp.userClicksOnUOMSaveButton();
+    }
+    @Then ("User verify if the UOM is created")
+    public void userVerifyIfUOMIsCreated() throws InterruptedException {
+        tmp.verifyUOMcreation(generateUOMCode);
+    }
+    @Then("User clicks on active UOM in the grid")
+    public void user_clicks_on_first_active_UOM_to_edit() {
+        tmp.clickActiveUOMtoEdit();
+    }
+    @Then("User clicks on active UOM in the grid to delete")
+    public void user_clicks_on_first_active_UOM_to_delete() {
+        tmp.clickActiveUOMtoDelete();
+    }
+    @Then("User verify if the UOM is deleted")
+    public void user_Verify_first_active_UOM_to_delete() {
+        tmp.verifyUOMDelete(generateUOMCode);
+    }
+    //Supplier Type
+    @Then ("User clicks on the Inventory master Supplier Type {string} in side menu")
+    public void user_click_on_Supplier_Type(String title) throws InterruptedException {
+        String xpath="//a[contains(@href,'SubMenuItemsId=35')]";
+        tmp.clickOnSupplierType(xpath);
+    }
+    @Then("User clicks on button Supplier Type add {string}")
+    public void user_click_on_SupplierTypeAdd(String btnAddSupplierType) throws InterruptedException {
+        tmp.clickOnAddSupplierType(btnAddSupplierType);
+    }
+    @Then("User fills up the {string} Supplier Type details")
+    public void user_fills_up_SupplierType(String type) throws IOException {
+        generateSupplierType = dataGen.generateSupplierType();
+        tmp.enterSupplierType(generateSupplierType);
+    }
+    @Then("User clicks on Supplier Type save button")
+    public void userClicksOnSupplierTypeSaveButton() {
+        tmp.userClicksOnSupplierTypeSaveButton();
+    }
+    @Then ("User verify if the Supplier Type is created")
+    public void userVerifyIfSupplierTypeIsCreated() throws InterruptedException {
+        tmp.verifySupplierTypecreation(generateSupplierType);
+    }
+    @Then("User clicks on active Supplier Type in the grid")
+    public void user_clicks_on_first_active_ST_to_edit() {
+        tmp.clickActiveSTtoEdit();
+    }
+    @Then("User clicks on active Supplier Type in the grid to delete")
+    public void user_clicks_on_first_active_ST_to_delete() {
+        tmp.clickActiveSTtoDelete();
+    }
+    @Then("User verify if the Supplier Type is deleted")
+    public void user_Verify_first_active_ST_to_delete() {
+        tmp.verifySTDelete(generateSupplierType);
     }
 }
