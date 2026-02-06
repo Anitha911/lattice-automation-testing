@@ -228,8 +228,11 @@ public class TestDataGenerator {
         String[] mode = {"tstARDes1", "tstARDesc2", "tstARDesc3", "tstARDesc4", "tstARDesc5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
-
-
+    //RM Master-SG
+    public String generateSGName() {
+        String[] mode = {"tstSGDes1", "tstSGDesc2", "tstSGDesc3", "tstSGDesc4", "tstSGDesc5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
