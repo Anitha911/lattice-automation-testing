@@ -23,6 +23,9 @@ public class InventoryMasterPageSteps {
         public static String generateUOMCode;
         public static String generateUOMName;
         public static String generateSupplierType;
+        public static String generateActionReason;
+        public static String generateActionReasonDesc;
+
 
     @Then("User clicks on Inventory {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -308,5 +311,43 @@ public class InventoryMasterPageSteps {
     @Then("User verify if the Supplier Type is deleted")
     public void user_Verify_first_active_ST_to_delete() {
         tmp.verifySTDelete(generateSupplierType);
+    }
+    //Action Reasons
+    @Then ("User clicks on the Inventory master Action Reasons {string} in side menu")
+    public void user_click_on_Action_Reasons(String title) throws InterruptedException {
+        String xpath="//a[contains(@href,'SubMenuItemsId=94')]";
+        tmp.clickOnActionReasons(xpath);
+    }
+    @Then("User clicks on button Action Reasons add {string}")
+    public void user_click_on_ActionReason(String btnAddActionReasons) throws InterruptedException {
+        tmp.clickOnAddActionReasons(btnAddActionReasons);
+    }
+    @Then("User fills up the {string} Action Reasons details")
+    public void user_fills_up_AR(String type) throws IOException {
+        tmp.selectReasonType("Purchase Return Reason");
+        generateActionReason = dataGen.generateActionReason();
+        tmp.enterActionReason(generateActionReason);
+        generateActionReasonDesc = dataGen.generateActionReasondesc();
+        tmp.enterActionReasonDesc(generateActionReasonDesc);
+    }
+    @Then("User clicks on Action Reasons save button")
+    public void userClicksOnARSaveButton() {
+        tmp.userClicksOnARSaveButton();
+    }
+    @Then ("User verify if the Action Reasons is created")
+    public void userVerifyIfARIsCreated() throws InterruptedException {
+        tmp.verifyARcreation(generateActionReason);
+    }
+    @Then("User clicks on active Action Reasons in the grid")
+    public void user_clicks_on_first_active_AR_to_edit() {
+        tmp.clickActiveATtoEdit();
+    }
+    @Then("User clicks on active Action Reasons in the grid to delete")
+    public void user_clicks_on_first_active_AR_to_delete() {
+        tmp.clickActiveARtoDelete();
+    }
+    @Then("User verify if the Action Reasons is deleted")
+    public void user_Verify_first_active_AR_to_delete() {
+        tmp.verifyARDelete(generateActionReason);
     }
 }

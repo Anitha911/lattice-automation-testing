@@ -218,6 +218,19 @@ public class TestDataGenerator {
         String[] mode = {"tstSupplerType1", "tstSupplerType2", "tstSupplerType3", "tstSupplerType4", "tstSupplerType5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //Inventory-Action Reason
+    public String generateActionReason() {
+        String[] mode = {"tstAR1", "tstAR2", "tstAR3", "tstAR4", "tstAR5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    //Inventory-Action Reason Desc
+    public String generateActionReasondesc() {
+        String[] mode = {"tstARDes1", "tstARDesc2", "tstARDesc3", "tstARDesc4", "tstARDesc5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
+
+
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);

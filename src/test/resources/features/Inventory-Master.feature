@@ -318,3 +318,49 @@ Feature: Inventory data configuration Module Automation
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master Supplier Type 'string' in side menu
     Then User clicks on Inventory Export to Excel button
+
+  @addActionReasons
+  Scenario: Should be able to add Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @EditActionReasons
+  Scenario: Should be able to Edit Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+    Then User clicks on active Action Reasons in the grid
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @DeleteActionReasons
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on active Action Reasons in the grid to delete
+    Then User verify if the Action Reasons is deleted
+
+  @ExportToExcelActionReasons
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on Inventory Export to Excel button

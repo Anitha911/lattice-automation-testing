@@ -51,12 +51,17 @@ public class InventoryMasterPage  extends BasePage {
     public static final By SEARCH_SUPPLIERTYPE = By.cssSelector("[alt='Filter SupplierType_Name column']");
     public static final By SEARCH_FIRST_ST_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSupplierType_ctl00__0");
     public static final By DELETE_FIRST_ST_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSupplierType_ctl00_ctl06_imgDelete");
+    public static final By ACTIONREASON_NAME = By.id("radtxtReason");
+    public static final By ACTIONREASONDESC_NAME = By.id("RadtxtReasonDescription");
+    public static final By REASON_TYPE_DD = By.cssSelector("[value='Select Reason Type']");
+    public static final By SAVE_BUTTON_AR = By.id("ctl00_ContentPlaceHolder1_RadWinReason_C_btnReasonSave");
+    public static final By SEARCH_AR = By.cssSelector("[alt='Filter ReasonName column']");
+    public static final By SEARCH_FIRST_AR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdReasons_ctl00__0");
+    public static final By DELETE_FIRST_AR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdReasons_ctl00_ctl04_imgDelete");
 
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
-            //By locator = By.xpath(String.format("//*[@class='nav-link active' and @id='10']", dataConfiguration));
-            //By locator = By.xpath(String.format("//a[contains(@class, 'nav-link active') and @id='10']", dataConfiguration));
             By locator = By.id("10");
             utils.click(locator);
             System.out.println("Clicked on the Data Config: " + dataConfiguration);
@@ -510,4 +515,71 @@ public class InventoryMasterPage  extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
+    //Action Reasons
+    public void clickOnActionReasons(String clickActionReasons) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//a[contains(@href,'SubMenuItemsId=94')]"));
+            utils.click(locator);
+            System.out.println("Clicked on Action Reasons: " + clickActionReasons);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Action Reasons " + clickActionReasons);
+            throw e;
+        }
+    }
+    public void clickOnAddActionReasons(String btnAddAR) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddAR));
+            utils.click(locator);
+            System.out.println("Clicked on the Inventory Add Action Reason Button: " + btnAddAR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Inventory Add Action Reason: " + btnAddAR);
+            throw e;
+        }
+    }
+    public void enterActionReason(String name) {
+        utils.typeText(ACTIONREASON_NAME, name);
+    }
+    public void enterActionReasonDesc(String name) {
+        utils.typeText(ACTIONREASONDESC_NAME, name);
+    }
+    public void selectReasonType(String InvenReasonType) {
+        try {
+            utils.click(REASON_TYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", InvenReasonType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + InvenReasonType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + InvenReasonType);
+            throw e;
+        }
+    }
+    public void userClicksOnARSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_AR};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyARcreation(String expectedTitle) {
+        utils.typeText(SEARCH_AR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdReasons_ctl00__0]/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveATtoEdit() {
+        utils.click(SEARCH_FIRST_AR_EDIT);
+    }
+    public void clickActiveARtoDelete() {
+        utils.click(DELETE_FIRST_AR_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyARDelete(String expectedTitle) {
+        utils.typeText(SEARCH_AR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+
 }
