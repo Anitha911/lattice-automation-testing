@@ -118,7 +118,6 @@ public class InventoryMasterPage  extends BasePage {
 
     public void clickActiveItemTypetoDelete() {
         utils.click(DELETE_FIRST_ITEM_TYPE_IN_LIST);
-        //driver.switchTo().activeElement();
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }

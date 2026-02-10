@@ -14,6 +14,14 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SAVE_BUTTON_SG = By.id("ctl00_ContentPlaceHolder1_RadWinServiceGrp_C_btnServGrp");
     public static final By SEARCH_SG = By.cssSelector("[alt='Filter ServiceGroupName column']");
     public static final By SEARCH_FIRST_SG_EDIT = By.id("ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00__0");
+    public static final By DELETE_FIRST_SG_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00_ctl04_ImageButton1");
+
+    public static final By FC_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinTask_C_radtxtTask");
+    public static final By FC_DEPT_DD = By.cssSelector("[value='Select Service Group']");
+    public static final By SAVE_BUTTON_FC = By.id("ctl00_ContentPlaceHolder1_RadWinTask_C_btnTaskOK");
+    public static final By SEARCH_FC = By.cssSelector("[alt='Filter TaskName column']");
+    public static final By SEARCH_FIRST_FC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00__0");
+    public static final By DELETE_FIRST_FC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00_ctl04_ImageButton1");
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -75,5 +83,88 @@ public class ReactiveServiceMasterPage extends BasePage {
     }
     public void clickActiveSGtoEdit() {
         utils.click(SEARCH_FIRST_SG_EDIT);
+    }
+    public void clickActiveSGtoDelete() {
+        utils.click(DELETE_FIRST_SG_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifySGDelete(String expectedTitle) {
+        utils.typeText(SEARCH_SG, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    public void RMExportToExcel(String clickOnExporttoExcelRM) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelRM));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Service Group Button: " + clickOnExporttoExcelRM);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Service Group Button: " + clickOnExporttoExcelRM);
+            throw e;
+        }
+    }
+    //Fault Category
+    public void clickOnCoremastersRM_FC(String clickOnCoremastersRMFC) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[2]", clickOnCoremastersRMFC));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Fault Category: " + clickOnCoremastersRMFC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Fault Category: " + clickOnCoremastersRMFC);
+            throw e;
+        }
+    }
+    public void clickOnAddFC(String btnAddFC) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddFC));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add Fault Category Button: " + btnAddFC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Fault Category Button: " + btnAddFC);
+            throw e;
+        }
+    }
+    public void enterFCName(String name) {
+        utils.typeText(FC_NAME, name);
+    }
+    public void selectFC(String FCSG) {
+        try {
+            utils.click(FC_DEPT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCSG));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + FCSG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + FCSG);
+            throw e;
+        }
+    }
+    public void userClicksOnFCSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_FC};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyFCcreation(String expectedTitle) {
+        utils.typeText(SEARCH_FC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdTask_ctl00__0']/td[2]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveFCtoEdit() {
+        utils.click(SEARCH_FIRST_FC_EDIT);
+    }
+    public void clickActiveFCtoDelete() {
+        utils.click(DELETE_FIRST_FC_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyFCDelete(String expectedTitle) {
+        utils.typeText(SEARCH_FC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
     }
 }
