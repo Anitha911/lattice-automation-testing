@@ -88,3 +88,34 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Fault Category 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @addFaultCode
+  Scenario: Should be able to add Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on button Fault Code add 'Add'
+    Then User fills up the 'Fault Code' Fault Code details
+    Then User clicks on Fault Code save button
+    Then User verify if the Fault Code is created
+
+  @DeleteFaultCode
+  Scenario: Should be able to add Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on active Fault Code in the grid to delete
+    Then User verify if the Fault Code is deleted
+
+  @ExportToExcelFaultCode
+  Scenario: Should be able to add Fault Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on RM Export to Excel button

@@ -238,6 +238,12 @@ public class TestDataGenerator {
         String[] mode = {"tstFCDes1", "tstFCDes2", "tstFCDes3", "tstFCDes4", "tstFCDes5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-Fault Code
+    public String generateFCodeName() {
+        String[] mode = {"tstFCodeDes1", "tstFCodeDes2", "tstFCodeDes3", "tstFCodeDes4", "tstFCodeDes5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
 
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};

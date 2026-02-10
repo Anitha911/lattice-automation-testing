@@ -22,6 +22,16 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FC = By.cssSelector("[alt='Filter TaskName column']");
     public static final By SEARCH_FIRST_FC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00__0");
     public static final By DELETE_FIRST_FC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00_ctl04_ImageButton1");
+
+    public static final By FCODE_NAME = By.id("radtxtSubTask");
+    public static final By FCODE_SG_DD = By.cssSelector("[value='Select Service Group']");
+    public static final By FCODE_FC_DD = By.cssSelector("[value='Select Fault Category']");
+    public static final By FCODE_WOTYPE_DD = By.cssSelector("[value='Select Work Order Type']");
+    public static final By FCODE_RCA_DD = By.cssSelector("[value='Select Root Cause Applicability']");
+    public static final By SAVE_BUTTON_FCODE = By.id("ctl00_ContentPlaceHolder1_RadWinSubTask_C_btnSubTask");
+    public static final By SEARCH_FCODE = By.cssSelector("[alt='Filter SubTaskName column']");
+    public static final By DELETE_FIRST_FCODE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSubTask_ctl00_ctl04_ImageButton1");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -167,4 +177,98 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
+    //Fault Code
+    public void clickOnCoremastersRM_FCode(String clickOnCoremastersRMFCode) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[3]", clickOnCoremastersRMFCode));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Fault Code: " + clickOnCoremastersRMFCode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Fault Code: " + clickOnCoremastersRMFCode);
+            throw e;
+        }
+    }
+    public void clickOnAddFCode(String btnAddFCode) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddFCode));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add Fault Code Button: " + btnAddFCode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Fault Code Button: " + btnAddFCode);
+            throw e;
+        }
+    }
+    public void enterFCodeName(String name) {
+        utils.typeText(FCODE_NAME, name);
+    }
+    public void selectFaultCodeSG(String FCodeSG) {
+        try {
+            utils.click(FCODE_SG_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeSG));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + FCodeSG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + FCodeSG);
+            throw e;
+        }
+    }
+    public void selectFaultCodeFC(String FCodeFC) {
+        try {
+            utils.click(FCODE_FC_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeFC));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + FCodeFC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + FCodeFC);
+            throw e;
+        }
+    }
+    public void selectFaultCodeWOType(String FCodeWOType) {
+        try {
+            utils.click(FCODE_WOTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeWOType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + FCodeWOType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + FCodeWOType);
+            throw e;
+        }
+    }
+    public void selectFaultCodeRCA(String FCodeRCA) {
+        try {
+            utils.click(FCODE_RCA_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeRCA));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + FCodeRCA);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + FCodeRCA);
+            throw e;
+        }
+    }
+    public void userClicksOnFCodeSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_FCODE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyFCodecreation(String expectedTitle) {
+        utils.typeText(SEARCH_FCODE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSubTask_ctl00__0']/td[2]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveFCodetoDelete() {
+        utils.click(DELETE_FIRST_FCODE_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyFCodeDelete(String expectedTitle) {
+        utils.typeText(SEARCH_FCODE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+
 }

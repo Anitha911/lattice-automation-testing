@@ -14,6 +14,7 @@ public class ReactiveServiceMasterSteps {
     TestDataGenerator dataGen = new TestDataGenerator();
     public static String generateSG;
     public static String generateFC;
+    public static String generateFCode;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -98,6 +99,42 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the Fault Category is deleted")
     public void user_Verify_first_active_FC_to_delete() {
         tmp.verifyFCDelete(generateFC);
+    }
+    //Fault Code
+    @Then("User clicks on the Core masters RM Fault Code {string} tab")
+    public void user_click_on_core_masters_RM_FCode(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[3]";
+        tmp.clickOnCoremastersRM_FCode(xpath);
+    }
+    @Then("User clicks on button Fault Code add {string}")
+    public void user_click_on_FCodeAdd(String btnAddFCode) throws InterruptedException {
+        tmp.clickOnAddFCode(btnAddFCode);
+    }
+
+    @Then("User fills up the {string} Fault Code details")
+    public void user_fills_up_the_FCode(String type) throws IOException {
+        generateFCode = dataGen.generateFCodeName();
+        tmp.enterFCodeName(generateFCode);
+        tmp.selectFaultCodeSG("Carpentry");
+        tmp.selectFaultCodeFC("Carpentry");
+        tmp.selectFaultCodeWOType("Reactive Maintenance");
+        tmp.selectFaultCodeRCA("Mandatory");
+    }
+    @Then("User clicks on Fault Code save button")
+    public void userClicksOnFCodeSaveButton() {
+        tmp.userClicksOnFCodeSaveButton();
+    }
+    @Then ("User verify if the Fault Code is created")
+    public void userVerifyIfTheFCodeIsCreated() throws InterruptedException {
+        tmp.verifyFCodecreation(generateFCode);
+    }
+    @Then("User clicks on active Fault Code in the grid to delete")
+    public void user_clicks_on_first_active_FCode_to_delete() {
+        tmp.clickActiveFCodetoDelete();
+    }
+    @Then("User verify if the Fault Code is deleted")
+    public void user_Verify_first_active_FCode_to_delete() {
+        tmp.verifyFCodeDelete(generateFCode);
     }
 }
 
