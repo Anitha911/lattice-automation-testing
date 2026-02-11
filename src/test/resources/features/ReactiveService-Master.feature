@@ -112,10 +112,68 @@ Feature: Reactive Service data a configuration Module Automation
     Then User verify if the Fault Code is deleted
 
   @ExportToExcelFaultCode
-  Scenario: Should be able to add Fault Category
+  Scenario: Should be able to Export to excel Fault Code
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on RM 'Data configuration' in side menu
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Fault Code 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @addFaultPriority
+  Scenario: Should be able to add Fault Priority
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Priority 'string' tab
+    Then User clicks on button Fault Priority add 'Add'
+    Then User fills up the 'Fault Priority' Fault Priority details
+    Then User clicks on Fault Priority save button
+    Then User verify if the Fault Priority is created
+
+  @EditFaultPriority
+  Scenario: Should be able to Edit Fault Priority
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Priority 'string' tab
+    Then User clicks on button Fault Priority add 'Add'
+    Then User fills up the 'Fault Priority' Fault Priority details
+    Then User clicks on Fault Priority save button
+    Then User verify if the Fault Priority is created
+    Then User clicks on active Fault Priority in the grid
+    Then User clicks on Fault Priority save button
+    Then User verify if the Fault Priority is created
+
+  @DeleteFaultPriority
+  Scenario: Should be able to Edit Fault Priority
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Priority 'string' tab
+    Then User clicks on active Fault Priority in the grid to delete
+    Then User verify if the Fault Priority is deleted
+
+  @ExportToExcelFaultPriority
+  Scenario: Should be able to Export to excel Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Priority 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @addWOSource
+  Scenario: Should be able to add Fault Priority
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on button WO Source add 'Add'
+    Then User fills up the 'WO Source' WO Source details
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created

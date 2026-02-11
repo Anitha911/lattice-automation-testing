@@ -32,6 +32,18 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FCODE = By.cssSelector("[alt='Filter SubTaskName column']");
     public static final By DELETE_FIRST_FCODE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSubTask_ctl00_ctl04_ImageButton1");
 
+    public static final By PRIORITY_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_radtxtPriority");
+    public static final By PRIORITY_NOTES = By.id("radtxtNotes");
+    public static final By PRIORITY_STATUS=By.id("ctl00_ContentPlaceHolder1_ctl00_ContentPlaceHolder1_RadWinPriority_C_rbPriorityActivePanel");
+    public static final By SAVE_BUTTON_PRIORITY = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_btnPriSave");
+    public static final By SEARCH_PRIORITY = By.cssSelector("[alt='Filter PriorityName column']");
+    public static final By SEARCH_FIRST_PRIORITY_EDIT = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00__0");
+    public static final By DELETE_FIRST_PRIORITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00_ctl04_imgDelete");
+
+    public static final By WOSOURCE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_radtxtWOSourceName");
+    public static final By SAVE_BUTTON_WOSOURCE = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_btnWOSourceOk");
+    public static final By SEARCH_WOSOURCE = By.cssSelector("[alt='Filter WorkOrderSourceName column']");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -270,5 +282,101 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
-
+    //Priority
+    public void clickOnCoremastersRM_Priority(String clickOnCoremastersRMPriority) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[4]", clickOnCoremastersRMPriority));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Fault Code: " + clickOnCoremastersRMPriority);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Fault Code: " + clickOnCoremastersRMPriority);
+            throw e;
+        }
+    }
+    public void clickOnAddPriority(String btnAddPriority) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddPriority));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add Priority Button: " + btnAddPriority);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Priority Button: " + btnAddPriority);
+            throw e;
+        }
+    }
+    public void enterPriorityName(String name) {
+        utils.typeText(PRIORITY_NAME, name);
+    }
+    public void enterPriorityNotes(String name) {
+        utils.typeText(PRIORITY_NOTES, name);
+    }
+    public void SelectActiveCheckbox() {
+        utils.click(PRIORITY_STATUS);
+    }
+    public void userClicksPrioritySaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_PRIORITY};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyPrioritycreation(String expectedTitle) {
+        utils.typeText(SEARCH_PRIORITY, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdPriority_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActivePrioritytoEdit() {
+        utils.click(SEARCH_FIRST_PRIORITY_EDIT);
+    }
+    public void clickActivePrioritytoDelete() {
+        utils.click(DELETE_FIRST_PRIORITY_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyPriorityDelete(String expectedTitle) {
+        utils.typeText(SEARCH_PRIORITY, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //WO SOurce
+    public void clickOnCoremastersRM_WOSource(String clickOnCoremastersRMWOSource) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[5]", clickOnCoremastersRMWOSource));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM WO Source: " + clickOnCoremastersRMWOSource);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM WO Source: " + clickOnCoremastersRMWOSource);
+            throw e;
+        }
+    }
+    public void clickOnAddWOSource(String btnAddWOSource) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddWOSource));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add WO Source Button: " + btnAddWOSource);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM WO Source Button: " + btnAddWOSource);
+            throw e;
+        }
+    }
+    public void enterWOSourceName(String name) {
+        utils.typeText(WOSOURCE_NAME, name);
+    }
+    public void userClicksWOSourceSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_WOSOURCE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyWOSourcecreation(String expectedTitle) {
+        utils.typeText(SEARCH_WOSOURCE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
 }

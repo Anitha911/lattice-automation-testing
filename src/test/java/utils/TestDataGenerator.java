@@ -243,6 +243,20 @@ public class TestDataGenerator {
         String[] mode = {"tstFCodeDes1", "tstFCodeDes2", "tstFCodeDes3", "tstFCodeDes4", "tstFCodeDes5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-Fault Priority
+    public String generatePriorityName() {
+        String[] mode = {"tstP1", "tstP2", "tstP3", "tstP4", "tstP5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generatePriorityNote() {
+        String[] mode = {"tstPNote1", "tstPNote2", "tstPNote3", "tstPNote4", "tstPNote5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    //RM Master-WO Source
+    public String generateWOSourceName() {
+        String[] mode = {"tstWOS1", "tstWOS2", "tstWOS3", "tstWOS4", "tstWOS5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
     public String generateCompanyType() {

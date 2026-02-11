@@ -15,6 +15,9 @@ public class ReactiveServiceMasterSteps {
     public static String generateSG;
     public static String generateFC;
     public static String generateFCode;
+    public static String generatePriority;
+    public static String generatePriorityNote;
+    public static String generateWOSourceName;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -135,6 +138,67 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the Fault Code is deleted")
     public void user_Verify_first_active_FCode_to_delete() {
         tmp.verifyFCodeDelete(generateFCode);
+    }
+    //Priority
+    @Then("User clicks on the Core masters RM Fault Priority {string} tab")
+    public void user_click_on_core_masters_RM_Priority(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[4]";
+        tmp.clickOnCoremastersRM_Priority(xpath);
+    }
+    @Then("User clicks on button Fault Priority add {string}")
+    public void user_click_on_PriorityAdd(String btnAddPriority) throws InterruptedException {
+        tmp.clickOnAddPriority(btnAddPriority);
+    }
+    @Then("User fills up the {string} Fault Priority details")
+    public void user_fills_up_the_Priority(String type) throws IOException {
+        generatePriority = dataGen.generatePriorityName();
+        tmp.enterPriorityName(generatePriority);
+        generatePriorityNote = dataGen.generatePriorityNote();
+        tmp.enterPriorityNotes(generatePriorityNote);
+        tmp.SelectActiveCheckbox();
+    }
+    @Then("User clicks on Fault Priority save button")
+    public void userClicksPrioritySaveButton() {
+        tmp.userClicksPrioritySaveButton();
+    }
+    @Then ("User verify if the Fault Priority is created")
+    public void userVerifyIfTFCodeIsCreated() throws InterruptedException {
+        tmp.verifyPrioritycreation(generatePriority);
+    }
+    @Then("User clicks on active Fault Priority in the grid")
+    public void user_clicks_on_first_active_Priority_to_edit() {
+        tmp.clickActivePrioritytoEdit();
+    }
+    @Then("User clicks on active Fault Priority in the grid to delete")
+    public void user_clicks_on_first_active_Priority_to_delete() {
+        tmp.clickActivePrioritytoDelete();
+    }
+    @Then("User verify if the Fault Priority is deleted")
+    public void user_Verify_first_active_Priority_to_delete() {
+        tmp.verifyPriorityDelete(generatePriority);
+    }
+    //WO Source
+    @Then("User clicks on the Core masters RM WO Source {string} tab")
+    public void user_click_on_core_masters_RM_WOSource(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[5]";
+        tmp.clickOnCoremastersRM_WOSource(xpath);
+    }
+    @Then("User clicks on button WO Source add {string}")
+    public void user_click_on_WOSourceAdd(String btnAddWOSource) throws InterruptedException {
+        tmp.clickOnAddWOSource(btnAddWOSource);
+    }
+    @Then("User fills up the {string} WO Source details")
+    public void user_fills_up_the_WOSource(String type) throws IOException {
+        generateWOSourceName = dataGen.generateWOSourceName();
+        tmp.enterWOSourceName(generateWOSourceName);
+    }
+    @Then("User clicks on WO Source save button")
+    public void userClicksWOSourceSaveButton() {
+        tmp.userClicksWOSourceSaveButton();
+    }
+    @Then ("User verify if the WO Source is created")
+    public void userVerifyIfWOSourceIsCreated() throws InterruptedException {
+        tmp.verifyWOSourcecreation(generateWOSourceName);
     }
 }
 
