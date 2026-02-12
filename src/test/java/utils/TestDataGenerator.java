@@ -257,6 +257,12 @@ public class TestDataGenerator {
         String[] mode = {"tstWOS1", "tstWOS2", "tstWOS3", "tstWOS4", "tstWOS5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-RC Name
+    public String generateRCName() {
+        String[] mode = {"tstRC1", "tstRC2", "tstRC3", "tstRC4", "tstRC5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
 
 
     public String generateCompanyType() {

@@ -211,3 +211,49 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM WO Source 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @addRootCause
+  Scenario: Should be able to add Root Cause
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on button Root Cause add 'Add'
+    Then User fills up the 'Root Cause' Root Cause details
+    Then User clicks on RC save button
+    Then User verify if the RC is created
+
+  @EditRootCause
+  Scenario: Should be able to Edit Root Cause
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on button Root Cause add 'Add'
+    Then User fills up the 'Root Cause' Root Cause details
+    Then User clicks on RC save button
+    Then User verify if the RC is created
+    Then User clicks on active RC in the grid
+    Then User clicks on RC save button
+    Then User verify if the RC is created
+
+  @DeleteRootCause
+  Scenario: Should be able to Delete Root Cause
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on active RM Root Cause in the grid to delete
+    Then User verify if the RM Root Cause is deleted
+
+  @ExportToExcelRC
+  Scenario: Should be able to Export to excel Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on RM Export to Excel button

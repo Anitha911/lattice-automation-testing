@@ -18,6 +18,7 @@ public class ReactiveServiceMasterSteps {
     public static String generatePriority;
     public static String generatePriorityNote;
     public static String generateWOSourceName;
+    public static String generateRCName;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -212,6 +213,41 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_WOSource_todelete() {
         tmp.verifyWOSourceDelete(generateWOSourceName);
     }
-
+    //Root Cause
+    @Then("User clicks on the Core masters RM Root Cause {string} tab")
+    public void user_click_on_core_masters_RM_RC(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[6]";
+        tmp.clickOnCoremastersRM_RC(xpath);
+    }
+    @Then("User clicks on button Root Cause add {string}")
+    public void user_click_on_RCAdd(String btnAddRC) throws InterruptedException {
+        tmp.clickOnAddRC(btnAddRC);
+    }
+    @Then("User fills up the {string} Root Cause details")
+    public void user_fills_up_the_RC(String type) throws IOException {
+        generateRCName = dataGen.generateRCName();
+        tmp.enterRCName(generateRCName);
+        tmp.SelectGenericCheckBox();
+    }
+    @Then("User clicks on RC save button")
+    public void userClicksRCSaveButton() {
+        tmp.userClicksRCSaveButton();
+    }
+    @Then ("User verify if the RC is created")
+    public void userVerifyIfRCIsCreated() throws InterruptedException {
+        tmp.verifyRCcreation(generateRCName);
+    }
+    @Then("User clicks on active RC in the grid")
+    public void user_clicks_on_first_active_RC_to_edit() {
+        tmp.clickActiveRCtoEdit();
+    }
+    @Then("User clicks on active RM Root Cause in the grid to delete")
+    public void user_clicks_on_first_active_RC_to_delete() {
+        tmp.clickActiveRCtoDelete();
+    }
+    @Then("User verify if the RM Root Cause is deleted")
+    public void user_Verify_first_active_RC_todelete() {
+        tmp.verifyRCDelete(generateRCName);
+    }
 }
 

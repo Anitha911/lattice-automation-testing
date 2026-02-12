@@ -46,6 +46,13 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FIRST_WOSOURCE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00__0");
     public static final By DELETE_FIRST_WOSOURCE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00_ctl04_ImageButton1");
 
+    public static final By RC_NAME = By.id("radtxtRootCause");
+    public static final By GENERIC_CHECKBOX=By.id("ctl00_ContentPlaceHolder1_RadWinRootCause_C_rdbRootCause_ctl03");
+    public static final By SAVE_BUTTON_RC = By.id("ctl00_ContentPlaceHolder1_RadWinRootCause_C_btnRootCauseOk");
+    public static final By SEARCH_RC = By.cssSelector("[alt='Filter Cause column']");
+    public static final By SEARCH_FIRST_RC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdRootCause_ctl00__0");
+    public static final By DELETE_FIRST_RC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdRootCause_ctl00_ctl04_ImageButton1");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -391,6 +398,61 @@ public class ReactiveServiceMasterPage extends BasePage {
     }
     public void verifyWOSourceDelete(String expectedTitle) {
         utils.typeText(SEARCH_WOSOURCE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //Root Cause
+    public void clickOnCoremastersRM_RC(String clickOnCoremastersRM_RC) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[6]", clickOnCoremastersRM_RC));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM WO Source: " + clickOnCoremastersRM_RC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM WO Source: " + clickOnCoremastersRM_RC);
+            throw e;
+        }
+    }
+    public void clickOnAddRC(String btnAddRC) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddRC));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add Root Cause Button: " + btnAddRC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add Root Cause: " + btnAddRC);
+            throw e;
+        }
+    }
+    public void enterRCName(String name) {
+        utils.typeText(RC_NAME, name);
+    }
+    public void SelectGenericCheckBox() {
+        utils.click(GENERIC_CHECKBOX);
+    }
+    public void userClicksRCSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_RC};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyRCcreation(String expectedTitle) {
+        utils.typeText(SEARCH_RC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdRootCause_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveRCtoEdit() {
+        utils.click(SEARCH_FIRST_RC_EDIT);
+    }
+    public void clickActiveRCtoDelete() {
+        utils.click(DELETE_FIRST_RC_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyRCDelete(String expectedTitle) {
+        utils.typeText(SEARCH_RC, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
