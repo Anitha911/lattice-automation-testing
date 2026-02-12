@@ -43,6 +43,8 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By WOSOURCE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_radtxtWOSourceName");
     public static final By SAVE_BUTTON_WOSOURCE = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_btnWOSourceOk");
     public static final By SEARCH_WOSOURCE = By.cssSelector("[alt='Filter WorkOrderSourceName column']");
+    public static final By SEARCH_FIRST_WOSOURCE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00__0");
+    public static final By DELETE_FIRST_WOSOURCE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00_ctl04_ImageButton1");
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -377,6 +379,19 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void verifyWOSourcecreation(String expectedTitle) {
         utils.typeText(SEARCH_WOSOURCE, expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdWorkOrderSource_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveWOSourcetoEdit() {
+        utils.click(SEARCH_FIRST_WOSOURCE_EDIT);
+    }
+    public void clickActiveWOSourcetoDelete() {
+        utils.click(DELETE_FIRST_WOSOURCE_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyWOSourceDelete(String expectedTitle) {
+        utils.typeText(SEARCH_WOSOURCE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
 }

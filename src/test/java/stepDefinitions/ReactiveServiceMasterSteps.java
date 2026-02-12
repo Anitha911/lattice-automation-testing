@@ -200,5 +200,18 @@ public class ReactiveServiceMasterSteps {
     public void userVerifyIfWOSourceIsCreated() throws InterruptedException {
         tmp.verifyWOSourcecreation(generateWOSourceName);
     }
+    @Then("User clicks on active WO Source in the grid")
+    public void user_clicks_on_first_active_WOSOurce_to_edit() {
+        tmp.clickActiveWOSourcetoEdit();
+    }
+    @Then("User clicks on active RM WO Source in the grid to delete")
+    public void user_clicks_on_first_active_WOSource_to_delete() {
+        tmp.clickActiveWOSourcetoDelete();
+    }
+    @Then("User verify if the RM WO Source is deleted")
+    public void user_Verify_first_active_WOSource_todelete() {
+        tmp.verifyWOSourceDelete(generateWOSourceName);
+    }
+
 }
 

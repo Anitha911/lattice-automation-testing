@@ -167,7 +167,7 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on RM Export to Excel button
 
   @addWOSource
-  Scenario: Should be able to add Fault Priority
+  Scenario: Should be able to add WO Source
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on RM 'Data configuration' in side menu
@@ -177,3 +177,37 @@ Feature: Reactive Service data a configuration Module Automation
     Then User fills up the 'WO Source' WO Source details
     Then User clicks on WO Source save button
     Then User verify if the WO Source is created
+
+  @editWOSource
+  Scenario: Should be able to edit WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on button WO Source add 'Add'
+    Then User fills up the 'WO Source' WO Source details
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created
+    Then User clicks on active WO Source in the grid
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created
+
+  @DeleteWOSource
+  Scenario: Should be able to Delete WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on active RM WO Source in the grid to delete
+    Then User verify if the RM WO Source is deleted
+
+  @ExportToExcelWOSOurce
+  Scenario: Should be able to Export to excel Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on RM Export to Excel button
