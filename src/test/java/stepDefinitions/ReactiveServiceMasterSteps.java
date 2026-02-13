@@ -20,6 +20,7 @@ public class ReactiveServiceMasterSteps {
     public static String generateWOSourceName;
     public static String generateRCName;
     public static String generateResolutionCodeName;
+    public static String generatePCRName;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -285,6 +286,29 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the RM Resolution Code is deleted")
     public void user_Verify_first_active_ResCde_todelete() {
         tmp.verifyResCdeDelete(generateResolutionCodeName);
+    }
+    //Priority Change Reason
+    @Then("User clicks on the Core masters RM PriorityChangeReasons {string} tab")
+    public void user_click_on_core_masters_RM_PriorityChangeReason(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[2]";
+        tmp.clickOnCoremastersRM_PCR(xpath);
+    }
+    @Then("User clicks on button PriorityChangeReasons add {string}")
+    public void user_click_on_PCR(String btnAddPCR) throws InterruptedException {
+        tmp.clickOnAddPCR(btnAddPCR);
+    }
+    @Then("User fills up the {string} PriorityChangeReasons details")
+    public void user_fills_up_the_PCR(String type) throws IOException {
+        generatePCRName = dataGen.generatePCRName();
+        tmp.enterPCR(generatePCRName);
+    }
+    @Then("User clicks on PriorityChangeReasons save button")
+    public void userClicksPCRSaveButton() {
+        tmp.userClicksPCRSaveButton();
+    }
+    @Then ("User verify if the PriorityChangeReasons is created")
+    public void userVerifyIfPCRIsCreated() throws InterruptedException {
+        tmp.verifyPCRcreation(generatePCRName);
     }
 }
 

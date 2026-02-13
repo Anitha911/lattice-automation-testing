@@ -267,6 +267,11 @@ public class TestDataGenerator {
         String[] mode = {"tstResCde1", "tstResCde2", "tstResCde3", "tstResCde4", "tstResCde5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-Priority Change Reason Name
+    public String generatePCRName() {
+        String[] mode = {"tstPCR1", "tstPCR2", "tstPCR3", "tstPCR4", "tstPCR5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
 
