@@ -53,6 +53,13 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FIRST_RC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdRootCause_ctl00__0");
     public static final By DELETE_FIRST_RC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdRootCause_ctl00_ctl04_ImageButton1");
 
+    public static final By RESCODE_NAME = By.id("radtxtFailureCode");
+    public static final By RESCODE_RC_DD = By.cssSelector("[value='Root Cause']");
+    public static final By SAVE_BUTTON_RESCODE = By.id("ctl00_ContentPlaceHolder1_RadWinFailureCode_C_btnFailureCodeOk");
+    public static final By SEARCH_RESCDE = By.cssSelector("[alt='Filter Resolution column']");
+    public static final By SEARCH_FIRST_RESCDE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00__0");
+    public static final By DELETE_FIRST_RESCDE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00_ctl04_ImageButton1");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -406,9 +413,9 @@ public class ReactiveServiceMasterPage extends BasePage {
         try {
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[6]", clickOnCoremastersRM_RC));
             utils.click(locator);
-            System.out.println("Clicked on Core Masters RM WO Source: " + clickOnCoremastersRM_RC);
+            System.out.println("Clicked on Core Masters RM Root Cause: " + clickOnCoremastersRM_RC);
         } catch (Exception e) {
-            System.out.println("Failed to click on Core Masters RM WO Source: " + clickOnCoremastersRM_RC);
+            System.out.println("Failed to click on Core Masters RM Root Cause: " + clickOnCoremastersRM_RC);
             throw e;
         }
     }
@@ -453,6 +460,69 @@ public class ReactiveServiceMasterPage extends BasePage {
     }
     public void verifyRCDelete(String expectedTitle) {
         utils.typeText(SEARCH_RC, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //Resolution Code
+    public void clickOnCoremastersRM_ResCde(String clickOnCoremastersRM_ResCde) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[7]", clickOnCoremastersRM_ResCde));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Res Code: " + clickOnCoremastersRM_ResCde);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Res Code: " + clickOnCoremastersRM_ResCde);
+            throw e;
+        }
+    }
+    public void clickOnAddResCde(String btnAddResCde) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddResCde));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add Root Cause Button: " + btnAddResCde);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add Root Cause: " + btnAddResCde);
+            throw e;
+        }
+    }
+    public void enterResolutionCode(String name) {
+        utils.typeText(RESCODE_NAME, name);
+    }
+    public void selectRootCause(String RootCause) {
+        try {
+            utils.click(RESCODE_RC_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", RootCause));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + RootCause);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + RootCause);
+            throw e;
+        }
+    }
+    public void userClicksResCdeSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_RESCODE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyResCodecreation(String expectedTitle) {
+        utils.typeText(SEARCH_RESCDE, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdFailureCode_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveResCdetoEdit() {
+        utils.click(SEARCH_FIRST_RESCDE_EDIT);
+    }
+    public void clickActiveResCdetoDelete() {
+        utils.click(DELETE_FIRST_RESCDE_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyResCdeDelete(String expectedTitle) {
+        utils.typeText(SEARCH_RESCDE, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }

@@ -19,6 +19,7 @@ public class ReactiveServiceMasterSteps {
     public static String generatePriorityNote;
     public static String generateWOSourceName;
     public static String generateRCName;
+    public static String generateResolutionCodeName;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -248,6 +249,42 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the RM Root Cause is deleted")
     public void user_Verify_first_active_RC_todelete() {
         tmp.verifyRCDelete(generateRCName);
+    }
+    //Resolution Code
+    @Then("User clicks on the Core masters RM Resolution Code {string} tab")
+    public void user_click_on_core_masters_RM_ResCde(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[1]/div/a[7]";
+        tmp.clickOnCoremastersRM_ResCde(xpath);
+    }
+    @Then("User clicks on button Resolution Code add {string}")
+    public void user_click_on_ResCdeAdd(String btnAddResCde) throws InterruptedException {
+        tmp.clickOnAddResCde(btnAddResCde);
+    }
+    @Then("User fills up the {string} Resolution Code details")
+    public void user_fills_up_the_ResolutionCode(String type) throws IOException {
+        generateResolutionCodeName = dataGen.generateResolutionCodeName();
+        tmp.enterResolutionCode(generateResolutionCodeName);
+        tmp.selectRootCause("Intercom Issues");
+    }
+    @Then("User clicks on ResolutionCode save button")
+    public void userClicksResCdeSaveButton() {
+        tmp.userClicksResCdeSaveButton();
+    }
+    @Then ("User verify if the ResolutionCode is created")
+    public void userVerifyIfResCdeIsCreated() throws InterruptedException {
+        tmp.verifyResCodecreation(generateResolutionCodeName);
+    }
+    @Then("User clicks on active ResolutionCode in the grid")
+    public void user_clicks_on_first_active_ResCde_to_edit() {
+        tmp.clickActiveResCdetoEdit();
+    }
+    @Then("User clicks on active RM Resolution Code in the grid to delete")
+    public void user_clicks_on_first_active_ResCde_to_delete() {
+        tmp.clickActiveResCdetoDelete();
+    }
+    @Then("User verify if the RM Resolution Code is deleted")
+    public void user_Verify_first_active_ResCde_todelete() {
+        tmp.verifyResCdeDelete(generateResolutionCodeName);
     }
 }
 

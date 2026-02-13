@@ -158,7 +158,7 @@ Feature: Reactive Service data a configuration Module Automation
     Then User verify if the Fault Priority is deleted
 
   @ExportToExcelFaultPriority
-  Scenario: Should be able to Export to excel Fault Code
+  Scenario: Should be able to Export to excel Fault Priority
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on RM 'Data configuration' in side menu
@@ -204,7 +204,7 @@ Feature: Reactive Service data a configuration Module Automation
     Then User verify if the RM WO Source is deleted
 
   @ExportToExcelWOSOurce
-  Scenario: Should be able to Export to excel Fault Code
+  Scenario: Should be able to Export to excel WO Source
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on RM 'Data configuration' in side menu
@@ -250,10 +250,57 @@ Feature: Reactive Service data a configuration Module Automation
     Then User verify if the RM Root Cause is deleted
 
   @ExportToExcelRC
-  Scenario: Should be able to Export to excel Fault Code
+  Scenario: Should be able to Export to excel Root Cause
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on RM 'Data configuration' in side menu
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Root Cause 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @addResolutionCode
+  Scenario: Should be able to Add Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on button Resolution Code add 'Add'
+    Then User fills up the 'Resolution Code' Resolution Code details
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
+
+  @EditResolutionCode
+  Scenario: Should be able to Edit Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on button Resolution Code add 'Add'
+    Then User fills up the 'Resolution Code' Resolution Code details
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
+    Then User clicks on active ResolutionCode in the grid
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
+
+  @DeleteRosolutionCode
+  Scenario: Should be able to Delete Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on active RM Resolution Code in the grid to delete
+    Then User verify if the RM Resolution Code is deleted
+
+  @ExportToExcelResCde
+  Scenario: Should be able to Export to excel Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on RM Export to Excel button
+

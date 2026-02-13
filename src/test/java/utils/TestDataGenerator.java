@@ -262,6 +262,11 @@ public class TestDataGenerator {
         String[] mode = {"tstRC1", "tstRC2", "tstRC3", "tstRC4", "tstRC5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-ResolutionCode Name
+    public String generateResolutionCodeName() {
+        String[] mode = {"tstResCde1", "tstResCde2", "tstResCde3", "tstResCde4", "tstResCde5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
 
