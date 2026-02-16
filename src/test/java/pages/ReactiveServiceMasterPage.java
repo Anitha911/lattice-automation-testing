@@ -63,6 +63,14 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By PCR_NAME = By.id("txtPriorityReason");
     public static final By SAVE_BUTTON_PCR = By.id("ctl00_ContentPlaceHolder1_RadWinPriorityReason_C_btnWoPriReasonSave");
     public static final By SEARCH_PCR = By.cssSelector("[alt='Filter Reason column']");
+    public static final By SEARCH_FIRST_PCR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdPriorityReasons_ctl00__0");
+    public static final By DELETE_FIRST_PCR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdPriorityReasons_ctl00_ctl04_ImageButton1");
+
+    public static final By CGCR_NAME = By.id("txtContractReason");
+    public static final By SAVE_BUTTON_CGCR = By.id("ctl00_ContentPlaceHolder1_RadWinContractReason_C_btnContractReasonSave");
+    public static final By SEARCH_CGCR = By.cssSelector("[alt='Filter Reason column']");
+    public static final By SEARCH_FIRST_CGCR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdContractReasons_ctl00__0");
+    public static final By DELETE_FIRST_CGCR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdContractReasons_ctl00_ctl04_ImageButton1");
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -567,6 +575,71 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void verifyPCRcreation(String expectedTitle) {
         utils.typeText(SEARCH_PCR, expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdFailureCode_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActivePCRtoEdit() {
+        utils.click(SEARCH_FIRST_PCR_EDIT);
+    }
+    public void clickActivePCRtoDelete() {
+        utils.click(DELETE_FIRST_PCR_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyPCRDelete(String expectedTitle) {
+        utils.typeText(SEARCH_PCR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //Contract Group Change Reasons
+    public void clickOnMasterRM_CtGrpChangeReasons(String clickOnMasterRM_CtGrpChangeReasons) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[3]", clickOnMasterRM_CtGrpChangeReasons));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Contract Group Change Reasons: " + clickOnMasterRM_CtGrpChangeReasons);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Contract Group Change Reasons: " + clickOnMasterRM_CtGrpChangeReasons);
+            throw e;
+        }
+    }
+    public void clickOnAddCtGrpChangeReasons(String btnAddCGCR) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddCGCR));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add PCR Button: " + btnAddCGCR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add PCR: " + btnAddCGCR);
+            throw e;
+        }
+    }
+    public void enterCGCR(String name) {
+        utils.typeText(CGCR_NAME, name);
+    }
+    public void userClicksCGCRSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_CGCR};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyCGCRcreation(String expectedTitle) {
+        utils.typeText(SEARCH_CGCR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdContractReasons_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveCGCRtoEdit() {
+        utils.click(SEARCH_FIRST_CGCR_EDIT);
+    }
+    public void clickActiveCGCRtoDelete() {
+        utils.click(DELETE_FIRST_CGCR_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyCGCRDelete(String expectedTitle) {
+        utils.typeText(SEARCH_CGCR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
 }

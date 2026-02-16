@@ -315,3 +315,83 @@ Feature: Reactive Service data a configuration Module Automation
     Then User fills up the 'string' PriorityChangeReasons details
     Then User clicks on PriorityChangeReasons save button
     Then User verify if the PriorityChangeReasons is created
+
+  @EditPriorityChangeReasons
+  Scenario: Should be able to Edit PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on button PriorityChangeReasons add 'Add'
+    Then User fills up the 'string' PriorityChangeReasons details
+    Then User clicks on PriorityChangeReasons save button
+    Then User verify if the PriorityChangeReasons is created
+    Then User clicks on active PriorityChangeReasons in the grid
+    Then User clicks on PriorityChangeReasons save button
+    Then User verify if the PriorityChangeReasons is created
+
+  @DeletePriorityChangeReasons
+  Scenario: Should be able to Delete PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on active RM PriorityChangeReasons in the grid to delete
+    Then User verify if the RM PriorityChangeReasons is deleted
+
+  @ExportToExcelPCR
+  Scenario: Should be able to Export to excel PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @addContractGroupChangeReasons
+  Scenario: Should be able to Add ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on button ContractGroupChangeReasons add 'Add'
+    Then User fills up the 'string' ContractGroupChangeReasons details
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+
+  @EditContractGroupChangeReasons
+  Scenario: Should be able to Edit ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on button ContractGroupChangeReasons add 'Add'
+    Then User fills up the 'string' ContractGroupChangeReasons details
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+    Then User clicks on active ContractGroupChangeReasons in the grid
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+
+  @DeleteContractGroupChangeReasons
+  Scenario: Should be able to Delete ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on active RM ContractGroupChangeReasons in the grid to delete
+    Then User verify if the RM ContractGroupChangeReasons is deleted
+
+  @ExportToExcelContractGroupChangeReasons
+  Scenario: Should be able to Export to excel ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on RM Export to Excel button

@@ -21,6 +21,7 @@ public class ReactiveServiceMasterSteps {
     public static String generateRCName;
     public static String generateResolutionCodeName;
     public static String generatePCRName;
+    public static String generateCONTRACTGRPCR;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -309,6 +310,53 @@ public class ReactiveServiceMasterSteps {
     @Then ("User verify if the PriorityChangeReasons is created")
     public void userVerifyIfPCRIsCreated() throws InterruptedException {
         tmp.verifyPCRcreation(generatePCRName);
+    }
+    @Then("User clicks on active PriorityChangeReasons in the grid")
+    public void user_clicks_on_first_active_PCR_to_edit() {
+        tmp.clickActivePCRtoEdit();
+    }
+    @Then("User clicks on active RM PriorityChangeReasons in the grid to delete")
+    public void user_clicks_on_first_active_PCR_to_delete() {
+        tmp.clickActivePCRtoDelete();
+    }
+    @Then("User verify if the RM PriorityChangeReasons is deleted")
+    public void user_Verify_first_active_PCR_todelete() {
+        tmp.verifyPCRDelete(generatePCRName);
+    }
+    //Contract Group Change Reason
+    @Then("User clicks on the Core masters RM ContractGroupChangeReasons {string} tab")
+    public void user_click_on_core_masters_RM_CtGrpChangeReasons(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[3]";
+        tmp.clickOnMasterRM_CtGrpChangeReasons(xpath);
+    }
+    @Then("User clicks on button ContractGroupChangeReasons add {string}")
+    public void user_click_on_CtGrpChangeReasons(String btnAddCtGrpChangeReasons) throws InterruptedException {
+        tmp.clickOnAddCtGrpChangeReasons(btnAddCtGrpChangeReasons);
+    }
+    @Then("User fills up the {string} ContractGroupChangeReasons details")
+    public void user_fills_up_the_CGCR(String type) throws IOException {
+        generateCONTRACTGRPCR = dataGen.generateCGCR();
+        tmp.enterCGCR(generateCONTRACTGRPCR);
+    }
+    @Then("User clicks on ContractGroupChangeReasons save button")
+    public void userClicksCGCRSaveButton() {
+        tmp.userClicksCGCRSaveButton();
+    }
+    @Then ("User verify if the ContractGroupChangeReasons is created")
+    public void userVerifyIfCGCRIsCreated() throws InterruptedException {
+        tmp.verifyCGCRcreation(generateCONTRACTGRPCR);
+    }
+    @Then("User clicks on active ContractGroupChangeReasons in the grid")
+    public void user_clicks_on_first_active_CGCR_to_edit() {
+        tmp.clickActiveCGCRtoEdit();
+    }
+    @Then("User clicks on active RM ContractGroupChangeReasons in the grid to delete")
+    public void user_clicks_on_first_active_CGCR_to_delete() {
+        tmp.clickActiveCGCRtoDelete();
+    }
+    @Then("User verify if the RM ContractGroupChangeReasons is deleted")
+    public void user_Verify_first_active_CGCR_todelete() {
+        tmp.verifyCGCRDelete(generateCONTRACTGRPCR);
     }
 }
 
