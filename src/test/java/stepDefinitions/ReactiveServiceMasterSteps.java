@@ -22,6 +22,7 @@ public class ReactiveServiceMasterSteps {
     public static String generateResolutionCodeName;
     public static String generatePCRName;
     public static String generateCONTRACTGRPCR;
+    public static String generateSLAFJR;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -357,6 +358,42 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the RM ContractGroupChangeReasons is deleted")
     public void user_Verify_first_active_CGCR_todelete() {
         tmp.verifyCGCRDelete(generateCONTRACTGRPCR);
+    }
+    //SLA Failure Justification Reason
+    @Then("User clicks on the Core masters RM SLAFailureJustification {string} tab")
+    public void user_click_on_core_masters_RM_SLAFailureJustification(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[4]";
+        tmp.clickOnMasterRM_SLAFGR(xpath);
+    }
+    @Then("User clicks on button SLAFailureJustification add {string}")
+    public void user_click_on_ADD_SLAFailureJustification(String btnAddSLAFailureJustification) throws InterruptedException {
+        tmp.clickOnAddbtnAddSLAFailureJustification(btnAddSLAFailureJustification);
+    }
+    @Then("User fills up the {string} SLAFailureJustification details")
+    public void user_fills_up_the_SLAFailureJustification(String type) throws IOException {
+        generateSLAFJR = dataGen.generateSLAFJR();
+        tmp.enterSLAFJR(generateSLAFJR);
+        tmp.selectSLAType("Resolved");
+    }
+    @Then("User clicks on SLAFailureJustification save button")
+    public void userClicksSLAFJSaveButton() {
+        tmp.userClicksSLAFJSaveButton();
+    }
+    @Then ("User verify if the SLAFailureJustification is created")
+    public void userVerifyIfSLAFJIsCreated() throws InterruptedException {
+        tmp.verifySLAFJRcreation(generateSLAFJR);
+    }
+    @Then("User clicks on active SLAFailureJustification in the grid")
+    public void user_clicks_on_first_active_SLAFJ_to_edit() {
+        tmp.clickActiveSLAFJtoEdit();
+    }
+    @Then("User clicks on active RM SLAFailureJustification in the grid to delete")
+    public void user_clicks_on_first_active_SLAFJ_to_delete() {
+        tmp.clickActiveSLAFJtoDelete();
+    }
+    @Then("User verify if the RM SLAFailureJustification is deleted")
+    public void user_Verify_first_active_SLAFJ_todelete() {
+        tmp.verifySLAFJDelete(generateSLAFJR);
     }
 }
 

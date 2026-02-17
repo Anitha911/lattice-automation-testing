@@ -395,3 +395,50 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @ADDSLAFailureJustificationReasons
+  Scenario: Should be able to Add SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on button SLAFailureJustification add 'Add'
+    Then User fills up the 'string' SLAFailureJustification details
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+
+  @EditSLAFailureJustificationReasons
+  Scenario: Should be able to Edit SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on button SLAFailureJustification add 'Add'
+    Then User fills up the 'string' SLAFailureJustification details
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+    Then User clicks on active SLAFailureJustification in the grid
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+
+  @DeleteSLAFailureJustificationReasons
+  Scenario: Should be able to Delete SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on active RM SLAFailureJustification in the grid to delete
+    Then User verify if the RM SLAFailureJustification is deleted
+
+  @ExportToExcelSLAFailureJustificationReasons
+  Scenario: Should be able to Export to excel SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on RM Export to Excel button
+

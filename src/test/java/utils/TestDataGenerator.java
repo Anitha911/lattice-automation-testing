@@ -277,6 +277,11 @@ public class TestDataGenerator {
         String[] mode = {"tstCGCR1", "tstCGCR2", "tstCGCR3", "tstCGCR4", "tstCGCR5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-SLA Failure Justification Reason Name
+    public String generateSLAFJR() {
+        String[] mode = {"tstSLAFJR1", "tstSLAFJR2", "tstSLAFJR3", "tstSLAFJR4", "tstSLAFJR5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
 

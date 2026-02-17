@@ -72,6 +72,14 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FIRST_CGCR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdContractReasons_ctl00__0");
     public static final By DELETE_FIRST_CGCR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdContractReasons_ctl00_ctl04_ImageButton1");
 
+    public static final By SLAFJ_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinSLAJustfication_C_RadTxtReasons");
+    public static final By SLAFJ_SLATYPE_DD = By.cssSelector("[value='Select SLA Type']");
+    public static final By SAVE_BUTTON_SLAFJ = By.id("ctl00_ContentPlaceHolder1_RadWinSLAJustfication_C_BtnSLAJustSave");
+    public static final By SEARCH_SLAFJ = By.cssSelector("[alt='Filter Reason column']");
+    public static final By SEARCH_FIRST_SLAFJ_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00__0");
+    public static final By DELETE_FIRST_SLAFJ_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00_ctl04_ImageButton1");
+
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -642,4 +650,68 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
+    //SLA Failure Justification Reasons
+    public void clickOnMasterRM_SLAFGR(String clickOnMasterRM_SLAFGR) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[4]", clickOnMasterRM_SLAFGR));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM SLA Failure Justification Reasons: " + clickOnMasterRM_SLAFGR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM SLA Failure Justification Reasons: " + clickOnMasterRM_SLAFGR);
+            throw e;
+        }
+    }
+    public void clickOnAddbtnAddSLAFailureJustification(String btnAddSLAFGR) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddSLAFGR));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add SLAFGR Button: " + btnAddSLAFGR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add SLAFGR: " + btnAddSLAFGR);
+            throw e;
+        }
+    }
+    public void enterSLAFJR(String name) {
+        utils.typeText(SLAFJ_NAME, name);
+    }
+    public void selectSLAType(String SLAFTYPE) {
+        try {
+            utils.click(SLAFJ_SLATYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", SLAFTYPE));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + SLAFTYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + SLAFTYPE);
+            throw e;
+        }
+    }
+    public void userClicksSLAFJSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_SLAFJ};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifySLAFJRcreation(String expectedTitle) {
+        utils.typeText(SEARCH_SLAFJ, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveSLAFJtoEdit() {
+        utils.click(SEARCH_FIRST_SLAFJ_EDIT);
+    }
+    public void clickActiveSLAFJtoDelete() {
+        utils.click(DELETE_FIRST_SLAFJ_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifySLAFJDelete(String expectedTitle) {
+        utils.typeText(SEARCH_SLAFJ, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+
 }
