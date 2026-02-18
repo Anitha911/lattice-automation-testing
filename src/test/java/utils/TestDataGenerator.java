@@ -287,7 +287,11 @@ public class TestDataGenerator {
         String[] mode = {"tstCTIR1", "tstCTIR2", "tstCTIR3", "tstCTIR4", "tstCTIR5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
-
+    //RM Master-Service Request Reason Name
+    public String generateSRR() {
+        String[] mode = {"tstSRR1", "tstSRR2", "tstSRR3", "tstSRR4", "tstSRR5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
     public String generateCompanyType() {

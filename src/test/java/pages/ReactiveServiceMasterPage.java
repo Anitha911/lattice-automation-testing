@@ -85,6 +85,13 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FIRST_CTI_EDIT = By.id("ctl00_ContentPlaceHolder1_grdCTIReason_ctl00__0");
     public static final By DELETE_FIRST_CTI_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCTIReason_ctl00_ctl04_ImageButton1");
 
+    public static final By SRR_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinSRReason_C_radtxtReason");
+    public static final By SRR_TYPE_DD = By.cssSelector("[value='Select Type']");
+    public static final By SAVE_BUTTON_SRR = By.id("ctl00_ContentPlaceHolder1_RadWinSRReason_C_btnSRReasonOk");
+    public static final By SEARCH_SRR = By.cssSelector("[alt='Filter Reason column']");
+    public static final By SEARCH_FIRST_SRR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSRReason_ctl00__0");
+    public static final By DELETE_FIRST_SRR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSRReason_ctl00_ctl04_ImageButton1");
+
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
             By locator = By.id("10");
@@ -768,6 +775,56 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void verifyCTIRDelete(String expectedTitle) {
         utils.typeText(SEARCH_CTI, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
+    //SRR
+    public void clickOnMasterRMSRR(String clickOnMasterRMSRR) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[6]", clickOnMasterRMSRR));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM CRR: " + clickOnMasterRMSRR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM CRR: " + clickOnMasterRMSRR);
+            throw e;
+        }
+    }
+    public void clickOnAddbtnSRR(String btnAddCTIR) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddCTIR));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add CTIR Button: " + btnAddCTIR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add CTIR: " + btnAddCTIR);
+            throw e;
+        }
+    }
+    public void enterSRR(String name) {
+        utils.typeText(SRR_NAME, name);
+    }
+    public void selectType(String TYPE) {
+        try {
+            utils.click(SRR_TYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", TYPE));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + TYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + TYPE);
+            throw e;
+        }
+    }
+    public void userClicksSRRSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_SRR};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifySRRcreation(String expectedTitle) {
+        utils.typeText(SEARCH_SRR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSRReason_ctl00__0']/td[1]", expectedTitle));
         utils.isElementVisible(locator);
     }
 }

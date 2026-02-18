@@ -24,7 +24,7 @@ public class ReactiveServiceMasterSteps {
     public static String generateCONTRACTGRPCR;
     public static String generateSLAFJR;
     public static String generateCTIR;
-
+    public static String generateSRR;
 
     @Then("User clicks on RM {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -430,6 +430,30 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the RM CTIReasons is deleted")
     public void user_Verify_first_active_CTIR_todelete() {
         tmp.verifyCTIRDelete(generateCTIR);
+    }
+    //Service Request Reason
+    @Then("User clicks on the Core masters RM ServiceRequestReasons {string} tab")
+    public void user_click_on_core_masters_RM_SRR(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[6]";
+        tmp.clickOnMasterRMSRR(xpath);
+    }
+    @Then("User clicks on button ServiceRequestReasons add {string}")
+    public void user_click_on_ADD_SRR(String btnAddSRR) throws InterruptedException {
+        tmp.clickOnAddbtnSRR(btnAddSRR);
+    }
+    @Then("User fills up the {string} ServiceRequestReasons details")
+    public void user_fills_up_the_SRR(String type) throws IOException {
+        generateSRR = dataGen.generateSRR();
+        tmp.enterSRR(generateSRR);
+        tmp.selectType("Regret");
+    }
+    @Then("User clicks on ServiceRequestReasons save button")
+    public void userClicksSRRSaveButton() {
+        tmp.userClicksSRRSaveButton();
+    }
+    @Then ("User verify if the ServiceRequestReasons is created")
+    public void userVerifyIfSRRIsCreated() throws InterruptedException {
+        tmp.verifySRRcreation(generateSRR);
     }
 }
 
