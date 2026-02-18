@@ -23,6 +23,7 @@ public class ReactiveServiceMasterSteps {
     public static String generatePCRName;
     public static String generateCONTRACTGRPCR;
     public static String generateSLAFJR;
+    public static String generateCTIR;
 
 
     @Then("User clicks on RM {string} in side menu")
@@ -394,6 +395,41 @@ public class ReactiveServiceMasterSteps {
     @Then("User verify if the RM SLAFailureJustification is deleted")
     public void user_Verify_first_active_SLAFJ_todelete() {
         tmp.verifySLAFJDelete(generateSLAFJR);
+    }
+    //CTI Reason
+    @Then("User clicks on the Core masters RM CTI Reasons {string} tab")
+    public void user_click_on_core_masters_RM_CTIReasons(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[5]";
+        tmp.clickOnMasterRMCTIReasons(xpath);
+    }
+    @Then("User clicks on button CTIReasons add {string}")
+    public void user_click_on_ADD_CTIReasons(String btnAddCTIReasons) throws InterruptedException {
+        tmp.clickOnAddbtnAddCTIReasons(btnAddCTIReasons);
+    }
+    @Then("User fills up the {string} CTIReasons details")
+    public void user_fills_up_the_CTIR(String type) throws IOException {
+        generateCTIR = dataGen.generateCTIR();
+        tmp.enterCTIR(generateCTIR);
+    }
+    @Then("User clicks on CTIReasons save button")
+    public void userClicksCTIRSaveButton() {
+        tmp.userClicksCTIRSaveButton();
+    }
+    @Then ("User verify if the CTIReasons is created")
+    public void userVerifyIfCTIRIsCreated() throws InterruptedException {
+        tmp.verifyCTIRcreation(generateCTIR);
+    }
+    @Then("User clicks on active CTIReasons in the grid")
+    public void user_clicks_on_first_active_CTIR_to_edit() {
+        tmp.clickActiveCTIRtoEdit();
+    }
+    @Then("User clicks on active RM CTIReasons in the grid to delete")
+    public void user_clicks_on_first_active_CTIR_to_delete() {
+        tmp.clickActiveCTIRtoDelete();
+    }
+    @Then("User verify if the RM CTIReasons is deleted")
+    public void user_Verify_first_active_CTIR_todelete() {
+        tmp.verifyCTIRDelete(generateCTIR);
     }
 }
 

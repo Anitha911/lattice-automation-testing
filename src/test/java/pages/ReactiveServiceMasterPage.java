@@ -54,7 +54,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By DELETE_FIRST_RC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdRootCause_ctl00_ctl04_ImageButton1");
 
     public static final By RESCODE_NAME = By.id("radtxtFailureCode");
-    public static final By RESCODE_RC_DD = By.cssSelector("[value='Root Cause']");
+    public static final By RESCODE_RC_DD = By.cssSelector("[value='Select Root Cause']");
     public static final By SAVE_BUTTON_RESCODE = By.id("ctl00_ContentPlaceHolder1_RadWinFailureCode_C_btnFailureCodeOk");
     public static final By SEARCH_RESCDE = By.cssSelector("[alt='Filter Resolution column']");
     public static final By SEARCH_FIRST_RESCDE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00__0");
@@ -79,6 +79,11 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FIRST_SLAFJ_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00__0");
     public static final By DELETE_FIRST_SLAFJ_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00_ctl04_ImageButton1");
 
+    public static final By CTI_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_RadTxtCTIReason");
+    public static final By SAVE_BUTTON_CTI = By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_BtnCTIReasonSave");
+    public static final By SEARCH_CTI = By.cssSelector("[alt='Filter Reason column']");
+    public static final By SEARCH_FIRST_CTI_EDIT = By.id("ctl00_ContentPlaceHolder1_grdCTIReason_ctl00__0");
+    public static final By DELETE_FIRST_CTI_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCTIReason_ctl00_ctl04_ImageButton1");
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -713,5 +718,56 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
-
+    //CTI Reasons
+    public void clickOnMasterRMCTIReasons(String clickOnMasterRMCTIReasons) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[5]", clickOnMasterRMCTIReasons));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM CTI Reasons: " + clickOnMasterRMCTIReasons);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM CTI Reasons: " + clickOnMasterRMCTIReasons);
+            throw e;
+        }
+    }
+    public void clickOnAddbtnAddCTIReasons(String btnAddCTIR) {
+        try {
+            By locator = By.cssSelector(String.format("button[value='%s']", btnAddCTIR));
+            utils.click(locator);
+            System.out.println("Clicked on the RM Add CTIR Button: " + btnAddCTIR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Add CTIR: " + btnAddCTIR);
+            throw e;
+        }
+    }
+    public void enterCTIR(String name) {
+        utils.typeText(CTI_NAME, name);
+    }
+    public void userClicksCTIRSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_CTI};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void verifyCTIRcreation(String expectedTitle) {
+        utils.typeText(SEARCH_CTI, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdCTIReason_ctl00__0']/td[1]", expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveCTIRtoEdit() {
+        utils.click(SEARCH_FIRST_CTI_EDIT);
+    }
+    public void clickActiveCTIRtoDelete() {
+        utils.click(DELETE_FIRST_CTI_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyCTIRDelete(String expectedTitle) {
+        utils.typeText(SEARCH_CTI, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
 }

@@ -442,3 +442,49 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
     Then User clicks on RM Export to Excel button
 
+  @ADDCTIReasons
+  Scenario: Should be able to Add CTI Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM CTI Reasons 'string' tab
+    Then User clicks on button CTIReasons add 'Add'
+    Then User fills up the 'string' CTIReasons details
+    Then User clicks on CTIReasons save button
+    Then User verify if the CTIReasons is created
+
+  @EditCTIReasons
+  Scenario: Should be able to Edit CTI Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM CTI Reasons 'string' tab
+    Then User clicks on button CTIReasons add 'Add'
+    Then User fills up the 'string' CTIReasons details
+    Then User clicks on CTIReasons save button
+    Then User verify if the CTIReasons is created
+    Then User clicks on active CTIReasons in the grid
+    Then User clicks on CTIReasons save button
+    Then User verify if the CTIReasons is created
+
+  @DeleteCTIReasons
+  Scenario: Should be able to Delete CTI Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM CTI Reasons 'string' tab
+    Then User clicks on active RM CTIReasons in the grid to delete
+    Then User verify if the RM CTIReasons is deleted
+
+  @ExportToExcelCTIReasons
+  Scenario: Should be able to Export to excel CTIReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM CTI Reasons 'string' tab
+    Then User clicks on RM Export to Excel button
+

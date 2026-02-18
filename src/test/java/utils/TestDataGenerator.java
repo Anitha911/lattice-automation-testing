@@ -282,6 +282,11 @@ public class TestDataGenerator {
         String[] mode = {"tstSLAFJR1", "tstSLAFJR2", "tstSLAFJR3", "tstSLAFJR4", "tstSLAFJR5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    //RM Master-CTI Reason Name
+    public String generateCTIR() {
+        String[] mode = {"tstCTIR1", "tstCTIR2", "tstCTIR3", "tstCTIR4", "tstCTIR5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 
 
 
