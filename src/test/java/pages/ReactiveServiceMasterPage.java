@@ -827,4 +827,17 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSRReason_ctl00__0']/td[1]", expectedTitle));
         utils.isElementVisible(locator);
     }
+    public void clickActiveSRRtoEdit() {
+        utils.click(SEARCH_FIRST_SRR_EDIT);
+    }
+    public void clickActiveSRRtoDelete() {
+        utils.click(DELETE_FIRST_SRR_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifySRRDelete(String expectedTitle) {
+        utils.typeText(SEARCH_SRR, expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
+        utils.isElementVisible(locator);
+    }
 }

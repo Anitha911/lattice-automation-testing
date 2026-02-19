@@ -499,3 +499,38 @@ Feature: Reactive Service data a configuration Module Automation
     Then User fills up the 'string' ServiceRequestReasons details
     Then User clicks on ServiceRequestReasons save button
     Then User verify if the ServiceRequestReasons is created
+
+  @EditServiceRequestReasons
+  Scenario: Should be able to Edit ServiceRequestReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ServiceRequestReasons 'string' tab
+    Then User clicks on button ServiceRequestReasons add 'Add'
+    Then User fills up the 'string' ServiceRequestReasons details
+    Then User clicks on ServiceRequestReasons save button
+    Then User verify if the ServiceRequestReasons is created
+    Then User clicks on active ServiceRequestReasons in the grid
+    Then User clicks on ServiceRequestReasons save button
+    Then User verify if the ServiceRequestReasons is created
+
+  @DeleteServiceRequestReasons
+  Scenario: Should be able to Delete ServiceRequestReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ServiceRequestReasons 'string' tab
+    Then User clicks on active RM ServiceRequestReasons in the grid to delete
+    Then User verify if the RM ServiceRequestReasons is deleted
+
+  @ExportToExcelServiceRequestReasons
+  Scenario: Should be able to Export to excel ServiceRequestReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ServiceRequestReasons 'string' tab
+    Then User clicks on RM Export to Excel button
+

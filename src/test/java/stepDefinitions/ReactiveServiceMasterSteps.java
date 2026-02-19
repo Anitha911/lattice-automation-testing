@@ -455,5 +455,17 @@ public class ReactiveServiceMasterSteps {
     public void userVerifyIfSRRIsCreated() throws InterruptedException {
         tmp.verifySRRcreation(generateSRR);
     }
+    @Then("User clicks on active ServiceRequestReasons in the grid")
+    public void user_clicks_on_first_active_SRR_to_edit() {
+        tmp.clickActiveSRRtoEdit();
+    }
+    @Then("User clicks on active RM ServiceRequestReasons in the grid to delete")
+    public void user_clicks_on_first_active_SRR_to_delete() {
+        tmp.clickActiveSRRtoDelete();
+    }
+    @Then("User verify if the RM ServiceRequestReasons is deleted")
+    public void user_Verify_first_active_SRR_todelete() {
+        tmp.verifySRRDelete(generateSRR);
+    }
 }
 
