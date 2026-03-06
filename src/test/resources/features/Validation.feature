@@ -120,6 +120,46 @@ Feature: Validate input fields before saving the form
     Then User clicks on Payment Terms save button
     When user verify the inline error message 'Enter Payment Terms' on Sales Payment Terms
 
+  @addInventoryItemTypeValidation
+  Scenario: User should not be able to save Inventory Item Type form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on button Item Type add 'Add'
+    When user verify the chars min len as 3 and max len as 10 on Item Type Code
+    When user verify the chars min len as 3 and max len as 100 on Item Type Name
+    Then User clicks on Item Type save button
+    When user verify the inline error message 'Enter Type Code' on Inventory Item Type
+    When user verify the inline error message 'Enter Type Name' on Inventory Item Name
 
+  @addInventoryItemCategoryValidation
+  Scenario: User should not be able to save Inventory Item Category form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item Category 'string' in side menu
+    Then User clicks on button Item Category add 'Add'
+    When user verify the chars min len as 3 and max len as 10 on Item Category Code
+    When user verify the chars min len as 3 and max len as 100 on Item Category Name
+    Then User clicks on Item Category save button
+    When user verify the inline error message 'Enter Item Category Code' on Inventory Item Category Code
+    When user verify the inline error message 'Enter Item Category Name' on Inventory Item Category Name
+
+  @addInventoryItemSubCategoryValidation
+  Scenario: User should not be able to save Inventory Item SubCategory form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on button Item SubCategory add 'Add'
+    When user verify the chars min len as 3 and max len as 10 on Item SubCategory Code
+    When user verify the chars min len as 3 and max len as 100 on Item SubCategory Name
+    Then User clicks on Item SubCategory save button
+    When user verify the inline error message 'Select Item Category' on Inventory Item Category
+    When user verify the inline error message 'Enter Item Subcategory Code' on Inventory Item SubCategory Code
+    When user verify the inline error message 'Enter Item Subcategory Name' on Inventory Item SubCategory Name
 
 

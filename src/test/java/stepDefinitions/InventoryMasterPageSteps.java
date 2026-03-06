@@ -1,10 +1,12 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.InventoryMasterPage;
 import utils.DriverFactory;
+import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 
@@ -25,6 +27,7 @@ public class InventoryMasterPageSteps {
         public static String generateSupplierType;
         public static String generateActionReason;
         public static String generateActionReasonDesc;
+        HelperUtils helperUtils = new HelperUtils(driver);
 
 
     @Then("User clicks on Inventory {string} in side menu")
@@ -350,4 +353,71 @@ public class InventoryMasterPageSteps {
     public void user_Verify_first_active_AR_to_delete() {
         tmp.verifyARDelete(generateActionReason);
     }
+
+    //Negative Scenarios
+    @When("user verify the chars min len as {int} and max len as {int} on Item Type Code")
+    public void user_verify_chars_len_InvItemTypeCde(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtItemTypeCode"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Item Type Name")
+    public void user_verify_chars_len_InvItemTypeName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtItemTypeName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Item Type")
+    public void userVerifyInlineErrorMessageOnInvItemCde(String expectedErrorMessage) {
+        By InvItemCdeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemType_C_RequiredFieldValidator4");
+        helperUtils.verifyInlineErrorMessage(InvItemCdeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Item Name")
+    public void userVerifyInlineErrorMessageOnInvItemName(String expectedErrorMessage) {
+        By InvItemNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemType_C_RequiredFieldValidator5");
+        helperUtils.verifyInlineErrorMessage(InvItemNameErrorLocator, expectedErrorMessage);
+    }
+
+    @When("user verify the chars min len as {int} and max len as {int} on Item Category Code")
+    public void user_verify_chars_len_InvItemCatCde(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCategoryCode"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Item Category Name")
+    public void user_verify_chars_len_InvItemCatName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCategoryName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Item Category Code")
+    public void userVerifyInlineErrorMessageOnInvItemCatCde(String expectedErrorMessage) {
+        By InvItemCatCdeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemCategory_C_RequiredFieldValidator6");
+        helperUtils.verifyInlineErrorMessage(InvItemCatCdeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Item Category Name")
+    public void userVerifyInlineErrorMessageOnInvItemCatName(String expectedErrorMessage) {
+        By InvItemCatNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemCategory_C_RequiredFieldValidator7");
+        helperUtils.verifyInlineErrorMessage(InvItemCatNameErrorLocator, expectedErrorMessage);
+    }
+
+
+    @When("user verify the chars min len as {int} and max len as {int} on Item SubCategory Code")
+    public void user_verify_chars_len_InvItemSubCatCde(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtSubCategoryCode"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Item SubCategory Name")
+    public void user_verify_chars_len_InvItemSubCatName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtSubCategoryName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Item Category")
+    public void userVerifyInlineErrorMessageOnInvItemCat(String expectedErrorMessage) {
+        By InvItemCatErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_RequiredFieldValidator10");
+        helperUtils.verifyInlineErrorMessage(InvItemCatErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Item SubCategory Code")
+    public void userVerifyInlineErrorMessageOnInvItemSubCatCde(String expectedErrorMessage) {
+        By InvItemCatSubCdeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_RequiredFieldValidator8");
+        helperUtils.verifyInlineErrorMessage(InvItemCatSubCdeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Item SubCategory Name")
+    public void userVerifyInlineErrorMessageOnInvItemSubCatName(String expectedErrorMessage) {
+        By InvItemSubCatNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_RequiredFieldValidator9");
+        helperUtils.verifyInlineErrorMessage(InvItemSubCatNameErrorLocator, expectedErrorMessage);
+    }
+
+
+    //Negative Scenarios
 }
