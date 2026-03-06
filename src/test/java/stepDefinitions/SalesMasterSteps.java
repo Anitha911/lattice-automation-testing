@@ -1,8 +1,11 @@
 package stepDefinitions;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.SalesMasterPage;
 import utils.DriverFactory;
+import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 
@@ -16,6 +19,7 @@ public class SalesMasterSteps {
     public static String generateEnquiryTandC;
     public static String generateEnquiryExclusions;
     public static String generateEnquiryPaymentTerms;
+    HelperUtils helperUtils = new HelperUtils(driver);
 
 
     @Then("User clicks on Data Config {string} in side menu")
@@ -310,5 +314,70 @@ public class SalesMasterSteps {
     public void user_click_on_Sales_master_Sort_item_Code_OtherCost(String btnCostSort) throws InterruptedException {
         tmp.clickOnSaleOtherCostSortItemCode(btnCostSort);
     }
+    //Negative scenarios
+    @When("user verify the chars min len as {int} and max len as {int} on Sales Client Type")
+    public void user_verify_chars_len_ClientTypeName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtClientType"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Client Type")
+    public void userVerifyInlineErrorMessageOnClientType(String expectedErrorMessage) {
+        By clientTypeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinClientType_C_RequiredFieldValidator2");
+        helperUtils.verifyInlineErrorMessage(clientTypeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Sales Enquiry Type")
+    public void user_verify_chars_len_EnquiryTypeName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtEnquiryName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Enquiry Type")
+    public void userVerifyInlineErrorMessageOnEnquiryType(String expectedErrorMessage) {
+        By EnquiryTypeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquirytype_C_RequiredFieldValidator1");
+        helperUtils.verifyInlineErrorMessage(EnquiryTypeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Sales Enquiry Source")
+    public void user_verify_chars_len_EnquirySourceName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtEnquirySource"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Enquiry Source")
+    public void userVerifyInlineErrorMessageOnEnquirySource(String expectedErrorMessage) {
+        By EnquirySourceErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquirySource_C_RequiredFieldValidator3");
+        helperUtils.verifyInlineErrorMessage(EnquirySourceErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Terms and Conditions")
+    public void user_verify_chars_len_EnquiryTandC(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtTermsConditions"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Default Value")
+    public void user_verify_chars_len_EnquiryTandCDefault(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtDefault"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Terms And Conditions")
+    public void userVerifyInlineErrorMessageOnEnquiryTandC(String expectedErrorMessage) {
+        By EnquiryTandCErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTermsAndCon_C_RequiredFieldValidator6");
+        helperUtils.verifyInlineErrorMessage(EnquiryTandCErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Exclusions")
+    public void user_verify_chars_len_EnquiryExclusions(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtExclusions"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Exclusions")
+    public void userVerifyInlineErrorMessageOnEnquiryExclusion(String expectedErrorMessage) {
+        By EnquiryExclusionErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinExclusion_C_RequiredFieldValidator5");
+        helperUtils.verifyInlineErrorMessage(EnquiryExclusionErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Payment Terms")
+    public void user_verify_chars_len_EnquiryPT(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtPaymentTerms"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on P T Default Value")
+    public void user_verify_chars_len_EnquiryPTDefault(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadTxtPayDefault"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Sales Payment Terms")
+    public void userVerifyInlineErrorMessageOnEnquiryPT(String expectedErrorMessage) {
+        By EnquiryPTErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinPaymentTerms_C_RequiredFieldValidator4");
+        helperUtils.verifyInlineErrorMessage(EnquiryPTErrorLocator, expectedErrorMessage);
+    }
+    //Negative scenarios
+
 }
 
