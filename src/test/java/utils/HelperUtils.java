@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+import java.util.Random;
+
 public class HelperUtils {
 
     private final WebDriver driver;
@@ -43,5 +46,12 @@ public class HelperUtils {
         WebElement errorElement = driver.findElement(errorLocator);
         String actualErrorMessage = errorElement.getText().trim();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Inline error message mismatch");
+    }
+
+    public void clickRandomElement(By locator) {
+        List<WebElement> elements = driver.findElements(locator);
+        Assert.assertFalse(elements.isEmpty(), "No elements found for locator: " + locator);
+        int randomIndex = new Random().nextInt(elements.size());
+        elements.get(randomIndex).click();
     }
 }

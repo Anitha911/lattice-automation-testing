@@ -4,12 +4,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import utils.ConfigReader;
-import utils.ExcelUtils;
-import utils.TestDataGenerator;
-
-import java.io.IOException;
-import java.util.UUID;
 
 public class TrainingManagementMastersPage extends BasePage {
     public TrainingManagementMastersPage(WebDriver driver) {

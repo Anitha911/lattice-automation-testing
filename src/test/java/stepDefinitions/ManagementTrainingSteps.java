@@ -236,6 +236,14 @@ public class ManagementTrainingSteps {
         helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
     }
 
+    @When("user verify the inline error message {string} on email")
+    public void userVerifyInlineErrorMessageOnEmail(String expectedErrorMessage) {
+        tmp.enterEmail("TestFormat.com");
+        tmp.clickSaveButton();
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_RegularExpressionValidator1");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+
     @When("user verify the inline error message {string} on Company Type")
     public void userVerifyInlineErrorMessageOnCompanyType(String expectedErrorMessage) {
         By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_RequiredFieldValidator4");
