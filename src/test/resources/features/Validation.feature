@@ -176,3 +176,15 @@ Feature: Validate input fields before saving the form
     When user verify the inline error message 'Select From Unit' on Inventory From Unit
     When user verify the inline error message 'Select To Unit' on Inventory To Unit
     When user verify the inline error message 'Enter Conversion Factor' on Inventory Conversion Factor
+
+  @addInventoryStoreGroupValidation
+  Scenario: User should not be able to save Inventory Store Group form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    When user verify the chars min len as 3 and max len as 100 on Store Group
+    Then User clicks on Store Group save button
+    When user verify the inline error message 'Enter Store Group' on Inventory Store Group

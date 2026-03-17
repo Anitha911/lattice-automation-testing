@@ -442,6 +442,15 @@ public class InventoryMasterPageSteps {
         helperUtils.verifyInlineErrorMessage(InvConvFactorErrorLocator, expectedErrorMessage);
     }
 
+    @When("user verify the chars min len as {int} and max len as {int} on Store Group")
+    public void user_verify_chars_len_InvStoreGrp(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtStoreGrp"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Store Group")
+    public void userVerifyInlineErrorMessageOnInvStoreGrp(String expectedErrorMessage) {
+        By InvStoreGrpErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinStoreGrp_C_RequiredFieldValidator14");
+        helperUtils.verifyInlineErrorMessage(InvStoreGrpErrorLocator, expectedErrorMessage);
+    }
 
     //Negative Scenarios
 }
