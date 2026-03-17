@@ -162,4 +162,17 @@ Feature: Validate input fields before saving the form
     When user verify the inline error message 'Enter Item Subcategory Code' on Inventory Item SubCategory Code
     When user verify the inline error message 'Enter Item Subcategory Name' on Inventory Item SubCategory Name
 
-
+  @addInventoryUnitConversionValidation
+  Scenario: User should not be able to save Inventory Unit Conversion form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    When user verify the chars min len as 3 and max len as 100 on Item Name
+    When user verify the chars min len as 0 and max len as 9 on Conversion Factor
+    Then User clicks on Unit Conversion save button
+    When user verify the inline error message 'Select From Unit' on Inventory From Unit
+    When user verify the inline error message 'Select To Unit' on Inventory To Unit
+    When user verify the inline error message 'Enter Conversion Factor' on Inventory Conversion Factor

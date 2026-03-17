@@ -393,7 +393,6 @@ public class InventoryMasterPageSteps {
         helperUtils.verifyInlineErrorMessage(InvItemCatNameErrorLocator, expectedErrorMessage);
     }
 
-
     @When("user verify the chars min len as {int} and max len as {int} on Item SubCategory Code")
     public void user_verify_chars_len_InvItemSubCatCde(int minLen, int maxLen) {
         helperUtils.verifyMinAndMaxLength(By.id("radtxtSubCategoryCode"),maxLen, minLen);
@@ -416,6 +415,31 @@ public class InventoryMasterPageSteps {
     public void userVerifyInlineErrorMessageOnInvItemSubCatName(String expectedErrorMessage) {
         By InvItemSubCatNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItemSubCategory_C_RequiredFieldValidator9");
         helperUtils.verifyInlineErrorMessage(InvItemSubCatNameErrorLocator, expectedErrorMessage);
+    }
+
+    //unit Conversion
+    @When("user verify the chars min len as {int} and max len as {int} on Item Name")
+    public void user_verify_chars_len_InvItemName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("raddrpItemName"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Conversion Factor")
+    public void user_verify_chars_len_InvUnitConv(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtConvFactor"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory From Unit")
+    public void userVerifyInlineErrorMessageOnInvFromUnit(String expectedErrorMessage) {
+        By InvFromUNitErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_RequiredFieldValidator23");
+        helperUtils.verifyInlineErrorMessage(InvFromUNitErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory To Unit")
+    public void userVerifyInlineErrorMessageOnInvToUnit(String expectedErrorMessage) {
+        By InvTOUnitErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_RequiredFieldValidator1");
+        helperUtils.verifyInlineErrorMessage(InvTOUnitErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Conversion Factor")
+    public void userVerifyInlineErrorMessageOnInvConvFactor(String expectedErrorMessage) {
+        By InvConvFactorErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_RequiredFieldValidator22");
+        helperUtils.verifyInlineErrorMessage(InvConvFactorErrorLocator, expectedErrorMessage);
     }
 
 
