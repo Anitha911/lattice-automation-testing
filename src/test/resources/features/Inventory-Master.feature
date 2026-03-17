@@ -182,7 +182,7 @@ Feature: Inventory data configuration Module Automation
     Then User clicks on Inventory Export to Excel button
 
   @addStoreGroup
-  Scenario: Should be able to add Unit Conversion
+  Scenario: Should be able to add Store Group
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Inventory 'Data configuration' in side menu
@@ -194,7 +194,7 @@ Feature: Inventory data configuration Module Automation
     Then User verify if the Store Group is created
 
   @EditStoreGroup
-  Scenario: Should be able to Edit Unit Conversion
+  Scenario: Should be able to Edit Store Group
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Inventory 'Data configuration' in side menu
