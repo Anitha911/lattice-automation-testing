@@ -441,7 +441,6 @@ public class InventoryMasterPageSteps {
         By InvConvFactorErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnitConversion_C_RequiredFieldValidator22");
         helperUtils.verifyInlineErrorMessage(InvConvFactorErrorLocator, expectedErrorMessage);
     }
-
     @When("user verify the chars min len as {int} and max len as {int} on Store Group")
     public void user_verify_chars_len_InvStoreGrp(int minLen, int maxLen) {
         helperUtils.verifyMinAndMaxLength(By.id("radtxtStoreGrp"),maxLen, minLen);
@@ -451,6 +450,23 @@ public class InventoryMasterPageSteps {
         By InvStoreGrpErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinStoreGrp_C_RequiredFieldValidator14");
         helperUtils.verifyInlineErrorMessage(InvStoreGrpErrorLocator, expectedErrorMessage);
     }
-
+    @When("user verify the chars min len as {int} and max len as {int} on UOM Unit Code")
+    public void user_verify_chars_len_InvUOMUC(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtUnitCode"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on UOM Unit Name")
+    public void user_verify_chars_len_InvUOMUnitName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtUnitName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Unit Code")
+    public void userVerifyInlineErrorMessageOnInvUnitCode(String expectedErrorMessage) {
+        By InvUnitCodeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnit_C_rfvunitcode");
+        helperUtils.verifyInlineErrorMessage(InvUnitCodeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Unit Name")
+    public void userVerifyInlineErrorMessageOnInvUnitName(String expectedErrorMessage) {
+        By InvUnitNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnit_C_rfvunitname");
+        helperUtils.verifyInlineErrorMessage(InvUnitNameErrorLocator, expectedErrorMessage);
+    }
     //Negative Scenarios
 }

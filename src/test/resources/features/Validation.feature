@@ -188,3 +188,18 @@ Feature: Validate input fields before saving the form
     When user verify the chars min len as 3 and max len as 100 on Store Group
     Then User clicks on Store Group save button
     When user verify the inline error message 'Enter Store Group' on Inventory Store Group
+
+  @addInventoryUOMValidation
+  Scenario: User should not be able to save Inventory UOM form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    When user verify the chars min len as 3 and max len as 10 on UOM Unit Code
+    When user verify the chars min len as 3 and max len as 100 on UOM Unit Name
+    Then User clicks on UOM save button
+    When user verify the inline error message 'Enter Unit Code' on Inventory Unit Code
+    When user verify the inline error message 'Enter Unit Name' on Inventory Unit Name
+
