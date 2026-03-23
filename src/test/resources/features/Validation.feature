@@ -203,3 +203,29 @@ Feature: Validate input fields before saving the form
     When user verify the inline error message 'Enter Unit Code' on Inventory Unit Code
     When user verify the inline error message 'Enter Unit Name' on Inventory Unit Name
 
+  @addInventorySupplierTypeValidation
+  Scenario: User should not be able to save Inventory Supplier Type form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Supplier Type
+    Then User clicks on Supplier Type save button
+    When user verify the inline error message 'Enter Supplier Type' on Inventory Supplier Type
+
+  @addInventoryActionReasonValidation
+  Scenario: User should not be able to save Inventory Action Reason form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Reason
+    When user verify the chars min len as 3 and max len as 100 on Reason Description
+    Then User clicks on Action Reasons save button
+    When user verify the inline error message 'Select Reason Type' on Inventory Reason type
+    When user verify the inline error message 'Enter Reason' on Inventory Reason
+    When user verify the inline error message 'Enter Reason Description' on Inventory Reason Description

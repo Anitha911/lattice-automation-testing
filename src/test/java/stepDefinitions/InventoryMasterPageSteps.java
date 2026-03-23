@@ -468,5 +468,37 @@ public class InventoryMasterPageSteps {
         By InvUnitNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinUnit_C_rfvunitname");
         helperUtils.verifyInlineErrorMessage(InvUnitNameErrorLocator, expectedErrorMessage);
     }
+    @When("user verify the chars min len as {int} and max len as {int} on Supplier Type")
+    public void user_verify_chars_len_InvSupplierType(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtSupplierType"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Supplier Type")
+    public void userVerifyInlineErrorMessageOnInvSupplierType(String expectedErrorMessage) {
+        By InvSupplierTypeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinSupplierType_C_RequiredFieldValidator11");
+        helperUtils.verifyInlineErrorMessage(InvSupplierTypeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Reason")
+    public void user_verify_chars_len_InvReason(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtReason"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Reason Description")
+    public void user_verify_chars_len_InvReasonDesc(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtReasonDescription"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Inventory Reason type")
+    public void userVerifyInlineErrorMessageOnInvReasonType(String expectedErrorMessage) {
+        By InvReasonTypeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReason_C_RequiredFieldValidator16");
+        helperUtils.verifyInlineErrorMessage(InvReasonTypeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Reason")
+    public void userVerifyInlineErrorMessageOnInvReason(String expectedErrorMessage) {
+        By InvReasonErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReason_C_RequiredFieldValidator15");
+        helperUtils.verifyInlineErrorMessage(InvReasonErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Inventory Reason Description")
+    public void userVerifyInlineErrorMessageOnInvReasonDesc(String expectedErrorMessage) {
+        By InvReasonDescErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReason_C_RequiredFieldValidator17");
+        helperUtils.verifyInlineErrorMessage(InvReasonDescErrorLocator, expectedErrorMessage);
+    }
     //Negative Scenarios
 }
