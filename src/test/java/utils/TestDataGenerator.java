@@ -292,7 +292,28 @@ public class TestDataGenerator {
         String[] mode = {"tstSRR1", "tstSRR2", "tstSRR3", "tstSRR4", "tstSRR5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
-
+    //Sales Transaction
+    public String generateCustomerName() {
+        String[] mode = {"tstCust1", "tstCust2", "tstCust3", "tstCust4", "tstCust5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateContactPerson() {
+        String[] mode = {"tstContact1", "tstContact2", "tstContact3", "tstContact4", "tstContact5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateCustEmail() {
+        String timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+        return "user_" + timestamp + "_" + UUID.randomUUID().toString().substring(0, 5) + "@example.com";
+    }
+    // Generate a unique phone number
+    public String generateCustMobile() {
+        return "03" + (random.nextInt(900000000) + 100000000) + random.nextInt(10);
+    }
+    // Generate a unique address
+    public String generateCustAddress() {
+        return (random.nextInt(999) + 1) + " Test Street, Test City " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    //Sales Transaction
 
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
