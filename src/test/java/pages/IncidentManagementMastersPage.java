@@ -24,20 +24,17 @@
         public static final By Incident_Type_Select = By.cssSelector("[value='Select Incident Type']");
         public static final By Severity = By.id("txtSeverityType");
         public static final By Affected_Group = By.id("txtAffectingType");
-        public static final By Sort_Order = By.id("radtxtAffectSort");
         public static final By Caused_By = By.id("txtCausedType");
-        public static final By Sort_Order_Caused_By = By.id("radtxtCausesSort");
         public static final By Impact_Type = By.id("txtImpactType");
         public static final By Impact_Type_Sort_Order = By.id("radtxtImpactSort");
         public static final By Section_Name = By.id("SectionBoxid");
         public static final By Section_Type_Select = By.cssSelector("[value='Select Type']");
         public static final By Section_Sort_Order = By.id("ctl00_ContentPlaceHolder1_RadWinsection_C_sortorderid");
-        public static final By Field_Type_Select = By.id("ctl00_ContentPlaceHolder1_RadWinFeild_C_Typedropf_Input");
-        public static final By Field_Section_Select = By.cssSelector("[value='Incident']");
+        public static final By Field_Type_Select = By.cssSelector("[value='Select Type']");
+        public static final By Field_Section_Select = By.cssSelector("[value='Select Section']");
         public static final By Field_Name = By.id("FieldsName");
         public static final By Field_Data_Type_Select = By.cssSelector("[value='String']");
         public static final By Field_Sort_Order = By.id("ctl00_ContentPlaceHolder1_ctl00_ContentPlaceHolder1_RadWinFeild_C_sortOderPanel");
-        public static final By Field_Mandatory_Field = By.id("ctl00_ContentPlaceHolder1_ctl00_ContentPlaceHolder1_RadWinFeild_C_checkManfPanel");
         public static final By LOV_Field_Type_Select = By.id("ctl00_ContentPlaceHolder1_RadWinLOv_C_FielddropLOV_Input");
         public static final By List_of_Values = By.id("Valueid");
         public static final By SEARCH_INCIDENT_TYPE = By.cssSelector("[alt='Filter TypeName column']");
@@ -67,7 +64,6 @@
         public static final By FIRST_SECTION_IN_LIST = By.id("ctl00_ContentPlaceHolder1_section_Grid_ctl00__0");
         public static final By FIRST_FIELD_IN_LIST = By.id("ctl00_ContentPlaceHolder1_Feild_Grid_ctl00__0");
         public static final By FIRST_LIST_OF_VALUES_IN_LIST = By.id("ctl00_ContentPlaceHolder1_LOV_Grid_ctl00__0");
-        //public static final By UPDATE_BUTTON_SUB_TYPE = By.id("ctl00_ContentPlaceHolder1_RadWinIncidentSubType_C_rdbtnSave");
         public static final By DELETE_FIRST_INCIDENT_TYPE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_IncidentType_Grid_ctl00_ctl04_ImageButton1");
         public static final By DELETE_FIRST_INCIDENT_SUB_TYPE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_IncidentSubType_Grid_ctl00_ctl04_ImageButton1");
         public static final By DELETE_FIRST_INCIDENT_SEVERITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_SeverityType_Grid_ctl00_ctl04_ImageButton1");
@@ -560,7 +556,7 @@
     public void selectFieldType(String FieldType) {
     try {
          utils.click(Field_Type_Select);
-        By locator = By.xpath(String.format("//div[contains(@id,'Typedrop_DropDown')]//li[contains(@class,'rcbItem')]//span[normalize-space()='%s']",FieldType));
+        By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FieldType));
         utils.click(locator);
         System.out.println("Clicked on the tab: " + FieldType);
     }
@@ -568,21 +564,71 @@
         System.out.println("Failed to click on the tab: " + FieldType);
         throw e;
     }
-}
-            public void selectSection (String Field_SectionType) {
+    }
+        public void openSectionDropdownWithRetry() {
+            By sectionInput = By.id("ctl00_ContentPlaceHolder1_RadWinFeild_C_Sectiondropf_Input");
+
+            // RadComboBox arrow (MOST RELIABLE)
+            By sectionArrow = By.cssSelector("a[id*='Sectiondropf_Arrow']");
+
+            // dropdown container (Telerik usually uses this id)
+            By dropdown = By.cssSelector("div[id*='Sectiondropf_DropDown']");
+
+            // list + items inside dropdown
+            By list = By.xpath("//div[contains(@id,'Sectiondropf_DropDown')]//ul[contains(@class,'rcbList')]");
+            By anyItem = By.xpath("//div[contains(@id,'Sectiondropf_DropDown')]//li[contains(@class,'rcbItem')]");
+
+            utils.waitForElementToBeClickable(sectionInput);
+
+            for (int i = 0; i < 6; i++) {
                 try {
-                    utils.click(Field_Section_Select);
-                    By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Field_SectionType));
-                    utils.click(locator);
-                    System.out.println("Clicked on the tab: " + Field_SectionType);
-                } catch (Exception e) {
-                    System.out.println("Failed to click on the tab: " + Field_SectionType);
-                    throw e;
+                    // Try arrow click first (best), fallback to input click
+                    if (utils.isElementVisible(sectionArrow)) {
+                        utils.click(sectionArrow);
+                    } else {
+                        utils.click(sectionInput);
+                    }
+
+                    // Wait a moment for ajax/rebind
+                    Thread.sleep(400);
+
+                    // Check dropdown + list + at least one item
+                    if (utils.isElementVisible(dropdown) && utils.isElementVisible(list) && utils.isElementVisible(anyItem)) {
+                        return; // ✅ opened and items loaded
+                    }
+
+                } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                    // Telerik re-renders - just retry
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
 
+            throw new RuntimeException("Section dropdown did not become ready (dropdown/items not visible).");
+        }
+
+        public void selectSection(String fieldSection) {
+            try {
+                openSectionDropdownWithRetry(); // ✅ ensures dropdown + items loaded
+
+                By option = By.xpath(String.format(
+                        "//div[contains(@id,'Sectiondropf_DropDown')]//li[contains(@class,'rcbItem')][normalize-space()='%s']",
+                        fieldSection
+                ));
+
+                utils.waitForElementToBeClickable(option);
+                utils.click(option);
+
+                System.out.println("Selected Section: " + fieldSection);
+            } catch (Exception e) {
+                System.out.println("Failed to select Section: " + fieldSection);
+                throw e;
+            }
+        }
+
             public void enterField_Name (String Field){
                     utils.typeText(Field_Name, Field);
+                driver.findElement(Field_Name).sendKeys(Keys.TAB);
                 }
 
            public void selectDataType (String Field_DataType) {
@@ -595,6 +641,7 @@
                 System.out.println("Failed to click on the tab: " + Field_DataType);
                 throw e;
             }
+               driver.findElement(Field_Data_Type_Select).sendKeys(Keys.TAB);
         }
 
         public void enterField_SortOrder ( int Sort_Order){

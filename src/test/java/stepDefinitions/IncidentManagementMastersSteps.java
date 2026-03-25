@@ -296,8 +296,9 @@ public class IncidentManagementMastersSteps {
 
     @Then("User fills the Incident-Field details")
     public void user_Add_Incident_Field_details() throws IOException {
-        tmp.selectFieldType("Plane Crash");
-        tmp.selectSection("Incident");
+        tmp.selectFieldType("Medical Hazard");
+        tmp.openSectionDropdownWithRetry();
+        tmp.selectSection("IncidentDetails");
         Field_Name = dataGen.generateField_Name();
         tmp.enterField_Name(Field_Name);
         tmp.selectDataType("String");

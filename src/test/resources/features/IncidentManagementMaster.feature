@@ -279,48 +279,48 @@ Feature: Incident Management Master Module Automation
     Then User clicks on first available Incident-Section to delete
     Then User waits for 3 seconds
 
-#Incident - Field - Add , Update And Delete
-  #@addIncidentField
-#  Scenario: Should be able to create a new Incident-Field
-#    Given User navigates to 'lattice.url' page
-#    Then User is at home screen after login with "username" and "password"
-#    Then User clicks on 'Data Configurations' in navigation panel
-#    Then User clicks on hamburger icon
-#    And User clicks on the 'Incident Management' tab in data configuration page
-#    Then User clicks on 'Incident-Field' tab
-#    Then User clicks on button 'Add'
-#    Then User fills the Incident-Field details
-#    And User clicks on Incident Save button
-#    Then User waits for 3 seconds
-#    Then User verify if the Incident-Field is created
-#    Then User waits for 10 seconds
+  #Incident - Field - Add , Update And Delete
+  @addIncidentField
+  Scenario: Should be able to create a new Incident-Field
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Incident Management' tab in data configuration page
+    Then User clicks on 'Incident-Field' tab
+    Then User clicks on button 'Add'
+    Then User fills the Incident-Field details
+    And User clicks on Incident Save button
+    Then User waits for 3 seconds
+    Then User verify if the Incident-Field is created
+    Then User waits for 10 seconds
 
-#  @updateIncidentField
-#  Scenario: Should be able to edit a Incident-Field
-#   Given User navigates to 'lattice.url' page
-#   Then User is at home screen after login with "username" and "password"
-#   Then User clicks on 'Data Configurations' in navigation panel
-#   Then User clicks on hamburger icon
-#   And User clicks on the 'Incident Management' tab in data configuration page
-#   Then User clicks on 'Incident-Field' tab
-#   Then User clicks on first available Incident-Field to edit
-#   Then User updates the Incident-Field details
-#   Then User clicks on Incident Save button
-#   Then User waits for 3 seconds
-#   Then User verify if the Incident-Field is updated
-#   Then User waits for 3 seconds
+  @updateIncidentField
+  Scenario: Should be able to edit a Incident-Field
+   Given User navigates to 'lattice.url' page
+   Then User is at home screen after login with "username" and "password"
+   Then User clicks on 'Data Configurations' in navigation panel
+   Then User clicks on hamburger icon
+   And User clicks on the 'Incident Management' tab in data configuration page
+   Then User clicks on 'Incident-Field' tab
+   Then User clicks on first available Incident-Field to edit
+   Then User updates the Incident-Field details
+   Then User clicks on Incident Save button
+   Then User waits for 3 seconds
+   Then User verify if the Incident-Field is updated
+   Then User waits for 3 seconds
 
-#  @deleteIncidentField
-#  Scenario: Should be able to delete a Incident-Field
-#  Given User navigates to 'lattice.url' page
-#    Then User is at home screen after login with "username" and "password"
-#    Then User clicks on 'Data Configurations' in navigation panel
-#    Then User clicks on hamburger icon
-#    And User clicks on the 'Incident Management' tab in data configuration page
-#    Then User clicks on 'Incident-Field' tab
-#    Then User waits for 3 seconds
-#    Then User clicks on first available Incident-Field to delete
-#    Then User waits for 3 seconds
+  @deleteIncidentField
+  Scenario: Should be able to delete a Incident-Field
+  Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Incident Management' tab in data configuration page
+    Then User clicks on 'Incident-Field' tab
+    Then User waits for 3 seconds
+    Then User clicks on first available Incident-Field to delete
+    Then User waits for 3 seconds
 
     #Incident - List of Values - Add , Update And Delete
   @addIncidentListOfValues
