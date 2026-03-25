@@ -4,7 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.interactions.Actions;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -281,5 +281,31 @@ public class ElementUtils {
         el.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         el.sendKeys(Keys.DELETE);
         el.sendKeys(value);
+    }
+
+    public void clickUsingActions(By locator) {
+        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        new Actions(driver).moveToElement(el).pause(Duration.ofMillis(100)).click().perform();
+    }
+
+    public ElementUtils jsClick(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+        return this;
+    }
+
+    public ElementUtils waitForElementVisible(By locator) {
+        new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return this;
+
+
+    }
+
+
+    public void clear(By locator) {
+        waitForElementVisible(locator);
+        driver.findElement(locator).clear();
     }
 }
