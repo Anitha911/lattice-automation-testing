@@ -32,6 +32,7 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_AddEnquiry(String btnAddSalesEnquiry) throws InterruptedException {
         tmp.clickOnAddSalesEnquiry(btnAddSalesEnquiry);
     }
+    //Add Customer
     @Then("User clicks on button Sales Add Enquiry Add Customer {string}")
     public void user_click_on_Sales_AddEnquiryAddCustomer(String btnAddSalesEnquiryCustomer) throws InterruptedException {
         tmp.clickOnAddSalesEnquiryCustomer(btnAddSalesEnquiryCustomer);
@@ -52,7 +53,7 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_AddCustSaveButton() {
         tmp.ClickAddCustSave();
     }
-
+//Add Enquiry
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
         tmp.selectEnqCustomer("Alpha Properties");
@@ -89,5 +90,21 @@ public class SalesEnquiryLeadsSteps {
     @Then("User Clicks on Enquiry Update Status Save Button")
     public void user_click_on_EnqUpdateStatusSaveButton() {
         tmp.ClickAddUpdateStatus();
+    }
+    //Follow Up
+    @Then("User clicks on Customer Follow Up Button {string} in Enquiry Detail Page")
+    public void user_click_on_Sales_FollowUp(String btnCustFollowUp) throws InterruptedException {
+        tmp.clickOnCustomerFollowUp(btnCustFollowUp);
+    }
+    @Then("User enters the Customer Follow Up Details")
+    public void userFillsCustFollowUpDetails() {
+        tmp.enterFollowUpProbablity(dataGen.generateMaxNoParticipants());
+        tmp.enterFollowUpComments(dataGen.generateComments());
+        tmp.selectNewMode("Email");
+        tmp.enternewFollowupDate(dataGen.generateCurrentDateSales());
+    }
+    @Then("User clicks the Customer Follow Up Button")
+    public void user_click_on_CustFollowUpSaveButton() {
+        tmp.ClickAddUpdateFollowUp();
     }
 }

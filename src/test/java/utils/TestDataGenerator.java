@@ -320,6 +320,11 @@ public class TestDataGenerator {
         String[] mode = {"tstEnqComment1", "tstEnqComment2", "tstEnqComment3", "tstEnqComment4", "tstEnqComment5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
 
+    public String generateCurrentDateSales() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+        return currentDate.format(formatter);
+    }
     //Sales Transaction
 
     public String generateCompanyType() {

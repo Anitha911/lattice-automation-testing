@@ -35,6 +35,11 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By ENQUIRY_UPDATE_STATUS_NEWSTATUS_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlNewStatus_Input");
     public static final By ENQUIRY_UPDATE_STATUS_DESC = By.id("txtComments");
     public static final By SAVE_BUTTON_UPDATE_STATUS = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_btnStatusUpdate");
+    public static final By ENQUIRY_FOLLOWUP_MODE_DD = By.id("ctl00_ContentPlaceHolder1_ddlSource_Input");
+    public static final By FOLLOWUP_COMMENTS = By.id("ctl00_ContentPlaceHolder1_txt_Comments");
+    public static final By FOLLOWUP_NEXTDATE = By.id("ctl00_ContentPlaceHolder1_dtFollowupDate_dateInput");
+    public static final By FOLLOWUP__PROBABLITY= By.id("ctl00_ContentPlaceHolder1_txtProbablityPercentage");
+    public static final By SAVE_BUTTON_FOLLOWUP = By.id("ctl00_ContentPlaceHolder1_radFollowup");
 
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
@@ -281,5 +286,53 @@ public class SalesEnquiryLeadsPage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+//Follow Up
+public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
+    try {
+        Set<String> allTabs = driver.getWindowHandles();
+        for (String tab : allTabs) {
+            if (!tab.equals(mainTab)) {
+                driver.switchTo().window(tab);
+                break;
+            }
+        }
+        By locator = By.xpath(String.format("//*[@id='tdFollowUpSubmit']", clickOnCustomerFollowUp));
+        utils.click(locator);
+        System.out.println("Clicked on the Sales Add Enquiry Cust Follow Up: " + clickOnCustomerFollowUp);
+         } catch (Exception e) {
+        System.out.println("Failed to click on the Sales Add Enquiry Cust Follow Up: " + clickOnCustomerFollowUp);
+        throw e;
+        }
+    }
+    public void enterFollowUpProbablity(String enterFollProbablity) {
+        utils.typeText(FOLLOWUP__PROBABLITY, enterFollProbablity);
+    }
+    public void enterFollowUpComments(String enterFollowUpComments) {
+        utils.typeText(FOLLOWUP_COMMENTS, enterFollowUpComments);
+    }
+    public void selectNewMode(String selectFollowUpNewMode) {
+        try {
+            utils.click(ENQUIRY_FOLLOWUP_MODE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectFollowUpNewMode));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectFollowUpNewMode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectFollowUpNewMode);
+            throw e;
+        }
+    }
+    public void enternewFollowupDate(String enternewFollowupDate) {
+        utils.typeText(FOLLOWUP_NEXTDATE, enternewFollowupDate);
 
+    }
+    public void ClickAddUpdateFollowUp() {
+        By[] saveButtons = {SAVE_BUTTON_FOLLOWUP};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
 }
