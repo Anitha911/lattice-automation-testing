@@ -262,9 +262,6 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
-
-
-
     public void clickActivepatrolRoutetoDelete() {
         utils.click(SEARCH_FIRST_PATROLROUTE_TODELETE);
         //driver.switchTo().activeElement();

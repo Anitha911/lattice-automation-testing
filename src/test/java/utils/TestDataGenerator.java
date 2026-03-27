@@ -313,6 +313,10 @@ public class TestDataGenerator {
     public String generateCustAddress() {
         return (random.nextInt(999) + 1) + " Test Street, Test City " + UUID.randomUUID().toString().substring(0, 4);
     }
+    public String generateEnqDesc() {
+        String[] mode = {"tstEnqDESC1", "tstEnqDESC2", "tstEnqDESC3", "tstEnqDESC4", "tstEnqDESC5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+
     //Sales Transaction
 
     public String generateCompanyType() {

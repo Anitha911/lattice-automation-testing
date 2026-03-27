@@ -52,17 +52,27 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_AddCustSaveButton() {
         tmp.ClickAddCustSave();
     }
-    //Start from here
+
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
-        tmp.enterCustomerName(dataGen.generateCustomerName());
-        tmp.enterContactPerson(dataGen.generateContactPerson());
-        tmp.enterCustMobile(dataGen.generateCustMobile());
-        tmp.enterCustEmail(dataGen.generateCustEmail());
-        tmp.enterCustAddress(dataGen.generateCustAddress());
-        tmp.selectClientType("B2B Corporate");
-        tmp.selectCountry("India");
-        tmp.selectCity("Chennai");
-        tmp.selectCustImp("VVIP");
+        tmp.selectEnqCustomer("Alpha Properties");
+        tmp.selectEnqSource("Online");
+        tmp.selectEnquiryType("Adhoc");
+        tmp.selectEnquirySalesPerson("Wallace Hull");
+        tmp.selectEnquiryService("BMS");
+        tmp.enterEnquiryDesc(dataGen.generateEnqDesc());
+    }
+    @Then("User Clicks Enquiry Save Button")
+    public void user_click_on_AddEnquirySaveButton() {
+        tmp.ClickAddEnquirySave();
+    }
+    @Then("User clicks on Sales Enquiry Management Export to Excel button")
+    public void user_clicks_on_Enquiry_export_to_excel_button() throws InterruptedException {
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.SalesEnquiryclickExportToExcel(xpath);
+    }
+    @Then("User clicks on first data in the grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_GridFirstData(String EnquiryGridFirstData) throws InterruptedException  {
+        tmp.SalesEnquiryClickGridFirstData(EnquiryGridFirstData);
     }
 }
