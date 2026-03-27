@@ -3,11 +3,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+import java.util.Set;
 
 public class SalesEnquiryLeadsPage extends BasePage{
     public SalesEnquiryLeadsPage(WebDriver driver) {
         super(driver);
     }
+    Actions actions = new Actions(driver);
+    String mainTab = driver.getWindowHandle();
+
     public static final By CUSTOMER_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtCustomerName");
     public static final By CONTACT_PERSON = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtContactPerson");
     public static final By MOBILE_NUMBER = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtMobileNumber");
@@ -26,6 +31,10 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By ENQUIRYDESC = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_txtEnquiryDescription");
     public static final By SAVE_BUTTON_ENQUIRY = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_btnSave");
     public static final By ENQUIRY_GRID_FIRSTDATA = By.id("ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0");
+    public static final By ENQUIRY_UPDATE_STATUS_PERCENTAGE = By.id("txtStatusChangeProbablityPercentage");
+    public static final By ENQUIRY_UPDATE_STATUS_NEWSTATUS_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlNewStatus_Input");
+    public static final By ENQUIRY_UPDATE_STATUS_DESC = By.id("txtComments");
+    public static final By SAVE_BUTTON_UPDATE_STATUS = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_btnStatusUpdate");
 
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
@@ -219,12 +228,58 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void SalesEnquiryClickGridFirstData(String SalesEnquiryclickGridFirstData) throws InterruptedException {
         try {
-            //By locator = By.xpath(String.format("//*[@id='radbtnExport']", SalesEnquiryclickGridFirstData));
-            utils.click(ENQUIRY_GRID_FIRSTDATA);
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", SalesEnquiryclickGridFirstData));
+            utils.click(locator);
             System.out.println("Clicked on Enquiry Grid First data: " + SalesEnquiryclickGridFirstData);
         } catch (Exception e) {
             System.out.println("Failed to click on the Enquiry Grid First Data: " + SalesEnquiryclickGridFirstData);
             throw e;
         }
     }
+    public void clickOnUpdateStatusSalesEnquiry(String btnUpdateStatusSalesEnquiry) {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnUpdateStatus']", btnUpdateStatusSalesEnquiry));
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Add Enquiry Update Status: " + btnUpdateStatusSalesEnquiry);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Enquiry Update Status: " + btnUpdateStatusSalesEnquiry);
+            throw e;
+        }
+    }
+    //Update Status
+    public void selectNewStatus(String selectNewStatus) {
+        try {
+            utils.click(ENQUIRY_UPDATE_STATUS_NEWSTATUS_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectNewStatus));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectNewStatus);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectNewStatus);
+            throw e;
+        }
+    }
+    public void enterProbablity(String enterProbablity) {
+        utils.typeText(ENQUIRY_UPDATE_STATUS_PERCENTAGE, enterProbablity);
+    }
+    public void enterComments(String enterComments) {
+        utils.typeText(ENQUIRY_UPDATE_STATUS_DESC, enterComments);
+    }
+    public void ClickAddUpdateStatus() {
+        By[] saveButtons = {SAVE_BUTTON_UPDATE_STATUS};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+
 }

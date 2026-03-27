@@ -9,12 +9,12 @@ import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 
+
 public class SalesEnquiryLeadsSteps {
     private final WebDriver driver = DriverFactory.getDriver();
     TestDataGenerator dataGen = new TestDataGenerator();
     HelperUtils helperUtils = new HelperUtils(driver);
     SalesEnquiryLeadsPage tmp = new SalesEnquiryLeadsPage(driver);
-
 
     @Then("User clicks on Sales Enquiry Management {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -72,7 +72,22 @@ public class SalesEnquiryLeadsSteps {
         tmp.SalesEnquiryclickExportToExcel(xpath);
     }
     @Then("User clicks on first data in the grid to Open the Detail page")
-    public void user_clicks_on_Enquiry_GridFirstData(String EnquiryGridFirstData) throws InterruptedException  {
+    public void user_clicks_on_Enquiry_GridFirstData() throws InterruptedException  {
+        String EnquiryGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
         tmp.SalesEnquiryClickGridFirstData(EnquiryGridFirstData);
+    }
+    @Then("User Clicks on status Update Button {string} in Enquiry Detail Page")
+    public void user_click_on_Sales_EnquiryStatusUpdate(String btnUpdateStatusSalesEnquiry) throws InterruptedException {
+        tmp.clickOnUpdateStatusSalesEnquiry(btnUpdateStatusSalesEnquiry);
+    }
+    @Then("User fills the Enquiry Update Status Pop Up details")
+    public void userFillsChangeStatusPopUpDetails() {
+        tmp.enterProbablity(dataGen.generateMaxNoParticipants());
+        tmp.enterComments(dataGen.generateComments());
+        tmp.selectNewStatus("SKIP SITE SURVEY");
+    }
+    @Then("User Clicks on Enquiry Update Status Save Button")
+    public void user_click_on_EnqUpdateStatusSaveButton() {
+        tmp.ClickAddUpdateStatus();
     }
 }
