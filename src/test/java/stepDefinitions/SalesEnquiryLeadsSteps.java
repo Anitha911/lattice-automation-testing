@@ -107,4 +107,41 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_CustFollowUpSaveButton() {
         tmp.ClickAddUpdateFollowUp();
     }
+    //Notes
+    @Then("User clicks on Notes {string} in Enquiry Detail Page")
+    public void user_click_on_Sales_notes(String SctnNotes) throws InterruptedException {
+        tmp.clickOnSalesNotes(SctnNotes);
+    }
+    @Then("User Clicks on Add Notes {string}")
+    public void user_click_on_Sales_Addnotes(String AddNotes) throws InterruptedException {
+        tmp.clickOnAddSalesNotes(AddNotes);
+    }
+    @Then("User enters the Notes Details")
+    public void userFillsNotesDetails() {
+        tmp.enterNotesComments(dataGen.generateComments());
+        tmp.selectNoteType("Commercial");
+    }
+    @Then("User clicks the Notes Save Button")
+    public void user_click_on_NotesSaveButton() {
+        tmp.ClickNotesSave();
+    }
+    //Add Quotation
+    @Then("User clicks on Sales Enquiry Management My Pending Actions Opportunities {string} in side menu")
+    public void user_click_on_Sales_Oppurtunities(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[2]/li[2]/a";
+        tmp.clickOnSalesOppurunities(xpath);
+    }
+    @Then("User clicks on first data in the opportunities grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_OppurGridFirstData() throws InterruptedException  {
+        String EnquiryOppGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.SalesEnquiryOppClickGridFirstData(EnquiryOppGridFirstData);
+    }
+    @Then("User Clicks on Quotation section in the left side menu {string} in Opportunities page")
+    public void user_click_on_Sales_Opp(String btnOpp) throws InterruptedException {
+        tmp.clickOnSalesOpp(btnOpp);
+    }
+    @Then("User Clicks on Add Quotation {string} Button")
+    public void user_click_on_Sales_AddnewQuot(String AddnewQuot) throws InterruptedException {
+        tmp.clickOnAddQuotation(AddnewQuot);
+    }
 }

@@ -42,7 +42,7 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User Clicks on Enquiry Update Status Save Button
 
   @TransLeadsSalesEnquiryDetailPageAddCustomerFollowUp
-  Scenario: Should be able to add Open Enquiry Detail page and Add Customer Follow Up
+  Scenario: Should be able to Open Enquiry Detail page and Add Customer Follow Up
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
@@ -51,5 +51,28 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Customer Follow Up Button 'Add Follow Up' in Enquiry Detail Page
     Then User enters the Customer Follow Up Details
     Then User clicks the Customer Follow Up Button
+
+  @TransLeadsSalesEnquiryDetailPageAddNotes
+  Scenario: Should be able to Open Enquiry Detail page and Add Enquiry Notes
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on first data in the grid to Open the Detail page
+    When User clicks on Notes 'Notes' in Enquiry Detail Page
+    Then User Clicks on Add Notes 'Notes'
+    Then User enters the Notes Details
+    Then User clicks the Notes Save Button
+
+  @TransLeadsSalesEnquiryAddQuotation
+  Scenario: Should be able to add Quotation
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
+    Then User clicks on first data in the opportunities grid to Open the Detail page
+    Then User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    When User Clicks on Add Quotation 'Add New Quotation' Button
 
 

@@ -1,17 +1,23 @@
 package pages;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import java.util.Set;
+import java.time.Duration;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.HelperUtils;
+
+import java.util.Random;
+
 
 public class SalesEnquiryLeadsPage extends BasePage{
     public SalesEnquiryLeadsPage(WebDriver driver) {
         super(driver);
     }
+
     Actions actions = new Actions(driver);
     String mainTab = driver.getWindowHandle();
+    HelperUtils helperUtils = new HelperUtils(driver);
 
     public static final By CUSTOMER_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtCustomerName");
     public static final By CONTACT_PERSON = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtContactPerson");
@@ -40,6 +46,9 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By FOLLOWUP_NEXTDATE = By.id("ctl00_ContentPlaceHolder1_dtFollowupDate_dateInput");
     public static final By FOLLOWUP__PROBABLITY= By.id("ctl00_ContentPlaceHolder1_txtProbablityPercentage");
     public static final By SAVE_BUTTON_FOLLOWUP = By.id("ctl00_ContentPlaceHolder1_radFollowup");
+    public static final By ENQUIRY_NOTE_DESC = By.id("radtxtNotes");
+    public static final By SAVE_BUTTON_ENQNOTES = By.id("ctl00_ContentPlaceHolder1_Notes_radwinNotes_C_radbtnNotesSave");
+    public static final By ENQUIRY_NOTE_TYPE_DD = By.id("ctl00_ContentPlaceHolder1_Notes_radwinNotes_C_raddrpType_Input");
 
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
@@ -99,9 +108,13 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void selectClientType(String ClientType) {
         try {
-            utils.click(CLIENTTYPE_DD);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ClientType));
-            utils.click(locator);
+            By options = By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpClientType_DropDown li");
+            utils.click(CLIENTTYPE_DD);
+            new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(options));
+            helperUtils.clickRandomElement(options);
+            //utils.click(locator);
             System.out.println("Clicked on the dropdown: " + ClientType);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + ClientType);
@@ -111,8 +124,9 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public void selectCountry(String Country) {
         try {
             utils.click(COUNTRY_DD);
-
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Country));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(COUNTRY_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + Country);
         } catch (Exception e) {
@@ -124,6 +138,8 @@ public class SalesEnquiryLeadsPage extends BasePage{
         try {
             utils.click(CITY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", City));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(CITY_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + City);
         } catch (Exception e) {
@@ -135,6 +151,8 @@ public class SalesEnquiryLeadsPage extends BasePage{
         try {
             utils.click(CUSTIMP_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", CustImp));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(CUSTIMP_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + CustImp);
         } catch (Exception e) {
@@ -335,4 +353,109 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //Notes
+    public void clickOnSalesNotes(String clickOnSalesNotes) {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator = By.xpath(String.format("//*[@id='tdNotes']", clickOnSalesNotes));
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Add Enquiry Notes: " + clickOnSalesNotes);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Enquiry Notes: " + clickOnSalesNotes);
+            throw e;
+        }
+    }
+    public void enterNotesComments(String enterNotesComments) {
+        utils.typeText(ENQUIRY_NOTE_DESC, enterNotesComments);
+    }
+    public void selectNoteType(String selectNoteType) {
+        try {
+            utils.click(ENQUIRY_NOTE_TYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectNoteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectNoteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectNoteType);
+            throw e;
+        }
+    }
+    public void ClickNotesSave() {
+        By[] saveButtons = {SAVE_BUTTON_ENQNOTES};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void clickOnAddSalesNotes(String clickOnAddSalesNotes) {
+        try {
+            WebElement el = driver.findElement(By.id("imgNotes"));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].click();", el
+            );
+            System.out.println("Clicked on the Sales Add Enquiry Note: " + clickOnAddSalesNotes);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Enquiry Note: " + clickOnAddSalesNotes);
+            throw e;
+        }
+    }
+    //Add Quotation
+    public void clickOnSalesOppurunities(String clickOnSalesOppurunities) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[2]/li[2]/a", clickOnSalesOppurunities));
+            utils.click(locator);
+            System.out.println("Clicked on Sales opportunities Menu: " + clickOnSalesOppurunities);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales opportunities Menu: " + clickOnSalesOppurunities);
+            throw e;
+        }
+    }
+    public void SalesEnquiryOppClickGridFirstData(String SalesEnquiryOppClickGridFirstData) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", SalesEnquiryOppClickGridFirstData));
+            utils.click(locator);
+            System.out.println("Clicked on Enquiry Grid First data: " + SalesEnquiryOppClickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Enquiry Grid First Data: " + SalesEnquiryOppClickGridFirstData);
+            throw e;
+        }
+    }
+    public void clickOnSalesOpp(String clickOnSalesOpp) {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator = By.xpath(String.format("//*[@id='tdQuotation']", clickOnSalesOpp));
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Opp Quotation: " + clickOnSalesOpp);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Opp Quotation: " + clickOnSalesOpp);
+            throw e;
+        }
+    }
+    public void clickOnAddQuotation(String clickOnAddQuotation) {
+        try {
+            WebElement el = driver.findElement(By.id("addQuotations"));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].click();", el
+            );
+            System.out.println("Clicked on the Sales Add Quotation: " + clickOnAddQuotation);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Quotation: " + clickOnAddQuotation);
+            throw e;
+        }
+    }
+
 }
