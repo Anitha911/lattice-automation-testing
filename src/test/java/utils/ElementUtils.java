@@ -287,4 +287,10 @@ public class ElementUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
+
+    public void waitForElementVisible(By firstItem, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
+    }
 }
