@@ -108,13 +108,13 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void selectClientType(String ClientType) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+           // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ClientType));
-            By options = By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpClientType_DropDown li");
+            //By options = By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpClientType_DropDown li");
             utils.click(CLIENTTYPE_DD);
-            new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(options));
-            helperUtils.clickRandomElement(options);
-            //utils.click(locator);
+            //new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(options));
+            //helperUtils.clickRandomElement(options);
+            utils.click(locator);
             System.out.println("Clicked on the dropdown: " + ClientType);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + ClientType);
@@ -125,8 +125,8 @@ public class SalesEnquiryLeadsPage extends BasePage{
         try {
             utils.click(COUNTRY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Country));
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(COUNTRY_DD));
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(COUNTRY_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + Country);
         } catch (Exception e) {
@@ -138,8 +138,8 @@ public class SalesEnquiryLeadsPage extends BasePage{
         try {
             utils.click(CITY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", City));
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(CITY_DD));
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(CITY_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + City);
         } catch (Exception e) {
@@ -151,8 +151,8 @@ public class SalesEnquiryLeadsPage extends BasePage{
         try {
             utils.click(CUSTIMP_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", CustImp));
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(CUSTIMP_DD));
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(CUSTIMP_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + CustImp);
         } catch (Exception e) {

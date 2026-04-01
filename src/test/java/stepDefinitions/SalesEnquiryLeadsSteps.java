@@ -3,11 +3,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.SalesEnquiryLeadsPage;
 import utils.DriverFactory;
+import utils.ElementUtils;
 import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
+import java.time.Duration;
 
 
 public class SalesEnquiryLeadsSteps {
@@ -15,6 +18,8 @@ public class SalesEnquiryLeadsSteps {
     TestDataGenerator dataGen = new TestDataGenerator();
     HelperUtils helperUtils = new HelperUtils(driver);
     SalesEnquiryLeadsPage tmp = new SalesEnquiryLeadsPage(driver);
+    //private ElementUtils elementUtils;
+    ElementUtils elementUtils= new ElementUtils(driver);
 
     @Then("User clicks on Sales Enquiry Management {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -44,11 +49,69 @@ public class SalesEnquiryLeadsSteps {
         tmp.enterCustMobile(dataGen.generateCustMobile());
         tmp.enterCustEmail(dataGen.generateCustEmail());
         tmp.enterCustAddress(dataGen.generateCustAddress());
-        tmp.selectClientType("B2B Corporate");
-        tmp.selectCountry("India");
-        tmp.selectCity("Chennai");
-        tmp.selectCustImp("VVIP");
+       // tmp.selectClientType("B2B Corporate");
+        //tmp.selectCountry("India");
+        //tmp.selectCity("Chennai");
+        //tmp.selectCustImp("VVIP");
     }
+        //Dropdowns
+        @When("User selects value in the {string} dropdown")
+        public void user_selects_dropdown_and_options(String dropdownName) {
+            By field;
+            By options;
+
+            if (dropdownName.equalsIgnoreCase("Type")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpClientType_Input");
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpClientType_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                elementUtils.click(field);
+            }
+            else if (dropdownName.equalsIgnoreCase("Country")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCountry_Input");
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCountry_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("City")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCity_Input");
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCity_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Customer Importance")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCustomerImportance_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_raddrpCustomerImportance_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            //add enquiry
+            else if (dropdownName.equalsIgnoreCase("Customer Name")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Enquiry Source")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Sales Person")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else {
+                throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
+            }
+            elementUtils.click(field);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
+            elementUtils.waitForElementVisible(firstItem, 50);  //Uncomment when getting code
+            helperUtils.clickRandomElement(options);
+        }
+        //Dropdowns
+
     @Then("User Clicks on Add Customer Save Button")
     public void user_click_on_AddCustSaveButton() {
         tmp.ClickAddCustSave();
@@ -56,10 +119,10 @@ public class SalesEnquiryLeadsSteps {
 //Add Enquiry
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
-        tmp.selectEnqCustomer("Alpha Properties");
-        tmp.selectEnqSource("Online");
+        //tmp.selectEnqCustomer("Alpha Properties");
+        //tmp.selectEnqSource("Online");
         tmp.selectEnquiryType("Adhoc");
-        tmp.selectEnquirySalesPerson("Wallace Hull");
+        //tmp.selectEnquirySalesPerson("Wallace Hull");
         tmp.selectEnquiryService("BMS");
         tmp.enterEnquiryDesc(dataGen.generateEnqDesc());
     }

@@ -9,6 +9,9 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     Then User clicks on button Sales Add Enquiry 'Add'
     Then User fills the Enquiry details
+    When User selects value in the "Customer Name" dropdown
+    When User selects value in the "Enquiry Source" dropdown
+    When User selects value in the "Sales person" dropdown
     Then User Clicks Enquiry Save Button
 
   @TransLeadsSalesEnquiryExportToExcel
@@ -28,6 +31,10 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on button Sales Add Enquiry 'Add'
     Then User clicks on button Sales Add Enquiry Add Customer 'AddCustomer'
     Then User fills the Customer details
+    When User selects value in the "Type" dropdown
+    When User selects value in the "Country" dropdown
+    When User selects value in the "City" dropdown
+    When User selects value in the "Customer Importance" dropdown
     Then User Clicks on Add Customer Save Button
 
   @TransLeadsSalesOpenEnquiryDetailPage
