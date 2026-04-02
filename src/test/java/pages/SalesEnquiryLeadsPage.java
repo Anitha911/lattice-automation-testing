@@ -1,6 +1,9 @@
 package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.time.Duration;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,7 +52,12 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By ENQUIRY_NOTE_DESC = By.id("radtxtNotes");
     public static final By SAVE_BUTTON_ENQNOTES = By.id("ctl00_ContentPlaceHolder1_Notes_radwinNotes_C_radbtnNotesSave");
     public static final By ENQUIRY_NOTE_TYPE_DD = By.id("ctl00_ContentPlaceHolder1_Notes_radwinNotes_C_raddrpType_Input");
-
+    public static final By ENQUIRY_ADDLINES_DESC = By.id("txtdesc1");
+    public static final By ENQUIRY_ADDLINES_UNITPRICE = By.id("txtUnitPrice1");
+    public static final By SAVE_BUTTON_QUOT_DRAFT = By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By SAVE_BUTTON_QUOT_FINALIZE = By.id("ctl00_ContentPlaceHolder1_btnSendVerify");
+    public static final By ENQUIRY_QUOT_SCOPEOFWORK = By.id("radtxtScope");
+    public static final By SAVE_BUTTON_QUOT_FINALIZE_SUBMIT = By.id("ctl00_ContentPlaceHolder1_RadVerification_C_btnSend");
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -420,7 +428,7 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void SalesEnquiryOppClickGridFirstData(String SalesEnquiryOppClickGridFirstData) throws InterruptedException {
         try {
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", SalesEnquiryOppClickGridFirstData));
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__1']", SalesEnquiryOppClickGridFirstData));//change this
             utils.click(locator);
             System.out.println("Clicked on Enquiry Grid First data: " + SalesEnquiryOppClickGridFirstData);
         } catch (Exception e) {
@@ -457,5 +465,119 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    public void clickOnAddQuotLines(String clickOnAddQuotAddLines) {
+        try {
+            WebElement el = driver.findElement(By.id("ContentPlaceHolder1_imgAddRow"));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].click();", el
+            );
+            System.out.println("Clicked on the Sales Add Quotation Add Lines: " + clickOnAddQuotAddLines);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Quotation Add Lines:" + clickOnAddQuotAddLines);
+            throw e;
+        }
+    }
+    //Add Lines
+    public void enterAddLinesComments(String enterAddLinesComments) {
+        utils.typeText(ENQUIRY_ADDLINES_DESC, enterAddLinesComments);
+    }
+    public void enterAddLinesUnitPrice(String enterAddLinesUnitPrice) {
+        utils.typeText(ENQUIRY_ADDLINES_UNITPRICE, enterAddLinesUnitPrice);
+    }
+    public void ClickQuotSave(Boolean clickQuotSaveDraft) {
+            By[] saveButtons = {SAVE_BUTTON_QUOT_DRAFT};
+            for (By button : saveButtons) {
+                if (utils.isElementVisible(button)) {
+                    utils.click(button);
+                    return;
+                }
+            }
+        throw new RuntimeException("No save button is present on the page.");
+    }
 
+    //Scope EXP
+    public void ClickQuotScopeOfWork(String enterClickQuotScopeOfWork) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(driver -> driver.getWindowHandles().size() >= 3);
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(2));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@id='tabScopeofWork']")
+        )).click();
+    }
+    public void enterScope(String enterAddLinesComments) {
+        utils.typeText(ENQUIRY_QUOT_SCOPEOFWORK, enterAddLinesComments);    }
+
+    //Scope Exp
+    public void ClickQuotSaveFinalize(String clickQuotSaveFinalize) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(2));
+            By[] saveButtons = {SAVE_BUTTON_QUOT_FINALIZE};
+            for (By button : saveButtons) {
+                if (utils.isElementVisible(button)) {
+                    utils.click(button);
+                    return;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Failed to click on the Finalize Quotation: " + clickQuotSaveFinalize);
+            throw e;
+        }
+    }
+    public void ClickQuotSaveFinalizeSubmit(String ClickQuotSaveFinalizeSubmit) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(2));
+            By[] saveButtons = {SAVE_BUTTON_QUOT_FINALIZE_SUBMIT};
+            for (By button : saveButtons) {
+                if (utils.isElementVisible(button)) {
+                    utils.click(button);
+                    return;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Failed to click on the Finalize Quotation Submit: " + ClickQuotSaveFinalizeSubmit);
+            throw e;
+        }
+    }
+    //much slow
+    public void SalesEnquiryQuotationClickGridFirstData(String SalesEnquiryQuotationClickGridFirstData) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']", SalesEnquiryQuotationClickGridFirstData));//change this
+            utils.click(locator);
+            System.out.println("Clicked on Enquiry Grid First data: " + SalesEnquiryQuotationClickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Enquiry Grid First Data: " + SalesEnquiryQuotationClickGridFirstData);
+            throw e;
+        }
+    }
+//Product Store Front
+    public void clickOnSalesProdFront(String clickOnSalesProdFront) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[1]/li[3]/a", clickOnSalesProdFront));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Leads Menu: " + clickOnSalesProdFront);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Leads Menu: " + clickOnSalesProdFront);
+            throw e;
+        }
+    }
+    public void clickOnAddPackageProd(String clickOnAddPackageProd) {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_BtnAdd");
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Add PackageProd: " + clickOnAddPackageProd);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Package Prod:: " + clickOnAddPackageProd);
+            throw e;
+        }
+    }
 }

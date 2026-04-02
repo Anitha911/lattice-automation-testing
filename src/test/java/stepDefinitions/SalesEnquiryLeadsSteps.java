@@ -101,6 +101,14 @@ public class SalesEnquiryLeadsSteps {
                 options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
+            //start  from here
+            else if (dropdownName.equalsIgnoreCase("MasterCategory")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+
             else {
                 throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
             }
@@ -203,8 +211,55 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_Opp(String btnOpp) throws InterruptedException {
         tmp.clickOnSalesOpp(btnOpp);
     }
-    @Then("User Clicks on Add Quotation {string} Button")
+    @When("User Clicks on Add Quotation {string} Button")
     public void user_click_on_Sales_AddnewQuot(String AddnewQuot) throws InterruptedException {
         tmp.clickOnAddQuotation(AddnewQuot);
+    }
+    @When("User Clicks on Quotation Details {string} Button")
+    public void user_click_on_Sales_AddQuotLines(String AddnewQuotLines) throws InterruptedException {
+        tmp.clickOnAddQuotLines(AddnewQuotLines);
+    }
+    @Then("User enters on Quotation Add Lines Details")
+    public void userFillsAddLinesDetails() {
+        tmp.enterAddLinesComments(dataGen.generateEnqDesc());
+        tmp.enterAddLinesUnitPrice(dataGen.generatePrice());
+    }
+    @Then("User clicks the Quotation Save {string} Button")
+    public void user_click_on_QuotSaveButton(Boolean QuotSave) {
+        tmp.ClickQuotSave(QuotSave);
+    }
+    @Then("User clicks the Quotation Save Finalize {string} Button")
+    public void user_click_on_QuotFinalizeButton(String QuotSaveFinalize) {
+        tmp.ClickQuotSaveFinalize(QuotSaveFinalize);
+    }
+    //Scope of work tab data enter in quotation detail page
+    @Then("User Clicks Scope Of Work data in the {string} Tab")
+    public void user_click_on_QuotScopeOfWork(String QuotScopeOfWork) {
+        tmp.ClickQuotScopeOfWork(QuotScopeOfWork);
+    }
+    @Then("User enters Scope Of Work data Details")
+    public void userFillsScopeDetails() {
+        tmp.enterScope(dataGen.generateEnqDesc());
+    }
+    //Scope of work tab data enter in quotation detail page
+    @Then("User clicks the Quotation Submit {string} Button")
+    public void user_click_on_QuotFinalizeSubmitButton(String QuotSaveFinalizeSubmit) {
+        tmp.ClickQuotSaveFinalizeSubmit(QuotSaveFinalizeSubmit);
+    }
+    @Then("User clicks on first data in the Quotations grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_QuotationGridFirstData() throws InterruptedException  {
+        String QuotationGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']";
+        tmp.SalesEnquiryQuotationClickGridFirstData(QuotationGridFirstData);
+    }
+
+    //Package Store Front
+    @Then("User clicks on Sales Enquiry Management Package Product {string} in side menu")
+    public void user_click_on_Sales_Product_StoreFront(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[1]/li[3]/a";
+        tmp.clickOnSalesProdFront(xpath);
+    }
+    @Then("User clicks on Sales Enquiry Management Package Product Add {string}")
+    public void user_click_on_Sales_AddPackageProd(String btnAddPackageProd) throws InterruptedException {
+        tmp.clickOnAddPackageProd(btnAddPackageProd);
     }
 }
