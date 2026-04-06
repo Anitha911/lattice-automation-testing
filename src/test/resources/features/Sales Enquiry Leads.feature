@@ -107,17 +107,26 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     Then User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
     When User clicks on Sales Enquiry Management Package Product Add 'Add'
-    When User selects value in the "MasterCategory" dropdown
-    When User selects value in the "Category" dropdown
-    When User selects value in the "SubCategory" dropdown
+    When User enters Product Master Category details
+    When User selects value in the "Product Master Category" dropdown
+    When User selects value in the "Product Category" dropdown
+    When User selects value in the "Product SubCategory" dropdown
     When User selects value in the "Payment Schedule" dropdown
     When User selects value in the "WO Type" dropdown
     When User selects value in the "Fault Code" dropdown
     When User selects value in the "First PPM After" dropdown
+    Then User Clicks on Add Product Save Button
 
+  @TransSalesRateCardAdd
+  Scenario: Should be able to add Rate Card
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Rate Card 'Product Rate Card' in side menu
+    When User clicks on Sales Enquiry Management Rate Card Add 'Add'
+    When User enters Rate Card details
+    Then User Clicks on Add RateCard Save Button
 
-
-    Then User Clicks on Add Customer Save Button
 
 
 

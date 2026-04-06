@@ -58,6 +58,14 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By SAVE_BUTTON_QUOT_FINALIZE = By.id("ctl00_ContentPlaceHolder1_btnSendVerify");
     public static final By ENQUIRY_QUOT_SCOPEOFWORK = By.id("radtxtScope");
     public static final By SAVE_BUTTON_QUOT_FINALIZE_SUBMIT = By.id("ctl00_ContentPlaceHolder1_RadVerification_C_btnSend");
+    public static final By PROD_INTERNAL_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtInternlName");
+    public static final By PROD_DISPLAY_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtDisplayName");
+    public static final By PROD_SHORT_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtShrtDescription");
+    public static final By PROD_INSPECTION_CHARGES= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtInspectionCharges");
+    public static final By SAVE_BUTTON_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_BtnSave");
+    public static final By RATE_CARD_NO = By.id("txtRateCardNo");
+    public static final By RATE_CARD_NAME = By.id("txtRateCard");
+    public static final By SAVE_BUTTON_RATECARD = By.id("ctl00_ContentPlaceHolder1_RadWinRateCard_C_btnSvaeRateCard");
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -579,5 +587,64 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             System.out.println("Failed to click on the Sales Add Package Prod:: " + clickOnAddPackageProd);
             throw e;
         }
+    }
+    public void ProdIntName(String ProdIntName) {
+        utils.typeText(PROD_INTERNAL_NAME, ProdIntName);
+    }
+    public void ProdDisplayName(String ProdDisplayName) {
+        utils.typeText(PROD_DISPLAY_NAME, ProdDisplayName);
+    }
+    public void ProdShortDesc(String ProdShortDesc) {
+        utils.typeText(PROD_SHORT_NAME, ProdShortDesc);
+    }
+    public void ProdInspecCharge(String ProdInspecCharge) {
+        utils.typeText(PROD_INSPECTION_CHARGES, ProdInspecCharge);
+    }
+    public void ClickAddProdSave() {
+        By[] saveButtons = {SAVE_BUTTON_PROD};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Product Rate Card
+    public void clickOnSalesRateCard(String clickOnSalesRateCard) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[1]/li[4]/a", clickOnSalesRateCard));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Leads Menu Rate Card: " + clickOnSalesRateCard);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Leads Menu Rate Card: " + clickOnSalesRateCard);
+            throw e;
+        }
+    }
+    public void clickOnAddRatecard(String clickOnAddRatecard) {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_BtnAdd");
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Add Rate Card: " + clickOnAddRatecard);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Add Rate Card: " + clickOnAddRatecard);
+            throw e;
+        }
+    }
+    public void RateCardNo(String RateCardNo) {
+        utils.typeText(RATE_CARD_NO, RateCardNo);
+    }
+    public void RateCardName(String RateCardName) {
+        utils.typeText(RATE_CARD_NAME, RateCardName);
+    }
+    public void ClickAddRateCardSave() {
+        By[] saveButtons = {SAVE_BUTTON_RATECARD};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
     }
 }

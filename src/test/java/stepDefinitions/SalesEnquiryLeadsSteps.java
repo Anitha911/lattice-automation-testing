@@ -1,8 +1,8 @@
 package stepDefinitions;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.SalesEnquiryLeadsPage;
 import utils.DriverFactory;
@@ -11,6 +11,7 @@ import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 
 public class SalesEnquiryLeadsSteps {
@@ -101,13 +102,78 @@ public class SalesEnquiryLeadsSteps {
                 options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
-            //start  from here
-            else if (dropdownName.equalsIgnoreCase("MasterCategory")) {
-                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_Input");
-                elementUtils.click(field);
-                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_DropDown'] li");
+            //Product Category
+            else if (dropdownName.equalsIgnoreCase("Product Master Category")) {
+                 field = By.cssSelector("input[id*='ddlProdmasterCategory']");
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.presenceOfElementLocated(field)
+                );
+                wait.until(ExpectedConditions.visibilityOf(dropdown));
+                dropdown.click();
+              options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_DropDown'] li");
             }
+            else if (dropdownName.equalsIgnoreCase("Product Category")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductCategory_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductCategory_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Product SubCategory")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductSubCategory_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductSubCategory_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Payment Schedule")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlPaymentSchedule_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlPaymentSchedule_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("WO Type")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlWOType_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlWOType_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Fault Code")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("First PPM After")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            //Product Category
 
             else {
                 throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
@@ -119,7 +185,6 @@ public class SalesEnquiryLeadsSteps {
             helperUtils.clickRandomElement(options);
         }
         //Dropdowns
-
     @Then("User Clicks on Add Customer Save Button")
     public void user_click_on_AddCustSaveButton() {
         tmp.ClickAddCustSave();
@@ -251,7 +316,6 @@ public class SalesEnquiryLeadsSteps {
         String QuotationGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']";
         tmp.SalesEnquiryQuotationClickGridFirstData(QuotationGridFirstData);
     }
-
     //Package Store Front
     @Then("User clicks on Sales Enquiry Management Package Product {string} in side menu")
     public void user_click_on_Sales_Product_StoreFront(String title) throws InterruptedException {
@@ -261,5 +325,35 @@ public class SalesEnquiryLeadsSteps {
     @Then("User clicks on Sales Enquiry Management Package Product Add {string}")
     public void user_click_on_Sales_AddPackageProd(String btnAddPackageProd) throws InterruptedException {
         tmp.clickOnAddPackageProd(btnAddPackageProd);
+    }
+    @Then("User enters Product Master Category details")
+    public void userFillsProductMasterDetails() {
+        tmp.ProdIntName(dataGen.generateIntName());
+        tmp.ProdDisplayName(dataGen.generateDisplayName());
+        tmp.ProdShortDesc(dataGen.generateShortDesc());
+        tmp.ProdInspecCharge(dataGen.generateInspecCharges());
+    }
+    @Then("User Clicks on Add Product Save Button")
+    public void user_click_on_AddProdButton() {
+        tmp.ClickAddProdSave();
+    }
+    //Service Product Rate Card
+    @Then("User clicks on Sales Enquiry Management Rate Card {string} in side menu")
+    public void user_click_on_Sales_Rate_Card(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[1]/li[4]/a";
+        tmp.clickOnSalesRateCard(xpath);
+    }
+    @Then("User clicks on Sales Enquiry Management Rate Card Add {string}")
+    public void user_click_on_Sales_AddRateCard(String btnAddRateCard) throws InterruptedException {
+        tmp.clickOnAddRatecard(btnAddRateCard);
+    }
+    @Then("User enters Rate Card details")
+    public void userFillsRateCardDetails() {
+        tmp.RateCardNo(dataGen.generateDisplayName());
+        tmp.RateCardName(dataGen.generateShortDesc());
+    }
+    @Then("User Clicks on Add RateCard Save Button")
+    public void user_click_on_AddrateCardButton() {
+        tmp.ClickAddRateCardSave();
     }
 }
