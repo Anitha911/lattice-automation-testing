@@ -274,4 +274,9 @@ public class ElementUtils {
         LOGGER.info("[RESULT] CLEANED TEXT FOR ELEMENT " + locator + ": '" + cleanedText + "'");
         return cleanedText;
     }
+    public void waitForElementVisible(By firstItem, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
+    }
 }
