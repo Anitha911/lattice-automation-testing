@@ -356,4 +356,17 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_AddrateCardButton() {
         tmp.ClickAddRateCardSave();
     }
+    @Then("User clicks on first data in the Rate Card grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_RCGridFirstData() throws InterruptedException  {
+        String RCGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdRateCard_ctl00__0']";
+        tmp.SalesEnquiryRCClickGridFirstData(RCGridFirstData);
+    }
+    @Then("User Clicks the Edit RateCard {string} Button")
+    public void user_click_on_Sales_EditRateCard(String btnEditRateCard) throws InterruptedException {
+        tmp.clickOnEditRatecard(btnEditRateCard);
+    }
+    @Then("User Clicks the Rate Card Update Button")
+    public void user_click_on_UpdtaRateCardButton() {
+        tmp.ClickUpdateRateCard();
+    }
 }

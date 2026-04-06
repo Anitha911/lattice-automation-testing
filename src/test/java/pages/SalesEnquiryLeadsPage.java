@@ -66,6 +66,7 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By RATE_CARD_NO = By.id("txtRateCardNo");
     public static final By RATE_CARD_NAME = By.id("txtRateCard");
     public static final By SAVE_BUTTON_RATECARD = By.id("ctl00_ContentPlaceHolder1_RadWinRateCard_C_btnSvaeRateCard");
+    public static final By UPDATE_BUTTON_RATECARD = By.id("ctl00_ContentPlaceHolder1_radEditRateCard_C_btnUpdateRateCard");
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -639,6 +640,36 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void ClickAddRateCardSave() {
         By[] saveButtons = {SAVE_BUTTON_RATECARD};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void SalesEnquiryRCClickGridFirstData(String SalesEnquiryRCClickGridFirstData) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdRateCard_ctl00__0']", SalesEnquiryRCClickGridFirstData));
+            utils.click(locator);
+            System.out.println("Clicked on RC Grid First data: " + SalesEnquiryRCClickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RC Grid First Data: " + SalesEnquiryRCClickGridFirstData);
+            throw e;
+        }
+    }
+    public void clickOnEditRatecard(String clickOnEditRatecard) {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_btnEditRateCard");
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Edit Rate Card: " + clickOnEditRatecard);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Edit Rate Card: " + clickOnEditRatecard);
+            throw e;
+        }
+    }
+    public void ClickUpdateRateCard() {
+        By[] saveButtons = {UPDATE_BUTTON_RATECARD};
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
                 utils.click(button);
