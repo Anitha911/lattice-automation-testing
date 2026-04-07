@@ -332,10 +332,38 @@ public class SalesEnquiryLeadsSteps {
         tmp.ProdDisplayName(dataGen.generateDisplayName());
         tmp.ProdShortDesc(dataGen.generateShortDesc());
         tmp.ProdInspecCharge(dataGen.generateInspecCharges());
+        tmp.ProdMaxPPMCount(dataGen.generateMaxNoParticipants());
+        //DropDowns
+        tmp.selectProdMasterCat("Community Specific Package");
+        tmp.selectProdCat("Gold Reactive Package");
+        tmp.selectProdSubCat("Gold Reactive Package");
+        tmp.selectPaymentSchedule("Yearly");
+        tmp.selectWOType("Reactive Maintenance");
+        tmp.selectFaultCode("Civil Works  /  Road Signs  /  Signs-Painting");
+        tmp.selectPPMAfter("3");
     }
     @Then("User Clicks on Add Product Save Button")
     public void user_click_on_AddProdButton() {
         tmp.ClickAddProdSave();
+    }
+    //export to excel Product Package
+    @Then ("User clicks on Export To Excel Product Store Front")
+    public void user_clicks_on_ProdPackage_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.ProdPackageClickExportToExcel(xpath);
+    }
+    @Then("User clicks on first data in the Product Store Front grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_ProStoreGridFirstData() throws InterruptedException  {
+        String ProdPackGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00__0']";
+        tmp.SalesEnquiryProdpackClickGridFirstData(ProdPackGridFirstData);
+    }
+    @Then("User Clicks the Edit Product Store Front {string} Button")
+    public void user_click_on_Sales_EditProdStoreFront(String btnEditProdPackage) throws InterruptedException {
+        tmp.clickOnEditProdPackage(btnEditProdPackage);
+    }
+    @Then("User Clicks the Product Store Front Update Button")
+    public void user_click_on_UpdateProdPackageButton() {
+        tmp.ClickUpdateProdSave();
     }
     //Service Product Rate Card
     @Then("User clicks on Sales Enquiry Management Rate Card {string} in side menu")
@@ -368,5 +396,38 @@ public class SalesEnquiryLeadsSteps {
     @Then("User Clicks the Rate Card Update Button")
     public void user_click_on_UpdtaRateCardButton() {
         tmp.ClickUpdateRateCard();
+    }
+    //Delete Rate Card
+    @Then("User clicks on first Valid Product Rate Card to delete")
+    public void user_clicks_on_first_Prod_rateCard_to_delete() {
+        tmp.clickRateCardtoDelete();
+    }
+    //export to excel Rate Card
+    @Then ("User clicks on Export To Excel Product Rate Card")
+    public void user_clicks_on_RateCard_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='lnkExport']";
+        tmp.RateCardClickExportToExcel(xpath);
+    }
+    //Awaiting Approval detail page
+    @Then("User clicks on Sales Enquiry Management Awaiting Approval {string} in side menu")
+        public void user_click_on_Awaiting_Approval(String title) throws InterruptedException {
+            String xpath = "//*[@id='tab-sales']/div[2]/div/ul[2]/li[3]/a";
+            tmp.clickOnSalesAwaitingApproval(xpath);
+        }
+    @Then("User clicks on first data in the Awaiting Approval grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_AwaitingApproval_GridFirstData() throws InterruptedException  {
+        String AwaitingApprovalGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.AwaitingApprovallickGridFirstData(AwaitingApprovalGridFirstData);
+    }
+    //Awaiting Quotation Approval detail page
+    @Then("User clicks on Sales Enquiry Management Awaiting Quotation Approval {string} in side menu")
+    public void user_click_on_Awaiting_Quot_Approval(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[2]/li[4]/a";
+        tmp.clickOnSalesAwaitingQuotationApproval(xpath);
+    }
+    @Then("User clicks on first data in the Awaiting Quotation Approval grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_AwaitingQuotApproval_GridFirstData() throws InterruptedException  {
+        String AwaitingQuotApprovalGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_grdQTN_ctl00__0']";
+        tmp.AwaitingQuotApprovallickGridFirstData(AwaitingQuotApprovalGridFirstData);
     }
 }

@@ -1,7 +1,6 @@
 package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -9,9 +8,7 @@ import java.time.Duration;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.HelperUtils;
-
 import java.util.Random;
-
 
 public class SalesEnquiryLeadsPage extends BasePage{
     public SalesEnquiryLeadsPage(WebDriver driver) {
@@ -62,11 +59,23 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By PROD_DISPLAY_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtDisplayName");
     public static final By PROD_SHORT_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtShrtDescription");
     public static final By PROD_INSPECTION_CHARGES= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtInspectionCharges");
+    public static final By PROD_MAX_PPM_SCHEDULE_COUNT= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtMaxPPMScheduleCount");
     public static final By SAVE_BUTTON_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_BtnSave");
     public static final By RATE_CARD_NO = By.id("txtRateCardNo");
     public static final By RATE_CARD_NAME = By.id("txtRateCard");
     public static final By SAVE_BUTTON_RATECARD = By.id("ctl00_ContentPlaceHolder1_RadWinRateCard_C_btnSvaeRateCard");
     public static final By UPDATE_BUTTON_RATECARD = By.id("ctl00_ContentPlaceHolder1_radEditRateCard_C_btnUpdateRateCard");
+    public static final By DELETE_FIRST_RATECARD_IN_LIST = By.id("ctl00_ContentPlaceHolder1_GrdRateCard_ctl00_ctl04_ImageButton1");
+    public static final By DDL_MASTERCATEGORY_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_Input");
+    public static final By DDL_CATEGORY_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductCategory_Input");
+    public static final By DDL_SUB_CATEGORY_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductSubCategory_Input");
+    public static final By DDL_PAYMENT_SCHEDULE_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlPaymentSchedule_Input");
+    public static final By DDL_WO_TYPE_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlWOType_Input");
+    public static final By DDL_FAULT_CODE_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_Input");
+    public static final By DDL_PPM_AFTER_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Input");
+    public static final By UPDATE_BUTTON_PRODPACKAGE = By.id("ctl00_ContentPlaceHolder1_RadWinB2CProGeneral_C_BtnGeneralSave");
+
+
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -601,6 +610,145 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     public void ProdInspecCharge(String ProdInspecCharge) {
         utils.typeText(PROD_INSPECTION_CHARGES, ProdInspecCharge);
     }
+    public void ProdMaxPPMCount(String ProdMaxPPMCount) {
+        utils.typeText(PROD_MAX_PPM_SCHEDULE_COUNT, ProdMaxPPMCount);
+    }
+    //Prod Dropdowns
+    public void selectProdMasterCat(String selectProdMasterCat) {
+        try {
+           //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+             //
+            //utils.click(DDL_MASTERCATEGORY_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdMasterCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdMasterCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdMasterCat);
+            throw e;
+        }
+    }
+    public void selectProdCat(String selectProdCat) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+             //
+            //utils.click(DDL_CATEGORY_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdCat);
+            throw e;
+        }
+    }
+    public void selectProdSubCat(String selectProdSubCat) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductSubCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+             //
+            //utils.click(DDL_SUB_CATEGORY_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdSubCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdSubCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdSubCat);
+            throw e;
+        }
+    }
+    public void selectPaymentSchedule(String selectPaymentSchedule) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlPaymentSchedule_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            //
+            //utils.click(DDL_PAYMENT_SCHEDULE_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectPaymentSchedule));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectPaymentSchedule);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectPaymentSchedule);
+            throw e;
+        }
+    }
+    public void selectWOType(String selectWOType) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlWOType_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            //
+            //utils.click(DDL_WO_TYPE_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectWOType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectWOType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectWOType);
+            throw e;
+        }
+    }
+    public void selectFaultCode(String selectFaultCode) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            //
+            //utils.click(DDL_FAULT_CODE_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectFaultCode));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectFaultCode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectFaultCode);
+            throw e;
+        }
+    }
+    public void selectPPMAfter(String selectPPMAfter) {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            //
+            //utils.click(DDL_PPM_AFTER_PROD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectPPMAfter));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectPPMAfter);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectPPMAfter);
+            throw e;
+        }
+    }
+
+    //
     public void ClickAddProdSave() {
         By[] saveButtons = {SAVE_BUTTON_PROD};
         for (By button : saveButtons) {
@@ -610,6 +758,71 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             }
         }
         throw new RuntimeException("No save button is present on the page.");
+    }
+    public void ClickUpdateProdSave() {
+        By[] saveButtons = {UPDATE_BUTTON_PRODPACKAGE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void ProdPackageClickExportToExcel(String ProdPackageClickExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", ProdPackageClickExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Sales Prod Package " + ProdPackageClickExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Sales Prod Package " + ProdPackageClickExportToExcel);
+            throw e;
+        }
+    }
+    public void SalesEnquiryProdpackClickGridFirstData(String SalesEnquiryProdpackClickGridFirstData) throws InterruptedException {
+        try {
+            //By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00__0']", SalesEnquiryProdpackClickGridFirstData));
+            WebElement row = driver.findElement(
+                    By.xpath((String.format("//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00__0']", SalesEnquiryProdpackClickGridFirstData))
+            ));
+            new Actions(driver).doubleClick(row).perform();
+            //utils.click(locator);
+            System.out.println("Clicked on Prod Package Grid First data: " + SalesEnquiryProdpackClickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Prod Package Grid First Data: " + SalesEnquiryProdpackClickGridFirstData);
+            throw e;
+        }
+    }
+    public void clickOnEditProdPackage(String clickOnEditProdPackage) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+
+            for (String tab : driver.getWindowHandles()) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            //
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.cssSelector(".loading, .overlay, .modal-backdrop")
+            ));
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.id("ContentPlaceHolder1_LinkButtonEdit")
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", element
+            );
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+             //
+            //By locator = By.id("ContentPlaceHolder1_LinkButtonEdit");
+            //utils.click(locator);
+            System.out.println("Clicked on the Sales Edit product Package: " + clickOnEditProdPackage);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Product Package: " + clickOnEditProdPackage);
+            throw e;
+        }
     }
     //Product Rate Card
     public void clickOnSalesRateCard(String clickOnSalesRateCard) throws InterruptedException {
@@ -677,5 +890,62 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             }
         }
         throw new RuntimeException("No save button is present on the page.");
+    }
+    public void clickRateCardtoDelete() {
+        utils.click(DELETE_FIRST_RATECARD_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void RateCardClickExportToExcel(String RateCardClickExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='lnkExport']", RateCardClickExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Sales Rate Card " + RateCardClickExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Sales Rate Card " + RateCardClickExportToExcel);
+            throw e;
+        }
+    }
+    //Awaiting Approval
+    public void clickOnSalesAwaitingApproval(String clickOnSalesAwaitingApproval) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[2]/li[3]/a", clickOnSalesAwaitingApproval));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Awaiting Approval: " + clickOnSalesAwaitingApproval);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Awaiting Approval: " + clickOnSalesAwaitingApproval);
+            throw e;
+        }
+    }
+    public void AwaitingApprovallickGridFirstData(String AwaitingApprovallickGridFirstData) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", AwaitingApprovallickGridFirstData));
+            utils.click(locator);
+            System.out.println("Clicked on Awaiting Approval Grid First data: " + AwaitingApprovallickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Awaiting Approval Grid First Data: " + AwaitingApprovallickGridFirstData);
+            throw e;
+        }
+    }
+    //Awaiting Quotation Approval
+    public void clickOnSalesAwaitingQuotationApproval(String clickOnSalesAwaitingQuotationApproval) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[2]/li[4]/a", clickOnSalesAwaitingQuotationApproval));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Awaiting Quot Approval: " + clickOnSalesAwaitingQuotationApproval);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Awaiting Quot Approval: " + clickOnSalesAwaitingQuotationApproval);
+            throw e;
+        }
+    }
+    public void AwaitingQuotApprovallickGridFirstData(String AwaitingQuotApprovallickGridFirstData) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdQTN_ctl00__0']", AwaitingQuotApprovallickGridFirstData));
+            utils.click(locator);
+            System.out.println("Clicked on Awaiting Quot Approval Grid First data: " + AwaitingQuotApprovallickGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Awaiting Quot Approval Grid First Data: " + AwaitingQuotApprovallickGridFirstData);
+            throw e;
+        }
     }
 }
