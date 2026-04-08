@@ -134,8 +134,35 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on first data in the Product Store Front grid to Open the Detail page
     When User Clicks the Edit Product Store Front 'Edit' Button
     Then User Clicks the Product Store Front Update Button
-#prod Package
 
+  @TransSalesProdPackageDetailPageAddProdPricing
+  Scenario: Should be able to Open Prod Package detail page and add Product Pricing
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
+    Then User clicks on first data in the Product Store Front grid to Open the Detail page
+    When User clicks Product Pricing 'Product Pricing' in the side menu
+    Then User clicks Add New Product Pricing 'Add New' Button
+    When User enters Product Pricing details
+    Then User Clicks on Product Pricing Save Button
+
+  @TransSalesProdPackageDetailPageEditProdPricing
+  Scenario: Should be able to Open Prod Package detail page and Edit Product Pricing
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
+    Then User clicks on first data in the Product Store Front grid to Open the Detail page
+    When User clicks Product Pricing 'Product Pricing' in the side menu
+    Then User clicks Add New Product Pricing 'Add New' Button
+    When User enters Product Pricing details
+    Then User Clicks on Product Pricing Save Button
+    When User clicks Product Pricing Edit 'Pricing Edit' button
+    Then User Clicks on Product Pricing Save Button
+
+#prod Package
+#Rate Card
   @TransSalesRateCardAdd
   Scenario: Should be able to add Rate Card
     Given User navigates to 'lattice.url' page
@@ -172,6 +199,7 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     Then User clicks on Sales Enquiry Management Rate Card 'Product Rate Card' in side menu
     Then User clicks on Export To Excel Product Rate Card
+#Rate Card
 
   @TransSalesAwaitingApprovalDetailPage
   Scenario: Should be able to Open Awaiting Approval Detail Page
@@ -189,6 +217,13 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Awaiting Quotation Approval 'Awaiting Quotation Approval' in side menu
     Then User clicks on first data in the Awaiting Quotation Approval grid to Open the Detail page
 
+  @TransSalesUpcomingFollowUpDetailPage
+  Scenario: Should be able to Open Upcoming Follow Up Detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Upcoming Follow Up 'Upcoming Follow Up' in side menu
+    Then User clicks on first data in the Upcoming Follow Up grid to Open the Detail page
 
 
 

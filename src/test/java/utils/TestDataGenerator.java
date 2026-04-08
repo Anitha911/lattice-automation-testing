@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestDataGenerator {
     private final Random random = new Random();
@@ -305,6 +306,11 @@ public class TestDataGenerator {
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
         return "user_" + timestamp + "_" + UUID.randomUUID().toString().substring(0, 5) + "@example.com";
     }
+    //Price unit
+    public String generatePrice() {
+        double price = 1 + (10000 - 1) * random.nextDouble();
+        return String.format("%.2f", price);
+    }
     // Generate a unique phone number
     public String generateCustMobile() {
         return "03" + (random.nextInt(900000000) + 100000000) + random.nextInt(10);
@@ -325,8 +331,21 @@ public class TestDataGenerator {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
         return currentDate.format(formatter);
     }
-    //Sales Transaction
+    public String generateIntName() {
+        String[] mode = {"tstIntName1", "tstIntName2", "tstIntName3", "tstIntName4", "tstIntName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+    public String generateDisplayName() {
+        String[] mode = {"tstDisName1", "tstDisName2", "tstDisName3", "tstDisName4", "tstDisName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+    public String generateShortDesc() {
+        String[] mode = {"tstShortDesc1", "tstShortDesc2", "tstShortDesc3", "tstShortDesc4", "tstShortDesc5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+    public String generateInspecCharges() {
+        double price = 1 + (10000 - 1) * random.nextDouble();
+        return String.format("%.2f", price);
+    }
 
+    //Sales Transaction
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);

@@ -365,6 +365,34 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_UpdateProdPackageButton() {
         tmp.ClickUpdateProdSave();
     }
+    @Then("User clicks Product Pricing {string} in the side menu")
+    public void user_click_on_PackProdPricing(String PackProdPricing) throws InterruptedException {
+        tmp.PackProdPricing(PackProdPricing);
+    }
+    @Then("User clicks Add New Product Pricing {string} Button")
+    public void user_click_on_Sales_AddNewProdPricing(String AddNewProdPricing) throws InterruptedException {
+        tmp.clickOnAddNewProdPricing(AddNewProdPricing);
+    }
+    @Then("User enters Product Pricing details")
+    public void userFillsProductPricingDetails() {
+        tmp.ProdPrice(dataGen.generateInspecCharges());
+        tmp.ProdValidFrom(dataGen.generateCurrentDate());
+        tmp.ProdValidTo(dataGen.generateCurrentDate());
+        //DropDowns
+        tmp.selectProdBusinessType("Residential");
+        tmp.selectProdBusinessSubType("Apartments");
+        tmp.selectProdBusinessUnitSizeType("Studio Apartment");
+        tmp.selectProdArea("The Garden Apartments");
+    }
+    @Then("User Clicks on Product Pricing Save Button")
+    public void user_click_on_ProdPricingSaveButton() {
+        tmp.ProdPricingSaveButton();
+    }
+    //Edit Prod pricing
+    @Then("User clicks Product Pricing Edit {string} button")
+    public void user_click_on_Sales_EditProdPricing(String EditProdPricing) throws InterruptedException {
+        tmp.clickOnEditProdPricing(EditProdPricing);
+    }
     //Service Product Rate Card
     @Then("User clicks on Sales Enquiry Management Rate Card {string} in side menu")
     public void user_click_on_Sales_Rate_Card(String title) throws InterruptedException {
@@ -429,5 +457,16 @@ public class SalesEnquiryLeadsSteps {
     public void user_clicks_on_Enquiry_AwaitingQuotApproval_GridFirstData() throws InterruptedException  {
         String AwaitingQuotApprovalGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_grdQTN_ctl00__0']";
         tmp.AwaitingQuotApprovallickGridFirstData(AwaitingQuotApprovalGridFirstData);
+    }
+    //Upcoming Follow Up detail page
+    @Then("User clicks on Sales Enquiry Management Upcoming Follow Up {string} in side menu")
+    public void user_click_on_Upcoming_FollowUp(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[4]/li[2]/a";
+        tmp.clickOnSalesUpcomingFollowup(xpath);
+    }
+    @Then("User clicks on first data in the Upcoming Follow Up grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_Upcoming_FollowUp_GridFirstData() throws InterruptedException  {
+        String UpcomingFollowUpGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.UpcomingFollowUpGridFirstData(UpcomingFollowUpGridFirstData);
     }
 }
