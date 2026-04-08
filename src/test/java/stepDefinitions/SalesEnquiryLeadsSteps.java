@@ -469,4 +469,15 @@ public class SalesEnquiryLeadsSteps {
         String UpcomingFollowUpGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
         tmp.UpcomingFollowUpGridFirstData(UpcomingFollowUpGridFirstData);
     }
+    //Awaiting Order
+    @Then("User clicks on Sales Enquiry Management Awaiting Order {string} in side menu")
+    public void user_click_on_Awaiting_Order(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[4]/li[3]/a";
+        tmp.clickOnSalesAwaitingOrder(xpath);
+    }
+    @Then("User clicks on first data in the Awaiting Order grid to Open the Detail page")
+    public void user_clicks_on_Enquiry_Awaiting_Order_GridFirstData() throws InterruptedException  {
+        String AwaitingOrderGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.AwaitingOrderGridFirstData(AwaitingOrderGridFirstData);
+    }
 }

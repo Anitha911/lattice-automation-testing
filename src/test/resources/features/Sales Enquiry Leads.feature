@@ -44,6 +44,14 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     Then User clicks on first data in the grid to Open the Detail page
+
+  @TransLeadsSalesOpenEnquiryDetailPageStatusSkipSiteSurvey
+  Scenario: Should be able to add Open Enquiry Detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on first data in the grid to Open the Detail page
     Then User Clicks on status Update Button 'Status Update' in Enquiry Detail Page
     Then User fills the Enquiry Update Status Pop Up details
     Then User Clicks on Enquiry Update Status Save Button
@@ -225,6 +233,13 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management Upcoming Follow Up 'Upcoming Follow Up' in side menu
     Then User clicks on first data in the Upcoming Follow Up grid to Open the Detail page
 
+  @TransSalesAwaitingOrderDetailPage
+  Scenario: Should be able to Open Awaiting Order Detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Awaiting Order 'Awaiting Order' in side menu
+    Then User clicks on first data in the Awaiting Order grid to Open the Detail page
 
 
 

@@ -1176,4 +1176,40 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    //Awaiting Order
+    public void clickOnSalesAwaitingOrder(String clickOnSalesAwaitingOrder) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[4]/li[3]/a", clickOnSalesAwaitingOrder));
+            utils.click(locator);//*[@id="tab-sales"]/div[2]/div/ul[4]/li[3]/a
+            System.out.println("Clicked on Sales Awaiting Order: " + clickOnSalesAwaitingOrder);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Awaiting Order: " + clickOnSalesAwaitingOrder);
+            throw e;
+        }
+    }
+    public void AwaitingOrderGridFirstData(String AwaitingOrderGridFirstData) throws InterruptedException {
+        try {
+            //
+            List<WebElement> rows = driver.findElements(
+                    By.xpath("//table[contains(@id,'GrdPendingEnquiry')]//tr[contains(@class,'rgRow') or contains(@class,'rgAltRow')]")
+            );
+            if (!rows.isEmpty()) {
+                WebElement firstRow = rows.get(0);
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", firstRow
+                );
+                firstRow.click();
+                System.out.println("Row is present and clicked");
+            } else {
+                System.out.println("No rows present in grid");
+            }
+            //
+            //By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", UpcomingFollowUpGridFirstData));
+            //utils.click(locator);
+            System.out.println("Clicked on Awaiting Order Grid First data: " + AwaitingOrderGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Awaiting Order Grid First Data: " + AwaitingOrderGridFirstData);
+            throw e;
+        }
+    }
 }
