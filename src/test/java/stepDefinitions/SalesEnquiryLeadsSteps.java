@@ -480,4 +480,26 @@ public class SalesEnquiryLeadsSteps {
         String AwaitingOrderGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
         tmp.AwaitingOrderGridFirstData(AwaitingOrderGridFirstData);
     }
+    //Archives Sales Order
+    @Then("User clicks on Sales Enquiry Management Archives Sales Order {string} in side menu")
+    public void user_click_on_ArchivesSales_Order(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[5]/li[2]/a";
+        tmp.clickOnSalesArchivesSalesOrder(xpath);
+    }
+    @Then("User clicks on first data in the Archives Sales Order grid to Open the Detail page")
+    public void ArchivesSalesOrderGridFirstData() throws InterruptedException  {
+        String ArchivesSalesOrderGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.ArchivesSalesOrderGridFirstData(ArchivesSalesOrderGridFirstData);
+    }
+    //Sales Order Lost
+    @Then("User clicks on Sales Enquiry Management Sales Order lost {string} in side menu")
+    public void user_click_on_Sales_OrderLost(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[5]/li[3]/a";
+        tmp.clickOnSalesOrderLost(xpath);
+    }
+    @Then("User clicks on first data in the Sales Order lost grid to Open the Detail page")
+    public void SalesOrderLostGridFirstData() throws InterruptedException  {
+        String SalesOrderlostGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
+        tmp.SalesOrderLostGridFirstData(SalesOrderlostGridFirstData);
+    }
 }

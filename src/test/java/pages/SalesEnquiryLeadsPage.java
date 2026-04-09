@@ -1212,4 +1212,70 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    //Archives sales Order
+    public void clickOnSalesArchivesSalesOrder(String clickOnSalesArchivesSalesOrder) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[5]/li[2]/a", clickOnSalesArchivesSalesOrder));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Archives Sales Order: " + clickOnSalesArchivesSalesOrder);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Archives Sales Order: " + clickOnSalesArchivesSalesOrder);
+            throw e;
+        }
+    }
+    public void ArchivesSalesOrderGridFirstData(String ArchivesSalesOrderGridFirstData) throws InterruptedException {
+        try {
+            //
+            List<WebElement> rows = driver.findElements(
+                    By.xpath("//table[contains(@id,'GrdPendingEnquiry')]//tr[contains(@class,'rgRow') or contains(@class,'rgAltRow')]")
+            );
+            if (!rows.isEmpty()) {
+                WebElement firstRow = rows.get(0);
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", firstRow
+                );
+                firstRow.click();
+                System.out.println("Row is present and clicked");
+            } else {
+                System.out.println("No rows present in grid");
+            }
+            System.out.println("Clicked on Archives Sales Order Grid First data: " + ArchivesSalesOrderGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Archives Sales Order Grid First Data: " + ArchivesSalesOrderGridFirstData);
+            throw e;
+        }
+    }
+    //Archives sales Order
+    public void clickOnSalesOrderLost(String clickOnSalesOrderLost) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[5]/li[3]/a", clickOnSalesOrderLost));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Order Lost: " + clickOnSalesOrderLost);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Order Lost: " + clickOnSalesOrderLost);
+            throw e;
+        }
+    }
+    public void SalesOrderLostGridFirstData(String SalesOrderLostGridFirstData) throws InterruptedException {
+        try {
+            //
+            List<WebElement> rows = driver.findElements(
+                    By.xpath("//table[contains(@id,'GrdPendingEnquiry')]//tr[contains(@class,'rgRow') or contains(@class,'rgAltRow')]")
+            );
+            if (!rows.isEmpty()) {
+                WebElement firstRow = rows.get(0);
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", firstRow
+                );
+                firstRow.click();
+                System.out.println("Row is present and clicked");
+            } else {
+                System.out.println("No rows present in grid");
+            }
+            System.out.println("Clicked on Sales Order Lost Grid First data: " + SalesOrderLostGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Order Lost Grid First Data: " + SalesOrderLostGridFirstData);
+            throw e;
+        }
+    }
 }

@@ -241,5 +241,20 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management Awaiting Order 'Awaiting Order' in side menu
     Then User clicks on first data in the Awaiting Order grid to Open the Detail page
 
+  @TransSalesArchivesSalesOrderDetailPage
+  Scenario: Should be able to Open Archives Sales Order Detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Archives Sales Order 'Archives Sales Order' in side menu
+    Then User clicks on first data in the Archives Sales Order grid to Open the Detail page
+
+  @TransSalesArchivesOrderLostDetailPage
+  Scenario: Should be able to Open Order Lost Detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Sales Order lost 'Sales Order lost' in side menu
+    Then User clicks on first data in the Sales Order lost grid to Open the Detail page
 
 
