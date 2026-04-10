@@ -226,6 +226,16 @@ public class SalesEnquiryLeadsSteps {
         String EnquiryGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
         tmp.SalesEnquiryClickGridFirstData(EnquiryGridFirstData);
     }
+    //Edit Contact
+    @Then("User Clicks on Edit Contact {string} in Enquiry Detail Page")
+    public void user_click_on_Sales_EnquiryContactDetails(String btnEditEnquiryContactDetails) throws InterruptedException {
+        tmp.clickOnEditEnquiryContactDetails(btnEditEnquiryContactDetails);
+    }
+    @Then("User clicks on Update button Edit Contact")
+    public void user_click_on_UpdateEditContactButton() {
+        tmp.UpdateEditContactButton();
+    }
+    //Edit Contact
     @Then("User Clicks on status Update Button {string} in Enquiry Detail Page")
     public void user_click_on_Sales_EnquiryStatusUpdate(String btnUpdateStatusSalesEnquiry) throws InterruptedException {
         tmp.clickOnUpdateStatusSalesEnquiry(btnUpdateStatusSalesEnquiry);

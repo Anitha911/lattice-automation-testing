@@ -45,6 +45,17 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     Then User clicks on first data in the grid to Open the Detail page
 
+  @TransLeadsSalesOpenEnquiryDetailPageEditContact
+  Scenario: Should be able to add Open Enquiry Detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on first data in the grid to Open the Detail page
+    When User Clicks on Edit Contact 'Edit Contact' in Enquiry Detail Page
+    Then User clicks on Update button Edit Contact
+
+
   @TransLeadsSalesOpenEnquiryDetailPageStatusSkipSiteSurvey
   Scenario: Should be able to add Open Enquiry Detail page
     Given User navigates to 'lattice.url' page

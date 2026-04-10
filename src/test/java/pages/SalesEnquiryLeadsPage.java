@@ -78,6 +78,7 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By DDL_FAULT_CODE_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_Input");
     public static final By DDL_PPM_AFTER_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Input");
     public static final By UPDATE_BUTTON_PRODPACKAGE = By.id("ctl00_ContentPlaceHolder1_RadWinB2CProGeneral_C_BtnGeneralSave");
+    public static final By UPDATE_EDIT_CONTACT = By.id("ctl00_ContentPlaceHolder1_RadWinEditContact_C_BtnContactSave");
 
 
 
@@ -329,6 +330,35 @@ public class SalesEnquiryLeadsPage extends BasePage{
         }
     }
     //Update Status
+    //EnquiryEdit Contact
+    public void clickOnEditEnquiryContactDetails(String btnEnquiryContactDetails) {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnEditContact']", btnEnquiryContactDetails));
+            utils.click(locator);
+            System.out.println("Clicked on the Sales Add Enquiry Edit Contact: " + btnEnquiryContactDetails);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Sales Edit Contact: " + btnEnquiryContactDetails);
+            throw e;
+        }
+    }
+    public void UpdateEditContactButton() {
+        By[] saveButtons = {UPDATE_EDIT_CONTACT};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Edit Contact
     public void selectNewStatus(String selectNewStatus) {
         try {
             utils.click(ENQUIRY_UPDATE_STATUS_NEWSTATUS_DD);
