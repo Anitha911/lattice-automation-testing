@@ -78,7 +78,16 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User Clicks on Add Notes 'Notes'
     Then User enters the Notes Details
     Then User clicks the Notes Save Button
-
+    #Open Quotations
+  @TransConsoleWindowOpenQuotationExportToExcel
+  Scenario: Should be able to Open Console Window and Export to Exel Open Quotation
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Console Window 'Open Quotations' in side menu
+    Then User clicks on Export To Excel Console Window Open Quotations
+    # Open Quotations
+#Opportunities
   @TransLeadsSalesEnquiryAddQuotationDraft
   Scenario: Should be able to add Quotation and Save as Draft
     Given User navigates to 'lattice.url' page
@@ -107,6 +116,16 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User enters Scope Of Work data Details
     Then User clicks the Quotation Save Finalize 'Finalize' Button
     Then User clicks the Quotation Submit 'Submit' Button
+
+  @TransPendingActionsOpportunitiesExportToExcel
+  Scenario: Should be able to Export To Excel Opportunities
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
+    Then User clicks on Export To Excel My Pending Actions Opportunities
+
 #prod Package
   @TransSalesProductStoreFrontAdd
   Scenario: Should be able to add B2C Product
@@ -217,6 +236,15 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Awaiting Approval 'Awaiting Approval' in side menu
     Then User clicks on first data in the Awaiting Approval grid to Open the Detail page
 
+  @TransPendingActionsAwaitingApprovalExportToExcel
+  Scenario: Should be able to Export To Excel Awaiting Approval
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry Management Awaiting Approval 'My Pending Actions Awaiting Approval' in side menu
+    Then User clicks on Export To Excel My Pending Actions Awaiting Approval
+
   @TransSalesAwaitingQuotationApprovalDetailPage
   Scenario: Should be able to Open Awaiting Quotation Approval Detail Page
     Given User navigates to 'lattice.url' page
@@ -224,6 +252,16 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     Then User clicks on Sales Enquiry Management Awaiting Quotation Approval 'Awaiting Quotation Approval' in side menu
     Then User clicks on first data in the Awaiting Quotation Approval grid to Open the Detail page
+
+  @TransPendingActionsAwaitingQuotationApprovalExportToExcel
+  Scenario: Should be able to Export To Excel Awaiting Approval
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry Management Awaiting Quotation Approval 'Awaiting Quotation Approval' in side menu
+    Then User clicks on Export To Excel My Pending Actions Awaiting Quotation Approval
+    #my Pending Actions
 
   @TransSalesUpcomingFollowUpDetailPage
   Scenario: Should be able to Open Upcoming Follow Up Detail Page

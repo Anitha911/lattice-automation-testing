@@ -101,6 +101,28 @@ public class SalesEnquiryLeadsPage extends BasePage{
             throw e;
         }
     }
+    //Open Quotation in Console Window
+    public void clickOnSalesOpenQuotations(String clickOnSalesOpenQuotations) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-sales']/div[2]/div/ul[3]/li[2]/a", clickOnSalesOpenQuotations));
+            utils.click(locator);
+            System.out.println("Clicked on Sales Open Quotations Menu: " + clickOnSalesOpenQuotations);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Sales Open Quotations Menu: " + clickOnSalesOpenQuotations);
+            throw e;
+        }
+    }
+    public void SalesEnquiryOpenQuotationsExportToExcel(String SalesEnquiryOpenQuotationsExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ContentPlaceHolder1_btnExportToExcel']", SalesEnquiryOpenQuotationsExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel SalesEnquiryOpenQuotations: " + SalesEnquiryOpenQuotationsExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Export to excel SalesEnquiryOpenQuotations: " + SalesEnquiryOpenQuotationsExportToExcel);
+            throw e;
+        }
+    }
+    //Open Quotation in Console Window
     public void clickOnAddSalesEnquiry(String btnAddSalesEnquiry) {
         try {
             By locator = By.id("ctl00_ContentPlaceHolder1_BtnAdd");
@@ -581,6 +603,17 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    public void OpportunitiesClickExportToExcel(String OpportunitiesClickExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='radbtnExport']", OpportunitiesClickExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Opportunities Click ExportToExcel" + OpportunitiesClickExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Opportunities Click Export ToExcel " + OpportunitiesClickExportToExcel);
+            throw e;
+        }
+    }
+    //quotation
 //Product Store Front
     public void clickOnSalesProdFront(String clickOnSalesProdFront) throws InterruptedException {
         try {
@@ -1090,7 +1123,7 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void RateCardClickExportToExcel(String RateCardClickExportToExcel) throws InterruptedException {
         try {
-            By locator = By.xpath(String.format("//*[@id='lnkExport']", RateCardClickExportToExcel));
+            By locator = By.xpath(String.format("//*[@id='radbtnExport']", RateCardClickExportToExcel));
             utils.click(locator);
             System.out.println("Clicked on Export to Excel Sales Rate Card " + RateCardClickExportToExcel);
         } catch (Exception e) {
@@ -1119,6 +1152,16 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    public void AwaitingQuotationClickExportToExcel(String AwaitingQuotationClickExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='radbtnExport']", AwaitingQuotationClickExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel AwaitingQuotation " + AwaitingQuotationClickExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel AwaitingQuotation" + AwaitingQuotationClickExportToExcel);
+            throw e;
+        }
+    }
     //Awaiting Quotation Approval
     public void clickOnSalesAwaitingQuotationApproval(String clickOnSalesAwaitingQuotationApproval) throws InterruptedException {
         try {
@@ -1137,6 +1180,16 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             System.out.println("Clicked on Awaiting Quot Approval Grid First data: " + AwaitingQuotApprovallickGridFirstData);
         } catch (Exception e) {
             System.out.println("Failed to click on the Awaiting Quot Approval Grid First Data: " + AwaitingQuotApprovallickGridFirstData);
+            throw e;
+        }
+    }
+    public void AwaitingQuotationApprovalClickExportToExcel(String AwaitingQuotationApprovalClickExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", AwaitingQuotationApprovalClickExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel AwaitingQuotation Approval " + AwaitingQuotationApprovalClickExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel AwaitingQuotation Approval" + AwaitingQuotationApprovalClickExportToExcel);
             throw e;
         }
     }

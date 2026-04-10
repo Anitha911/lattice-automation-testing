@@ -38,6 +38,19 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_AddEnquiry(String btnAddSalesEnquiry) throws InterruptedException {
         tmp.clickOnAddSalesEnquiry(btnAddSalesEnquiry);
     }
+    //open quotation
+    @Then("User clicks on Sales Enquiry Management Console Window {string} in side menu")
+    public void user_click_on_Sales_Open_Quotations(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-sales']/div[2]/div/ul[3]/li[2]/a";
+        tmp.clickOnSalesOpenQuotations(xpath);
+    }
+    @Then("User clicks on Export To Excel Console Window Open Quotations")
+    public void user_clicks_on_Enquiry_Open_Quotation_export_to_excel_button() throws InterruptedException {
+        String xpath = "//*[@id='ContentPlaceHolder1_btnExportToExcel']";
+        tmp.SalesEnquiryOpenQuotationsExportToExcel(xpath);
+    }
+    //Open Quotation
+
     //Add Customer
     @Then("User clicks on button Sales Add Enquiry Add Customer {string}")
     public void user_click_on_Sales_AddEnquiryAddCustomer(String btnAddSalesEnquiryCustomer) throws InterruptedException {
@@ -316,6 +329,13 @@ public class SalesEnquiryLeadsSteps {
         String QuotationGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']";
         tmp.SalesEnquiryQuotationClickGridFirstData(QuotationGridFirstData);
     }
+    //export to excel Opportunities
+    @Then ("User clicks on Export To Excel My Pending Actions Opportunities")
+    public void user_clicks_on_Opportunities_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='radbtnExport']";
+        tmp.OpportunitiesClickExportToExcel(xpath);
+    }
+    //Quotation
     //Package Store Front
     @Then("User clicks on Sales Enquiry Management Package Product {string} in side menu")
     public void user_click_on_Sales_Product_StoreFront(String title) throws InterruptedException {
@@ -442,6 +462,12 @@ public class SalesEnquiryLeadsSteps {
             String xpath = "//*[@id='tab-sales']/div[2]/div/ul[2]/li[3]/a";
             tmp.clickOnSalesAwaitingApproval(xpath);
         }
+    //export to excel Awaiting Approval
+    @Then ("User clicks on Export To Excel My Pending Actions Awaiting Approval")
+    public void user_clicks_on_awaiting_Approval_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='radbtnExport']";
+        tmp.AwaitingQuotationClickExportToExcel(xpath);
+    }
     @Then("User clicks on first data in the Awaiting Approval grid to Open the Detail page")
     public void user_clicks_on_Enquiry_AwaitingApproval_GridFirstData() throws InterruptedException  {
         String AwaitingApprovalGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
@@ -457,6 +483,12 @@ public class SalesEnquiryLeadsSteps {
     public void user_clicks_on_Enquiry_AwaitingQuotApproval_GridFirstData() throws InterruptedException  {
         String AwaitingQuotApprovalGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_grdQTN_ctl00__0']";
         tmp.AwaitingQuotApprovallickGridFirstData(AwaitingQuotApprovalGridFirstData);
+    }
+    //export to excel Awaiting Quotation Approval
+    @Then ("User clicks on Export To Excel My Pending Actions Awaiting Quotation Approval")
+    public void user_clicks_on_awaiting_Quot_Approval_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.AwaitingQuotationApprovalClickExportToExcel(xpath);
     }
     //Upcoming Follow Up detail page
     @Then("User clicks on Sales Enquiry Management Upcoming Follow Up {string} in side menu")
