@@ -79,7 +79,9 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By DDL_PPM_AFTER_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Input");
     public static final By UPDATE_BUTTON_PRODPACKAGE = By.id("ctl00_ContentPlaceHolder1_RadWinB2CProGeneral_C_BtnGeneralSave");
     public static final By UPDATE_EDIT_CONTACT = By.id("ctl00_ContentPlaceHolder1_RadWinEditContact_C_BtnContactSave");
-
+    public static final By ENQUIRY_UPDATE_STATUS_SITESURVEYREQ_TYPE = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlType_Input");
+    public static final By SITE_SURVEY_DATE = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_dtpStatusSiteSurveyDate_dateInput");
+    public static final By ENQUIRY_UPDATE_STATUS_ASSIGNEDTO = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlStatusAssignedTo_Input");
 
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
@@ -386,6 +388,33 @@ public class SalesEnquiryLeadsPage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //Site Survey Requested Status start
+    public void selectType(String selectType) {
+        try {
+            utils.click(ENQUIRY_UPDATE_STATUS_SITESURVEYREQ_TYPE);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectType);
+            throw e;
+        }
+    }
+    public void selectAssignedTo(String selectAssignedTo) {
+        try {
+            utils.click(ENQUIRY_UPDATE_STATUS_ASSIGNEDTO);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectAssignedTo));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectAssignedTo);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectAssignedTo);
+            throw e;
+        }
+    }
+    public void enterSiteSurveyDate(String enterSiteSurveyDate) {
+        utils.typeText(SITE_SURVEY_DATE, enterSiteSurveyDate);
+    }
+    //Site Survey Requested Status End
 //Follow Up
 public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     try {
@@ -423,7 +452,6 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void enternewFollowupDate(String enternewFollowupDate) {
         utils.typeText(FOLLOWUP_NEXTDATE, enternewFollowupDate);
-
     }
     public void ClickAddUpdateFollowUp() {
         By[] saveButtons = {SAVE_BUTTON_FOLLOWUP};

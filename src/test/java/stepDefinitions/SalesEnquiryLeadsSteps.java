@@ -186,8 +186,59 @@ public class SalesEnquiryLeadsSteps {
                 options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_DropDown'] li");
                 //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
-            //Product Category
-
+            //Product Category Ends
+            //Site Survey Requested starts
+            else if (dropdownName.equalsIgnoreCase("Property")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlProperty_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlProperty_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Zone")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlZone_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlZone_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Sub Zone")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlSubzone_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlSubzone_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Base Unit")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlBaseUnit_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlBaseUnit_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Assigned To")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlStatusAssignedTo_Input");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebElement dropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(field)
+                );
+                dropdown.click();
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlStatusAssignedTo_DropDown'] li");
+                //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            //Site Survey Requested Ends
             else {
                 throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
             }
@@ -205,7 +256,7 @@ public class SalesEnquiryLeadsSteps {
 //Add Enquiry
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
-        //tmp.selectEnqCustomer("Alpha Properties");
+        tmp.selectEnqCustomer("Alpha Properties");
         //tmp.selectEnqSource("Online");
         tmp.selectEnquiryType("Adhoc");
         //tmp.selectEnquirySalesPerson("Wallace Hull");
@@ -250,6 +301,17 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_EnqUpdateStatusSaveButton() {
         tmp.ClickAddUpdateStatus();
     }
+    //Site Survey RequestedStart
+    @Then("User fills the Enquiry Site Survey Requested Update Status Pop Up details")
+    public void userFillsChangeStatusPopUpSiteSurveyRequestedDetails() {
+        tmp.enterProbablity(dataGen.generateMaxNoParticipants());
+        tmp.enterComments(dataGen.generateComments());
+        tmp.selectNewStatus("SITE SURVEY REQUESTED");
+        tmp.selectType("Without Contract");
+        //tmp.enterSiteSurveyDate(dataGen.generateCurrentDateSales());
+        tmp.selectAssignedTo("Aarav Patel");
+    }
+    //Site Survey RequestedEnd
     //Follow Up
     @Then("User clicks on Customer Follow Up Button {string} in Enquiry Detail Page")
     public void user_click_on_Sales_FollowUp(String btnCustFollowUp) throws InterruptedException {
