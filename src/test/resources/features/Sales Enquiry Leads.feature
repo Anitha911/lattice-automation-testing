@@ -73,7 +73,7 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User Clicks on Enquiry Update Status Save Button
 
   @TransLeadsSalesOpenEnquiryDetailPageStatusSiteSurveyRequested
-  Scenario: Should be able to add Open Enquiry Detail page and click Site Survey Requested
+  Scenario: Should be able to add Open Enquiry Detail page and Move enquiry to Site Survey Requested
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
@@ -91,6 +91,38 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User selects value in the "Sub Zone" dropdown
     When User selects value in the "Base Unit" dropdown
     #When User selects value in the "Assigned To" dropdown
+    Then User Clicks on Enquiry Update Status Save Button
+
+  @TransLeadsSalesOpenEnquiryDetailPageStatusNotToBid
+  Scenario: Should be able to add Open Enquiry Detail page and Move enquiry to Not To Bid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    #Then User clicks on button Sales Add Enquiry 'Add'
+    #Then User fills the Enquiry details
+    #When User selects value in the "Enquiry Source" dropdown
+    #When User selects value in the "Sales person" dropdown
+    #Then User Clicks Enquiry Save Button
+    Then User clicks on first data in the grid to Open the Detail page
+    Then User Clicks on status Update Button 'Status Update' in Enquiry Detail Page
+    Then User fills the Enquiry Update Status Pop Up Not To Bid details
+    Then User Clicks on Enquiry Update Status Save Button
+
+  @TransLeadsSalesOpenEnquiryDetailPageStatusCancelled
+  Scenario: Should be able to add Open Enquiry Detail page and Move enquiry to Cancelled
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on button Sales Add Enquiry 'Add'
+    Then User fills the Enquiry details
+    When User selects value in the "Enquiry Source" dropdown
+    When User selects value in the "Sales person" dropdown
+    Then User Clicks Enquiry Save Button
+    Then User clicks on first data in the grid to Open the Detail page
+    Then User Clicks on status Update Button 'Status Update' in Enquiry Detail Page
+    Then User fills the Enquiry Update Status Pop Up Cancelled details
     Then User Clicks on Enquiry Update Status Save Button
 
   @TransLeadsSalesEnquiryDetailPageAddCustomerFollowUp

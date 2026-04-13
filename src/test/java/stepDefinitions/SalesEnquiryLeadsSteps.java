@@ -312,6 +312,22 @@ public class SalesEnquiryLeadsSteps {
         tmp.selectAssignedTo("Aarav Patel");
     }
     //Site Survey RequestedEnd
+    //Not To Bid Start
+    @Then("User fills the Enquiry Update Status Pop Up Not To Bid details")
+    public void userFillsChangeStatusPopUpNotToBidDetails() {
+        tmp.enterProbablity(dataGen.generateMaxNoParticipants());
+        tmp.enterComments(dataGen.generateComments());
+        tmp.selectNewStatus("NOT TO BID");
+    }
+    //Not to Bid End
+    //Enquiry Cancelled Start
+    @Then("User fills the Enquiry Update Status Pop Up Cancelled details")
+    public void userFillsChangeStatusPopUpCancelledDetails() {
+        tmp.enterProbablity(dataGen.generateMaxNoParticipants());
+        tmp.enterComments(dataGen.generateComments());
+        tmp.selectNewStatus("Cancelled");
+    }
+    //Enquiry Cancelled End
     //Follow Up
     @Then("User clicks on Customer Follow Up Button {string} in Enquiry Detail Page")
     public void user_click_on_Sales_FollowUp(String btnCustFollowUp) throws InterruptedException {
