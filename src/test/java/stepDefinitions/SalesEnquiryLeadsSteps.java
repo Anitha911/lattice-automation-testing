@@ -277,6 +277,19 @@ public class SalesEnquiryLeadsSteps {
         String EnquiryGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']";
         tmp.SalesEnquiryClickGridFirstData(EnquiryGridFirstData);
     }
+    //TIles Start
+    @Then("User Clicks the Open Tile in Enquiry page")
+    public void user_clicks_on_Enquiry_Open_Tile() throws InterruptedException {
+        String xpath = "//*[@id='div1']";
+        tmp.SalesEnquiryclickOpenTile(xpath);
+    }
+    @Then("User Clicks the Site Survey Requested Tile in Enquiry page")
+    public void user_clicks_on_Enquiry_SiteSurvey_Requested_Tile() throws InterruptedException {
+        String xpath = "//*[@id='div10']";
+        tmp.SalesEnquiryClickSiteSurveyRequestedTile(xpath);
+    }
+
+    //Tiles
     //Edit Contact
     @Then("User Clicks on Edit Contact {string} in Enquiry Detail Page")
     public void user_click_on_Sales_EnquiryContactDetails(String btnEditEnquiryContactDetails) throws InterruptedException {
@@ -391,7 +404,7 @@ public class SalesEnquiryLeadsSteps {
         tmp.enterAddLinesUnitPrice(dataGen.generatePrice());
     }
     @Then("User clicks the Quotation Save {string} Button")
-    public void user_click_on_QuotSaveButton(Boolean QuotSave) {
+    public void user_click_on_QuotSaveButton(String QuotSave) {
         tmp.ClickQuotSave(QuotSave);
     }
     @Then("User clicks the Quotation Save Finalize {string} Button")
@@ -417,6 +430,12 @@ public class SalesEnquiryLeadsSteps {
         String QuotationGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']";
         tmp.SalesEnquiryQuotationClickGridFirstData(QuotationGridFirstData);
     }
+    //cancel Quotation in quotation detail page Start
+    @Then("User clicks on Cancel Quotation {string} Button")
+    public void user_click_on_QuotCancelButton(String QuotCancelButton) {
+        tmp.ClickQuotCancelButton(QuotCancelButton);
+    }
+    //cancel Quotation in quotation detail page End
     //export to excel Opportunities
     @Then ("User clicks on Export To Excel My Pending Actions Opportunities")
     public void user_clicks_on_Opportunities_export_to_excel_button() throws InterruptedException{

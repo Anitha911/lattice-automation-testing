@@ -82,7 +82,7 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By ENQUIRY_UPDATE_STATUS_SITESURVEYREQ_TYPE = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlType_Input");
     public static final By SITE_SURVEY_DATE = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_dtpStatusSiteSurveyDate_dateInput");
     public static final By ENQUIRY_UPDATE_STATUS_ASSIGNEDTO = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlStatusAssignedTo_Input");
-
+    public static final By QUOTATION_CANCEL = By.id("ctl00_ContentPlaceHolder1_btnCancel");
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -304,6 +304,28 @@ public class SalesEnquiryLeadsPage extends BasePage{
             throw e;
         }
     }
+    //Enquiry Tile Start
+    public void SalesEnquiryclickOpenTile(String SalesEnquiryclickOpenTile) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='div1']", SalesEnquiryclickOpenTile));
+            utils.click(locator);
+            System.out.println("Clicked on Enquiry Open Tile Button: " + SalesEnquiryclickOpenTile);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Enquiry Open Tile Button:: " + SalesEnquiryclickOpenTile);
+            throw e;
+        }
+    }
+    public void SalesEnquiryClickSiteSurveyRequestedTile(String SalesEnquiryclickSiteSurveyRequestedTile) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='div10']", SalesEnquiryclickSiteSurveyRequestedTile));
+            utils.click(locator);
+            System.out.println("Clicked on Enquiry Site Survey Requested Tile Button: " + SalesEnquiryclickSiteSurveyRequestedTile);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Enquiry Site Survey Requested Tile Button:: " + SalesEnquiryclickSiteSurveyRequestedTile);
+            throw e;
+        }
+    }
+    //Enquiry Tile End
     public void SalesEnquiryClickGridFirstData(String SalesEnquiryclickGridFirstData) throws InterruptedException {
         try {
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", SalesEnquiryclickGridFirstData));
@@ -557,10 +579,22 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void clickOnAddQuotation(String clickOnAddQuotation) {
         try {
-            WebElement el = driver.findElement(By.id("addQuotations"));
-            ((JavascriptExecutor) driver).executeScript(
-                    "arguments[0].click();", el
+            //
+            List<WebElement> rows = driver.findElements(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']")
             );
+            if (!rows.isEmpty()) {
+                // Row exists → click it
+                rows.get(0).click();
+                System.out.println("Row found and clicked: ");
+            }
+            else {
+                //
+                WebElement el = driver.findElement(By.id("addQuotations"));
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", el
+                );
+            }
             System.out.println("Clicked on the Sales Add Quotation: " + clickOnAddQuotation);
         } catch (Exception e) {
             System.out.println("Failed to click on the Sales Add Quotation: " + clickOnAddQuotation);
@@ -586,7 +620,8 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     public void enterAddLinesUnitPrice(String enterAddLinesUnitPrice) {
         utils.typeText(ENQUIRY_ADDLINES_UNITPRICE, enterAddLinesUnitPrice);
     }
-    public void ClickQuotSave(Boolean clickQuotSaveDraft) {
+    public void ClickQuotSave(String clickQuotSaveDraft) {
+
             By[] saveButtons = {SAVE_BUTTON_QUOT_DRAFT};
             for (By button : saveButtons) {
                 if (utils.isElementVisible(button)) {
@@ -650,6 +685,28 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             throw e;
         }
     }
+    //Quotation Cancel button in quotation detail page Start
+    public void ClickQuotCancelButton(String ClickQuotCancelButton) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(2));
+            By[] saveButtons = {QUOTATION_CANCEL};
+            for (By button : saveButtons) {
+                if (utils.isElementVisible(button)) {
+                    utils.click(button);
+                    return;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Failed to click on the Quotation Cancel: " + ClickQuotCancelButton);
+            throw e;
+        }
+    }
+    //Quotation Cancel button in quotation detail page End
+
     //much slow
     public void SalesEnquiryQuotationClickGridFirstData(String SalesEnquiryQuotationClickGridFirstData) throws InterruptedException {
         try {

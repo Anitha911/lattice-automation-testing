@@ -22,6 +22,23 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     Then User clicks on Sales Enquiry Management Export to Excel button
 
+  @TransLeadsSalesEnquiryOpenTileClick
+  Scenario: Should be able to Click Open Tile and corresponding data should be populated in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User Clicks the Open Tile in Enquiry page
+
+    #check again
+  @TransLeadsSalesEnquirySiteSurveyTitleClick
+  Scenario: Should be able to Click SiteSurvey Requested Tile and corresponding data should be populated in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User Clicks the Site Survey Requested Tile in Enquiry page
+
   @TransLeadsSalesAddEnquiryAddCustomer
   Scenario: Should be able to add Enquiry add Customer
     Given User navigates to 'lattice.url' page
@@ -185,6 +202,23 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User enters Scope Of Work data Details
     Then User clicks the Quotation Save Finalize 'Finalize' Button
     Then User clicks the Quotation Submit 'Submit' Button
+
+  @TransLeadsSalesEnquiryQuotationCancelQuoDetailPage
+  Scenario: Should be able to add Quotation and Cancel in Quotation Detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
+    Then User clicks on first data in the opportunities grid to Open the Detail page
+    Then User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    When User Clicks on Add Quotation 'Add New Quotation' Button
+    When User Clicks on Quotation Details 'Add Lines' Button
+    Then User enters on Quotation Add Lines Details
+    Then User clicks the Quotation Save 'Draft' Button
+    Then User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    Then User clicks on first data in the Quotations grid to Open the Detail page
+    Then User clicks on Cancel Quotation 'Cancel Quotation' Button
 
   @TransPendingActionsOpportunitiesExportToExcel
   Scenario: Should be able to Export To Excel Opportunities
