@@ -38,6 +38,16 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_AddEnquiry(String btnAddSalesEnquiry) throws InterruptedException {
         tmp.clickOnAddSalesEnquiry(btnAddSalesEnquiry);
     }
+    //Pagination in grid starts
+    @Then("User clicks on Sales Enquiry grid pagination {string}")
+    public void user_click_on_Sales_EnquiryPagination(String GrdEnquiryPagination) throws InterruptedException {
+        tmp.clickOnGrdSalesEnquiryPagination(GrdEnquiryPagination);
+    }
+    @Then("User clicks on Sales Package Store grid pagination {string}")
+    public void user_click_on_Sales_PackagePagination(String GrdPackagePagination) throws InterruptedException {
+        tmp.TransLeadsSalesB2CGridPagination(GrdPackagePagination);
+    }
+    //Pagination in grid ends
     //open quotation
     @Then("User clicks on Sales Enquiry Management Console Window {string} in side menu")
     public void user_click_on_Sales_Open_Quotations(String title) throws InterruptedException {

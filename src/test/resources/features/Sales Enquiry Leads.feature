@@ -30,7 +30,7 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     When User Clicks the Open Tile in Enquiry page
 
-    #check again
+    #check again Start
   @TransLeadsSalesEnquirySiteSurveyTitleClick
   Scenario: Should be able to Click SiteSurvey Requested Tile and corresponding data should be populated in the grid
     Given User navigates to 'lattice.url' page
@@ -38,6 +38,23 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     When User Clicks the Site Survey Requested Tile in Enquiry page
+    #check again End
+
+  @TransLeadsSalesEnquiryGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User clicks on Sales Enquiry grid pagination 'Enquiry Pagination'
+
+  @TransLeadsSalesB2CGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed B2C
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
+    Then User clicks on Sales Package Store grid pagination 'Package Store'
 
   @TransLeadsSalesAddEnquiryAddCustomer
   Scenario: Should be able to add Enquiry add Customer
