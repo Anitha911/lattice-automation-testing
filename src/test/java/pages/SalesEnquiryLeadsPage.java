@@ -361,6 +361,35 @@ public class SalesEnquiryLeadsPage extends BasePage{
         }
     }
     //B2C grid Pagination Ends
+    //Opportunities Pagination Start
+    public void TransLeadsSalesOpportunitiesPagination(String TransLeadsSalesOpportunitiesPagination) throws InterruptedException {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            // By gridLocator = By.id("ctl00_ContentPlaceHolder1_GrdPendingEnquiry");
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']")));
+            String beforeText = firstRowBefore.getText();
+
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", nextBtn);
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+            //
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + TransLeadsSalesOpportunitiesPagination);
+            throw e;
+        }
+    }
+    //Opportunities Pagination Ends
     //Enquiry Tile Start
     public void SalesEnquiryclickOpenTile(String SalesEnquiryclickOpenTile) throws InterruptedException {
         try {

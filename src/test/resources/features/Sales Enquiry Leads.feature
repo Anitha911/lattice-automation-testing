@@ -56,6 +56,14 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
     Then User clicks on Sales Package Store grid pagination 'Package Store'
 
+  @TransLeadsSalesOpportunitiesGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed Opportunities
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    Then User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
+    Then User clicks on Sales Opportunities grid pagination 'Opportunities'
+
   @TransLeadsSalesAddEnquiryAddCustomer
   Scenario: Should be able to add Enquiry add Customer
     Given User navigates to 'lattice.url' page

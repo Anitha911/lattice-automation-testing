@@ -47,6 +47,10 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_PackagePagination(String GrdPackagePagination) throws InterruptedException {
         tmp.TransLeadsSalesB2CGridPagination(GrdPackagePagination);
     }
+    @Then("User clicks on Sales Opportunities grid pagination {string}")
+    public void user_click_on_Sales_OpportunitiesPagination(String GrdOpportunitiesPagination) throws InterruptedException {
+        tmp.TransLeadsSalesOpportunitiesPagination(GrdOpportunitiesPagination);
+    }
     //Pagination in grid ends
     //open quotation
     @Then("User clicks on Sales Enquiry Management Console Window {string} in side menu")
