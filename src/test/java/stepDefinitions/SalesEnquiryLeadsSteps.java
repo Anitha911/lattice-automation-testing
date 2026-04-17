@@ -51,6 +51,18 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_Sales_OpportunitiesPagination(String GrdOpportunitiesPagination) throws InterruptedException {
         tmp.TransLeadsSalesOpportunitiesPagination(GrdOpportunitiesPagination);
     }
+    @Then("User clicks on Sales Open Quotations grid pagination {string}")
+    public void user_click_on_Sales_OpenQuotationPagination(String GrdOpenQuotationPagination) throws InterruptedException {
+        tmp.TransLeadsSalesOpenQuotationPagination(GrdOpenQuotationPagination);
+    }
+    @Then("User clicks on Sales Archives Sales Order grid pagination {string}")
+    public void user_click_on_Sales_ArchivesSalesOrderPagination(String GrdArchivesSalesOrderPagination) throws InterruptedException {
+        tmp.TransArchivesSalesOrderPagination(GrdArchivesSalesOrderPagination);
+    }
+    @Then("User clicks on Sales Archives Sales Order Lost grid pagination {string}")
+    public void user_click_on_Sales_ArchivesSalesOrderlostPagination(String GrdArchivesSalesOrderlostPagination) throws InterruptedException {
+        tmp.TransArchivesSalesOrderLostPagination(GrdArchivesSalesOrderlostPagination);
+    }
     //Pagination in grid ends
     //open quotation
     @Then("User clicks on Sales Enquiry Management Console Window {string} in side menu")

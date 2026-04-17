@@ -64,6 +64,30 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     Then User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
     Then User clicks on Sales Opportunities grid pagination 'Opportunities'
 
+  @TransLeadsSalesOpenQuotationGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed Open Quotations
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Console Window 'Open Quotations' in side menu
+    Then User clicks on Sales Open Quotations grid pagination 'Open Quotations'
+
+  @TransLeadsSalesArchivesSalesOrderGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed Archives Sales Order
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Archives Sales Order 'Archives Sales Order' in side menu
+    Then User clicks on Sales Archives Sales Order grid pagination 'Archives Sales Order'
+
+  @TransLeadsSalesArchivesOrderLostGridPagination
+  Scenario: Should be able to Click pagination in the grid and next pages should be displayed Sales Order lost
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Sales Order lost 'Sales Order lost' in side menu
+    Then User clicks on Sales Archives Sales Order Lost grid pagination 'Archives Sales Order Lost'
+
   @TransLeadsSalesAddEnquiryAddCustomer
   Scenario: Should be able to add Enquiry add Customer
     Given User navigates to 'lattice.url' page
