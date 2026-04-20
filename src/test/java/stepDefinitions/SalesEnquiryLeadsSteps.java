@@ -265,6 +265,14 @@ public class SalesEnquiryLeadsSteps {
                 //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
             //Site Survey Requested Ends
+            //Financial Tracking Starts
+            //Invoice reversal
+            else if (dropdownName.equalsIgnoreCase("FinancialTransReason")) {
+                field = By.id("ctl00_ContentPlaceHolder1_CustomerInvoice_RadWinInvoiceReversal_C_ddlInvoiceReversalReason_Input");
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_CustomerInvoice_RadWinInvoiceReversal_C_ddlInvoiceReversalReason_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            //Financial Tracking Ends
             else {
                 throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
             }
