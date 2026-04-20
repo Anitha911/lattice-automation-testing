@@ -16,4 +16,66 @@ Feature: FinancialTracking Module Automation
     Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
     Then User Clicks on Financial Transactions Tracking Invoice Advices 'Invoice Advices' in side menu
 
+  @TransFinancialTrackingInvoiceAdvicesExportToExcel
+  Scenario: Should be able to Export to Excel Invoice Advices
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices 'Invoice Advices' in side menu
+    When User Clicks on Export to Excel Button
+
+  @TransFinancialTrackingInvoiceAdvicesPrint
+  Scenario: Should be able to Print Invoice Advices
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices 'Invoice Advices' in side menu
+    When User Clicks on Print Invoice Advices 'Print Invoice Advices' Button
+
+  @TransFinancialTrackingInvoiceReversalSave
+  Scenario: Should be able to Do Invoice Reversal
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices 'Invoice Advices' in side menu
+    When User Clicks on  Invoice Advice Reversal 'Invoice Advice Reversal' Button
+    Then User enters the details in the Invoice Advice Reversal pop up
+    When User selects value in the "FinancialTransReason" dropdown
+    When User clicks ths Invoice Advice Reversal Save button
+
+  @TransFinancialTrackingScheduledInvoiceExportToExcel
+  Scenario: Should be able to Export To Excel Scheduled Invoice
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
+    When User Clicks on Financial Transactions Tracking  Export to Excel Button
+
+  @TransFinancialTrackingScheduledInvoiceGenerateInvoiceClick
+  Scenario: Should be able to Generate Scheduled Invoice
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
+    When User Clicks Generate Invoice button 'Generate Invoice Button'
+
+  @TransFinancialTrackingReceiptsExportToExcel
+  Scenario: Should be able to Open Receipts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
+    When User Clicks on Financial Transactions Tracking  Export to Excel Button
+
+  @TransFinancialTrackingReceiptsPrint
+  Scenario: Should be able to Print Receipts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
+    When User Clicks on Financial Transactions Tracking 'Receipts' Print Button
+
+
+
+
 
