@@ -75,6 +75,30 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
     When User Clicks on Financial Transactions Tracking 'Receipts' Print Button
 
+  @TransFinancialTrackingReceiptsAddCustomerReceipts
+  Scenario: Should be able to Add Customer Receipts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
+    When User Clicks on 'Add Customer Receipt' Add Receipt Button
+    When User enters the details in the Add Customer Receipt pop up Including Grid Data
+    Then User clicks Receipts Save Button
+
+  @TransFinancialTrackingInvoiceAdvicesBulk
+  Scenario: Should be able to Open Invoice Advice Bulk and issue Bulk Invoices
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices Bulk 'Invoice Advices Bulk' in side menu
+    When User Enters Financial Transactions Tracking Invoice Advices Bulk
+    When User Clicks Financial Tracking Apply Filter 'Apply Filter' Button and Check grid first data
+    Then User clicks Invoice Advices generate Bulk Invoice 'Generate Bulk Invoice' Button
+    When User Clicks generate Bulk Invoice Save Button
+
+
+
+
 
 
 

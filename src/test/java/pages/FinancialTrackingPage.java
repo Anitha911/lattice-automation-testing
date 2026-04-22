@@ -1,7 +1,11 @@
 package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.HelperUtils;
+
+import java.time.Duration;
 
 public class FinancialTrackingPage extends BasePage {
     public FinancialTrackingPage(WebDriver driver) {
@@ -13,6 +17,12 @@ public class FinancialTrackingPage extends BasePage {
 
     public static final By INVREVERSALREMARKS = By.id("txtInvoiceReversalRemarks");
     public static final By INVREVERSALSAVE = By.id("ctl00_ContentPlaceHolder1_CustomerInvoice_RadWinInvoiceReversal_C_btnSaveInvoiceRevarsal");
+    public static final By RECEIPT_CUSTOMER_NAME_DD=By.id("ctl00_ContentPlaceHolder1_RadWinClient_C_raddrpCustomerName_Input");
+    public static final By RECEIPTS_CUSTOMER_REMARKS = By.id("radtxtRemarks");
+    public static final By RECEIPTSAVE = By.id("ctl00_ContentPlaceHolder1_RadWinClient_C_btnSave");
+    public static final By BULK_CLIENT_DD=By.id("ctl00_ContentPlaceHolder1_raddrpClientName_Input");
+    public static final By BULKINVOICESAVE = By.id("ctl00_ContentPlaceHolder1_RadWinClaim_C_RadButton2");
+
 
     public void MenuFinancialTrackingPage(String FinancialTrackingPage) throws InterruptedException {
         try {
@@ -148,5 +158,120 @@ public class FinancialTrackingPage extends BasePage {
             throw e;
         }
     }
+    public void FinancialTrackingReceiptsAddButton(String FinancialTrackingReceiptsAddButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']", FinancialTrackingReceiptsAddButton));
+            utils.click(locator);
+            System.out.println("Clicked on Financial Tracking Add Receipt Button:" + FinancialTrackingReceiptsAddButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Financial Tracking Add Receipt Button : " + FinancialTrackingReceiptsAddButton);
+            throw e;
+        }
+    }
+    public void selectReceiptCustomer(String selectReceiptCustomer) {
+        try {
+            utils.click(RECEIPT_CUSTOMER_NAME_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectReceiptCustomer));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectReceiptCustomer);
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//table//tr")
+            ));
+            WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//table//input[@type='checkbox'])[1]")
+            ));
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            }
+             //
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectReceiptCustomer);
+            throw e;
+        }
+    }
+    public void enterReceiptDesc(String enterReceiptDesc) {
+        utils.typeText(RECEIPTS_CUSTOMER_REMARKS, enterReceiptDesc);
+    }
+    public void ClickReceiptsSave() {
+        By[] saveButtons = {RECEIPTSAVE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                utils.click(button);//Change this when bug is solved
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
     //Receipts End
+    //Bulk Invoice Start
+    public void BulkInvoiceClick(String BulkInvoiceClick) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Financial']/div[2]/div/ul[2]/li[4]/a", BulkInvoiceClick)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            //utils.click(locator);
+            System.out.println("Clicked on Bulk Invoice Click: " + BulkInvoiceClick);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Bulk Invoice Click: " + BulkInvoiceClick);
+            throw e;
+        }
+    }
+    public void FinancialTrackingApplyFilterButton(String FinancialTrackingApplyFilterButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnSearch_input']", FinancialTrackingApplyFilterButton));
+            utils.click(locator);
+            System.out.println("Clicked on Financial Tracking ApplyFilterButton:" + FinancialTrackingApplyFilterButton);
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//table//tr")
+            ));
+            WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//table//input[@type='checkbox'])[2]")
+            ));
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            }
+            //
+        } catch (Exception e) {
+            System.out.println("Failed to click on Financial Tracking ApplyFilterButton : " + FinancialTrackingApplyFilterButton);
+            throw e;
+        }
+    }
+    public void selectClient(String selectClient) {
+        try {
+            utils.click(BULK_CLIENT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectClient));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectClient);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectClient);
+            throw e;
+        }
+    }
+    public void FinancialTrackingGenerateBulkInvoiceButton(String FinancialTrackingGenerateBulkInvoiceButton) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']", FinancialTrackingGenerateBulkInvoiceButton));
+            utils.click(locator);
+            System.out.println("Clicked on Financial Tracking generate Bulk Invoice:" + FinancialTrackingGenerateBulkInvoiceButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Financial Tracking generate Bulk Invoice Button : " + FinancialTrackingGenerateBulkInvoiceButton);
+            throw e;
+        }
+    }
+    public void ClickBulkInvoiceSave() {//Bug for obj ref error
+        By[] saveButtons = {BULKINVOICESAVE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Bulk Invoice Ends
 }

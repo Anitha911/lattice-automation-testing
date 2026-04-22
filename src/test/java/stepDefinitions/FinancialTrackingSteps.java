@@ -80,5 +80,41 @@ public class FinancialTrackingSteps {
         String id = "ctl00_ContentPlaceHolder1_btnPrint";
         tmp.ReceiptsClickPrint(id);
     }
+    @Then("User Clicks on {string} Add Receipt Button")
+    public void user_click_on_FinancialTrackingReceiptsAdd(String FinancialTrackingReceiptsAdd) throws InterruptedException {
+        tmp.FinancialTrackingReceiptsAddButton(FinancialTrackingReceiptsAdd);
+    }
+    @Then("User enters the details in the Add Customer Receipt pop up Including Grid Data")
+    public void userFillsUpCustomerReceiptsDetails() {
+        tmp.selectReceiptCustomer("Alpha Properties");
+        tmp.enterReceiptDesc(dataGen.generateEnqDesc());
+    }
+    @Then("User clicks Receipts Save Button")
+    public void user_click_on_ReceiptsSaveButton() {
+        tmp.ClickReceiptsSave();
+    }
     //Receipts End
+    //Bulk Invoice Start
+    @Then("User Clicks on Financial Transactions Tracking Invoice Advices Bulk {string} in side menu")
+    public void user_click_on_FinancialTrackingBulkInvoice(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Financial']/div[2]/div/ul[2]/li[4]/a";
+        tmp.BulkInvoiceClick(xpath);
+    }
+    @Then("User Enters Financial Transactions Tracking Invoice Advices Bulk")
+    public void userFillsBulkInvoiceDetails() {
+        tmp.selectClient("Alpha Properties");
+    }
+    @Then("User Clicks Financial Tracking Apply Filter {string} Button and Check grid first data")
+    public void user_click_on_FinancialTrackingApplyFilter(String FinancialTrackingApplyFilter) throws InterruptedException {
+        tmp.FinancialTrackingApplyFilterButton(FinancialTrackingApplyFilter);
+    }
+    @Then("User clicks Invoice Advices generate Bulk Invoice {string} Button")
+    public void user_click_on_FinancialTrackingGenerateBulkInvoice(String FinancialTrackingGenerateBulkInvoice) throws InterruptedException {
+        tmp.FinancialTrackingGenerateBulkInvoiceButton(FinancialTrackingGenerateBulkInvoice);
+    }
+    @Then("User Clicks generate Bulk Invoice Save Button")
+    public void user_click_on_BulkInvoiceSaveButton() {
+        tmp.ClickBulkInvoiceSave();
+    }
+    //Bulk Invoice Ends
 }
