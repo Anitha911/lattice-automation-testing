@@ -60,7 +60,7 @@ Feature: FinancialTracking Module Automation
     When User Clicks Generate Invoice button 'Generate Invoice Button'
 
   @TransFinancialTrackingReceiptsExportToExcel
-  Scenario: Should be able to Open Receipts
+  Scenario: Should be able to Open Receipts and Export to Excel
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
@@ -73,7 +73,7 @@ Feature: FinancialTracking Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
     Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
-    When User Clicks on Financial Transactions Tracking 'Receipts' Print Button
+    When User Clicks on Financial Transactions Tracking Print Button
 
   @TransFinancialTrackingReceiptsAddCustomerReceipts
   Scenario: Should be able to Add Customer Receipts
@@ -96,7 +96,21 @@ Feature: FinancialTracking Module Automation
     Then User clicks Invoice Advices generate Bulk Invoice 'Generate Bulk Invoice' Button
     When User Clicks generate Bulk Invoice Save Button
 
+  @TransFinancialTrackingCreditNotesExportToExcel
+  Scenario: Should be able to Open Credit Notes and Export to Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Credit Notes 'Credit Notes' in side menu
+    When User Clicks on Financial Transactions Tracking  Export to Excel Button
 
+  @TransFinancialTrackingCreditNotesPrint
+  Scenario: Should be able to Print Receipts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Credit Notes 'Credit Notes' in side menu
+    When User Clicks on Financial Transactions Tracking Print Button
 
 
 

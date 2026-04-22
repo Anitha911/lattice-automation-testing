@@ -274,4 +274,19 @@ public class FinancialTrackingPage extends BasePage {
         throw new RuntimeException("No save button is present on the page.");
     }
     //Bulk Invoice Ends
+
+    //Credit Notes Start
+    public void CreditNotesClick(String CreditNotesClick) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Financial']/div[2]/div/ul[3]/li[3]/a", CreditNotesClick)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on Credit Notes Click: " + CreditNotesClick);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Credit Notes Click: " + CreditNotesClick);
+            throw e;
+        }
+    }
+    //Credit Notes Ends
 }

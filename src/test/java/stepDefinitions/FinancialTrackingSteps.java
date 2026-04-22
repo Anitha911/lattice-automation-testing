@@ -75,8 +75,8 @@ public class FinancialTrackingSteps {
         String xpath = "//*[@id='tab-Financial']/div[2]/div/ul[3]/li[2]/a";
         tmp.ReceiptsClick(xpath);
     }
-    @Then("User Clicks on Financial Transactions Tracking {string} Print Button")
-    public void user_click_on_FinancialTrackingReceiptsPrint(String title) throws InterruptedException {
+    @Then("User Clicks on Financial Transactions Tracking Print Button")
+    public void user_click_on_FinancialTrackingReceiptsPrint() throws InterruptedException {
         String id = "ctl00_ContentPlaceHolder1_btnPrint";
         tmp.ReceiptsClickPrint(id);
     }
@@ -117,4 +117,11 @@ public class FinancialTrackingSteps {
         tmp.ClickBulkInvoiceSave();
     }
     //Bulk Invoice Ends
+    //Credit Notes Starts
+    @Then("User Clicks on Financial Transactions Tracking Credit Notes {string} in side menu")
+    public void user_click_on_FinancialTrackingCreditNotes(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Financial']/div[2]/div/ul[3]/li[3]/a";
+        tmp.CreditNotesClick(xpath);
+    }
+    //Credit Notes Ends
 }
