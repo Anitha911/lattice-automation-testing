@@ -112,6 +112,34 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Credit Notes 'Credit Notes' in side menu
     When User Clicks on Financial Transactions Tracking Print Button
 
+  @TransFinancialTrackingAdhocPurchaseTileClick
+  Scenario: Should be able to Click the Adhoc Purchase Tile
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
+    When User clicks the Claimed 'Claimed' Tile
+    When User clicks the Pending 'Pending' Tile
+
+  @TransFinancialTrackingAdhocPurchaseExportToExcel
+  Scenario: Should be able to Open Adhoc Purchase and Export to Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
+    When User Clicks on Financial Transactions Tracking Adhoc Purchase Export to Excel Button
+
+  @TransFinancialTrackingAdhocPurchaseApplyFilterAndClaim
+  Scenario: Should be able to Apply Filter and Claim
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
+    When User selects value in the Technician Name Adhoc Purchase dropdown
+    When User clicks Adhoc Purchase Apply Filter button
+    Then User clicks the Adhoc Purchase Claim Button
+
+
 
 
 

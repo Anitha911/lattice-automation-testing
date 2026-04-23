@@ -124,4 +124,41 @@ public class FinancialTrackingSteps {
         tmp.CreditNotesClick(xpath);
     }
     //Credit Notes Ends
+    //Adhoc Purchase Starts
+    @Then("User Clicks on Financial Transactions Tracking Adhoc Purchase {string} in side menu")
+    public void user_click_on_FinancialTrackingAdhocPurchase(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Financial']/div[2]/div/ul[3]/li[4]/a";
+        tmp.AdhocPurchaseClick(xpath);
+    }
+    @Then("User clicks the Claimed {string} Tile")
+    public void user_click_on_FinancialTrackingAdhocPurchaseClaimed(String title) throws InterruptedException {
+        String xpath = "//*[@id='div2']";
+        tmp.AdhocPurchaseClaimedClick(xpath);
+    }
+    @Then("User clicks the Pending {string} Tile")
+    public void user_click_on_FinancialTrackingAdhocPurchasePending(String title) throws InterruptedException {
+        String xpath = "//*[@id='div1']";
+        tmp.AdhocPurchasePendingClick(xpath);
+    }
+    @Then ("User Clicks on Financial Transactions Tracking Adhoc Purchase Export to Excel Button")
+    public void user_clicks_on_Financial_AdhocPurchase_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.FinAdhocPurchaseExportToExcel(xpath);
+    }
+    @Then("User selects value in the Technician Name Adhoc Purchase dropdown")
+    public void userFillsTechnicianNameAdhocPurchaseDropdown() throws InterruptedException {
+        tmp.selectTechnician("S Sampath");
+    }
+    @Then ("User clicks Adhoc Purchase Apply Filter button")
+    public void user_clicks_on_Financial_AdhocPurchase_ApplyFilter_button() throws InterruptedException{
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_btnSearch_input']";
+        tmp.FinAdhocPurchaseApplyFilter(xpath);
+    }
+    @Then ("User clicks the Adhoc Purchase Claim Button")
+    public void user_clicks_on_Financial_AdhocPurchase_Claim_button() throws InterruptedException{
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']";
+        tmp.FinAdhocPurchaseClaim(xpath);
+    }
+
+    //Adhoc Purchase Ends
 }
