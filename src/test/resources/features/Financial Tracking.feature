@@ -59,6 +59,14 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
     When User Clicks Generate Invoice button 'Generate Invoice Button'
 
+  @TransFinancialTrackingScheduledInvoiceGridPagination
+  Scenario: Should be able to move to next page in the grid in Scheduled Invoice
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
+    When User Clicks on Financial Transactions Tracking Scheduled Invoices grid 'pagination'
+
   @TransFinancialTrackingReceiptsExportToExcel
   Scenario: Should be able to Open Receipts and Export to Excel
     Given User navigates to 'lattice.url' page
@@ -85,6 +93,14 @@ Feature: FinancialTracking Module Automation
     When User enters the details in the Add Customer Receipt pop up Including Grid Data
     Then User clicks Receipts Save Button
 
+  @TransFinancialTrackingReceiptsGridPagination
+  Scenario: Should be able to move to Receipts next page when Grid Pagination is done
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Receipts 'Receipts' in side menu
+    When User Clicks on Financial Transactions Tracking Receipts grid 'pagination'
+
   @TransFinancialTrackingInvoiceAdvicesBulk
   Scenario: Should be able to Open Invoice Advice Bulk and issue Bulk Invoices
     Given User navigates to 'lattice.url' page
@@ -96,6 +112,14 @@ Feature: FinancialTracking Module Automation
     Then User clicks Invoice Advices generate Bulk Invoice 'Generate Bulk Invoice' Button
     When User Clicks generate Bulk Invoice Save Button
 
+  @TransFinancialTrackingInvoiceAdvicesBulkGridPagination
+  Scenario: Should be able to Open Invoice Advice Bulk and Navigate to next page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices Bulk 'Invoice Advices Bulk' in side menu
+    When User Clicks on Financial Transactions Tracking Invoice Advices Bulk grid 'pagination'
+
   @TransFinancialTrackingCreditNotesExportToExcel
   Scenario: Should be able to Open Credit Notes and Export to Excel
     Given User navigates to 'lattice.url' page
@@ -105,12 +129,20 @@ Feature: FinancialTracking Module Automation
     When User Clicks on Financial Transactions Tracking  Export to Excel Button
 
   @TransFinancialTrackingCreditNotesPrint
-  Scenario: Should be able to Print Receipts
+  Scenario: Should be able to Print Credit Notes
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
     Then User Clicks on Financial Transactions Tracking Credit Notes 'Credit Notes' in side menu
     When User Clicks on Financial Transactions Tracking Print Button
+
+  @TransFinancialTrackingCreditNotesPagination
+  Scenario: Should be able to Print Credit Notes
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Credit Notes 'Credit Notes' in side menu
+    When User Clicks on Financial Transactions Tracking Credit Notes grid 'pagination'
 
   @TransFinancialTrackingAdhocPurchaseTileClick
   Scenario: Should be able to Click the Adhoc Purchase Tile
@@ -138,6 +170,15 @@ Feature: FinancialTracking Module Automation
     When User selects value in the Technician Name Adhoc Purchase dropdown
     When User clicks Adhoc Purchase Apply Filter button
     Then User clicks the Adhoc Purchase Claim Button
+
+  @TransFinancialTrackingAdhocPurchaseGridPagination
+  Scenario: Should be able to Open Adhoc Purchase and Navigate to next page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
+    When User Clicks on Financial Transactions Tracking Adhoc Purchase grid 'pagination'
+
 
 
 

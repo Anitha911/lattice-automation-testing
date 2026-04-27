@@ -68,6 +68,10 @@ public class FinancialTrackingSteps {
     {
         tmp.ScheduledInvoiceGenerateButton(ScheduledInvoiceGenerateButton);
     }
+    @Then("User Clicks on Financial Transactions Tracking Scheduled Invoices grid {string}")
+    public void user_click_on_FinancialTransactionsScheduledInvoicePagination(String GrdScheduledInvoicePagination) throws InterruptedException {
+        tmp.GrdScheduledInvoicePagination(GrdScheduledInvoicePagination);
+    }
     //Scheduled Invoice End
     //Receipts Start
     @Then("User Clicks on Financial Transactions Tracking Receipts {string} in side menu")
@@ -93,6 +97,10 @@ public class FinancialTrackingSteps {
     public void user_click_on_ReceiptsSaveButton() {
         tmp.ClickReceiptsSave();
     }
+    @Then("User Clicks on Financial Transactions Tracking Receipts grid {string}")
+    public void user_click_on_FinancialTransactionsReceiptsPagination(String GrdReceiptsPagination) throws InterruptedException {
+        tmp.GrdReceiptsPagination(GrdReceiptsPagination);
+    }
     //Receipts End
     //Bulk Invoice Start
     @Then("User Clicks on Financial Transactions Tracking Invoice Advices Bulk {string} in side menu")
@@ -116,12 +124,20 @@ public class FinancialTrackingSteps {
     public void user_click_on_BulkInvoiceSaveButton() {
         tmp.ClickBulkInvoiceSave();
     }
+    @Then("User Clicks on Financial Transactions Tracking Invoice Advices Bulk grid {string}")
+    public void user_click_on_FinancialTransactionsInvoiceAdviceBulkPagination(String GrdInvoiceAdviceBulkPagination) throws InterruptedException {
+        tmp.GrdInvoiceAdviceBulkPagination(GrdInvoiceAdviceBulkPagination);
+    }
     //Bulk Invoice Ends
     //Credit Notes Starts
     @Then("User Clicks on Financial Transactions Tracking Credit Notes {string} in side menu")
     public void user_click_on_FinancialTrackingCreditNotes(String title) throws InterruptedException {
         String xpath = "//*[@id='tab-Financial']/div[2]/div/ul[3]/li[3]/a";
         tmp.CreditNotesClick(xpath);
+    }
+    @Then("User Clicks on Financial Transactions Tracking Credit Notes grid {string}")
+    public void user_click_on_FinancialTransactionsCreditNotesPagination(String GrdCreditNotesPagination) throws InterruptedException {
+        tmp.GrdCreditNotesPagination(GrdCreditNotesPagination);
     }
     //Credit Notes Ends
     //Adhoc Purchase Starts
@@ -159,6 +175,9 @@ public class FinancialTrackingSteps {
         String xpath = "//*[@id='ctl00_ContentPlaceHolder1_BtnAdd']";
         tmp.FinAdhocPurchaseClaim(xpath);
     }
-
+    @Then("User Clicks on Financial Transactions Tracking Adhoc Purchase grid {string}")
+    public void user_click_on_FinancialTransactionsAdhocPurchasePagination(String GrdAdhocPurchasePagination) throws InterruptedException {
+        tmp.GrdAdhocPurchasePagination(GrdAdhocPurchasePagination);
+    }
     //Adhoc Purchase Ends
 }

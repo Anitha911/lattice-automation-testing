@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.HelperUtils;
 
 import java.time.Duration;
+import java.util.List;
 
 public class FinancialTrackingPage extends BasePage {
     public FinancialTrackingPage(WebDriver driver) {
@@ -133,6 +134,32 @@ public class FinancialTrackingPage extends BasePage {
             throw e;
         }
     }
+    //Scheduled Invoice Pagination Start
+    public void GrdScheduledInvoicePagination(String GrdScheduledInvoicePagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdscheduledinvoice_GridData']")));
+            String beforeText = firstRowBefore.getText();
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdscheduledinvoice_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdscheduledinvoice_GridData']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+            //
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdScheduledInvoicePagination);
+            throw e;
+        }
+    }
+    //Scheduled Invoice Pagination Ends
     //Scheduled Invoices End
     //Receipts Start
     public void ReceiptsClick(String ReceiptsClick) throws InterruptedException {
@@ -205,6 +232,40 @@ public class FinancialTrackingPage extends BasePage {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //Receipts Pagination Start
+    public void GrdReceiptsPagination(String GrdReceiptsPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement firstCellBefore = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdReceipt']//tr[td][2]/td[1]")
+                    )
+            );
+            String beforeText = firstCellBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdReceipt_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstCellBefore));
+            WebElement firstCellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdReceipt']//tr[td][2]/td[1]")
+                    )
+            );
+            String afterText = firstCellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdReceiptsPagination);
+            throw e;
+        }
+    }
     //Receipts End
     //Bulk Invoice Start
     public void BulkInvoiceClick(String BulkInvoiceClick) throws InterruptedException {
@@ -273,6 +334,30 @@ public class FinancialTrackingPage extends BasePage {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //Scheduled Invoice Pagination Start
+    public void GrdInvoiceAdviceBulkPagination(String GrdInvoiceAdviceBulkPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment']")));
+            String beforeText = firstRowBefore.getText();
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdInvoiceAdviceBulkPagination);
+            throw e;
+        }
+    }
     //Bulk Invoice Ends
 
     //Credit Notes Start
@@ -285,6 +370,40 @@ public class FinancialTrackingPage extends BasePage {
             System.out.println("Clicked on Credit Notes Click: " + CreditNotesClick);
         } catch (Exception e) {
             System.out.println("Failed to click on Credit Notes Click: " + CreditNotesClick);
+            throw e;
+        }
+    }
+    //Credit Notes Pagination Start
+    public void GrdCreditNotesPagination(String GrdCreditNotesPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement firstCellBefore = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdCreditNote']//tr[td][2]/td[1]")
+                    )
+            );
+            String beforeText = firstCellBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdCreditNote_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstCellBefore));
+            WebElement firstCellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdCreditNote']//tr[td][2]/td[1]")
+                    )
+            );
+            String afterText = firstCellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdCreditNotesPagination);
             throw e;
         }
     }
@@ -353,7 +472,6 @@ public class FinancialTrackingPage extends BasePage {
         try {
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnSearch_input']", FinAdhocPurchaseApplyFilter));
             utils.click(locator);
-            //
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//table//tr")
@@ -364,7 +482,6 @@ public class FinancialTrackingPage extends BasePage {
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
-            //
             System.out.println("Clicked on Apply Filter AdhocPurchase : " + FinAdhocPurchaseApplyFilter);
         } catch (Exception e) {
             System.out.println("Failed to click on Apply Filter AdhocPurchase : " + FinAdhocPurchaseApplyFilter);
@@ -381,5 +498,30 @@ public class FinancialTrackingPage extends BasePage {
             throw e;
         }
     }
+    //Adhoc Purchase Pagination Start
+    public void GrdAdhocPurchasePagination(String GrdAdhocPurchasePagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00__5']")));
+            String beforeText = firstRowBefore.getText();
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00__5']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdAdhocPurchasePagination);
+            throw e;
+        }
+    }
+    //Adhoc Purchase Pagination Ends
     //Adhoc Purchase Ends
 }
