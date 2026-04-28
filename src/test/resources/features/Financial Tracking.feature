@@ -179,6 +179,14 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
     When User Clicks on Financial Transactions Tracking Adhoc Purchase grid 'pagination'
 
+  @TransFinancialTrackingAdhocPurchaseGridDataPerPage
+  Scenario: Should be able to Open Adhoc Purchase check data per page in the  grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
+    When User clicks the Financial Transactions Tracking Adhoc Purchase no of data per page 10 in the grid
+
 
 
 

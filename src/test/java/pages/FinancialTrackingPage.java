@@ -523,5 +523,29 @@ public class FinancialTrackingPage extends BasePage {
         }
     }
     //Adhoc Purchase Pagination Ends
+    //Adhoc Purchase Data Per page Starts
+    public void validatePageSizeAdhoc(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00_ctl03_ctl01_PageSizeComboBox")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Adhoc Purchase Data Per page Ends
     //Adhoc Purchase Ends
 }

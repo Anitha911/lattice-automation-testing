@@ -179,5 +179,10 @@ public class FinancialTrackingSteps {
     public void user_click_on_FinancialTransactionsAdhocPurchasePagination(String GrdAdhocPurchasePagination) throws InterruptedException {
         tmp.GrdAdhocPurchasePagination(GrdAdhocPurchasePagination);
     }
+    //No of data per page
+    @Then("User clicks the Financial Transactions Tracking Adhoc Purchase no of data per page {int} in the grid")
+    public void user_click_on_AdhocPurchaseDataPerPage(int GrdAdhocPurchase) throws InterruptedException {
+        tmp.validatePageSizeAdhoc(GrdAdhocPurchase);
+    }
     //Adhoc Purchase Ends
 }
