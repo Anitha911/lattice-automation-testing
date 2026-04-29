@@ -160,6 +160,30 @@ public class FinancialTrackingPage extends BasePage {
         }
     }
     //Scheduled Invoice Pagination Ends
+    //Scheduled Invoice Data per page check starts
+    public void validatePageSizeScheduledInvoice(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdscheduledinvoice_ctl00_ctl03_ctl01_PageSizeComboBox_Input")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Scheduled Invoice Data per page check ends
     //Scheduled Invoices End
     //Receipts Start
     public void ReceiptsClick(String ReceiptsClick) throws InterruptedException {
@@ -212,7 +236,6 @@ public class FinancialTrackingPage extends BasePage {
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
-             //
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + selectReceiptCustomer);
             throw e;
@@ -286,7 +309,6 @@ public class FinancialTrackingPage extends BasePage {
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnSearch_input']", FinancialTrackingApplyFilterButton));
             utils.click(locator);
             System.out.println("Clicked on Financial Tracking ApplyFilterButton:" + FinancialTrackingApplyFilterButton);
-            //
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath("//table//tr")
@@ -297,7 +319,6 @@ public class FinancialTrackingPage extends BasePage {
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
-            //
         } catch (Exception e) {
             System.out.println("Failed to click on Financial Tracking ApplyFilterButton : " + FinancialTrackingApplyFilterButton);
             throw e;
@@ -334,7 +355,7 @@ public class FinancialTrackingPage extends BasePage {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
-    //Scheduled Invoice Pagination Start
+    // Invoice Advice Bulk Pagination Start
     public void GrdInvoiceAdviceBulkPagination(String GrdInvoiceAdviceBulkPagination) throws InterruptedException {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -358,6 +379,30 @@ public class FinancialTrackingPage extends BasePage {
             throw e;
         }
     }
+    //Bulk Invoice Data per page check starts
+    public void validatePageSizeBulkInvoice(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdPendingAppointment_ctl00_ctl03_ctl01_PageSizeComboBox_Input")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Bulk Invoice Data per page check ends
     //Bulk Invoice Ends
 
     //Credit Notes Start

@@ -67,6 +67,14 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
     When User Clicks on Financial Transactions Tracking Scheduled Invoices grid 'pagination'
 
+  @TransFinancialTrackingScheduledInvoiceDataPerPage
+  Scenario: Should be able to Open Scheduled Invoice and check data per page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Scheduled Invoices 'Scheduled Invoices' in side menu
+    When User clicks the Financial Transactions Tracking Scheduled Invoice no of data per page 10 in the grid
+
   @TransFinancialTrackingReceiptsExportToExcel
   Scenario: Should be able to Open Receipts and Export to Excel
     Given User navigates to 'lattice.url' page
@@ -187,6 +195,13 @@ Feature: FinancialTracking Module Automation
     Then User Clicks on Financial Transactions Tracking Adhoc Purchase 'Adhoc Purchase' in side menu
     When User clicks the Financial Transactions Tracking Adhoc Purchase no of data per page 10 in the grid
 
+  @TransFinancialTrackingBulkInvoiceGridDataPerPage
+  Scenario: Should be able to Open Bulk Invoice check data per page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu
+    Then User Clicks on Financial Transactions Tracking Invoice Advices Bulk 'Invoice Advices Bulk' in side menu
+    When User clicks the Financial Transactions Tracking Bulk Invoice Advice no of data per page 10 in the grid
 
 
 

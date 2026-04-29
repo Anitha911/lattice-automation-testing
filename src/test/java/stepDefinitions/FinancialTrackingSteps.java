@@ -72,6 +72,11 @@ public class FinancialTrackingSteps {
     public void user_click_on_FinancialTransactionsScheduledInvoicePagination(String GrdScheduledInvoicePagination) throws InterruptedException {
         tmp.GrdScheduledInvoicePagination(GrdScheduledInvoicePagination);
     }
+    //No of data per page
+    @Then("User clicks the Financial Transactions Tracking Scheduled Invoice no of data per page {int} in the grid")
+    public void user_click_on_ScheduledInvoiceDataPerPage(int GrdScheduledInvoice) throws InterruptedException {
+        tmp.validatePageSizeScheduledInvoice(GrdScheduledInvoice);
+    }
     //Scheduled Invoice End
     //Receipts Start
     @Then("User Clicks on Financial Transactions Tracking Receipts {string} in side menu")
@@ -127,6 +132,11 @@ public class FinancialTrackingSteps {
     @Then("User Clicks on Financial Transactions Tracking Invoice Advices Bulk grid {string}")
     public void user_click_on_FinancialTransactionsInvoiceAdviceBulkPagination(String GrdInvoiceAdviceBulkPagination) throws InterruptedException {
         tmp.GrdInvoiceAdviceBulkPagination(GrdInvoiceAdviceBulkPagination);
+    }
+    //No of data per page
+    @Then("User clicks the Financial Transactions Tracking Bulk Invoice Advice no of data per page {int} in the grid")
+    public void user_click_on_BulkInvoiceDataPerPage(int GrdBulkInvoice) throws InterruptedException {
+        tmp.validatePageSizeBulkInvoice(GrdBulkInvoice);
     }
     //Bulk Invoice Ends
     //Credit Notes Starts
