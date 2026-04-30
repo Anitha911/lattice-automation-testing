@@ -320,7 +320,7 @@ public class TestDataGenerator {
         return (random.nextInt(999) + 1) + " Test Street, Test City " + UUID.randomUUID().toString().substring(0, 4);
     }
     public String generateEnqDesc() {
-        String[] mode = {"tstEnqDESC1", "tstEnqDESC2", "tstEnqDESC3", "tstEnqDESC4", "tstEnqDESC5"};
+        String[] mode = {"tstDESC1", "tstDESC2", "tstDESC3", "tstDESC4", "tstDESC5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
     public String generateComments() {
         String[] mode = {"tstEnqComment1", "tstEnqComment2", "tstEnqComment3", "tstEnqComment4", "tstEnqComment5"};
@@ -345,7 +345,12 @@ public class TestDataGenerator {
         return String.format("%.2f", price);
     }
 
-    //Sales Transaction
+    //Sales Transaction End
+    //Energy Utility start
+    public String generatePremiseMeterAccDescNumber() {
+        String[] mode = {"tstPMAD1", "tstPMAD2", "tstPMAD3", "tstPMAD4", "tstPMAD5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+    //Energy Utility End
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);

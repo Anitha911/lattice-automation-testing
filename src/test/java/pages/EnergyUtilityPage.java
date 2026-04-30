@@ -13,6 +13,25 @@ public class EnergyUtilityPage extends BasePage {
     public EnergyUtilityPage(WebDriver driver) {
         super(driver);
     }
+    public static final By ENERGY_ACC_CLIENT_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlClient_Input");
+    public static final By ENERGY_ACC_CLIENT_CONTRACT_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlClientContract_Input");
+    public static final By ENERGY_ACC_PROPERTY_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlSubCommunity_Input");
+    public static final By ENERGY_ACC_ENERGY_TYPE_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlEnergyType_Input");
+    public static final By ENERGY_ACC_SUPPLIER_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlSupplier_Input");
+    public static final By ENERGY_ACC_CONNECTED_SERVICE_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlConnectedService_Input");
+    public static final By ENERGY_ACC_METER_CONNECTION_LEVEL_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlMeterConnectionLevel_Input");
+    public static final By ENERGY_ACC_REPORTING_GRP_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_ddlGroup_Input");
+    public static final By ENERGY_ACC_ASSET_DD = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_raddrpAsset_Input");
+    public static final By PREMISE_NUMBER = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtPremiseNumber");
+    public static final By METER_NUMBER = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtMeterNo");
+    public static final By ENERGY_ACC_DESC = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtEnergyAccountDescription");
+    public static final By ENERGY_CONTRACT_ACC_NUM = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtContactAccountNumber");
+    public static final By ENERGY_COV_AREA = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtCoverageArea");
+    public static final By ENERGY_MUL_FACTOR = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_txtMultiplicationFactor");
+    public static final By ENERGY_ACC_METER_SAVE = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_btnSave");
+    public static final By SUB_METER_NUMBER = By.id("ctl00_ContentPlaceHolder1_CCFollowUp_radwinSubMeter_C_txtSubMeterNo");
+    public static final By SUB_METER_NOTES = By.id("ctl00_ContentPlaceHolder1_CCFollowUp_radwinSubMeter_C_txtRemarks1");
+
     public void MenuEnergyUtilityTrackingPage(String MenuEnergyUtilityTrackingPage) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("15"));
@@ -97,4 +116,252 @@ public class EnergyUtilityPage extends BasePage {
             System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
         }
     //AccountMeter SetUp Data Per page Ends
+    //Add Acc Meter SetUP starts
+    public void selectClient(String Client) {
+        try {
+            utils.click(ENERGY_ACC_CLIENT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Client));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + Client);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + Client);
+            throw e;
+        }
+    }
+    public void selectClientContract(String ClientContract) {
+        try {
+            utils.click(ENERGY_ACC_CLIENT_CONTRACT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ClientContract));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ClientContract);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ClientContract);
+            throw e;
+        }
+    }
+    public void selectProperty(String selectProperty) {
+        try {
+            utils.click(ENERGY_ACC_PROPERTY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProperty));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProperty);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProperty);
+            throw e;
+        }
+    }
+    public void selectEnergyType(String selectEnergyType) {
+        try {
+            utils.click(ENERGY_ACC_ENERGY_TYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectEnergyType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectEnergyType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectEnergyType);
+            throw e;
+        }
+    }
+    public void selectSupplier(String selectSupplier) {
+        try {
+            utils.click(ENERGY_ACC_SUPPLIER_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectSupplier));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectSupplier);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectSupplier);
+            throw e;
+        }
+    }
+    public void selectConnectedService(String selectConnectedService) {
+        try {
+            utils.click(ENERGY_ACC_CONNECTED_SERVICE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectConnectedService));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectConnectedService);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectConnectedService);
+            throw e;
+        }
+    }
+    public void selectConnectionLevel(String selectConnectionLevel) {
+        try {
+            utils.click(ENERGY_ACC_METER_CONNECTION_LEVEL_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectConnectionLevel));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectConnectionLevel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectConnectionLevel);
+            throw e;
+        }
+    }
+    public void selectReportingGrp(String selectReportingGrp) {
+        try {
+            utils.click(ENERGY_ACC_REPORTING_GRP_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectReportingGrp));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectReportingGrp);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectReportingGrp);
+            throw e;
+        }
+    }
+    public void selectAsset(String selectAsset) {
+        try {
+            utils.click(ENERGY_ACC_ASSET_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectAsset));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectAsset);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectAsset);
+            throw e;
+        }
+    }
+    public void enterPremiseNumber(String enterPremiseNumber) {
+        utils.typeText(PREMISE_NUMBER, enterPremiseNumber);
+    }
+    public void enterMeterNumber(String enterMeterNumber) {
+        utils.typeText(METER_NUMBER, enterMeterNumber);
+    }
+    public void enterEnergyAccDesc(String enterEnergyAccDesc) {
+        utils.typeText(ENERGY_ACC_DESC, enterEnergyAccDesc);
+    }
+    public void enterEnergyContractAccNum(String enterEnergyContractAccNum) {
+        utils.typeText(ENERGY_CONTRACT_ACC_NUM, enterEnergyContractAccNum);
+    }
+    public void enterEnergyCovArea(String enterEnergyCovArea) {
+        utils.typeText(ENERGY_COV_AREA, enterEnergyCovArea);
+    }
+    public void enterEnergyMulFactor(String enterEnergyMulFactor) {
+        utils.typeText(ENERGY_MUL_FACTOR, enterEnergyMulFactor);
+    }
+    public void AddAccountMeterSetUp() {
+        By[] saveButtons = {ENERGY_ACC_METER_SAVE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Add Acc Meter SetUP Ends
+    public void AccountMeterSetUpGridDataClick() {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_grdEnergyAccountSetup_ctl00__0");
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpGridDataClick " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpGridDataClick: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailEditButtonClick() {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_btnEdit");
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailEditButtonClick " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailEditButtonClick: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailUpdateButtonClick() {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_btnSave");
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailUpdateButtonClick " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailUpdateButtonClick: ");
+            throw e;
+        }
+    }
+    //Con Location Start
+    public void AccountMeterSetUpDetailConnLoc() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='tdConnection']/span")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailConnLoc " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailConnLoc: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailConnLocAdd() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='addConnection']/span")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailConnLocAdd " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailConnLocAdd: ");
+            throw e;
+        }
+    }
+    public void ConnLocationGridDetails() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+            WebElement checkbox = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("//table/tbody/tr[1]//input[@type='checkbox']")
+                    )
+            );
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on the ConnLocationGridDetails: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailConnLocSave() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_EASConnectionLocation_RadwinConnection_C_RadButton2']")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailConnLocSave " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailConnLocSave: ");
+            throw e;
+        }
+    }
+    //Con Location Ends
+    //SubMeter Start
+    public void AccountMeterSetUpDetailSubMeter() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='tdSubMeter']/span")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailSubMeter " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailSubMeter: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailSubMeterAdd() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='addSubMeter']")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailSubMeterAdd " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailSubMeterAdd: ");
+            throw e;
+        }
+    }
+    public void enterSubMeterNumber(String enterSubMeterNumber) {
+        utils.typeText(SUB_METER_NUMBER, enterSubMeterNumber);
+    }
+    public void enterEnergySubMeterNotes(String enterEnergySubMeterNotes) {
+        utils.typeText(SUB_METER_NOTES, enterEnergySubMeterNotes);
+    }
+    public void AccountMeterSetUpDetailSubMeterSave() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_CCFollowUp_radwinSubMeter_C_RadButton2']")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailSubMeterSave " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailSubMeterSave: ");
+            throw e;
+        }
+    }
+    //SubMeter End
+    //Account setup detail page
+    //Account Meter Set Up Ends
 }
