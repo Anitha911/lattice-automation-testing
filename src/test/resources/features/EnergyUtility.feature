@@ -54,9 +54,9 @@ Feature: EnergyUtility Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Energy Utility 'Energy Utility' in side menu
     Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
-    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
-    #When User enters details in Energy Utility Account Meter Set Up Pop up
-    #Then User Clicks AccountMeterSetUp Save Button
+    Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    When User enters details in Energy Utility Account Meter Set Up Pop up
+    Then User Clicks AccountMeterSetUp Save Button
     When User clicks on first data in the grid
     Then User Clicks the Connection Location Menu in the Left side
     When User Clicks the Add Connection Location Button
@@ -69,17 +69,53 @@ Feature: EnergyUtility Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Energy Utility 'Energy Utility' in side menu
     Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
-    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
-    #When User enters details in Energy Utility Account Meter Set Up Pop up
-    #Then User Clicks AccountMeterSetUp Save Button
+    Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    When User enters details in Energy Utility Account Meter Set Up Pop up
+    Then User Clicks AccountMeterSetUp Save Button
     When User clicks on first data in the grid
     Then User Clicks the SubMeter Menu in the Left side
     When User Clicks the Add SubMeter Button
     Then User SubMeter pop up details
     When User Clicks the SubMeter Save Button
 
+  @EnergyUtilityAcctMtrSetUpDtlPageSideMenuSubMeterDelete
+  Scenario: Should be able to display Account Meter set up Open detail page and Delete Submeter
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Energy Utility 'Energy Utility' in side menu
+    Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
+    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    #When User enters details in Energy Utility Account Meter Set Up Pop up
+    #Then User Clicks AccountMeterSetUp Save Button
+    When User clicks on first data in the grid
+    Then User Clicks the SubMeter Menu in the Left side
+    When User Clicks the SubMeter Delete Button
 
+  @EnergyUtilityAcctMtrSetUpDtlPageHideClick
+  Scenario: Should be able to display Account Meter set up Open detail page and Check Hide button in Submeter
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Energy Utility 'Energy Utility' in side menu
+    Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
+    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    #When User enters details in Energy Utility Account Meter Set Up Pop up
+    #Then User Clicks AccountMeterSetUp Save Button
+    When User clicks on first data in the grid
+    Then User Clicks the Connection Location Menu in the Left side
+    When User Clicks the SubMeter 'Connection Location' Hide Button click
+    Then User Clicks the SubMeter Menu in the Left side
+    When User Clicks the SubMeter 'Sub Meter' Hide Button click
+    Then User Clicks the Consumption History Menu in the Left side
+    When User Clicks the SubMeter 'Consumption' Hide Button click
 
+  @EnergyUtilityAcctMtrSetUpDtlPageConsumptionHistView
+  Scenario: Should be able to display Account Meter set up Open detail page and View Consump History
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Energy Utility 'Energy Utility' in side menu
+    Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
+    When User clicks on first data in the grid
+    Then User Clicks the Consumption History Menu in the Left side
 
 
 

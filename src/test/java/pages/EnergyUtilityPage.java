@@ -361,7 +361,52 @@ public class EnergyUtilityPage extends BasePage {
             throw e;
         }
     }
+    public void AccountMeterSetUpDetailSubMeterDelete() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_CCFollowUp_grdSubMeterGrp_ctl00_ctl04_imgDelete']")));
+            utils.click(locator);
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            System.out.println("Clicked on the AccountMeterSetUpDetailSubMeterDelete" );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailSubMeterDelete: ");
+            throw e;
+        }
+    }
+    public void AccountMeterSetUpDetailSubMeterHide(String Section) {
+        try {
+            String Xpath = "";
+            switch (Section) {
+                case "Connection Location":
+                    Xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjaxPanel']/div[1]/div/div/span[2]";
+                    break;
+                case "Sub Meter":
+                    Xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjaxPanel3']/div[1]/div/div/span[2]";
+                    break;
+                case "Consumption":
+                    Xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjaxPanel1']/div[1]/div/div/span[2]";
+                    break;
+                default:
+                    throw new RuntimeException("Invalid section: " + Section);
+            }
+            WebElement btn = driver.findElement(By.xpath(Xpath));
+            btn.click();
+        } catch (Exception e) {
+            System.out.println("Failed to click on the HIde: ");
+            throw e;
+        }
+    }
     //SubMeter End
+    public void AccountMeterSetUpDetailConsumption() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='tdHistory']/span")));
+            utils.click(locator);
+            System.out.println("Clicked on the AccountMeterSetUpDetailConsump History " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the AccountMeterSetUpDetailConsump History: ");
+            throw e;
+        }
+    }
     //Account setup detail page
     //Account Meter Set Up Ends
 }

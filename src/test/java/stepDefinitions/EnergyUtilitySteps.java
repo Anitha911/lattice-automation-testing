@@ -116,7 +116,21 @@ public class EnergyUtilitySteps {
     public void user_click_on_SubMeterSaveButton() {
         tmp.AccountMeterSetUpDetailSubMeterSave();
     }
+    @Then("User Clicks the SubMeter Delete Button")
+    public void user_click_on_SubMeterDeleteButton() {
+        tmp.AccountMeterSetUpDetailSubMeterDelete();
+    }
+    //Hide Button
+    @Then("User Clicks the SubMeter {string} Hide Button click")
+    public void clickSubMeterHideButton(String section) {
+        tmp.AccountMeterSetUpDetailSubMeterHide(section);
+    }
+    //Hide Button
     //SubMeter Ends
+    @Then("User Clicks the Consumption History Menu in the Left side")
+    public void user_click_on_Consumption() {
+        tmp.AccountMeterSetUpDetailConsumption();
+    }
     //Account meter set up detail page ends
 
 }
