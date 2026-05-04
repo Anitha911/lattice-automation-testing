@@ -84,9 +84,9 @@ Feature: EnergyUtility Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Energy Utility 'Energy Utility' in side menu
     Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
-    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
-    #When User enters details in Energy Utility Account Meter Set Up Pop up
-    #Then User Clicks AccountMeterSetUp Save Button
+    Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    When User enters details in Energy Utility Account Meter Set Up Pop up
+    Then User Clicks AccountMeterSetUp Save Button
     When User clicks on first data in the grid
     Then User Clicks the SubMeter Menu in the Left side
     When User Clicks the SubMeter Delete Button
@@ -97,9 +97,9 @@ Feature: EnergyUtility Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Energy Utility 'Energy Utility' in side menu
     Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
-    #Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
-    #When User enters details in Energy Utility Account Meter Set Up Pop up
-    #Then User Clicks AccountMeterSetUp Save Button
+    Then User clicks on button Energy Utility Account Meter Set Up Add 'Acc meter SetUp Add'
+    When User enters details in Energy Utility Account Meter Set Up Pop up
+    Then User Clicks AccountMeterSetUp Save Button
     When User clicks on first data in the grid
     Then User Clicks the Connection Location Menu in the Left side
     When User Clicks the SubMeter 'Connection Location' Hide Button click
@@ -116,6 +116,16 @@ Feature: EnergyUtility Module Automation
     Then User Clicks on Energy Utility Account Meter Set Up 'Account Meter Set Up' in side menu
     When User clicks on first data in the grid
     Then User Clicks the Consumption History Menu in the Left side
+
+@EnergyUtilityManualReadingEntry
+Scenario: Should be able to Save Manual Reading Entry
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Energy Utility 'Energy Utility' in side menu
+    Then User Clicks on Energy Utility Manual Entry 'Manual Entry' in side menu
+    When User Enters the details in the Manual Entry page
+    Then User checks Initial reading less than Current reading
+    Then User clicks the manual Entry Save Button
 
 
 

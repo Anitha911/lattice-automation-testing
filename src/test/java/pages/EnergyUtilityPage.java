@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.HelperUtils;
 import java.time.Duration;
 import java.util.List;
+import java.util.Locale;
+
 import org.openqa.selenium.WebDriver;
 
 public class EnergyUtilityPage extends BasePage {
@@ -31,6 +33,19 @@ public class EnergyUtilityPage extends BasePage {
     public static final By ENERGY_ACC_METER_SAVE = By.id("ctl00_ContentPlaceHolder1_AddAccountSetUp_C_btnSave");
     public static final By SUB_METER_NUMBER = By.id("ctl00_ContentPlaceHolder1_CCFollowUp_radwinSubMeter_C_txtSubMeterNo");
     public static final By SUB_METER_NOTES = By.id("ctl00_ContentPlaceHolder1_CCFollowUp_radwinSubMeter_C_txtRemarks1");
+    public static final By MANUALENTRY_CLIENT_DD = By.id("ctl00_ContentPlaceHolder1_ddlClient_Input");
+    public static final By MANUALENTRY_CLIENTCONTRACT_DD = By.id("ctl00_ContentPlaceHolder1_ddlClientContract_Input");
+    public static final By MANUALENTRY_PROPERTY_DD = By.id("ctl00_ContentPlaceHolder1_ddlSubCommunity_Input");
+    public static final By MANUALENTRY_ENERGYTYPE_DD = By.id("ctl00_ContentPlaceHolder1_ddlEnergyType_Input");
+    public static final By MANUALENTRY_METER_DD = By.id("ctl00_ContentPlaceHolder1_ddlMeterorSubMeter_Input");
+    public static final By MANUALENTRY_BILL_NUMBER = By.id("ctl00_ContentPlaceHolder1_txtBill");
+    public static final By MANUALENTRY_INITIALREADING = By.id("ctl00_ContentPlaceHolder1_txtInitialReading");
+    public static final By MANUALENTRY_CURRENTREADING = By.id("ctl00_ContentPlaceHolder1_txtCurrentReading");
+    public static final By MANUALENTRY_CONSUMPTION = By.id("ctl00_ContentPlaceHolder1_txtConsumption");
+    public static final By MANUALENTRY_MULFACTOR = By.id("ctl00_ContentPlaceHolder1_txtMultiplicationFactor");
+    public static final By MANUALENTRY_RATE = By.id("ctl00_ContentPlaceHolder1_txtRate");
+    public static final By MANUALENTRY_AMOUNT = By.id("ctl00_ContentPlaceHolder1_txtAmount");
+    public static final By MANUALENTRY_AMOUNTINC_VAT = By.id("ctl00_ContentPlaceHolder1_txtAmountInclVat");
 
     public void MenuEnergyUtilityTrackingPage(String MenuEnergyUtilityTrackingPage) throws InterruptedException {
         try {
@@ -409,4 +424,125 @@ public class EnergyUtilityPage extends BasePage {
     }
     //Account setup detail page
     //Account Meter Set Up Ends
+    //Manual Entry Starts
+    public void ManualEntry(String ManualEntry) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-energy']/div[2]/div/ul[2]/li[3]/a", ManualEntry)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on Manual Entry: " + ManualEntry);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Manual Entry: " + ManualEntry);
+            throw e;
+        }
+    }
+    public void enterInitialReading(String enterInitialReading) {
+        utils.typeText(MANUALENTRY_INITIALREADING, enterInitialReading);
+    }
+    public void enterCurrentReading(String enterCurrentReading) {
+        utils.typeText(MANUALENTRY_CURRENTREADING, enterCurrentReading);
+    }
+    public void enterConsumption(String enterConsumption) {
+        utils.typeText(MANUALENTRY_CONSUMPTION, enterConsumption);
+    }
+    public void enterMultiplicationFactor(String enterMultiplicationFactor) {
+        utils.typeText(MANUALENTRY_MULFACTOR, enterMultiplicationFactor);
+    }
+    public void enterRate(String enterRate) {
+        utils.typeText(MANUALENTRY_RATE, enterRate);
+    }
+    public void enterAmount(String enterAmount) {
+        utils.typeText(MANUALENTRY_AMOUNT, enterAmount);
+    }
+    public void enterAmtIncVAT(String enterAmtIncVAT) {
+        utils.typeText(MANUALENTRY_AMOUNTINC_VAT, enterAmtIncVAT);
+    }
+    public void enterBillNumber(String enterBillNumber) {
+        utils.typeText(MANUALENTRY_BILL_NUMBER, enterBillNumber);
+    }
+    public void selectClientManualEntry(String selectClientManualEntry) {
+        try {
+            utils.click(MANUALENTRY_CLIENT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectClientManualEntry));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectClientManualEntry);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectClientManualEntry);
+            throw e;
+        }
+    }
+    public void selectClientContractManualEntry(String selectClientContractManualEntry) {
+        try {
+            utils.click(MANUALENTRY_CLIENTCONTRACT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectClientContractManualEntry));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectClientContractManualEntry);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectClientContractManualEntry);
+            throw e;
+        }
+    }
+    public void selectManualEntryproperty(String selectManualEntryproperty) {
+        try {
+            utils.click(MANUALENTRY_PROPERTY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectManualEntryproperty));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectManualEntryproperty);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectManualEntryproperty);
+            throw e;
+        }
+    }
+    public void selectManualEntryEnergyType(String selectManualEntryEnergyType) {
+        try {
+            utils.click(MANUALENTRY_ENERGYTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectManualEntryEnergyType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectManualEntryEnergyType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectManualEntryEnergyType);
+            throw e;
+        }
+    }
+    public void selectManualEntryMeter(String selectManualEntryMeter) {
+        try {
+            utils.click(MANUALENTRY_METER_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectManualEntryMeter));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectManualEntryMeter);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectManualEntryMeter);
+            throw e;
+        }
+    }
+    public void ManualEntryCheckinitialCurrent() {
+        try {
+            double num1 = 0.0;
+            String val1 = driver.findElement(MANUALENTRY_INITIALREADING).getAttribute("value");
+            if (val1 != null && !val1.trim().isEmpty()) {
+                val1 = val1.trim().replace(",", "").replaceAll("[^0-9.]", "");
+                num1 = Double.parseDouble(val1);
+            }            double greaterValue = num1 + (Math.random() * 100 + 1);
+            String formatted = String.format(Locale.US, "%.2f", greaterValue);
+            WebElement textbox2 = driver.findElement(MANUALENTRY_CURRENTREADING);
+            textbox2.clear();
+            textbox2.sendKeys(formatted);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the ManualEntrySave: ");
+            throw e;
+        }
+    }
+    public void ManualEntrySave() {
+        try {
+            By locator = (By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnSave']")));
+            utils.click(locator);
+            System.out.println("Clicked on the ManualEntrySave " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on the ManualEntrySave: ");
+            throw e;
+        }
+    }
+    //Manual Entry Ends
+
 }

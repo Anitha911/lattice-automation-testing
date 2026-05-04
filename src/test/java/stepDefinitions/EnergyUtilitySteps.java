@@ -133,4 +133,36 @@ public class EnergyUtilitySteps {
     }
     //Account meter set up detail page ends
 
+    //Manual Entry Starts
+    @Then("User Clicks on Energy Utility Manual Entry {string} in side menu")
+    public void user_click_on_EnergyUtilitManEntry(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-energy']/div[2]/div/ul[2]/li[3]/a";
+        tmp.ManualEntry(xpath);
+    }
+    @Then("User Enters the details in the Manual Entry page")
+    public void userFillsUpManualEntryDetails() {
+        tmp.enterInitialReading(dataGen.generateManualEntryCharges());
+        tmp.enterCurrentReading(dataGen.generateManualEntryCharges());
+        tmp.enterConsumption(dataGen.generateManualEntryCharges());
+        tmp.enterMultiplicationFactor(dataGen.generateManualEntryCharges());
+        tmp.enterRate(dataGen.generateManualEntryCharges());
+        tmp.enterAmount(dataGen.generateManualEntryCharges());
+        tmp.enterAmtIncVAT(dataGen.generateManualEntryCharges());
+        tmp.enterBillNumber(dataGen.generateShortDesc());
+        tmp.selectClientManualEntry("Alpha Properties");
+        tmp.selectClientContractManualEntry("ABC Tower");
+        tmp.selectManualEntryproperty("ABC Tower");
+        tmp.selectManualEntryEnergyType("Electricity");
+        tmp.selectManualEntryMeter("0405");
+    }
+    @Then("User checks Initial reading less than Current reading")
+    public void user_click_on_ManualEntryCheckinitialCurrent() {
+        tmp.ManualEntryCheckinitialCurrent();
+    }
+    @Then("User clicks the manual Entry Save Button")
+    public void user_click_on_ManualEntrySaveButton() {
+        tmp.ManualEntrySave();
+    }
+
+    //Manual Entry Ends
 }

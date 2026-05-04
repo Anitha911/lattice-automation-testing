@@ -350,6 +350,10 @@ public class TestDataGenerator {
     public String generatePremiseMeterAccDescNumber() {
         String[] mode = {"tstPMAD1", "tstPMAD2", "tstPMAD3", "tstPMAD4", "tstPMAD5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }
+    public String generateManualEntryCharges() {
+        double price = ThreadLocalRandom.current().nextDouble(1, 10000);
+        return String.format(Locale.US, "%.2f", price);
+    }
     //Energy Utility End
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};
