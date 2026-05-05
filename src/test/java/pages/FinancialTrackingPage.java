@@ -249,7 +249,6 @@ public class FinancialTrackingPage extends BasePage {
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
                 utils.click(button);
-                utils.click(button);//Change this when bug is solved
                 return;
             }
         }
