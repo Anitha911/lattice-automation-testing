@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class GuardPatrollingManagementPage extends BasePage  {
@@ -318,6 +319,30 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
+    //Patrol Route Data per page check starts
+    public void validatePageSizePatrolRoute(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_GrdRoutes_ctl00_ctl03_ctl01_PageSizeComboBox")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Patrol Route Data per page check ends
     //Patrol Route Ends
     //patrol Schedule
     public void clickOnPatrolSchedule(String GuardMenu) throws InterruptedException {

@@ -140,6 +140,11 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_GuardPatrolRoutePagination(String GuardPatrolRoutePagination) throws InterruptedException {
         tmp.GuardPatrolRoutePagination(GuardPatrolRoutePagination);
     }
+    //No of data per page
+    @Then("User clicks the Guard Patrol Route no of data per page {int} in the grid")
+    public void user_click_on_PatrolRouteDataPerPage(int GrdPatrolRoute) throws InterruptedException {
+        tmp.validatePageSizePatrolRoute(GrdPatrolRoute);
+    }
     //PatrolRoute Ends
 
     //Patrol Schedule

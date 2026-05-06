@@ -81,6 +81,16 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard 'Patrol Route' tab
     When User Clicks on Guard Patrol Route grid 'pagination'
 
+  @PatrolRouteGridDataPerPage
+  Scenario: Should be able to Open Patrol Route check data per page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    When User clicks the Guard Patrol Route no of data per page 10 in the grid
+
+
+
   @AddPatrolSchedule
   Scenario: Should be able to add a Patrol Schedule
     Given User navigates to 'lattice.url' page
