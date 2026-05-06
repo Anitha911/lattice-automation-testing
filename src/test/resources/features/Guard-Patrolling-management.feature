@@ -73,6 +73,14 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard 'Patrol Route' tab
     Then User clicks on PatrolRoute Export to Excel button
 
+  @PatrolRouteGridPagination
+  Scenario: Should be able to check pagination in Patrol Route Grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard 'Patrol Route' tab
+    When User Clicks on Guard Patrol Route grid 'pagination'
+
   @AddPatrolSchedule
   Scenario: Should be able to add a Patrol Schedule
     Given User navigates to 'lattice.url' page

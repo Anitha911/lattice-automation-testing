@@ -136,6 +136,11 @@ public class GuardPatrollingManagementSteps {
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.PatrolRouteclickExportToExcel(xpath);
     }
+    @Then("User Clicks on Guard Patrol Route grid {string}")
+    public void user_click_on_GuardPatrolRoutePagination(String GuardPatrolRoutePagination) throws InterruptedException {
+        tmp.GuardPatrolRoutePagination(GuardPatrolRoutePagination);
+    }
+    //PatrolRoute Ends
 
     //Patrol Schedule
     @Then("User clicks on the Guard Schedule {string} tab")

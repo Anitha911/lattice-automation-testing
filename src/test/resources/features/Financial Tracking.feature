@@ -145,7 +145,7 @@ Feature: FinancialTracking Module Automation
     When User Clicks on Financial Transactions Tracking Print Button
 
   @TransFinancialTrackingCreditNotesPagination
-  Scenario: Should be able to Print Credit Notes
+  Scenario: Should be able to Do Credit Notes
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Financial Transactions Tracking 'Financial Transactions Tracking' in side menu

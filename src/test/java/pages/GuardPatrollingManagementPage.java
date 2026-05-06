@@ -1,9 +1,10 @@
 package pages;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class GuardPatrollingManagementPage extends BasePage  {
@@ -271,19 +272,53 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
     public void verifyPatrolRouteDelete(String expectedTitle) {
         utils.typeText(SEARCH_PATROLROUTE,expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
-        //By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_GrdModes_ctl00__0 td[title='%s']//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
     public void PatrolRouteclickExportToExcel(String clickOnExporttoExcelPatrolrouteButton) throws InterruptedException {
         try {
             By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelPatrolrouteButton));
             utils.click(locator);
-            System.out.println("Clicked on Export to Excel Patrol mode Button: " + clickOnExporttoExcelPatrolrouteButton);
+            System.out.println("Clicked on Export to Excel Patrol Route Button: " + clickOnExporttoExcelPatrolrouteButton);
         } catch (Exception e) {
-            System.out.println("Failed to click on the Export to excel Patrol mode Button:: " + clickOnExporttoExcelPatrolrouteButton);
+            System.out.println("Failed to click on the Export to excel Patrol Route Button:: " + clickOnExporttoExcelPatrolrouteButton);
             throw e;
         }
     }
+    //Patrol Route Pagination Start
+    public void GuardPatrolRoutePagination(String GuardPatrolRoutePagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement firstCellBefore = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdRoutes']//tr[td][2]/td[1]")
+                    )
+            );
+            String beforeText = firstCellBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_GrdRoutes_ctl00_Pager']/tbody/tr/td/div/div[3]/button"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstCellBefore));
+            WebElement firstCellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdRoutes']//tr[td][2]/td[1]")
+                    )
+            );
+            String afterText = firstCellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GuardPatrolRoutePagination);
+            throw e;
+        }
+    }
+    //Patrol Route Ends
     //patrol Schedule
     public void clickOnPatrolSchedule(String GuardMenu) throws InterruptedException {
         try {
