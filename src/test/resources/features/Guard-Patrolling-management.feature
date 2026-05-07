@@ -155,3 +155,10 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard Schedule 'Patrol Schedule' tab
     Then User clicks on active Patrol Schedule in the grid
     Then User clicks on Left side menus
+
+  @OpenPatrolPageDisplay
+  Scenario: Should be able to Left Status Button in detail page Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab

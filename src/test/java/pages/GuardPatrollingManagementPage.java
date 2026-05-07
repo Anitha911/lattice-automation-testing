@@ -644,4 +644,16 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         utils.click(LEFTSIDEMENU_SCHEDULE_HISTORY);
     }
     //Patrol Schedule
+    //Open Patrol starts
+    public void clickOnOpenPatrol(String clickOnOpenPatrol) {
+        try {
+            By locator = By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[3]/li[2]/a", clickOnOpenPatrol));
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol: " + clickOnOpenPatrol);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol: " + clickOnOpenPatrol);
+            throw e;
+        }
+    }
+    //Open Patrol Ends
 }

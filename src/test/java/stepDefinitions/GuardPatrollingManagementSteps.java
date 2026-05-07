@@ -233,4 +233,11 @@ public class GuardPatrollingManagementSteps {
        tmp.validatePageSizePatrolSchedule(GrdPatrolSchedule);
     }
     //Patrol Schedule Ends
+    //open patrol starts
+    @Then("User clicks on the Guard Open Patrol {string} tab")
+    public void user_click_on_OpenPatrol(String btnOpenPatrol) throws InterruptedException {
+        tmp.clickOnOpenPatrol(btnOpenPatrol);
+    }
+
+    //open patrol ends
 }
