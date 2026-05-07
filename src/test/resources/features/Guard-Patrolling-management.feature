@@ -89,9 +89,8 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard 'Patrol Route' tab
     When User clicks the Guard Patrol Route no of data per page 10 in the grid
 
-
-
   @AddPatrolSchedule
+    #Issues are there
   Scenario: Should be able to add a Patrol Schedule
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -99,6 +98,7 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard Schedule 'Patrol Schedule' tab
     Then User clicks on Patrol Schedule button 'Add patrol Schedule'
     Then User fills up the Patrol Schedule details
+    Then User fills up Patrol Schedule Start and End Dates
     Then User clicks on Patrol Schedule save button
     Then User verify if the Guard Patrol Schedule is created
 
@@ -110,7 +110,33 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Guard Schedule 'Patrol Schedule' tab
     Then User Clicks on Patrol Schedule Export to Excel Button
 
-  @PatrolScheduleDetailPageViewUpdateButtonClick
+  @PatrolScheduleGridPagination
+  Scenario: Should be able to check pagination in Patrol Schedule Grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    When User Clicks on Guard Patrol Schedule grid Pagination 'pagination'
+
+  @PatrolScheduleGridDataPerPage
+  Scenario: Should be able to Open Patrol Schedule check data per page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    When User clicks the Guard Patrol Schedule no of data per page 10 in the grid
+
+  @EditPatrolSchedule
+  Scenario: Should be able to Edit a Patrol Schedule
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Schedule 'Patrol Schedule' tab
+    Then User clicks on active Patrol Schedule in the grid
+    Then User clicks on Patrol Schedule Edit button
+    Then User clicks on Patrol Schedule Update button
+
+  @PatrolScheduleDetailPageViewUpdateStatusButtonClick
   Scenario: Should be able to Update Status Button in detail page Patrol Schedule
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -122,7 +148,7 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on Patrol Schedule Status Save button
 
   @PatrolScheduleLeftSideMenu
-  Scenario: Should be able to Update Status Button in detail page Patrol Schedule
+  Scenario: Should be able to Left Status Button in detail page Patrol Schedule
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel

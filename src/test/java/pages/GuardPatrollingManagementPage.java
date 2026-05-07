@@ -5,7 +5,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class GuardPatrollingManagementPage extends BasePage  {
@@ -60,7 +62,8 @@ public class GuardPatrollingManagementPage extends BasePage  {
     public static final By LEFTSIDEMENU_INPROGRESS = By.id("tdOngoingPatrols");
     public static final By LEFTSIDEMENU_ELAPSED_PATROL = By.id("tdElapsedPatrols");
     public static final By LEFTSIDEMENU_SCHEDULE_HISTORY = By.id("tdHistory");
-
+    public static final By UPDATE_BUTTON_PATROL_SCHEDULE_EDIT = By.id("ctl00_ContentPlaceHolder1_btnEdit");
+    public static final By UPDATE_BUTTON_PATROL_SCHEDULE_UPDATE = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_btnSave");
 
     public void clickOnGuardMenu(String GuardMenu) throws InterruptedException {
         try {
@@ -319,7 +322,7 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
-    //Patrol Route Data per page check starts
+    //Patrol Route Data per page check Starts
     public void validatePageSizePatrolRoute(int expectedSize) {
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_GrdRoutes_ctl00_ctl03_ctl01_PageSizeComboBox")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
@@ -381,7 +384,7 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
     }
     public void selectPatrolScheduleClientContract(String PatrolScheduleClientContract) {
         try {
-            //slow here
+            //Too slow here
             utils.click(PATROLSCHEDULECLIENTCONTRACT_DD);
             //Thread.sleep(5000);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PatrolScheduleClientContract));
@@ -461,54 +464,51 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         utils.typeText(GUARD_SCHEDULE_ENDTIME_INPUT, name);
     }
 
-    //to check
-    public void selectPatrolScheduleFromDate(String FromDate) {
-        try {
-            utils.click(GUARD_SCHEDULE_FROMDATE_INPUT);
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchStartDate_dateInput']", FromDate));
-            utils.click(locator);
-            System.out.println("Clicked on the From date: " + FromDate);
-        } catch (Exception e) {
-            System.out.println("Failed to click on From date: " + FromDate);
-            throw e;
-        }
-    }
-    public void selectPatrolScheduleToDate(String ToDate) {
-        try {
-            utils.click(GUARD_SCHEDULE_TODATE_INPUT);
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchEndDate_dateInput']", ToDate));
-            utils.click(locator);
-            System.out.println("Clicked on the Start time: " + ToDate);
-        } catch (Exception e) {
-            System.out.println("Failed to click on Start time: " + ToDate);
-            throw e;
-        }
-    }
-    public void selectPatrolScheduleEstStartTime(String Starttime) {
-        try {
-            utils.click(GUARD_SCHEDULE_STARTTIME_INPUT);
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpStarttime_timePopupLink']", Starttime));
-            utils.click(locator);
-            System.out.println("Clicked on the Start time: " + Starttime);
-        } catch (Exception e) {
-            System.out.println("Failed to click on Start time: " + Starttime);
-            throw e;
-        }
-    }
-    public void selectPatrolScheduleEstEndTime(String Endtime) {
-        try {
-            utils.click(GUARD_SCHEDULE_ENDTIME_INPUT);
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_radDtpEndtime_dateInput']", Endtime));
-            utils.click(locator);
-            System.out.println("Clicked on the End time: " + Endtime);
-        } catch (Exception e) {
-            System.out.println("Failed to click on End time: " + Endtime);
-            throw e;
-        }
-    }
-    //to check
+    public void selectStartEndDates() {
+        Random random = new Random();
+        // Open Start Date picker
+        driver.findElement(By.id(
+                        "ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchStartDate_popupButton"))
+                .click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                By.className("TelerikModalOverlay")));
+        // Get enabled dates
+        List<WebElement> fromDates = driver.findElements(
+                By.xpath("//td[not(contains(@class,'disabled')) and text()!='']")
+        );
+        // Select random start date
+        int fromIndex = random.nextInt(fromDates.size());
+        WebElement fromDateElement = fromDates.get(fromIndex);
+        int fromDay = Integer.parseInt(fromDateElement.getText());
+        wait.until(ExpectedConditions.elementToBeClickable(fromDateElement));
+        fromDateElement.click();
+        // Open End Date picker
+        driver.findElement(By.id(
+                        "ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_dtpSchEndDate_popupButton"))
+                .click();
+        // Get enabled end dates
+        List<WebElement> toDates = driver.findElements(
+                By.xpath("//td[not(contains(@class,'disabled')) and text()!='']")
+        );
 
-    public void userClicksOnPatrolScheduleSaveButton() {
+        // Filter dates greater than start date
+        List<WebElement> validToDates = new ArrayList<>();
+
+        for (WebElement date : toDates) {
+
+            int toDay = Integer.parseInt(date.getText());
+            if (toDay > fromDay) {
+                validToDates.add(date);
+            }
+        }
+        // Select random valid end date
+        WebElement toDateElement =
+                validToDates.get(random.nextInt(validToDates.size()));
+        wait.until(ExpectedConditions.elementToBeClickable(toDateElement));
+        toDateElement.click();
+    }
+
+        public void userClicksOnPatrolScheduleSaveButton() {
         By[] saveButtons = {GUARD_SCHEDULE_SAVE};
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
@@ -533,6 +533,80 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
+    //Patrol Schedule Edit Starts
+    public void clickActivePatrolScheduleEditButton() {
+        utils.click(UPDATE_BUTTON_PATROL_SCHEDULE_EDIT);
+    }
+    public void clickPatrolSchduleUpdateButton() {
+        By[] saveButtons = {UPDATE_BUTTON_PATROL_SCHEDULE_UPDATE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No update button is present on the page.");
+    }
+    //Patrol Schedule Edit Ends
+    //Patrol Schedule Pagination Start
+    public void GuardPatrolSchedulePagination(String GuardPatrolSchedulePagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement firstCellBefore = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdSchedule']//tr[td][2]/td[1]")
+                    )
+            );
+            String beforeText = firstCellBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_GrdSchedule_ctl00_Pager']/tbody/tr/td/div/div[3]/button"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstCellBefore));
+            WebElement firstCellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_GrdSchedule']//tr[td][2]/td[1]")
+                    )
+            );
+            String afterText = firstCellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GuardPatrolSchedulePagination);
+            throw e;
+        }
+    }
+    //Patrol Schedule Pagination check Ends
+    //Patrol Schedule Data per page check Starts
+    public void validatePageSizePatrolSchedule(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_GrdSchedule_ctl00_ctl03_ctl01_PageSizeComboBox")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Patrol Schedule Data per page check ends
     public void clickActiveSchduledetailtoEdit() {
         utils.click(SEARCH_FIRST_SCHEDULE);
     }

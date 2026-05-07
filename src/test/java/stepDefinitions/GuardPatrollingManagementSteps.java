@@ -69,7 +69,6 @@ public class GuardPatrollingManagementSteps {
     public void user_clicks_on_first_active_PatrolRoute_to_edit() {
         tmp.clickActivePatrolRoutetoEdit();
     }
-
     @Then("User clicks on Patrol Route Edit button")
     public void user_clicks_PatrolRoute_editButton() {
         tmp.clickActivePatrolRouteEditButton();
@@ -147,13 +146,12 @@ public class GuardPatrollingManagementSteps {
     }
     //PatrolRoute Ends
 
-    //Patrol Schedule
+    //Patrol Schedule Starts
     @Then("User clicks on the Guard Schedule {string} tab")
     public void user_click_on_GuardPatrolSchedule(String title) throws InterruptedException {
         String xpath = "//*[@id='tab-security']/div[2]/div/ul[2]/li[2]/a";
         tmp.clickOnPatrolSchedule(xpath);
     }
-
     @Then("User clicks on Patrol Schedule button {string}")
     public void user_click_on_AddPatrolSchedule(String btnAddPatrolSchedule) throws InterruptedException {
         tmp.clickOnAddPatrolSchedule(btnAddPatrolSchedule);
@@ -170,19 +168,15 @@ public class GuardPatrollingManagementSteps {
           tmp.selectPatrolScheduleRoute("gardenrk");
           tmp.selectPatrolScheduleShift("Evening");
           tmp.selectPatrolScheduleFrequency("Daily");
-          tmp.enterPatrolScheduleFromDate("31-Mar-2026");
-          tmp.enterPatrolScheduleToDate("31-Dec-2026");
+          //tmp.enterPatrolScheduleFromDate("31-Mar-2026");
+          //tmp.enterPatrolScheduleToDate("31-Dec-2026");
           tmp.enterPatrolScheduleEstStartTime("10.00 AM");
-          tmp.enterPatrolScheduleEstEndTime("12.00 PM");
-          //tmp.selectPatrolScheduleFromDate("31-Jan-2026");
-          //tmp.selectPatrolScheduleToDate("31-March-2026");
-          //tmp.selectPatrolScheduleEstStartTime("10.00 AM");
-          //tmp.selectPatrolScheduleEstEndTime("12.00 PM");
+          tmp.enterPatrolScheduleEstEndTime("11.00 AM");
     }
-//    @Then("User fills up the Patrol Schedule Client Contract details")
-//    public void userFillsUpThePatrolScheduleClientContractDetails() {
-//        tmp.selectPatrolScheduleClientContract("ABC Tower");
-//    }
+    @Then("User fills up Patrol Schedule Start and End Dates")
+    public void user_select_StartEndDates() throws InterruptedException {
+        tmp.selectStartEndDates();
+    }
     @Then("User clicks on Patrol Schedule save button")
     public void userClicksOnPatrolScheduleSaveButton() {
         tmp.userClicksOnPatrolScheduleSaveButton();
@@ -213,10 +207,30 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_PatrolScheduleStatusSaveButton() {
         tmp.ClickPatrolScheduleStatusSave();
     }
+
+    //Edit Patrol Schedule Starts
+    @Then("User clicks on Patrol Schedule Edit button")
+    public void user_clicks_PatrolSchedule_editButton() {
+        tmp.clickActivePatrolScheduleEditButton();
+    }
+    @Then("User clicks on Patrol Schedule Update button")
+    public void user_clicks_PatrolSchedule_UpdateButton() {
+        tmp.clickPatrolSchduleUpdateButton();
+    }
+    //Edit Patrol Schedule Ends
     //Left side menu click
     @Then("User clicks on Left side menus")
     public void user_click_on_PatrolScheduleLeftSideMenus() {
         tmp.ClickPatrolScheduleLeftSideMenus();
     }
-    //Patrol Schedule
+    @Then("User Clicks on Guard Patrol Schedule grid Pagination {string}")
+    public void user_click_on_GuardPatrolSchedulePagination(String GuardPatrolSchedulePagination) throws InterruptedException {
+        tmp.GuardPatrolSchedulePagination(GuardPatrolSchedulePagination);
+    }
+    //No of data per page
+    @Then("User clicks the Guard Patrol Schedule no of data per page {int} in the grid")
+    public void user_click_on_PatrolScheduleDataPerPage(int GrdPatrolSchedule) throws InterruptedException {
+       tmp.validatePageSizePatrolSchedule(GrdPatrolSchedule);
+    }
+    //Patrol Schedule Ends
 }
