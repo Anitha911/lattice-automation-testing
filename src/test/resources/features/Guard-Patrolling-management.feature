@@ -191,5 +191,15 @@ Feature: Guard Patrol Management Transaction Module Automation
     When User clicks the first active Open Patrol in the grid to display detail page
     Then User clicks on Open Patrol page Left side menus
 
-
+  @OpenPatrolDetailPageAddNote
+  Scenario: Should be able to display Open Patrol Detail page and add Note
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+    When User clicks the first active Open Patrol in the grid to display detail page
+    Then User clicks on Open Patrol page Left side menu Note
+    When User clicks on Open Patrol Add Notes
+    Then User enters the Open Patrol Notes Details
+    When User clicks Open Patrol Note Save Button
 

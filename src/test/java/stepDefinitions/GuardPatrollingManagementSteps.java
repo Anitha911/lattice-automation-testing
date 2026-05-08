@@ -263,5 +263,23 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_OpenPatrolLeftSideMenus() {
         tmp.ClickOpenPatrolLeftSideMenus();
     }
+    @Then("User clicks on Open Patrol page Left side menu Note")
+    public void user_click_on_OpenPatrolLeftSideMenuNote() {
+        tmp.ClickOpenPatrolLeftSideMenuNote();
+    }
+    @Then("User clicks on Open Patrol Add Notes")
+    public void user_click_on_OpenPatrolAddNotes() {
+        tmp.ClickOpenPatrolAddNotes();
+    }
+    @Then("User enters the Open Patrol Notes Details")
+    public void userFillsUpOpenPatrolNotesDetails() {
+        String OpenPatrolNote = dataGen.generatePriorityNote();
+        tmp.OpenPtrolNote(OpenPatrolNote);
+        tmp.selectOpenPatrolType("Security");
+    }
+    @Then("User clicks Open Patrol Note Save Button")
+    public void user_clicks_OpenPatrol_SaveNote() {
+        tmp.clickOpenPatrolNoteSave();
+    }
     //open patrol ends
 }

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -71,6 +72,8 @@ public class GuardPatrollingManagementPage extends BasePage  {
     public static final By OPENPATROL_LEFTSIDEMENU_WO = By.xpath("//*[@id='mnuWorkorders']");
     public static final By OPENPATROL_LEFTSIDEMENU_INCIDENT = By.xpath("//*[@id='mnuIncident']");
     public static final By OPENPATROL_LEFTSIDEMENU_NOTES = By.xpath("//*[@id='mnuNotes']");
+    public static final By OPENPATROL_NOTE = By.id("txtApprovalNote");
+    public static final By OPENPATROL_NOTE_DD = By.cssSelector("[value='Select']");
 
     public void clickOnGuardMenu(String GuardMenu) throws InterruptedException {
         try {
@@ -716,6 +719,46 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         utils.click(OPENPATROL_LEFTSIDEMENU_WO);
         utils.click(OPENPATROL_LEFTSIDEMENU_INCIDENT);
         utils.click(OPENPATROL_LEFTSIDEMENU_NOTES);
+    }
+    public void ClickOpenPatrolLeftSideMenuNote() {;
+        utils.click(OPENPATROL_LEFTSIDEMENU_NOTES);
+    }
+    public void ClickOpenPatrolAddNotes() {;
+        try {
+            By locator = By.xpath("//*[@id='Span2220']");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Detail Page Add Notes");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Detail Page Add Notes");
+            throw e;
+        }
+    }
+    public void selectOpenPatrolType(String selectOpenPatrolType) {
+        try {
+            WebElement dropdown = driver.findElement(
+                    By.id("ctl00_ContentPlaceHolder1_Notes_NotesWindow_C_ddlDocType")
+            );
+
+            Select select = new Select(dropdown);
+            select.selectByVisibleText(selectOpenPatrolType);
+            System.out.println("Clicked on the dropdown: " + selectOpenPatrolType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectOpenPatrolType);
+            throw e;
+        }
+    }
+    public void OpenPtrolNote(String name) {
+        utils.typeText(OPENPATROL_NOTE, name);
+    }
+    public void clickOpenPatrolNoteSave() {;
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_Notes_NotesWindow_C_btnNoteSave");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Detail Page Add Notes Save");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Detail Page Add Notes Save");
+            throw e;
+        }
     }
     //Open Patrol Ends
 }
