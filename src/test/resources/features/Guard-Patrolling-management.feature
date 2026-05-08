@@ -108,7 +108,7 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the Guard Schedule 'Patrol Schedule' tab
-    Then User Clicks on Patrol Schedule Export to Excel Button
+    Then User Clicks on Patrol Export to Excel Button
 
   @PatrolScheduleGridPagination
   Scenario: Should be able to check pagination in Patrol Schedule Grid
@@ -157,8 +157,39 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on Left side menus
 
   @OpenPatrolPageDisplay
-  Scenario: Should be able to Left Status Button in detail page Patrol Schedule
+  Scenario: Should be able to display Open Patrol page
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+
+  @OpenPatrolExportToExcel
+  Scenario: Should be able to display Open Patrol page and Export to Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+    Then User Clicks on Patrol Export to Excel Button
+
+  @OpenPatrolGroupMessageSend
+  Scenario: Should be able to display Open Patrol page and Click Group Message button to open the pop up
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+    Then User Clicks on Open Patrol Group Message 'Group Message' Button
+    When User selects Open Patrol Group Message Guard 'Select Guard' from the pop up
+    When User Types message in the Message Textbox Open Patrol Send Message
+    Then User clicks Open Patrol Group Message Send 'Group Message Send' Button
+
+  @OpenPatrolDetailPage
+  Scenario: Should be able to display Open Patrol Detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+    When User clicks the first active Open Patrol in the grid to display detail page
+    Then User clicks on Open Patrol page Left side menus
+
+
+

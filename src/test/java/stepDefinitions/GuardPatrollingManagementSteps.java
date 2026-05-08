@@ -185,7 +185,7 @@ public class GuardPatrollingManagementSteps {
     public void user_verify_the_success_message_after_creating_patrolSchedule() {
         tmp.verifyPatrolSchedulecreation(generatePatrolSchedule);
     }
-    @Then("User Clicks on Patrol Schedule Export to Excel Button")
+    @Then("User Clicks on Patrol Export to Excel Button")
     public void userClicksOnExporttoexcelPatrolSChedule() throws InterruptedException{
         String xpath = "//*[@id='radbtnExport']";
         tmp.PatrolScheduleExportToExcel(xpath);
@@ -238,6 +238,30 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_OpenPatrol(String btnOpenPatrol) throws InterruptedException {
         tmp.clickOnOpenPatrol(btnOpenPatrol);
     }
-
+    @Then("User Clicks on Open Patrol Group Message {string} Button")
+    public void userClicksOpenPatrolGroupMessage(String btnGroupMessage) throws InterruptedException{
+        tmp.OpenPatrolGroupMessage(btnGroupMessage);
+    }
+    @Then("User selects Open Patrol Group Message Guard {string} from the pop up")
+    public void OpenPatrolGroupMessageGuard(String GrpMsgSelectGuard) throws InterruptedException{
+        tmp.OpenPatrolGroupMessageSelectGuard(GrpMsgSelectGuard);
+    }
+    @Then("User Types message in the Message Textbox Open Patrol Send Message")
+    public void OpenPatrolGroupMessageGuardMessage() throws InterruptedException{
+        String OpenPatrolMessage=dataGen.generateShortDesc();
+        tmp.OpenPatrolGroupMessageSelectGuardMessage(OpenPatrolMessage);
+    }
+    @Then("User clicks Open Patrol Group Message Send {string} Button")
+    public void user_click_on_OpenPatrolSendMessage(String btnOpenPatrolSendMessage) throws InterruptedException {
+        tmp.clickOnOpenPatrolSendMessage(btnOpenPatrolSendMessage);
+    }
+    @Then("User clicks the first active Open Patrol in the grid to display detail page")
+    public void user_click_on_OpenPatrolDetailPage() throws InterruptedException {
+        tmp.clickOnOpenPatrolDetailPage();
+    }
+    @Then("User clicks on Open Patrol page Left side menus")
+    public void user_click_on_OpenPatrolLeftSideMenus() {
+        tmp.ClickOpenPatrolLeftSideMenus();
+    }
     //open patrol ends
 }

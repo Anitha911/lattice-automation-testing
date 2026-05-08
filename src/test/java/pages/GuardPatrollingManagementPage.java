@@ -64,6 +64,13 @@ public class GuardPatrollingManagementPage extends BasePage  {
     public static final By LEFTSIDEMENU_SCHEDULE_HISTORY = By.id("tdHistory");
     public static final By UPDATE_BUTTON_PATROL_SCHEDULE_EDIT = By.id("ctl00_ContentPlaceHolder1_btnEdit");
     public static final By UPDATE_BUTTON_PATROL_SCHEDULE_UPDATE = By.id("ctl00_ContentPlaceHolder1_RadWinPatrollingSche_C_btnSave");
+    public static final By OPENPATROL_GRPMESSAGE=By.id("ctl00_ContentPlaceHolder1_RadWinGroupMessage_C_txtGroupMessage");
+    public static final By OPENPATROL_LEFTSIDEMENU_PATROLCHECKPOINTS = By.xpath("//*[@id='munPatrolCheckPoints']");
+    public static final By OPENPATROL_LEFTSIDEMENU_PATROLLOGS = By.xpath("//*[@id='munPatrolLogs']");
+    public static final By OPENPATROL_LEFTSIDEMENU_ATTACHMENTS = By.xpath("//*[@id='munAttachments']");
+    public static final By OPENPATROL_LEFTSIDEMENU_WO = By.xpath("//*[@id='mnuWorkorders']");
+    public static final By OPENPATROL_LEFTSIDEMENU_INCIDENT = By.xpath("//*[@id='mnuIncident']");
+    public static final By OPENPATROL_LEFTSIDEMENU_NOTES = By.xpath("//*[@id='mnuNotes']");
 
     public void clickOnGuardMenu(String GuardMenu) throws InterruptedException {
         try {
@@ -463,7 +470,6 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
     public void enterPatrolScheduleEstEndTime(String name) {
         utils.typeText(GUARD_SCHEDULE_ENDTIME_INPUT, name);
     }
-
     public void selectStartEndDates() {
         Random random = new Random();
         // Open Start Date picker
@@ -654,6 +660,62 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             System.out.println("Failed to click on the Open Patrol: " + clickOnOpenPatrol);
             throw e;
         }
+    }
+    public void OpenPatrolGroupMessage(String OpenPatrolGroupMessage) {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_lnkSMS");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Group Message: " + OpenPatrolGroupMessage);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Group Message: " + OpenPatrolGroupMessage);
+            throw e;
+        }
+    }
+    public void OpenPatrolGroupMessageSelectGuard(String OpenPatrolGroupMessageSelectGuard) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRow = wait.until(
+                    ExpectedConditions.elementToBeClickable(
+                            By.xpath("(//table/tbody/tr)[1]")
+                    )
+            );
+            firstRow.click();
+        } catch (Exception e) {
+            System.out.println("Failed to Open Patrol Group Message Select Guard: " + OpenPatrolGroupMessageSelectGuard);
+            throw e;
+        }
+    }
+    public void OpenPatrolGroupMessageSelectGuardMessage(String name) {
+        utils.typeText(OPENPATROL_GRPMESSAGE, name);
+    }
+    public void clickOnOpenPatrolSendMessage(String clickOnOpenPatrolSendMessage) {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_RadWinGroupMessage_C_btnSend");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Group Message Send Button: " + clickOnOpenPatrolSendMessage);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Group Message Send Button: " + clickOnOpenPatrolSendMessage);
+            throw e;
+        }
+    }
+    public void clickOnOpenPatrolDetailPage() {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00__0");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Detail Page");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Detail Page");
+            throw e;
+        }
+    }
+    //Left side menu click
+    public void ClickOpenPatrolLeftSideMenus() {
+        utils.click(OPENPATROL_LEFTSIDEMENU_PATROLCHECKPOINTS);
+        utils.click(OPENPATROL_LEFTSIDEMENU_PATROLLOGS);
+        utils.click(OPENPATROL_LEFTSIDEMENU_ATTACHMENTS);
+        utils.click(OPENPATROL_LEFTSIDEMENU_WO);
+        utils.click(OPENPATROL_LEFTSIDEMENU_INCIDENT);
+        utils.click(OPENPATROL_LEFTSIDEMENU_NOTES);
     }
     //Open Patrol Ends
 }
