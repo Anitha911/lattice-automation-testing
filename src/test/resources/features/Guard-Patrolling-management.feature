@@ -229,6 +229,15 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Console Window Guards 'Guards' tab
     When User clicks the Console Window Guard Locations Refresh 'Refresh' button
 
+  @LiveGuardMonitoringMapView
+  Scenario: Should be able to display Live Guard Monitoring MapView on selecting contract
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Live Guard Monitoring 'Map View'
+    When User selects the Client details from the dropdown
+
+
 
 
 

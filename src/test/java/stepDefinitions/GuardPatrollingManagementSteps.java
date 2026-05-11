@@ -305,5 +305,20 @@ public class GuardPatrollingManagementSteps {
         tmp.clickOnConsoleWindowRefresh(Refresh);
     }
     //Console Window Guard End
+    //Map View Start
+    @Then("User clicks on the Live Guard Monitoring {string}")
+    public void user_click_on_LiveGuardMonitoringMapView(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-security']/div[2]/div/ul[4]/li[2]/a";
+        tmp.clickOnLiveGuardMonitoring(xpath);
+    }
+    @Then("User selects the Client details from the dropdown")
+    public void userselectsDetailsFromMapViewDD() {
+        tmp.selectPatrolScheduleClient("Alpha Properties");
+        tmp.selectPatrolScheduleClientContract("ABC Tower");
+        tmp.selectLiveGuardMonitoringAreaGrp("ABC");
+    }
+
+    //Map View End
+
 
 }

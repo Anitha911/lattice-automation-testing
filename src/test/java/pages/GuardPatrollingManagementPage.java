@@ -74,6 +74,8 @@ public class GuardPatrollingManagementPage extends BasePage  {
     public static final By OPENPATROL_LEFTSIDEMENU_NOTES = By.xpath("//*[@id='mnuNotes']");
     public static final By OPENPATROL_NOTE = By.id("txtApprovalNote");
     public static final By OPENPATROL_NOTE_DD = By.cssSelector("[value='Select']");
+    public static final By LIVEGUARDMONITORINGAREAGRP_DD=By.cssSelector("[value='Select Area Group']");
+
 
     public void clickOnGuardMenu(String GuardMenu) throws InterruptedException {
         try {
@@ -823,5 +825,27 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
     }
     //Console Window Guard End
-
+    //Live Guard Monitoring Start
+    public void clickOnLiveGuardMonitoring(String clickOnLiveGuardMonitoring) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[4]/li[2]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the Live Guard Monitoring: " + clickOnLiveGuardMonitoring);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Live Guard Monitoring" +clickOnLiveGuardMonitoring);
+            throw e;
+        }
+    }
+    public void selectLiveGuardMonitoringAreaGrp(String selectLiveGuardMonitoringAreaGrp) {
+        try {
+            utils.click(LIVEGUARDMONITORINGAREAGRP_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectLiveGuardMonitoringAreaGrp));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectLiveGuardMonitoringAreaGrp);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectLiveGuardMonitoringAreaGrp);
+            throw e;
+        }
+    }
+    //Live Guard Monitoring End
 }
