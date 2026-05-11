@@ -317,8 +317,13 @@ public class GuardPatrollingManagementSteps {
         tmp.selectPatrolScheduleClientContract("ABC Tower");
         tmp.selectLiveGuardMonitoringAreaGrp("ABC");
     }
-
     //Map View End
-
+    //Pending Assignment starts
+    @Then("User clicks on the My Pending Actions Pending Assignment {string} tab")
+    public void user_click_on_PendingAssgment(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-security']/div[2]/div/ul[5]/li[2]/a";
+        tmp.clickPndAssgment(xpath);
+    }
+    //Pending Assignment Ends
 
 }

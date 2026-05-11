@@ -848,4 +848,17 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
     }
     //Live Guard Monitoring End
+    //Pending Assignment Start
+    public void clickPndAssgment(String clickPndAssgment) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[5]/li[2]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the Pending Assignment: " + clickPndAssgment);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Pending Assignment" +clickPndAssgment);
+            throw e;
+        }
+    }
+    //Pending Assignment Ends
+
 }
