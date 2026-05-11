@@ -281,5 +281,29 @@ public class GuardPatrollingManagementSteps {
     public void user_clicks_OpenPatrol_SaveNote() {
         tmp.clickOpenPatrolNoteSave();
     }
-    //open patrol ends
+    @Then("User clicks the Assign Security Guard Button")
+    public void user_click_on_OpenPatrolDetailPageAssignSecurityGuard() throws InterruptedException {
+        tmp.clickOnOpenPatrolDetailPageAssignSecurityGuard();
+    }
+    @Then("Security Guard is assigned if Duty roaster is set up properly")
+    public void user_click_on_OpenPatrolSecGuardgridCheckbox() throws InterruptedException {
+        tmp.OpenPatrolSecGuardGridCheckbox();
+    }
+    @Then("User clicks Security Guard Save button")
+    public void user_click_on_OpenPatrolSecGuardSave() throws InterruptedException {
+        tmp.clickOnOpenPatrolSecGuardSave();
+    }
+    //open patrol end
+    //Console Window Guard Start
+    @Then("User clicks on the Console Window Guards {string} tab")
+    public void user_click_on_ConsoleWindowGuard(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-security']/div[2]/div/ul[3]/li[3]/a";
+        tmp.clickOnConsoleGuard(xpath);
+    }
+    @Then("User clicks the Console Window Guard Locations Refresh {string} button")
+    public void user_click_on_ConsoleWindowRefresh(String Refresh) throws InterruptedException {
+        tmp.clickOnConsoleWindowRefresh(Refresh);
+    }
+    //Console Window Guard End
+
 }

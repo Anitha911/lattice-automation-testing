@@ -760,5 +760,68 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
+    public void clickOnOpenPatrolDetailPageAssignSecurityGuard() {;
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_btnaddStaff");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Detail Page Assign Security Guard");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Detail Page Assign Security Guard");
+            throw e;
+        }
+    }
+    public void OpenPatrolSecGuardGridCheckbox() {;
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath("//tr[contains(@id,'GrdStaff_ctl00__0')]"));
+            String Guard = row.findElement(By.xpath("./td[2]"))
+                    .getText()
+                    .trim();
+            if (!Guard.isEmpty()) {
+                WebElement checkbox = row.findElement(
+                        By.xpath(".//input[contains(@id,'chkSelected')]"));
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+            }
+            System.out.println("Clicked on the Open Patrol Assign Security Guard Grid Checkbox");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Assign Security Guard Grid Checkbox");
+            throw e;
+        }
+    }
+    public void clickOnOpenPatrolSecGuardSave() {;
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_RadWinStaff_C_btnSave");
+            utils.click(locator);
+            System.out.println("Clicked on the Open Patrol Detail Page Save Security Guard");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Open Patrol Detail Page Save Security Guard");
+            throw e;
+        }
+    }
     //Open Patrol Ends
+    //Console Window Guard Start
+    public void clickOnConsoleGuard(String GuardMenu) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[3]/li[3]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the Console Guard: " + GuardMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Console Guard" +GuardMenu);
+            throw e;
+        }
+    }
+    public void clickOnConsoleWindowRefresh(String clickOnConsoleWindowRefresh) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='ContentPlaceHolder1_lnlRefresh']"));
+            utils.click(locator);
+            System.out.println("Clicked on the Console Guard Refresh: " + clickOnConsoleWindowRefresh);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Console Guard Refresh" +clickOnConsoleWindowRefresh);
+            throw e;
+        }
+    }
+    //Console Window Guard End
+
 }

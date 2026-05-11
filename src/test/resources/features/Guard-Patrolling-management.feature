@@ -203,3 +203,32 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User enters the Open Patrol Notes Details
     When User clicks Open Patrol Note Save Button
 
+  @OpenPatrolDetailPageAssignSecGuard
+  Scenario: Should be able to display Open Patrol Detail page and Assign Security Guard if guard is assigned in duty roaster
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Guard Open Patrol 'Open Patrol' tab
+    When User clicks the first active Open Patrol in the grid to display detail page
+    When User clicks the Assign Security Guard Button
+    Then Security Guard is assigned if Duty roaster is set up properly
+    Then User clicks Security Guard Save button
+
+  @ConsoleWindowGuards
+  Scenario: Should be able to display Console Window Guards
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Console Window Guards 'Guards' tab
+
+  @ConsoleWindowGuardsLocationRefresh
+  Scenario: Should be able to display Console Window Guards Location Refresh Button
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Console Window Guards 'Guards' tab
+    When User clicks the Console Window Guard Locations Refresh 'Refresh' button
+
+
+
+
