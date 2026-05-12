@@ -324,6 +324,18 @@ public class GuardPatrollingManagementSteps {
         String xpath = "//*[@id='tab-security']/div[2]/div/ul[5]/li[2]/a";
         tmp.clickPndAssgment(xpath);
     }
+    @Then("User clicks the First active patrol in the grid")
+    public void user_click_on_PdngAssgnDetailPage() throws InterruptedException {
+        tmp.OpenPendingAssignmentDetailPage();
+    }
+    @Then("User clicks the Map View Icon to display the Map")
+    public void user_click_on_PdngAssgnMapIcon() throws InterruptedException {
+        tmp.PendingAssignmentMapIcon();
+    }
+    @Then("User clicks the Assign Link in Pending Assignment Grid")
+    public void user_click_on_PdngAssgnAssign() throws InterruptedException {
+        tmp.PendingAssignmentAssign();
+    }
     //Pending Assignment Ends
 
 }

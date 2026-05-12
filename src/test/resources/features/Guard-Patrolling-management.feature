@@ -244,6 +244,37 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
 
+  @PendingAssignmentExportToExcel
+  Scenario: Should be able to display Pending Assignment and Do Export To Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
+    Then User Clicks on Patrol Export to Excel Button
 
+  @PendingAssignmentDetailedView
+  Scenario: Should be able to Open Pending Assignment detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
+    When User clicks the First active patrol in the grid
 
+  @PendingAssignmentMapIconClick
+  Scenario: Should be able to click Pending Assignment Map View Icon
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
+    When User clicks the Map View Icon to display the Map
 
+  @PendingAssignmentAssignClick
+  Scenario: Should be able to display Pending Assignment page and Assign Security Guard if guard is assigned in duty roaster
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
+    When User clicks the Assign Link in Pending Assignment Grid
+    Then Security Guard is assigned if Duty roaster is set up properly
+    Then User clicks Security Guard Save button

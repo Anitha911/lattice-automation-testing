@@ -859,6 +859,73 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
+    public void OpenPendingAssignmentDetailPage() {;
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath("//tr[contains(@id,'ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00__0')]"));
+            String PndAssgn = row.findElement(By.xpath("./td[2]"))
+                    .getText()
+                    .trim();
+            if (!PndAssgn.isEmpty()) {
+                By locator=By.id("ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00__0");
+                utils.click(locator);
+            }
+            System.out.println("Clicked on the Pending Assignment Detail Page");
+        } catch (Exception e) {
+            System.out.println("Failed to click on Pending Assignment Detail Page");
+            throw e;
+        }
+    }
+    public void PendingAssignmentMapIcon() {;
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath("//tr[contains(@id,'ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00__0')]"));
+            String PndAssgn = row.findElement(By.xpath("./td[2]"))
+                    .getText()
+                    .trim();
+            if (!PndAssgn.isEmpty()) {
+                By locator=By.id("ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00_ctl04_ImageButton1");
+                utils.click(locator);
+            }
+            System.out.println("Clicked on the Pending Assignment Map Icon");
+        } catch (Exception e) {
+            System.out.println("Failed to click on Pending Assignment Map Icon");
+            throw e;
+        }
+    }
+    public void PendingAssignmentAssign() {;
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            WebElement scrollDiv = driver.findElement(
+                    By.xpath("//div[contains(@class,'rgDataDiv')]")
+            );
+            js.executeScript(
+                    "arguments[0].scrollLeft = arguments[0].scrollWidth",
+                    scrollDiv
+            );
+            By rowLocator = By.cssSelector("tr[id*='ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00']");
+            WebElement row = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(rowLocator)
+            );
+            By Locator=By.id("ctl00_ContentPlaceHolder1_GrdActiveConsole_ctl00_ctl04_btnMsg");
+            utils.click(Locator);
+            String guard = row.findElements(By.tagName("td"))
+                    .get(1)
+                    .getText()
+                    .trim();
+            if (!guard.isEmpty()) {
+                WebElement checkbox = row.findElement(
+                        By.xpath(".//input[contains(@id,'chkSelected')]"));
+                if (!checkbox.isSelected()) {
+                    checkbox.click();
+                }
+            }
+            System.out.println("Clicked on the Pending Assignment Guard Assign");
+        } catch (Exception e) {
+            System.out.println("Failed to click on Pending Assignment Guard Assign");
+            throw e;
+        }
+    }
     //Pending Assignment Ends
 
 }
