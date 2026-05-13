@@ -927,5 +927,36 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
     }
     //Pending Assignment Ends
-
+    //Awaiting SOS triggered Starts
+    public void AwaitingSOSTriggered(String AwaitingSOSTriggered) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[5]/li[3]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the AwaitingSOSTriggered: " + AwaitingSOSTriggered);
+        } catch (Exception e) {
+            System.out.println("Failed to click on AwaitingSOSTriggered" +AwaitingSOSTriggered);
+            throw e;
+        }
+    }
+    public void MapIcon(String MapIcon) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSOS_ctl00_ctl04_ImageButton1']"));
+            utils.click(locator);
+            System.out.println("Clicked on the MapIcon: " + MapIcon);
+        } catch (Exception e) {
+            System.out.println("Failed to click on MapIcon" +MapIcon);
+            throw e;
+        }
+    }
+    public void SOSFirstData() {
+        try {
+            By locator = By.id("ctl00_ContentPlaceHolder1_grdSOS_ctl00__0");
+            utils.click(locator);
+            System.out.println("Clicked on first SOS data");
+        } catch (Exception e) {
+            System.out.println("Failed to click on  first SOS data ");
+            throw e;
+        }
+    }
+    //Awaiting SOS triggered Ends
 }

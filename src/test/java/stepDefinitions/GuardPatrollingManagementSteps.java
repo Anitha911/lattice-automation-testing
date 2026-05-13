@@ -337,5 +337,19 @@ public class GuardPatrollingManagementSteps {
         tmp.PendingAssignmentAssign();
     }
     //Pending Assignment Ends
+    //Awaiting SOS triggered Start
+    @Then("User clicks on the Awaiting SOS triggered {string} tab")
+    public void user_click_on_AwaitingSOS(String Xpath) throws InterruptedException {
+        tmp.AwaitingSOSTriggered(Xpath);
+    }
+    @Then("User clicks the First active SOS in the grid")
+    public void user_click_on_SOSDetailPage() throws InterruptedException {
+        tmp.SOSFirstData();
+    }
+    @Then("User clicks Awaiting SOS Triggered Map Icon {string} click")
+    public void user_click_on_MapIcon(String Xpath) throws InterruptedException {
+        tmp.MapIcon(Xpath);
+    }
 
+    //Awaiting SOS triggered End
 }

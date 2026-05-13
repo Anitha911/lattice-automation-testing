@@ -273,8 +273,23 @@ Feature: Guard Patrol Management Transaction Module Automation
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
-    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the My Pending Actions Pending Assignment 'Pending Assignment' tab
     When User clicks the Assign Link in Pending Assignment Grid
     Then Security Guard is assigned if Duty roaster is set up properly
     Then User clicks Security Guard Save button
+
+  @AwaitingSOSTriggered
+  Scenario: Should be able to display Awaiting SOS triggered
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Awaiting SOS triggered 'Awaiting SOS triggered' tab
+
+  @AwaitingSOSTriggeredMapClick
+  Scenario: Should be able to display Awaiting SOS triggered and click Map Icon
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Awaiting SOS triggered 'Awaiting SOS triggered' tab
+    When User clicks the First active SOS in the grid
+    When User clicks Awaiting SOS Triggered Map Icon 'Map Icon' click
