@@ -293,3 +293,11 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on the Awaiting SOS triggered 'Awaiting SOS triggered' tab
     When User clicks the First active SOS in the grid
     When User clicks Awaiting SOS Triggered Map Icon 'Map Icon' click
+
+  @ArchivesElapsedPatrolPageDisplay
+  Scenario: Should be able to display Elapsed Patrol Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
+

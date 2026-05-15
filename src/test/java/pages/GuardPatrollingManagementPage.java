@@ -959,4 +959,19 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
     }
     //Awaiting SOS triggered Ends
+    //Archives Elapsed Patrol Start
+    public void ElapsedPatrol(String ElapsedPatrol) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[6]/li[2]/a"));
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            utils.click(locator);
+            System.out.println("Clicked on the Elapsed Patrol: " + ElapsedPatrol);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Elapsed Patrol" +ElapsedPatrol);
+            throw e;
+        }
+    }
+    //Archives Elapsed Patrol Ends
+
 }

@@ -350,6 +350,13 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_MapIcon(String Xpath) throws InterruptedException {
         tmp.MapIcon(Xpath);
     }
-
     //Awaiting SOS triggered End
+    //Archives Elapsed Patrol Start
+    @Then("User clicks on the Archives Elapsed Patrol {string} tab")
+    public void user_click_on_ElapsedPatrol(String ElapsedPatrol) throws InterruptedException {
+        tmp.ElapsedPatrol(ElapsedPatrol);
+    }
+    //Archives Elapsed Patrol End
+
+
 }
