@@ -1037,5 +1037,22 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
     //Elapsed Patrol Data per page check ends
+    public void OpenElapsedPatrolDetailPage() {;
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath("//tr[contains(@id,'ctl00_ContentPlaceHolder1_GrdElapsedConsole_ctl00__0')]"));
+            String ElapsedPatrol = row.findElement(By.xpath("./td[2]"))
+                    .getText()
+                    .trim();
+            if (!ElapsedPatrol.isEmpty()) {
+                By locator=By.id("ctl00_ContentPlaceHolder1_GrdElapsedConsole_ctl00__0");
+                utils.click(locator);
+            }
+            System.out.println("Clicked on the Elapsed Patrol Detail Page");
+        } catch (Exception e) {
+            System.out.println("Failed to click on Elapsed Patrol Detail Page");
+            throw e;
+        }
+    }
     //Archives Elapsed Patrol Ends
 }

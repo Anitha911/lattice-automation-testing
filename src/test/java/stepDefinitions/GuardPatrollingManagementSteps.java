@@ -365,5 +365,9 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_ElapsedPatrolDataPerPage(int GrdElapsedPatrol) throws InterruptedException {
         tmp.validatePageSizeElapsedPatrol(GrdElapsedPatrol);
     }
+    @Then("User clicks the First active Elapsed patrol in the grid")
+    public void user_click_on_ElapsedPatrolDetailPage() throws InterruptedException {
+        tmp.OpenElapsedPatrolDetailPage();
+    }
     //Archives Elapsed Patrol End
 }
