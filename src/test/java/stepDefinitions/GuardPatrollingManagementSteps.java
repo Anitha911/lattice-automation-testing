@@ -356,7 +356,14 @@ public class GuardPatrollingManagementSteps {
     public void user_click_on_ElapsedPatrol(String ElapsedPatrol) throws InterruptedException {
         tmp.ElapsedPatrol(ElapsedPatrol);
     }
+    @Then("User Clicks on Archives Elapsed Patrol grid Pagination {string}")
+    public void user_click_on_ElapsedPatrolPagination(String ElapsedPatrolPagination) throws InterruptedException {
+        tmp.ElapsedPatrolPagination(ElapsedPatrolPagination);
+    }
+    //No of data per page
+    @Then("User clicks Archives Elapsed Patrol no of data per page {int} in the grid")
+    public void user_click_on_ElapsedPatrolDataPerPage(int GrdElapsedPatrol) throws InterruptedException {
+        tmp.validatePageSizeElapsedPatrol(GrdElapsedPatrol);
+    }
     //Archives Elapsed Patrol End
-
-
 }

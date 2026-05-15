@@ -300,6 +300,7 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
+
     //Patrol Route Pagination Start
     public void GuardPatrolRoutePagination(String GuardPatrolRoutePagination) throws InterruptedException {
         try {
@@ -972,6 +973,69 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
             throw e;
         }
     }
-    //Archives Elapsed Patrol Ends
+    //Elapsed Patrol Pagination Start
+    public void ElapsedPatrolPagination(String ElapsedPatrolPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            By table = By.id("ctl00_ContentPlaceHolder1_GrdElapsedConsole");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(table));
+            By firstCell = By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_GrdElapsedConsole']//tr[contains(@class,'rgRow')][1]/td[2]"
+            );
+            WebElement cell = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(firstCell)
+            );
+            String beforeText = cell.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_GrdElapsedConsole_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            //
+            By firstCellAfter = By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_GrdElapsedConsole']//tr[contains(@class,'rgRow')][1]/td[2]"
+            );
+            WebElement cellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(firstCellAfter)
+            );
 
+            String afterText = cellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + ElapsedPatrolPagination);
+            throw e;
+        }
+    }
+    //Elapsed Patrol Pagination check Ends
+    //Elapsed Patrol  Data per page check Starts
+    public void validatePageSizeElapsedPatrol(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_GrdElapsedConsole_ctl00_ctl03_ctl01_PageSizeComboBox_Input")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Elapsed Patrol Data per page check ends
+    //Archives Elapsed Patrol Ends
 }

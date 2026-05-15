@@ -301,3 +301,26 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
 
+  @ElapsedPatrolExportToExcel
+  Scenario: Should be able to display Elapsed Patrol page and Export to Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
+    Then User Clicks on Patrol Export to Excel Button
+
+  @ElapsedPatrolPagination
+  Scenario: Should be able to display Elapsed Patrol page and Pagination should work in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
+    When User Clicks on Archives Elapsed Patrol grid Pagination 'pagination'
+
+  @ElapsedPatrolDataPerPage
+  Scenario: Should be able to Elapsed Patrol check data per page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
+    When User clicks Archives Elapsed Patrol no of data per page 10 in the grid
