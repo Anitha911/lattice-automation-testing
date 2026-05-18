@@ -332,3 +332,42 @@ Feature: Guard Patrol Management Transaction Module Automation
     Then User clicks on Guard 'Guard Patrol Management' in navigation panel
     Then User clicks on the Archives Elapsed Patrol 'Elapsed Patrol' tab
     When User clicks the First active Elapsed patrol in the grid
+
+  @ArchivesSOSTriggeredPageDisplay
+  Scenario: Should be able to display SOS triggered Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives SOS Triggered 'SOS Triggered' tab
+
+  @ArchivesSOSTriggeredPagePagination
+  Scenario: Should be able to display SOS Triggered and Pagination should work in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives SOS Triggered 'SOS Triggered' tab
+    When User Clicks on Archives SOS Triggered Grid Pagination 'pagination'
+
+  @ArchivesSOSTriggeredPageDataPerPage
+  Scenario: Should be able to Check  SOS Triggered data per page in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives SOS Triggered 'SOS Triggered' tab
+    When User clicks Archives SOS Triggered no of data per page 10 in the grid
+
+  @ArchivesClosedPatrolDetailedView
+  Scenario: Should be able to Open Closed Patrol detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Closed Patrol 'Closed Patrol' tab
+    When User clicks the First active Closed patrol in the grid
+
+  @ClosedPatrolExportToExcel
+  Scenario: Should be able to display Closed Patrol page and Export to Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Guard 'Guard Patrol Management' in navigation panel
+    Then User clicks on the Archives Closed Patrol 'Closed Patrol' tab
+    Then User clicks on PatrolRoute Export to Excel button

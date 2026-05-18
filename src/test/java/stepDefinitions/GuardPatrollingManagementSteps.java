@@ -370,4 +370,29 @@ public class GuardPatrollingManagementSteps {
         tmp.OpenElapsedPatrolDetailPage();
     }
     //Archives Elapsed Patrol End
+    //Archives SOS Triggered Start
+    @Then("User clicks on the Archives SOS Triggered {string} tab")
+    public void user_click_on_SOSTriggered(String SOSTriggered) throws InterruptedException {
+        tmp.SOSTriggered(SOSTriggered);
+    }
+    @Then("User Clicks on Archives SOS Triggered Grid Pagination {string}")
+    public void user_click_on_SOSTriggeredPagination(String SOSTriggeredPagination) throws InterruptedException {
+        tmp.SOSTriggeredPagination(SOSTriggeredPagination);
+    }
+    //No of data per page
+    @Then("User clicks Archives SOS Triggered no of data per page {int} in the grid")
+    public void user_click_on_SOSTriggeredDataPerPage(int GrdSOSTriggered) throws InterruptedException {
+        tmp.validatePageSizeSOSTriggered(GrdSOSTriggered);
+    }
+    //Archives SOS Triggered End
+    //Closed Patrol Start
+    @Then("User clicks on the Archives Closed Patrol {string} tab")
+    public void user_click_on_ClosedPatrol(String ClosedPatrol) throws InterruptedException {
+        tmp.ClosedPatrol(ClosedPatrol);
+    }
+    @Then("User clicks the First active Closed patrol in the grid")
+    public void user_click_on_ClosedPatrolDetailPage() throws InterruptedException {
+        tmp.ClosedPatrolDetail();
+    }
+    //Closed Patrol Ends
 }

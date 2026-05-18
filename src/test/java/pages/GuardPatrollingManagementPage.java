@@ -1055,4 +1055,111 @@ public void selectRouteTimingsMode(String PatrolRouteselectRouteTimingsMode) {
         }
     }
     //Archives Elapsed Patrol Ends
+    //Archives SOS Triggered Start
+    public void SOSTriggered(String SOSTriggered) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[6]/li[3]/a"));
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            utils.click(locator);
+            System.out.println("Clicked on the SOS Triggered: " + SOSTriggered);
+        } catch (Exception e) {
+            System.out.println("Failed to click on SOS Triggered" +SOSTriggered);
+            throw e;
+        }
+    }
+    //SOS Triggered Pagination Start
+    public void SOSTriggeredPagination(String SOSTriggeredPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            By table = By.id("ctl00_ContentPlaceHolder1_grdSOS");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(table));
+            By firstCell = By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdSOS']//tr[contains(@class,'rgRow')][1]/td[1]"
+            );
+            WebElement cell = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(firstCell)
+            );
+            String beforeText = cell.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdSOS_ctl00_Pager']/tbody/tr/td/div/div[3]/button[1]"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            //
+            By firstCellAfter = By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdSOS']//tr[contains(@class,'rgRow')][1]/td[1]"
+            );
+            WebElement cellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(firstCellAfter)
+            );
+            String afterText = cellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + SOSTriggeredPagination);
+            throw e;
+        }
+    }
+    //SOS Triggered Pagination check Ends
+    //SOS Triggered Data per page check Starts
+    public void validatePageSizeSOSTriggered(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdSOS_ctl00_ctl03_ctl01_PageSizeComboBox_Input")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //Awaiting SOS Data per page check ends
+    //SOS ends
+    //Closed Patrol Starts
+    public void ClosedPatrol(String ClosedPatrol) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-security']/div[2]/div/ul[6]/li[4]/a"));
+            WebElement element = driver.findElement(locator);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            utils.click(locator);
+            System.out.println("Clicked on the Closed Patrol: " + ClosedPatrol);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Closed Patrol" +ClosedPatrol);
+            throw e;
+        }
+    }
+    public void ClosedPatrolDetail() {;
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath("//tr[contains(@id,'ctl00_ContentPlaceHolder1_GrdCompletedConsole_ctl00__0')]"));
+            String closedPatrol = row.findElement(By.xpath("./td[2]"))
+                    .getText()
+                    .trim();
+            if (!closedPatrol.isEmpty()) {
+                By locator=By.id("ctl00_ContentPlaceHolder1_GrdCompletedConsole_ctl00__0");
+                utils.click(locator);
+            }
+            System.out.println("Clicked on the Closed Patrol Detail Page");
+        } catch (Exception e) {
+            System.out.println("Failed to click on Closed Patrol Detail Page");
+            throw e;
+        }
+    }
 }
