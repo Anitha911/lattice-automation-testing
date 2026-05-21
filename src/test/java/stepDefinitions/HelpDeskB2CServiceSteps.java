@@ -74,4 +74,14 @@ public class HelpDeskB2CServiceSteps {
         tmp.validatePageSizeHelpDesk(HelpDeskDataPerPage);
     }
     //No of Data per page
+    //Help Desk Ends
+
+    //B2C Service Desk starts
+    @Then("User clicks on B2CServiceDesk {string} in Navigation panel")
+    public void user_click_on_B2CServiceDesk(String title) throws InterruptedException {
+        String xpath = "//*[@id='31']";
+        tmp.clickOnB2CServiceDesk(xpath);
+    }
+    //B2C Service Desk ends
+
 }

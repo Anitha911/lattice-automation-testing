@@ -171,5 +171,18 @@ public class HelpDeskB2CServicePage extends BasePage{
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
     //Help Desk Data per page check ends
+
+    //B2C ServiceDesk Starts
+    public void clickOnB2CServiceDesk(String clickOnB2CServiceDesk) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='31']"));
+            utils.click(locator);
+            System.out.println("Clicked on the B2CServiceDesk: " + clickOnB2CServiceDesk);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the B2CServiceDesk" +clickOnB2CServiceDesk);
+            throw e;
+        }
+    }
+
 }
 

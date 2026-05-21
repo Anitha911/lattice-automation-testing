@@ -69,3 +69,14 @@ Feature: HelpDeskB2C Service Module Automation
     Then User clicks on the Call Centre 'Help Desk' tab
     When User clicks the Help Desk no of data per page 10 in the grid
 
+  @B2CServiceDeskPageDisplay
+  Scenario: Should be able to Open B2C Service Desk page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+
+
+
+
+
+
