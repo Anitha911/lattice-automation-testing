@@ -103,6 +103,32 @@ public class HelpDeskB2CServiceSteps {
         tmp.validatePageSizeB2CSDProd(B2CSDProdDataPerPage);
     }
     //No of Data per page
+    @Then("User Clicks on B2CServiceDesk Add Product {string} Button")
+    public void user_click_on_B2CSAddProd(String ProdAdd) throws InterruptedException {
+        tmp.clickOnB2CSAddProd(ProdAdd);
+    }
+    //Add New Product Starts
+    @Then("User Enters the details in the Add New Product Pop Up")
+    public void userFillsProductMasterDetails() {
+        tmp.ProdIntName(dataGen.generateIntName());
+        tmp.ProdDisplayName(dataGen.generateDisplayName());
+        tmp.ProdShortDesc(dataGen.generateShortDesc());
+        tmp.ProdInspecCharge(dataGen.generateInspecCharges());
+        tmp.ProdMaxPPMCount(dataGen.generateMaxNoParticipants());
+        //DropDowns
+        tmp.selectProdMasterCat("Community Specific Package");
+        tmp.selectProdCat("Gold Reactive Package");
+        tmp.selectProdSubCat("Gold Reactive Package");
+        tmp.selectPaymentSchedule("Yearly");
+        tmp.selectWOType("Reactive Maintenance");
+        tmp.selectFaultCode("Civil Works  /  Road Signs  /  Signs-Painting");
+        tmp.selectPPMAfter("3");
+    }
+    @Then("User clicks the B2C Product Save Button")
+    public void user_click_on_AddProdButton() {
+        tmp.ClickAddProdSave();
+    }
+    //Add New Product Ends
     //B2C Service Desk ends
 
 }

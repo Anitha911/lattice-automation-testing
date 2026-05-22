@@ -25,6 +25,14 @@ public class HelpDeskB2CServicePage extends BasePage{
     public static final By TXT_SEARCH = By.id("ctl00_ContentPlaceHolder1_txt_search");
     public static final By BTN_TYPESEARCH = By.id("ctl00_ContentPlaceHolder1_radbtn_B2BSearch");
 
+    public static final By PROD_INTERNAL_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtInternlName");
+    public static final By PROD_DISPLAY_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtDisplayName");
+    public static final By PROD_SHORT_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtShrtDescription");
+    public static final By PROD_INSPECTION_CHARGES= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtInspectionCharges");
+    public static final By PROD_MAX_PPM_SCHEDULE_COUNT= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtMaxPPMScheduleCount");
+    public static final By SAVE_BUTTON_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_BtnSave");
+
+
     public void clickOnHelpDeskMenu(String clickOnHelpDeskMenu) throws InterruptedException {
         try {
             By locator=By.xpath(String.format("//*[@id='27']"));
@@ -260,6 +268,157 @@ public class HelpDeskB2CServicePage extends BasePage{
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
     //B2C Service Desk per page check ends
+    public void clickOnB2CSAddProd(String clickOnB2CSAddProd) throws InterruptedException {
+        try {
+            By locator=By.id("ctl00_ContentPlaceHolder1_BtnAdd");
+            utils.click(locator);
+            System.out.println("Clicked on the B2CServiceDesk Product Add: " + clickOnB2CSAddProd);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the B2CServiceDesk Product Add" +clickOnB2CSAddProd);
+            throw e;
+        }
+    }
+    //Add New Product Starts
+    public void ProdIntName(String ProdIntName) {
+        utils.typeText(PROD_INTERNAL_NAME, ProdIntName);
+    }
+    public void ProdDisplayName(String ProdDisplayName) {
+        utils.typeText(PROD_DISPLAY_NAME, ProdDisplayName);
+    }
+    public void ProdShortDesc(String ProdShortDesc) {
+        utils.typeText(PROD_SHORT_NAME, ProdShortDesc);
+    }
+    public void ProdInspecCharge(String ProdInspecCharge) {
+        utils.typeText(PROD_INSPECTION_CHARGES, ProdInspecCharge);
+    }
+    public void ProdMaxPPMCount(String ProdMaxPPMCount) {
+        utils.typeText(PROD_MAX_PPM_SCHEDULE_COUNT, ProdMaxPPMCount);
+    }
+    //Prod Dropdowns
+    public void selectProdMasterCat(String selectProdMasterCat) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProdmasterCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdMasterCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdMasterCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdMasterCat);
+            throw e;
+        }
+    }
+    public void selectProdCat(String selectProdCat) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdCat);
+            throw e;
+        }
+    }
+    public void selectProdSubCat(String selectProdSubCat) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlProductSubCategory_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectProdSubCat));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectProdSubCat);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectProdSubCat);
+            throw e;
+        }
+    }
+    public void selectPaymentSchedule(String selectPaymentSchedule) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlPaymentSchedule_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectPaymentSchedule));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectPaymentSchedule);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectPaymentSchedule);
+            throw e;
+        }
+    }
+    public void selectWOType(String selectWOType) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlWOType_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectWOType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectWOType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectWOType);
+            throw e;
+        }
+    }
+    public void selectFaultCode(String selectFaultCode) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFaultCode_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectFaultCode));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectFaultCode);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectFaultCode);
+            throw e;
+        }
+    }
+    public void selectPPMAfter(String selectPPMAfter) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectPPMAfter));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectPPMAfter);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectPPMAfter);
+            throw e;
+        }
+    }
+
+    public void ClickAddProdSave() {
+        By[] saveButtons = {SAVE_BUTTON_PROD};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //Add New Product Ends
     //B2C ServiceDesk Ends
 
 }

@@ -100,5 +100,21 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
     When User Clicks on B2CServiceDesk Product grid 'pagination'
 
+  @B2CServiceDeskProductAddB2CProdButtonClick
+  Scenario: Should be able to Open B2C Service Desk page Product Section and Click Product Add Button
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User Clicks on B2CServiceDesk Add Product 'Add Product' Button
 
-
+    #check on Monday
+  @B2CServiceDeskProductAddB2CProd
+  Scenario: Should be able to Add B2C Service Desk page Product
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User Clicks on B2CServiceDesk Add Product 'Add Product' Button
+    Then User Enters the details in the Add New Product Pop Up
+    When User clicks the B2C Product Save Button
