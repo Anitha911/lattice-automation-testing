@@ -82,6 +82,27 @@ public class HelpDeskB2CServiceSteps {
         String xpath = "//*[@id='31']";
         tmp.clickOnB2CServiceDesk(xpath);
     }
+    @Then("User clicks the B2CServiceDesk Product {string} section")
+    public void user_click_on_B2CServiceDeskProduct(String title) throws InterruptedException {
+        String xpath = "//*[@id=tab-Servicedesk']/div[2]/div/ul[1]/li[2]/a";
+        tmp.clickOnB2CServiceDeskProd(xpath);
+    }
+    @Then("User Clicks Export To Excel")
+    public void user_click_on_B2CSDPRDExcel() throws InterruptedException {
+        tmp.clickOnB2CSDPRDExcel();
+    }
+    //Pagination starts
+    @Then("User Clicks on B2CServiceDesk Product grid {string}")
+    public void user_click_on_B2CSDProdPagination(String B2CSDProdPagination) throws InterruptedException {
+        tmp.B2CSDProdPagination(B2CSDProdPagination);
+    }
+    //Pagination Ends
+    //No of data per page
+    @Then("User clicks the B2CServiceDesk Product no of data per page {int} in the grid")
+    public void user_click_on_B2CSDProdDataPerPage(int B2CSDProdDataPerPage) throws InterruptedException {
+        tmp.validatePageSizeB2CSDProd(B2CSDProdDataPerPage);
+    }
+    //No of Data per page
     //B2C Service Desk ends
 
 }

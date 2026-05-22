@@ -146,7 +146,6 @@ public class HelpDeskB2CServicePage extends BasePage{
         }
     }
     //Help desk Pagination Ends
-
     //Help Desk Data per page check Starts
     public void validatePageSizeHelpDesk(int expectedSize) {
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdContact_ctl00_ctl03_ctl01_PageSizeComboBox")));
@@ -171,7 +170,6 @@ public class HelpDeskB2CServicePage extends BasePage{
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
     //Help Desk Data per page check ends
-
     //B2C ServiceDesk Starts
     public void clickOnB2CServiceDesk(String clickOnB2CServiceDesk) throws InterruptedException {
         try {
@@ -183,6 +181,86 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
+    public void clickOnB2CServiceDeskProd(String clickOnB2CServiceDeskProd) throws InterruptedException {
+        try {
+            By locator=By.xpath(String.format("//*[@id='tab-Servicedesk']/div[2]/div/ul[1]/li[2]/a"));
+            utils.click(locator);
+            System.out.println("Clicked on the B2CServiceDesk Product: " + clickOnB2CServiceDeskProd);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the B2CServiceDesk Product" +clickOnB2CServiceDeskProd);
+            throw e;
+        }
+    }
+    public void clickOnB2CSDPRDExcel() throws InterruptedException {
+        try {
+            By locator=By.id("btnExportToExcel");
+            utils.click(locator);
+            System.out.println("Clicked on the B2CServiceDesk Product Export to Excel");
+        } catch (Exception e) {
+            System.out.println("Failed to click on the B2CServiceDesk Product Export to Excel");
+            throw e;
+        }
+    }
+    //B2C Service Desk Pagination Starts
+    public void B2CSDProdPagination(String B2CSDProdPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement firstCellBefore = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_GridData']//tr[td][2]/td[1]")
+                    )
+            );
+            String beforeText = firstCellBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath(
+                    "//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"
+            ));
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", nextBtn
+            );
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstCellBefore));
+            WebElement firstCellAfter = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_GridData']//tr[td][2]/td[1]")
+                    )
+            );
+            String afterText = firstCellAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + B2CSDProdPagination);
+            throw e;
+        }
+    }
+    //B2C Service Desk Pagination Ends
+    //B2C Service Desk Data per Page check Starts
+    public void validatePageSizeB2CSDProd(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00_ctl03_ctl01_PageSizeComboBox")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    //B2C Service Desk per page check ends
+    //B2C ServiceDesk Ends
 
 }
 

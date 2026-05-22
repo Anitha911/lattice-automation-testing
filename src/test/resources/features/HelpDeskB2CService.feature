@@ -69,14 +69,36 @@ Feature: HelpDeskB2C Service Module Automation
     Then User clicks on the Call Centre 'Help Desk' tab
     When User clicks the Help Desk no of data per page 10 in the grid
 
-  @B2CServiceDeskPageDisplay
-  Scenario: Should be able to Open B2C Service Desk page
+  @B2CServiceDeskPageDisplayProduct
+  Scenario: Should be able to Open B2C Service Desk page and display Product Section
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
 
+  @B2CServiceDeskProductExportToExcel
+  Scenario: Should be able to Open B2C Service Desk page Product Section and export To Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    Then User Clicks Export To Excel
 
+  @B2CServiceDeskProductDataPerPage
+  Scenario: Should be able to check data per page B2CServiceDeskProduct Grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User clicks the B2CServiceDesk Product no of data per page 10 in the grid
 
+  @B2CServiceDeskProductPaginationCheck
+  Scenario: Should be able to Open B2C Service Desk page Product Section and export To Excel
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User Clicks on B2CServiceDesk Product grid 'pagination'
 
 
 
