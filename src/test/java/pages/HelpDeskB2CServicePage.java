@@ -1,5 +1,6 @@
 package pages;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -419,6 +420,21 @@ public class HelpDeskB2CServicePage extends BasePage{
         throw new RuntimeException("No save button is present on the page.");
     }
     //Add New Product Ends
+    //Prod detail Page Starts
+    public void B2CProdGridFirstData(String B2CProdGridFirstData) throws InterruptedException {
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath((String.format("//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00__0']", B2CProdGridFirstData))
+                    ));
+            new Actions(driver).doubleClick(row).perform();
+            //utils.click(locator);
+            System.out.println("Clicked on Prod Package Grid First data: " + B2CProdGridFirstData);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the Prod Package Grid First Data: " + B2CProdGridFirstData);
+            throw e;
+        }
+    }
+    //Prod detail Page Ends
     //B2C ServiceDesk Ends
 
 }

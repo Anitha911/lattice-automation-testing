@@ -117,3 +117,52 @@ Feature: HelpDeskB2C Service Module Automation
     When User Clicks on B2CServiceDesk Add Product 'Add Product' Button
     Then User Enters the details in the Add New Product Pop Up
     When User clicks the B2C Product Save Button
+
+  @B2CServiceDeskProductB2CProdFirstData
+  Scenario: Should be able to Get B2C Service Desk Product Detail Page When clicking the first data in the grid
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User clicks B2CServiceDesk first data in the Product grid to Open the Detail page
+
+  @B2CServiceDeskProductB2CProdUpdate
+  Scenario: Should be able to Get B2C Service Desk Product Detail Page and Edit
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User clicks B2CServiceDesk first data in the Product grid to Open the Detail page
+    When User Clicks the Edit Product Store Front 'Edit Product' Button
+    Then User Clicks the Product Store Front Update Button
+
+  @B2CServiceDeskProdAddProdPricing
+  Scenario: Should be able to Open Prod Package detail page and add Product Pricing
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User clicks B2CServiceDesk first data in the Product grid to Open the Detail page
+    When User clicks Product Pricing 'Product Pricing' in the side menu
+    Then User clicks Add New Product Pricing 'Add New' Button
+    When User enters Product Pricing details
+    Then User Clicks on Product Pricing Save Button
+
+  @B2CServiceDeskProdEditProdPricing
+  Scenario: Should be able to Open Prod Package detail page and Edit Product Pricing
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
+    When User clicks B2CServiceDesk first data in the Product grid to Open the Detail page
+    When User clicks Product Pricing 'Product Pricing' in the side menu
+    Then User clicks Add New Product Pricing 'Add New' Button
+    When User enters Product Pricing details
+    Then User Clicks on Product Pricing Save Button
+    When User clicks Product Pricing Edit 'Pricing Edit' button
+    Then User Clicks on Product Pricing Save Button
+
+
+
+
+

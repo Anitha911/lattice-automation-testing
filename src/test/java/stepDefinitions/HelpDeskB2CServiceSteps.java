@@ -129,6 +129,14 @@ public class HelpDeskB2CServiceSteps {
         tmp.ClickAddProdSave();
     }
     //Add New Product Ends
+    //Product Detail Page Start
+    @Then("User clicks B2CServiceDesk first data in the Product grid to Open the Detail page")
+    public void user_clicks_on_B2CProdGridFirstData() throws InterruptedException  {
+        String B2CProdGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_grdB2CProduct_ctl00__0']";
+        tmp.B2CProdGridFirstData(B2CProdGridFirstData);
+    }
+    //Product Detail Page Ends
+
     //B2C Service Desk ends
 
 }
