@@ -108,7 +108,6 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks the B2CServiceDesk Product 'B2CServiceDeskProduct' section
     When User Clicks on B2CServiceDesk Add Product 'Add Product' Button
 
-    #check on Monday
   @B2CServiceDeskProductAddB2CProd
   Scenario: Should be able to Add B2C Service Desk page Product
     Given User navigates to 'lattice.url' page
