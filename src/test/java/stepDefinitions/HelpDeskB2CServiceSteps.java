@@ -163,6 +163,18 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CServiceDeskHelpDesk() {
         tmp.B2CServiceDeskHelpDeskSave();
     }
+    @Then("User enters search Criteria in the search Textbox")
+    public void userB2CServiceHDSearch() {
+        tmp.ClientNameSearch();
+    }
+    @Then("The User clicks the Search button")
+    public void user_click_on_userB2CServiceHDSearchButton() throws InterruptedException{
+        tmp.B2CServiceDeskHelpDeskSearch();
+    }
+    @Then("User clicks the first data in the grid to Open the detail page")
+    public void user_click_on_B2CClientFirstDataclick() throws InterruptedException {
+        tmp.B2CClientFirstDataclick();
+    }
     //B2CService Help Desk End
     //B2C Service Desk ends
 

@@ -178,7 +178,7 @@ Feature: HelpDeskB2C Service Module Automation
     Then User Clicks Add Client Button click
 
   @B2CServiceDeskHelpDeskPageAddClient
-  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section Add Client Click
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section Save Client
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
@@ -186,6 +186,17 @@ Feature: HelpDeskB2C Service Module Automation
     Then User Clicks Add Client Button click
     When User Enters details in B2CServiceDeskHelpDesk pop up
     Then User clicks B2CServiceDeskHelpDesk Save Button
+
+  @B2CServiceHelpDeskPageClientDetailPage
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section and search Client to get detail Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+
 
 
 

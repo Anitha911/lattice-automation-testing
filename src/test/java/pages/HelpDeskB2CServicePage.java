@@ -37,6 +37,7 @@ public class HelpDeskB2CServicePage extends BasePage{
     public static final By CONTACT_PERSON = By.id("radtxtContactPerson");
     public static final By ADDRESSLINE = By.id("radtxtAddressLine1");
     public static final By SAVE_BUTTON_CLIENT = By.id("ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_btnSave");
+    public static final By CLIENT_NAME_SEARCH = By.id("ctl00_ContentPlaceHolder1_txt_search");
 
     public void clickOnHelpDeskMenu(String clickOnHelpDeskMenu) throws InterruptedException {
         try {
@@ -542,6 +543,31 @@ public class HelpDeskB2CServicePage extends BasePage{
             }
         }
         throw new RuntimeException("No save button is present on the page.");
+    }
+    public void ClientNameSearch() {
+        utils.typeText(CLIENT_NAME_SEARCH, "rk");
+    }
+    public void B2CServiceDeskHelpDeskSearch() throws InterruptedException {
+        try {
+            By locator=By.id("ctl00_ContentPlaceHolder1_RadB2CSearch");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceDeskHelpDeskSearch:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceDeskHelpDeskSearch:");
+            throw e;
+        }
+    }
+    public void B2CClientFirstDataclick() throws InterruptedException {
+        try {
+            WebElement row = driver.findElement(
+                    By.xpath((String.format("//*[@id='ctl00_ContentPlaceHolder1_rad_B2ChelpdeskGrid_ctl00__0']"))
+                    ));
+            new Actions(driver).doubleClick(row).perform();
+            System.out.println("Clicked on B2CClientFirstDataclick:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CClientFirstDataclick:");
+            throw e;
+        }
     }
     //B2C ServiceDesk Ends
 
