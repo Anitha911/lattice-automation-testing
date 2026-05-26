@@ -33,6 +33,10 @@ public class HelpDeskB2CServicePage extends BasePage{
     public static final By PROD_MAX_PPM_SCHEDULE_COUNT= By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_txtMaxPPMScheduleCount");
     public static final By SAVE_BUTTON_PROD = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_BtnSave");
 
+    public static final By CLIENT_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_radtxtCustomerName");
+    public static final By CONTACT_PERSON = By.id("radtxtContactPerson");
+    public static final By ADDRESSLINE = By.id("radtxtAddressLine1");
+    public static final By SAVE_BUTTON_CLIENT = By.id("ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_btnSave");
 
     public void clickOnHelpDeskMenu(String clickOnHelpDeskMenu) throws InterruptedException {
         try {
@@ -408,7 +412,6 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
-
     public void ClickAddProdSave() {
         By[] saveButtons = {SAVE_BUTTON_PROD};
         for (By button : saveButtons) {
@@ -435,6 +438,111 @@ public class HelpDeskB2CServicePage extends BasePage{
         }
     }
     //Prod detail Page Ends
+    //B2C HelpDesk starts
+    public void clickOnB2CServiceHelpDesk(String clickOnB2CServiceHelpDesk) throws InterruptedException {
+        try {
+            By locator=By.xpath("//*[@id='tab-Servicedesk']/div[2]/div/ul[2]/li[2]/a");
+            utils.click(locator);
+            System.out.println("Clicked on clickOnB2CServiceHelpDesk: " + clickOnB2CServiceHelpDesk);
+        } catch (Exception e) {
+            System.out.println("Failed to click on clickOnB2CServiceHelpDesk: " + clickOnB2CServiceHelpDesk);
+            throw e;
+        }
+    }
+    public void B2CAddClientClick() throws InterruptedException {
+        try {
+            By locator=By.id("ctl00_ContentPlaceHolder1_radbtncontact");
+            utils.click(locator);
+            System.out.println("Clicked on B2CAddClientClick:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CAddClientClick:");
+            throw e;
+        }
+    }
+    //B2C HelpDesk Ends
+    public void ClientName(String ClientName) {
+        utils.typeText(CLIENT_NAME, ClientName);
+    }
+    public void ContatPerson(String ContatPerson) {
+        utils.typeText(CONTACT_PERSON, ContatPerson);
+    }
+    public void AddressLine(String AddressLine) {
+        utils.typeText(ADDRESSLINE, AddressLine);
+    }
+    public void selectClientType(String selectClientType) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_raddrpClientType_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectClientType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectClientType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectClientType);
+            throw e;
+        }
+    }
+    public void selectCountry(String selectCountry) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_raddrpCountry_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectCountry));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectCountry);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectCountry);
+            throw e;
+        }
+    }
+    public void selectCity(String selectCity) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_raddrpCity_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectCity));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectCity);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectCity);
+            throw e;
+        }
+    }
+    public void selectCustImp(String selectCustImp) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            WebElement arrow = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("#ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_raddrpCustomerImportance_Arrow")
+            ));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", arrow);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", arrow);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectCustImp));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectCustImp);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectCustImp);
+            throw e;
+        }
+    }
+    public void B2CServiceDeskHelpDeskSave() {
+        By[] saveButtons = {SAVE_BUTTON_CLIENT};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
     //B2C ServiceDesk Ends
 
 }

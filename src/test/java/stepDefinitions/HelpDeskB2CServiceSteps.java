@@ -136,7 +136,34 @@ public class HelpDeskB2CServiceSteps {
         tmp.B2CProdGridFirstData(B2CProdGridFirstData);
     }
     //Product Detail Page Ends
-
+    //B2CService Help Desk Start
+    @Then("User clicks the B2CServiceDesk HelpDesk {string} section")
+    public void user_click_on_B2CServiceHelpDesk(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Servicedesk']/div[2]/div/ul[2]/li[2]/a";
+        tmp.clickOnB2CServiceHelpDesk(xpath);
+    }
+    @Then("User Clicks Add Client Button click")
+    public void user_click_on_B2CAddClientClick() throws InterruptedException {
+        tmp.B2CAddClientClick();
+    }
+    @Then("User Enters details in B2CServiceDeskHelpDesk pop up")
+    public void userFillsB2CServiceHelpDeskDetails() {
+        tmp.ClientName(dataGen.generateClientType());
+        tmp.ContatPerson(dataGen.generateContactPerson());
+        tmp.CustMobile(dataGen.generateCustMobile());
+        tmp.ContactEmail(dataGen.generateCustEmail());
+        tmp.AddressLine(dataGen.generateAddress());
+        //DropDowns
+        tmp.selectClientType("B2B Corporate");
+        tmp.selectCountry("India");
+        tmp.selectCity("Chennai");
+        tmp.selectCustImp("VIP");
+    }
+    @Then("User clicks B2CServiceDeskHelpDesk Save Button")
+    public void user_click_on_B2CServiceDeskHelpDesk() {
+        tmp.B2CServiceDeskHelpDeskSave();
+    }
+    //B2CService Help Desk End
     //B2C Service Desk ends
 
 }

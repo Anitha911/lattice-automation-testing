@@ -162,6 +162,32 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks Product Pricing Edit 'Pricing Edit' button
     Then User Clicks on Product Pricing Save Button
 
+  @B2CServiceDeskHelpDeskPageDisplay
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+
+  @B2CServiceDeskHelpDeskPageAddClientButtonClick
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section Add Client Click
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    Then User Clicks Add Client Button click
+
+  @B2CServiceDeskHelpDeskPageAddClient
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section Add Client Click
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    Then User Clicks Add Client Button click
+    When User Enters details in B2CServiceDeskHelpDesk pop up
+    Then User clicks B2CServiceDeskHelpDesk Save Button
+
+
 
 
 
