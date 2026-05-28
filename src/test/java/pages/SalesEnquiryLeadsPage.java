@@ -499,9 +499,9 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void clickOnUpdateStatusSalesEnquiry(String btnUpdateStatusSalesEnquiry) {
         try {
-//            Set<String> allTabs = driver.getWindowHandles();
-//            for (String tab : allTabs) {
-//                if (!tab.equals(mainTab)) {
+            //Set<String> allTabs = driver.getWindowHandles();
+            //for (String tab : allTabs) {
+              //  if (!tab.equals(mainTab)) {
 //                    driver.switchTo().window(tab);
 //                    break;
 //                }
