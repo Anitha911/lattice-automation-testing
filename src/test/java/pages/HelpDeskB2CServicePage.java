@@ -728,7 +728,40 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
-
+    public void B2CServiceHDclientDetailEditProperty() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_grdCustomerUnit_ctrl0_Editunit");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDclientDetailEditProperty:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailEditProperty:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailUpdateProperty() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_RadWinUnitAdd_C_btnSave");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDclientDetailUpdateProperty:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailUpdateProperty:");
+            throw e;
+        }
+    }
     //Client Detail End
     //B2C ServiceDesk Ends
 

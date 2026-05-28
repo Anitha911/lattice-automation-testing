@@ -225,7 +225,14 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CServiceHDclientRefreshAfterPropAdd() throws InterruptedException{
         tmp.B2CServiceHDclientRefreshAfterPropAdd();
     }
-
+    @Then("User Edits an Existing Property in the Client detail Page")
+    public void user_click_on_B2CServiceHDclientDetailEditProperty() throws InterruptedException{
+        tmp.B2CServiceHDclientDetailEditProperty();
+    }
+    @Then("User clicks Client detail Page Update Button")
+    public void user_click_on_B2CServiceHDclientDetailUpdateProperty() throws InterruptedException{
+        tmp.B2CServiceHDclientDetailUpdateProperty();
+    }
     //B2CService Help Desk End
     //B2C Service Desk ends
 
