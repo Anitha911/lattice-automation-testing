@@ -4,6 +4,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -652,6 +653,82 @@ public class HelpDeskB2CServicePage extends BasePage{
         }
     }
     //Client Detail Email Change Ends
+    public void B2CServiceHDEditClient() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("EditClient");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDEditClient:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDEditClient:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDUpdateClient() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinClientAdd_C_AddClient_btnSave");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDUpdateClient:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDUpdateClient:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDLinkProperty() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_RadBtnLinkProperty");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDLinkProperty:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDLinkProperty:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDPropertyDetailLink() throws InterruptedException {
+        try {
+            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.id("ctl00_ContentPlaceHolder1_grdContactUnit_ctl00_ctl04_btn_linkcontact");
+            utils.click(locator);
+            driver.close();
+            System.out.println("Clicked on B2CServiceHDPropertyDetailLink:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDPropertyDetailLink:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientRefreshAfterPropAdd() throws InterruptedException {
+        try {
+            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            driver.navigate().refresh();
+            System.out.println("Refresh Client page after Adding Property");
+        } catch (Exception e) {
+            System.out.println("Failed to Refresh Client page after Adding Property");
+            throw e;
+        }
+    }
+
     //Client Detail End
     //B2C ServiceDesk Ends
 

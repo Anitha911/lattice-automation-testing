@@ -223,6 +223,32 @@ Feature: HelpDeskB2C Service Module Automation
     Then User enters the details in the change Email pop up
     Then User clicks the Client Change Email Submit button
 
+  @B2CServiceHDClientDetailPageUpdateClient
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section and search Client to get detail Page,Update Client
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Edit Client Button
+    When User clicks the Client Details Update Button
+
+  @B2CServiceHDClientDetailPageLinkPropertyAndRefreshPreviousTab
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section and search Client to get detail Page,Link Property and refresh
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    When User clicks the Client Detail Link Property Button
+    Then User clicks the Link Property Button in Property page
+    When User clicks the previous tab and Refresh to see the Property Added
+
+
 
 
 

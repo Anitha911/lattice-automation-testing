@@ -204,8 +204,28 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CServiceHDChangeEmailSubmit() throws InterruptedException{
         tmp.B2CServiceHDChangeEmailSubmit();
     }
-
     //Client Detail Email End
+    @Then("User clicks the Edit Client Button")
+    public void user_click_on_B2CServiceHDEditClient() throws InterruptedException{
+        tmp.B2CServiceHDEditClient();
+    }
+    @Then("User clicks the Client Details Update Button")
+    public void user_click_on_B2CServiceHDUpdateClient() throws InterruptedException{
+        tmp.B2CServiceHDUpdateClient();
+    }
+    @Then("User clicks the Client Detail Link Property Button")
+    public void user_click_on_B2CServiceHDLinkProperty() throws InterruptedException{
+        tmp.B2CServiceHDLinkProperty();
+    }
+    @Then("User clicks the Link Property Button in Property page")
+    public void user_click_on_B2CServiceHDPropertyDetailLink() throws InterruptedException{
+        tmp.B2CServiceHDPropertyDetailLink();
+    }
+    @Then("User clicks the previous tab and Refresh to see the Property Added")
+    public void user_click_on_B2CServiceHDclientRefreshAfterPropAdd() throws InterruptedException{
+        tmp.B2CServiceHDclientRefreshAfterPropAdd();
+    }
+
     //B2CService Help Desk End
     //B2C Service Desk ends
 
