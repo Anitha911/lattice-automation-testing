@@ -499,13 +499,13 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void clickOnUpdateStatusSalesEnquiry(String btnUpdateStatusSalesEnquiry) {
         try {
-            Set<String> allTabs = driver.getWindowHandles();
-            for (String tab : allTabs) {
-                if (!tab.equals(mainTab)) {
-                    driver.switchTo().window(tab);
-                    break;
-                }
-            }
+//            Set<String> allTabs = driver.getWindowHandles();
+//            for (String tab : allTabs) {
+//                if (!tab.equals(mainTab)) {
+//                    driver.switchTo().window(tab);
+//                    break;
+//                }
+//            }
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnUpdateStatus']", btnUpdateStatusSalesEnquiry));
             utils.click(locator);
             System.out.println("Clicked on the Sales Add Enquiry Update Status: " + btnUpdateStatusSalesEnquiry);
@@ -518,13 +518,13 @@ public class SalesEnquiryLeadsPage extends BasePage{
     //EnquiryEdit Contact
     public void clickOnEditEnquiryContactDetails(String btnEnquiryContactDetails) {
         try {
-            Set<String> allTabs = driver.getWindowHandles();
-            for (String tab : allTabs) {
-                if (!tab.equals(mainTab)) {
-                    driver.switchTo().window(tab);
-                    break;
-                }
-            }
+//            Set<String> allTabs = driver.getWindowHandles();
+//            for (String tab : allTabs) {
+//                if (!tab.equals(mainTab)) {
+//                    driver.switchTo().window(tab);
+//                    break;
+//                }
+//            }
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_BtnEditContact']", btnEnquiryContactDetails));
             utils.click(locator);
             System.out.println("Clicked on the Sales Add Enquiry Edit Contact: " + btnEnquiryContactDetails);
