@@ -2,16 +2,15 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Set;
 
 
 public class HelpDeskB2CServicePage extends BasePage{
         public  HelpDeskB2CServicePage(WebDriver driver) {super(driver);}
+    String mainTab = driver.getWindowHandle();
 
     public static final By BTN_DIRECTWOBKNG = By.id("ctl00_ContentPlaceHolder1_btnDirectWOBoking");
     public static final By BTN_ADDNEWCONTACT = By.id("ctl00_ContentPlaceHolder1_radbtncontact");
@@ -38,7 +37,10 @@ public class HelpDeskB2CServicePage extends BasePage{
     public static final By ADDRESSLINE = By.id("radtxtAddressLine1");
     public static final By SAVE_BUTTON_CLIENT = By.id("ctl00_ContentPlaceHolder1_RadWinClientAdd_C_AddClient_btnSave");
     public static final By CLIENT_NAME_SEARCH = By.id("ctl00_ContentPlaceHolder1_txt_search");
-
+    public static final By CLIENT_NEW_MOBILE = By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeMobile_C_txt_newMob");
+    public static final By CLIENT_NEW_CONFIRM_MOBILE = By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeMobile_C_txt_ConfMobNo");
+    public static final By CLIENT_NEW_EMAIL = By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeEmail_C_txt_NewEmailId");
+    public static final By CLIENT_NEW_CONFIRM_EMAIL = By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeEmail_C_txt_ConfirmNewEmailId");
     public void clickOnHelpDeskMenu(String clickOnHelpDeskMenu) throws InterruptedException {
         try {
             By locator=By.xpath(String.format("//*[@id='27']"));
@@ -569,6 +571,88 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
+    //Client Detail Start
+    public void B2CServiceHDChangeMobileButton() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadButton1");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDChangeMobileButton:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDChangeMobileButton:");
+            throw e;
+        }
+    }
+    //Client Detail Mobile Number starts
+    public void NewMobileNumber(String name) {
+        utils.typeText(CLIENT_NEW_MOBILE, name);
+        utils.typeText(CLIENT_NEW_CONFIRM_MOBILE, name);
+    }
+    public void B2CServiceHDChangeMobileNumberSubmit() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeMobile_C_btnMobileSave");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDChangeMobileNumberSubmit:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDChangeMobileNumberSubmit:");
+            throw e;
+        }
+    }
+    //Client Detail Mobile Number Ends
+    //Client Detail Email change Starts
+    public void B2CServiceHDChangeEmailButton() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadButton2");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDChangeEmailButton:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDChangeEmailButton:");
+            throw e;
+        }
+    }
+    public void NewEmail(String Email) {
+        utils.typeText(CLIENT_NEW_EMAIL, Email);
+        utils.typeText(CLIENT_NEW_CONFIRM_EMAIL, Email);
+    }
+    public void B2CServiceHDChangeEmailSubmit() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.id("ctl00_ContentPlaceHolder1_ClientInfo_RadWinChangeEmail_C_RadButton4");
+            utils.click(locator);
+            System.out.println("Clicked on B2CServiceHDChangeEmailSubmit:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDChangeEmailSubmit:");
+            throw e;
+        }
+    }
+    //Client Detail Email Change Ends
+    //Client Detail End
     //B2C ServiceDesk Ends
 
 }

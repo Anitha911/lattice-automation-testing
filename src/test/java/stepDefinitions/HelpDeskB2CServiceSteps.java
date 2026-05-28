@@ -175,6 +175,37 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CClientFirstDataclick() throws InterruptedException {
         tmp.B2CClientFirstDataclick();
     }
+    //Client Detail Mobile Start
+    @Then("User Clicks the Change Mobile Number button")
+    public void user_click_on_B2CServiceHDChangeMobileButton() throws InterruptedException{
+        tmp.B2CServiceHDChangeMobileButton();
+    }
+    @Then("User enters the details in the change mobile number pop up")
+    public void B2CServiceHDChangeMobileNumbDetails() {
+            String NewMobileNumber=dataGen.generateCustMobile();
+            tmp.NewMobileNumber(NewMobileNumber);
+    }
+    @Then("User clicks the Client Change Mobile Number Submit button")
+    public void user_click_on_B2CServiceHDChangeMobileNumberSubmit() throws InterruptedException{
+        tmp.B2CServiceHDChangeMobileNumberSubmit();
+    }
+    //Client Detail Mobile End
+    //Client Detail Email Start
+    @Then("User Clicks the Change Email button")
+    public void user_click_on_B2CServiceHDChangeEmailButton() throws InterruptedException{
+        tmp.B2CServiceHDChangeEmailButton();
+    }
+    @Then("User enters the details in the change Email pop up")
+    public void B2CServiceHDChangeEmailDetails() {
+        String NewEmail=dataGen.generateCustEmail();
+        tmp.NewEmail(NewEmail);
+    }
+    @Then("User clicks the Client Change Email Submit button")
+    public void user_click_on_B2CServiceHDChangeEmailSubmit() throws InterruptedException{
+        tmp.B2CServiceHDChangeEmailSubmit();
+    }
+
+    //Client Detail Email End
     //B2CService Help Desk End
     //B2C Service Desk ends
 

@@ -197,6 +197,31 @@ Feature: HelpDeskB2C Service Module Automation
     Then The User clicks the Search button
     When User clicks the first data in the grid to Open the detail page
 
+  @B2CServiceHDClientDetailPageChangeMobile
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section and search Client to get detail Page,change Mobile Number
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    When User Clicks the Change Mobile Number button
+    Then User enters the details in the change mobile number pop up
+    Then User clicks the Client Change Mobile Number Submit button
+
+  @B2CServiceHDClientDetailPageChangeEmail
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk Section and search Client to get detail Page,change Email
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    When User Clicks the Change Email button
+    Then User enters the details in the change Email pop up
+    Then User clicks the Client Change Email Submit button
 
 
 
