@@ -871,6 +871,42 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
+    public void B2CServiceHDClientDetailPropertyDetailPurchaseService() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.id("ctl00_ContentPlaceHolder1_grd_Ratecard_ctl00_ctl04_btn_Ratecardpurchase");
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDClientDetailPropertyDetailPurchaseService:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDClientDetailPropertyDetailPurchaseServiceSubmitService() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.id("ctl00_ContentPlaceHolder1_radWOSubmitNew");
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDClientDetailPropertyDetailPurchaseServiceSubmitService:");
+            throw e;
+        }
+    }
     //Client Detail End
     //B2C ServiceDesk Ends
 

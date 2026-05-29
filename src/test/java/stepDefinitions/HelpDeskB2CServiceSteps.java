@@ -253,6 +253,14 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CServiceHDclientDetailPropertyDetailManageContacts() throws InterruptedException{
         tmp.B2CServiceHDclientDetailPropertyDetailManageContacts();
     }
+    @Then("User clicks B2CServiceDesk Purchase Service Button")
+    public void user_click_on_B2CServiceHDClientDetailPropertyDetailPurchaseService() throws InterruptedException{
+        tmp.B2CServiceHDClientDetailPropertyDetailPurchaseService();
+    }
+    @Then("User clicks B2CServiceDesk Submit Service Button")
+    public void user_click_on_B2CServiceHDClientDetailPropertyDetailPurchaseServiceSubmitService() throws InterruptedException{
+        tmp.B2CServiceHDClientDetailPropertyDetailPurchaseServiceSubmitService();
+    }
     //B2CService Help Desk End
     //B2C Service Desk ends
 

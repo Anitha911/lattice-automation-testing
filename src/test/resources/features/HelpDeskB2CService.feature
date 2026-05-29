@@ -320,5 +320,17 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks Unit Contacts Management Manage Contacts Click
 
 
-
+  @B2CServiceHDClientDetailPropertyDetailPageBookServicePurchaseService
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and Book Service
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
+    When User clicks Service Purchase Book Service Click
+    Then User clicks B2CServiceDesk Purchase Service Button
+    When  User clicks B2CServiceDesk Submit Service Button
 
