@@ -260,7 +260,64 @@ Feature: HelpDeskB2C Service Module Automation
     Then User Edits an Existing Property in the Client detail Page
     When User clicks Client detail Page Update Button
 
+  @B2CServiceHDClientDetailPropertyDetailPage
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
 
+  @B2CServiceHDClientDetailPropertyDetailPageManageWOclick
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and click Manage WO
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
+    When User clicks Existing WO Manage WO Button Click
+
+  @B2CServiceHDClientDetailPropertyDetailPageBookServiceClick
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and click Book Service
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
+    When User clicks Service Purchase Book Service Click
+
+  @B2CServiceHDClientDetailPropertyDetailPageBuyPackageClick
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and click Buy Package
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
+    When User clicks Package Purchase Buy Package Click
+
+  @B2CServiceHDClientDetailPropertyDetailPageManageContactsClick
+  Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and click Manage Contacts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User clicks the Property to get Property Detail Page
+    When User clicks Unit Contacts Management Manage Contacts Click
 
 
 

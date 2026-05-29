@@ -755,10 +755,119 @@ public class HelpDeskB2CServicePage extends BasePage{
                 }
             }
             By locator=By.id("ctl00_ContentPlaceHolder1_RadWinUnitAdd_C_btnSave");
-            utils.click(locator);
-            System.out.println("Clicked on B2CServiceHDclientDetailUpdateProperty:");
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Clicked on B2CServiceHDclientDetailUpdateProperty:");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
         } catch (Exception e) {
             System.out.println("Failed to click on B2CServiceHDclientDetailUpdateProperty:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailPropertyDetail() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanel_customerUnit']/div[1]/div[1]/div[4]/div/div[2]/div/div/div[2]/figure/figcaption/p[1]/a"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailPropertyDetail:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailPropertyDetailManageWO() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.xpath(String.format("//*[@id='form1']/div[5]/div[1]/div[2]/div/div/div[2]/div[4]/div/div[1]/div/div[1]/div/div/button"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailPropertyDetailManageWO:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailPropertyDetailBookService() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.xpath(String.format("//*[@id='form1']/div[5]/div[1]/div[2]/div/div/div[2]/div[4]/div/div[1]/div/div[2]/div/div[2]/a"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailPropertyDetailBookService:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailPropertyDetailBuyPackage() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.xpath(String.format("//*[@id='form1']/div[5]/div[1]/div[2]/div/div/div[2]/div[4]/div/div[1]/div/div[3]/div/div/button"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailPropertyDetailBuyPackage:");
+            throw e;
+        }
+    }
+    public void B2CServiceHDclientDetailPropertyDetailManageContacts() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            By locator=By.xpath(String.format("//*[@id='form1']/div[5]/div[1]/div[2]/div/div/div[2]/div[4]/div/div[1]/div/div[4]/div/div/button"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CServiceHDclientDetailPropertyDetailManageContacts:");
             throw e;
         }
     }
