@@ -262,6 +262,18 @@ public class HelpDeskB2CServiceSteps {
         tmp.B2CServiceHDClientDetailPropertyDetailPurchaseServiceSubmitService();
     }
     //B2CService Help Desk End
+    @Then("User Clicks the Financial Transactions Tab")
+    public void user_click_on_B2CFinTransTab() throws InterruptedException {
+        tmp.B2CFinTransTab();
+    }
+    @Then("User Clicks the Online Payment Transactions Tab")
+    public void user_click_on_B2COnlinePaymentTransTab() throws InterruptedException {
+        tmp.B2COnlinePaymentTransTab();
+    }
+    @Then("User Clicks the User Accounts Tab")
+    public void user_click_on_B2CManageUserAccountsTab() throws InterruptedException {
+        tmp.B2CManageUserAccountsTab();
+    }
     //B2C Service Desk ends
 
 }

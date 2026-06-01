@@ -333,3 +333,36 @@ Feature: HelpDeskB2C Service Module Automation
     Then User clicks B2CServiceDesk Purchase Service Button
     When User clicks B2CServiceDesk Submit Service Button
 
+  @B2CServiceDeskFinancialDetailsTabDisplay
+  Scenario: Should be able to B2C Service Desk and click of Financial Details Tab should Open the corresponding Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the Financial Transactions Tab
+
+  @B2CServiceDeskOnlinePaymentTransactionsTabDisplay
+  Scenario: Should be able to B2C Service Desk and click of Online Payment Transactions Tab should Open the corresponding Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the Online Payment Transactions Tab
+
+  @B2CServiceDeskManageUserAccountTabDisplay
+  Scenario: Should be able to B2C Service Desk and click of Online Payment Transactions Tab should Open the corresponding Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the User Accounts Tab
+

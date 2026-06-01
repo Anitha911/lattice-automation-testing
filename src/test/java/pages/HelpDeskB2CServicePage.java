@@ -908,6 +908,60 @@ public class HelpDeskB2CServicePage extends BasePage{
         }
     }
     //Client Detail End
+    public void B2CFinTransTab() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.xpath(String.format("//*[@id='lnkfindetials']/button"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CFinTransTab:");
+            throw e;
+        }
+    }
+    public void B2COnlinePaymentTransTab() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.xpath(String.format("//*[@id='lnkonlinePayment']/button/span"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2COnlinePaymentTransTab:");
+            throw e;
+        }
+    }
+    public void B2CManageUserAccountsTab() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanel_customerUnit']/div[1]/div[1]/div[4]/div/div[1]/div/button[2]/span"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CManageUserAccountsTab:");
+            throw e;
+        }
+    }
     //B2C ServiceDesk Ends
 
 }
