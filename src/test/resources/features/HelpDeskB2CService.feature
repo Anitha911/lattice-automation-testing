@@ -366,3 +366,27 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks the first data in the grid to Open the detail page
     Then User Clicks the User Accounts Tab
 
+  @B2CServiceDeskNewEnquiryButtonClick
+  Scenario: Should be able to B2C Service Desk and click New Enquiry Button to open Enquiry Pop up
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the New Enquiry Button Click
+
+  @B2CServiceDeskViewEnquiryButtonClick
+  Scenario: Should be able to B2C Service Desk and click View Enquiry Button to View Enquiry Page
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the View Enquiry Button Click
+
+
+

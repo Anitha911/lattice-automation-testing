@@ -962,6 +962,42 @@ public class HelpDeskB2CServicePage extends BasePage{
             throw e;
         }
     }
+    public void B2CNewEnquiryClick() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnAddEnquiry']"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CNewEnquiryClick:");
+            throw e;
+        }
+    }
+    public void B2CViewEnquiryClick() throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+            ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(tabs.size() - 1));
+            By locator=By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_btnViewEnquiry']"));
+            if (!driver.findElements(locator).isEmpty()) {
+                utils.click(locator);
+                System.out.println("Element present, clicked");
+            } else {
+                System.out.println("Element not present, skipping click");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to click on B2CViewEnquiryClick:");
+            throw e;
+        }
+    }
     //B2C ServiceDesk Ends
 
 }
