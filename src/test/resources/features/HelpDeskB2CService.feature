@@ -388,5 +388,30 @@ Feature: HelpDeskB2C Service Module Automation
     When User clicks the first data in the grid to Open the detail page
     Then User Clicks the View Enquiry Button Click
 
+  @B2CServiceDeskClickHereButtonClick
+  Scenario: Should be able to B2C Service Desk and click Here Button for common area issues
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the Click Here Button Click
+
+  @B2CServiceDeskClickHereNewRequestClick
+  Scenario: Should be able to B2C Service Desk and click Here Button for common area issues and click New Request
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on B2CServiceDesk 'B2C ServiceDesk' in Navigation panel
+    When User clicks the B2CServiceDesk HelpDesk 'B2CServiceDeskHelpDesk' section
+    When User enters search Criteria in the search Textbox
+    Then The User clicks the Search button
+    When User clicks the first data in the grid to Open the detail page
+    Then User Clicks the Click Here Button Click
+    When User clicks Click Here New Request button
+
+
+
 
 

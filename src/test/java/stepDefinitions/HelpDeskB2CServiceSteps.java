@@ -282,6 +282,14 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CViewEnquiryClick() throws InterruptedException {
         tmp.B2CViewEnquiryClick();
     }
+    @Then("User Clicks the Click Here Button Click")
+    public void user_click_on_B2CClickHereClick() throws InterruptedException {
+        tmp.B2CClickHereClick();
+    }
+    @Then("User clicks Click Here New Request button")
+    public void user_click_on_B2CClickHereNewRequest() throws InterruptedException {
+        tmp.B2CClickHereNewRequest();
+    }
     //B2C Service Desk ends
 
 }
