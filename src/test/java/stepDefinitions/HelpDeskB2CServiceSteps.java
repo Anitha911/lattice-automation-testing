@@ -290,6 +290,10 @@ public class HelpDeskB2CServiceSteps {
     public void user_click_on_B2CClickHereNewRequest() throws InterruptedException {
         tmp.B2CClickHereNewRequest();
     }
+    @Then("User Clicks the Click Notification Log Button Click")
+    public void user_click_on_B2CNotificationLog() throws InterruptedException {
+        tmp.B2CNotificationLog();
+    }
     //B2C Service Desk ends
 
 }
