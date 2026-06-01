@@ -319,7 +319,6 @@ Feature: HelpDeskB2C Service Module Automation
     Then User clicks the Property to get Property Detail Page
     When User clicks Unit Contacts Management Manage Contacts Click
 
-
   @B2CServiceHDClientDetailPropertyDetailPageBookServicePurchaseService
   Scenario: Should be able to Open B2C ServiceDesk Help Desk and search Client to get detail Page and click Property to get detail page and Book Service
     Given User navigates to 'lattice.url' page
@@ -332,5 +331,5 @@ Feature: HelpDeskB2C Service Module Automation
     Then User clicks the Property to get Property Detail Page
     When User clicks Service Purchase Book Service Click
     Then User clicks B2CServiceDesk Purchase Service Button
-    When  User clicks B2CServiceDesk Submit Service Button
+    When User clicks B2CServiceDesk Submit Service Button
 
