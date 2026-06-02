@@ -73,6 +73,11 @@ public class ReactiveServiceMasterSteps {
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.RMExportToExcel(xpath);
     }
+    //Pagination in grid starts
+    @Then("User clicks on Service Group grid pagination {string}")
+    public void user_click_on_SGPagination(String SGPagination) throws InterruptedException {
+        tmp.SGPagination(SGPagination);
+    }
     //Fault Category
     @Then("User clicks on the Core masters RM Fault Category {string} tab")
     public void user_click_on_core_masters_RM_FC(String title) throws InterruptedException {

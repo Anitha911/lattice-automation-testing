@@ -1,9 +1,10 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ReactiveServiceMasterPage extends BasePage {
     public ReactiveServiceMasterPage(WebDriver driver) {
@@ -171,6 +172,29 @@ public class ReactiveServiceMasterPage extends BasePage {
             System.out.println("Clicked on Export to Excel Service Group Button: " + clickOnExporttoExcelRM);
         } catch (Exception e) {
             System.out.println("Failed to click on Export to Excel Service Group Button: " + clickOnExporttoExcelRM);
+            throw e;
+        }
+    }
+    public void SGPagination(String SGPagination) throws InterruptedException {
+        try {
+            //
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdServiceGrp']")));
+            String beforeText = firstRowBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdServiceGrp']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + SGPagination);
             throw e;
         }
     }
