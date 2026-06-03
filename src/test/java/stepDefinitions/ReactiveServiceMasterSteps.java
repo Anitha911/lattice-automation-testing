@@ -119,6 +119,15 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_FC_to_delete() {
         tmp.verifyFCDelete(generateFC);
     }
+    //Pagination in grid starts
+    @Then("User clicks on FaultCategory grid pagination {string}")
+    public void user_click_on_FaultCategoryPagination(String FaultCategoryPagination) throws InterruptedException {
+        tmp.FaultCategoryPagination(FaultCategoryPagination);
+    }
+    @Then("User clicks on FaultCategory grid Data Per Page {int}")
+    public void user_click_on_FaultCategoryGridDataPerPage(int FaultCategoryGridDataPerPage) throws InterruptedException {
+        tmp.FaultCategoryGridDataPerPage(FaultCategoryGridDataPerPage);
+    }
     //Fault Code
     @Then("User clicks on the Core masters RM Fault Code {string} tab")
     public void user_click_on_core_masters_RM_FCode(String title) throws InterruptedException {
