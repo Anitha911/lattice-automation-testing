@@ -52,3 +52,10 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on Service Group grid pagination 'Pagination'
 
+  @ServiceGroupDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page  in RM ServiceGroup
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on Service Group grid Data Per Page 10

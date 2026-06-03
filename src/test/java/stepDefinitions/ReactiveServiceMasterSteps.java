@@ -78,6 +78,11 @@ public class ReactiveServiceMasterSteps {
     public void user_click_on_SGPagination(String SGPagination) throws InterruptedException {
         tmp.SGPagination(SGPagination);
     }
+    //No of data per page
+    @Then("User clicks on Service Group grid Data Per Page {int}")
+    public void user_click_on_SGDataPerPage(int SGDataPerPage) throws InterruptedException {
+        tmp.SGDataPerPage(SGDataPerPage);
+    }
     //Fault Category
     @Then("User clicks on the Core masters RM Fault Category {string} tab")
     public void user_click_on_core_masters_RM_FC(String title) throws InterruptedException {
