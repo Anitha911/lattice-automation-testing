@@ -123,3 +123,26 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Fault Category 'string' tab
     Then User clicks on FaultCategory grid Data Per Page 10
+
+  @addFaultCodeConsolidated
+  Scenario: Should be able to add Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on button Fault Code add 'Add'
+    Then User fills up the 'Fault Code' Fault Code details
+    Then User clicks on Fault Code save button
+    Then User verify if the Fault Code is created
+
+  @EditFaultCodeConsolidated
+  Scenario: Should be able to Edit Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    When User Clicks on first data in the FaultCode Grid
+    Then User clicks the manage Fault Code Button
+    When User clicks the Update Button

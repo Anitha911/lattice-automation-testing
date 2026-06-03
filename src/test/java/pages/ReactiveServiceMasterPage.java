@@ -6,11 +6,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class ReactiveServiceMasterPage extends BasePage {
     public ReactiveServiceMasterPage(WebDriver driver) {
         super(driver);
     }
+    String mainTab = driver.getWindowHandle();
+
     public static final By SG_NAME = By.id("radtxtServGrp");
     public static final By SG_DEPT_DD = By.cssSelector("[value='Select Department']");
     public static final By SAVE_BUTTON_SG = By.id("ctl00_ContentPlaceHolder1_RadWinServiceGrp_C_btnServGrp");
@@ -414,6 +417,57 @@ public class ReactiveServiceMasterPage extends BasePage {
         By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSubTask_ctl00__0']/td[2]", expectedTitle));
         utils.isElementVisible(locator);
     }
+    //FC Edit Start
+    public void clickOnFirstDatainFCgrid() throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdSubTask_ctl00__0']"));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Fault Code first Data: "  );
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Fault Code First Data: " );
+            throw e;
+        }
+    }
+    public void clickOnFCodeManageFCButton() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            //
+            WebElement el = driver.findElement(By.id("imgAssetSubCategory"));
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();", el);
+            //
+            System.out.println("Clicked FCodeManageFCButton:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on FCodeManageFCButton:");
+            throw e;
+        }
+    }
+    public void FCodeEditUpdateButton() throws InterruptedException {
+        try {
+            Set<String> allTabs = driver.getWindowHandles();
+            for (String tab : allTabs) {
+                if (!tab.equals(mainTab)) {
+                    driver.switchTo().window(tab);
+                    break;
+                }
+            }
+            //
+            By locator = By.id("ctl00_ContentPlaceHolder1_RadWinSubTask_C_btnSubTask");
+            utils.click(locator);
+            //
+            System.out.println("Clicked FCodeManageFCButton:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on FCodeManageFCButton:");
+            throw e;
+        }
+    }
+    //FC Edit End
     public void clickActiveFCodetoDelete() {
         utils.click(DELETE_FIRST_FCODE_IN_LIST);
         Alert alert = driver.switchTo().alert();

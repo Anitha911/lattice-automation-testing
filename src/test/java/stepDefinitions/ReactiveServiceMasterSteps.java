@@ -156,6 +156,20 @@ public class ReactiveServiceMasterSteps {
     public void userVerifyIfTheFCodeIsCreated() throws InterruptedException {
         tmp.verifyFCodecreation(generateFCode);
     }
+    //FC EDIT START
+    @Then ("User Clicks on first data in the FaultCode Grid")
+    public void user_click_on_FCodeFirstDataInGrid() throws InterruptedException {
+        tmp.clickOnFirstDatainFCgrid();
+    }
+    @Then ("User clicks the manage Fault Code Button")
+    public void user_click_on_FCodeManageFCButton() throws InterruptedException {
+        tmp.clickOnFCodeManageFCButton();
+    }
+    @Then ("User clicks the Update Button")
+    public void user_click_on_FCodeEditUpdateButton() throws InterruptedException {
+        tmp.FCodeEditUpdateButton();
+    }
+    //FC Edit Ends
     @Then("User clicks on active Fault Code in the grid to delete")
     public void user_clicks_on_first_active_FCode_to_delete() {
         tmp.clickActiveFCodetoDelete();
