@@ -146,3 +146,40 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     When User Clicks on first data in the FaultCode Grid
     Then User clicks the manage Fault Code Button
     When User clicks the Update Button
+
+  @DeleteFaultCodeConsolidated
+  Scenario: Should be able to Delete Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on active Fault Code in the grid to delete
+    Then User verify if the Fault Code is deleted
+
+  @ExportToExcelFaultCodeConsolidated
+  Scenario: Should be able to Export to excel Fault Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @FaultCodePaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM FaultCode
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on FaultCode grid pagination 'Pagination'
+
+  @FaultCodeDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM FaultCode
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Fault Code 'string' tab
+    Then User clicks on FaultCode grid Data Per Page 10
