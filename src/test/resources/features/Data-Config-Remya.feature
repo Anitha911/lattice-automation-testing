@@ -247,3 +247,67 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Fault Priority 'string' tab
     Then User clicks on Priority grid Data Per Page 10
+
+  @addWOSourceConsolidated
+  Scenario: Should be able to add WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on button WO Source add 'Add'
+    Then User fills up the 'WO Source' WO Source details
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created
+
+  @EditWOSourceConsolidated
+  Scenario: Should be able to edit WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on button WO Source add 'Add'
+    Then User fills up the 'WO Source' WO Source details
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created
+    Then User clicks on active WO Source in the grid
+    Then User clicks on WO Source save button
+    Then User verify if the WO Source is created
+
+  @DeleteWOSourceConsolidated
+  Scenario: Should be able to Delete WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on active RM WO Source in the grid to delete
+    Then User verify if the RM WO Source is deleted
+
+  @ExportToExcelWOSource
+  Scenario: Should be able to Export to excel WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @WOSourcePaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM WO Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on WOSource grid pagination 'Pagination'
+
+  @WOSourceDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM WOSource
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM WO Source 'string' tab
+    Then User clicks on WO Source grid Data Per Page 10

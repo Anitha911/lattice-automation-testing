@@ -272,6 +272,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_WOSource_todelete() {
         tmp.verifyWOSourceDelete(generateWOSourceName);
     }
+    //Pagination in grid starts
+    @Then("User clicks on WOSource grid pagination {string}")
+    public void user_click_on_WOSourcePagination(String WOSourcePagination) throws InterruptedException {
+        tmp.WOSourcePagination(WOSourcePagination);
+    }
+    //No of data per page
+    @Then("User clicks on WO Source grid Data Per Page {int}")
+    public void user_click_on_WOSourceDataPerPage(int WOSourceDataPerPage) throws InterruptedException {
+        tmp.WOSourceDataPerPage(WOSourceDataPerPage);
+    }
     //Root Cause
     @Then("User clicks on the Core masters RM Root Cause {string} tab")
     public void user_click_on_core_masters_RM_RC(String title) throws InterruptedException {
