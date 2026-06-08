@@ -318,6 +318,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_RC_todelete() {
         tmp.verifyRCDelete(generateRCName);
     }
+    //Pagination in grid starts
+    @Then("User clicks on Root Cause grid pagination {string}")
+    public void user_click_on_RootCausePagination(String RootCausePagination) throws InterruptedException {
+        tmp.RootCausePagination(RootCausePagination);
+    }
+    //No of data per page
+    @Then("User clicks on Root Cause grid Data Per Page {int}")
+    public void user_click_on_RootCauseDataPerPage(int RootCauseDataPerPage) throws InterruptedException {
+        tmp.RootCauseDataPerPage(RootCauseDataPerPage);
+    }
     //Resolution Code
     @Then("User clicks on the Core masters RM Resolution Code {string} tab")
     public void user_click_on_core_masters_RM_ResCde(String title) throws InterruptedException {

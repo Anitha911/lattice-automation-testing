@@ -357,3 +357,23 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM Root Cause 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @RootCauseCPaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM Root Cause
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on Root Cause grid pagination 'Pagination'
+
+  @RootCauseCDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM Root Cause
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Root Cause 'string' tab
+    Then User clicks on Root Cause grid Data Per Page 10
+
+
