@@ -364,6 +364,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_ResCde_todelete() {
         tmp.verifyResCdeDelete(generateResolutionCodeName);
     }
+    //Pagination in grid starts
+    @Then("User clicks on Resolution Code grid pagination {string}")
+    public void user_click_on_ResolutionCodePagination(String ResolutionCodePagination) throws InterruptedException {
+        tmp.ResolutionCodePagination(ResolutionCodePagination);
+    }
+    //No of data per page
+    @Then("User clicks on Resolution Code grid Data Per Page {int}")
+    public void user_click_on_ResolutionCodeDataPerPage(int ResolutionCodeDataPerPage) throws InterruptedException {
+        tmp.ResolutionCodeDataPerPage(ResolutionCodeDataPerPage);
+    }
     //Priority Change Reason
     @Then("User clicks on the Core masters RM PriorityChangeReasons {string} tab")
     public void user_click_on_core_masters_RM_PriorityChangeReason(String title) throws InterruptedException {

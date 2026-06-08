@@ -376,4 +376,66 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM Root Cause 'string' tab
     Then User clicks on Root Cause grid Data Per Page 10
 
+  @addResolutionCodeConsolidated
+  Scenario: Should be able to Add Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on button Resolution Code add 'Add'
+    Then User fills up the 'Resolution Code' Resolution Code details
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
 
+  @EditResolutionCodeConsolidated
+  Scenario: Should be able to Edit Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on button Resolution Code add 'Add'
+    Then User fills up the 'Resolution Code' Resolution Code details
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
+    Then User clicks on active ResolutionCode in the grid
+    Then User clicks on ResolutionCode save button
+    Then User verify if the ResolutionCode is created
+
+  @DeleteResolutionCodeConsolidated
+  Scenario: Should be able to Delete Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on active RM Resolution Code in the grid to delete
+    Then User verify if the RM Resolution Code is deleted
+
+  @ExportToExcelResolutionCdeConsolidated
+  Scenario: Should be able to Export to excel Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @ResolutionCodePaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on Resolution Code grid pagination 'Pagination'
+
+  @ResolutionCodeDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM Resolution Code
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM Resolution Code 'string' tab
+    Then User clicks on Resolution Code grid Data Per Page 10
