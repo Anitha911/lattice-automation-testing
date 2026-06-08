@@ -940,6 +940,17 @@ public class ReactiveServiceMasterPage extends BasePage {
         }
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
+    //SLA Type
+    public void clickOnCoremastersRM_SLAType(String clickOnCoremastersRM_SLAType) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[1]", clickOnCoremastersRM_SLAType));
+            utils.click(locator);
+            System.out.println("Clicked on Core Masters RM Priority Change Reason: " + clickOnCoremastersRM_SLAType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Core Masters RM Priority Change Reason: " + clickOnCoremastersRM_SLAType);
+            throw e;
+        }
+    }
     //Priority Change REasons
     public void clickOnCoremastersRM_PCR(String clickOnCoremastersRM_PCR) throws InterruptedException {
         try {

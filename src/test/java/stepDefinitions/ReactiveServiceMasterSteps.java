@@ -374,6 +374,12 @@ public class ReactiveServiceMasterSteps {
     public void user_click_on_ResolutionCodeDataPerPage(int ResolutionCodeDataPerPage) throws InterruptedException {
         tmp.ResolutionCodeDataPerPage(ResolutionCodeDataPerPage);
     }
+    //SLA Type
+    @Then("User clicks on the Core masters RM SLA Type {string} tab")
+    public void user_click_on_core_masters_RM_SLAType(String title) throws InterruptedException {
+        String xpath = "//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanelMain']/div/div[1]/div/div/div[1]/div/div[2]/div/a[1]";
+        tmp.clickOnCoremastersRM_SLAType(xpath);
+    }
     //Priority Change Reason
     @Then("User clicks on the Core masters RM PriorityChangeReasons {string} tab")
     public void user_click_on_core_masters_RM_PriorityChangeReason(String title) throws InterruptedException {
