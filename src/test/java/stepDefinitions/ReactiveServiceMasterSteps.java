@@ -415,6 +415,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_PCR_todelete() {
         tmp.verifyPCRDelete(generatePCRName);
     }
+    //Pagination in grid starts
+    @Then("User clicks on PriorityChangeReasons grid pagination {string}")
+    public void user_click_on_PriorityChangeReasonsPagination(String PriorityChangeReasonsPagination) throws InterruptedException {
+        tmp.PriorityChangeReasonsPagination(PriorityChangeReasonsPagination);
+    }
+    //No of data per page
+    @Then("User clicks on PriorityChangeReasons grid Data Per Page {int}")
+    public void user_click_on_PriorityChangeReasonsDataPerPage(int PriorityChangeReasonsDataPerPage) throws InterruptedException {
+        tmp.PriorityChangeReasonsDataPerPage(PriorityChangeReasonsDataPerPage);
+    }
     //Contract Group Change Reason
     @Then("User clicks on the Core masters RM ContractGroupChangeReasons {string} tab")
     public void user_click_on_core_masters_RM_CtGrpChangeReasons(String title) throws InterruptedException {

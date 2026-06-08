@@ -448,3 +448,67 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM SLA Type 'string' tab
     Then User clicks on RM Export to Excel button
+
+  @addPriorityChangeReasonsConsolidated
+  Scenario: Should be able to Add PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on button PriorityChangeReasons add 'Add'
+    Then User fills up the 'string' PriorityChangeReasons details
+    Then User clicks on PriorityChangeReasons save button
+    Then User verify if the PriorityChangeReasons is created
+
+  @EditPriorityChangeReasonsConsolidated
+  Scenario: Should be able to Edit PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on button PriorityChangeReasons add 'Add'
+    Then User fills up the 'string' PriorityChangeReasons details
+    Then User clicks on PriorityChangeReasons save button
+    Then User verify if the PriorityChangeReasons is created
+    Then User clicks on active PriorityChangeReasons in the grid
+    Then User clicks on PriorityChangeReasons save button
+    Then User verify if the PriorityChangeReasons is created
+
+  @DeletePriorityChangeReasonsConsolidated
+  Scenario: Should be able to Delete PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on active RM PriorityChangeReasons in the grid to delete
+    Then User verify if the RM PriorityChangeReasons is deleted
+
+  @ExportToExcelPriorityChangeReasonsConsolidated
+  Scenario: Should be able to Export to excel PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @PriorityChangeReasonsPaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on PriorityChangeReasons grid pagination 'Pagination'
+
+  @PriorityChangeReasonsDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM PriorityChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
+    Then User clicks on PriorityChangeReasons grid Data Per Page 10

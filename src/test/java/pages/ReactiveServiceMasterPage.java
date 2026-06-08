@@ -917,7 +917,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             throw e;
         }
     }
-    //Root Cause Data per page check Starts
+    //Resolution Data per page check Starts
     public void ResolutionCodeDataPerPage(int expectedSize) {
         WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
@@ -1002,6 +1002,52 @@ public class ReactiveServiceMasterPage extends BasePage {
         utils.typeText(SEARCH_PCR, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
+    }
+    //Priority Change Reasons Pagination and Data per page starts
+    public void PriorityChangeReasonsPagination(String PriorityChangeReasonsPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPriorityReasons']")));
+            String beforeText = firstRowBefore.getText();
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPriorityReasons_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_grdPriorityReasons']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + PriorityChangeReasonsPagination);
+            throw e;
+        }
+    }
+    //Priority Change Reasons data per page check Starts
+    public void PriorityChangeReasonsDataPerPage(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_grdPriorityReasons_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
     //Contract Group Change Reasons
     public void clickOnMasterRM_CtGrpChangeReasons(String clickOnMasterRM_CtGrpChangeReasons) throws InterruptedException {
