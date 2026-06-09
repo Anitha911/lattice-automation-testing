@@ -551,6 +551,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_CTIR_todelete() {
         tmp.verifyCTIRDelete(generateCTIR);
     }
+    //Pagination in grid starts
+    @Then("User clicks on CTIReasons grid pagination {string}")
+    public void user_click_on_CTIReasonsPagination(String CTIReasonsPagination) throws InterruptedException {
+        tmp.CTIReasonsPagination(CTIReasonsPagination);
+    }
+    //No of data per page
+    @Then("User clicks on CTIReasons grid Data Per Page {int}")
+    public void user_click_on_CTIReasonsDataPerPage(int CTIReasonsDataPerPage) throws InterruptedException {
+        tmp.CTIReasonsDataPerPage(CTIReasonsDataPerPage);
+    }
     //Service Request Reason
     @Then("User clicks on the Core masters RM ServiceRequestReasons {string} tab")
     public void user_click_on_core_masters_RM_SRR(String title) throws InterruptedException {
