@@ -575,3 +575,67 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
     Then User clicks on ContractGroupChangeReasons grid Data Per Page 10
+
+  @ADDSLAFailureJustificationReasonsConsolidated
+  Scenario: Should be able to Add SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on button SLAFailureJustification add 'Add'
+    Then User fills up the 'string' SLAFailureJustification details
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+
+  @EditSLAFailureJustificationReasonsConsolidated
+  Scenario: Should be able to Edit SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on button SLAFailureJustification add 'Add'
+    Then User fills up the 'string' SLAFailureJustification details
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+    Then User clicks on active SLAFailureJustification in the grid
+    Then User clicks on SLAFailureJustification save button
+    Then User verify if the SLAFailureJustification is created
+
+  @DeleteSLAFailureJustificationReasonsConsolidated
+  Scenario: Should be able to Delete SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on active RM SLAFailureJustification in the grid to delete
+    Then User verify if the RM SLAFailureJustification is deleted
+
+  @ExportToExcelSLAFailureJustificationReasonsConsolidated
+  Scenario: Should be able to Export to excel SLA Failure Justification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on RM Export to Excel button
+
+  @SLAFailureJustificationPaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM SLAFailureJustification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on SLAFailureJustification grid pagination 'Pagination'
+
+  @SLAFailureJustificationDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM SLAFailureJustification
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM SLAFailureJustification 'string' tab
+    Then User clicks on SLAFailureJustification grid Data Per Page 10
