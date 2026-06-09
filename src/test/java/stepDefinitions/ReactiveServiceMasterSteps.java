@@ -460,6 +460,16 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_CGCR_todelete() {
         tmp.verifyCGCRDelete(generateCONTRACTGRPCR);
     }
+    //Pagination in grid starts
+    @Then("User clicks on ContractGroupChangeReasons grid pagination {string}")
+    public void user_click_on_ContractGroupChangeReasonsPagination(String ContractGroupChangeReasonsPagination) throws InterruptedException {
+        tmp.ContractGroupChangeReasonsPagination(ContractGroupChangeReasonsPagination);
+    }
+    //No of data per page
+    @Then("User clicks on ContractGroupChangeReasons grid Data Per Page {int}")
+    public void user_click_on_ContractGroupChangeReasonsDataPerPage(int ContractGroupChangeReasonsDataPerPage) throws InterruptedException {
+        tmp.ContractGroupChangeReasonsDataPerPage(ContractGroupChangeReasonsDataPerPage);
+    }
     //SLA Failure Justification Reason
     @Then("User clicks on the Core masters RM SLAFailureJustification {string} tab")
     public void user_click_on_core_masters_RM_SLAFailureJustification(String title) throws InterruptedException {

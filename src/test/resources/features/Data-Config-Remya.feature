@@ -512,3 +512,66 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM 'string' tab
     Then User clicks on the Core masters RM PriorityChangeReasons 'string' tab
     Then User clicks on PriorityChangeReasons grid Data Per Page 10
+
+  @addContractGroupChangeReasonsConsolidated
+  Scenario: Should be able to Add ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on button ContractGroupChangeReasons add 'Add'
+    Then User fills up the 'string' ContractGroupChangeReasons details
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+
+  @EditContractGroupChangeReasonsConsolidated
+  Scenario: Should be able to Edit ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on button ContractGroupChangeReasons add 'Add'
+    Then User fills up the 'string' ContractGroupChangeReasons details
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+    Then User clicks on active ContractGroupChangeReasons in the grid
+    Then User clicks on ContractGroupChangeReasons save button
+    Then User verify if the ContractGroupChangeReasons is created
+
+  @DeleteContractGroupChangeReasonsConsolidated
+  Scenario: Should be able to Delete ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on active RM ContractGroupChangeReasons in the grid to delete
+    Then User verify if the RM ContractGroupChangeReasons is deleted
+
+  @ExportToExcelContractGroupChangeReasonsConsolidated
+  Scenario: Should be able to Export to excel ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on RM 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+
+    #only one page data is available hence will not work
+  @ContractGroupChangeReasonsPaginationConsolidated
+  Scenario: Should be able to Check Pagination in RM ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on ContractGroupChangeReasons grid pagination 'Pagination'
+
+  @ContractGroupChangeReasonsDataPerPageConsolidated
+  Scenario: Should be able to Check Data Per Page in RM ContractGroupChangeReasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the Core masters RM 'string' tab
+    Then User clicks on the Core masters RM ContractGroupChangeReasons 'string' tab
+    Then User clicks on ContractGroupChangeReasons grid Data Per Page 10
