@@ -117,7 +117,6 @@ public class SalesMasterPage extends BasePage {
     public void verifyClientTypeDelete(String expectedTitle) {
         utils.typeText(SEARCH_CLIENTTYPE, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
-        //By locator = By.cssSelector(String.format("[id='ctl00_ContentPlaceHolder1_GrdModes_ctl00__0 td[title='%s']//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
 
@@ -131,8 +130,9 @@ public class SalesMasterPage extends BasePage {
             throw e;
         }
     }
-
-    //Enquiry Type
+//
+   //
+// Enquiry Type
     public void clickOnEnquiryType(String clickOnEnquiryType) throws InterruptedException {
         try {
             By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_RadAjxPanel1']/div/div/div/div[1]/div/div/div[1]/div/div/div/a[2]", clickOnEnquiryType));

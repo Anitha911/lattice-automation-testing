@@ -70,7 +70,7 @@ public class SalesMasterSteps {
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.ClientTypeclickExportToExcel(xpath);
     }
-    //Enquiry Type
+        //Enquiry Type
     @Then ("User clicks on the sales master {string} in side menu")
     public void user_click_on_EnquiryType(String title) throws InterruptedException {
         String xpath = "//*[@id=ctl00_ContentPlaceHolder1_RadAjxPanel1/div/div/div/div[1]/div/div/div[1]/div/div/div/a[2]";

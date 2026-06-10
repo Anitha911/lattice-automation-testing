@@ -768,4 +768,42 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Core masters RM ServiceRequestReasons 'string' tab
     Then User clicks on ServiceRequestReasons grid Data Per Page 10
 
+  #Sales Enquiry Management Data Config
+  @SalesMasteraddClientTypesConsolidated
+  Scenario: Should be able to add Sales Client Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on button Sales client types add 'Add'
+    Then User fills up the 'Client Type Name' details
+    Then User clicks on Client Type save button
+    Then User verify if the Client Type is created
+
+  @SalesMasterEditClientTypesConsolidated
+  Scenario: Should be able to Edit Sales Client Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on active Client Type in the grid
+    Then User clicks on Client Type save button
+    Then User verify if the Client Type is created
+
+  @SalesMasterDeleteClientTypesConsolidated
+  Scenario: Should be able to Delete Sales Client Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on active Client Type in the grid to delete
+    Then User verify if the Client Type is deleted
+
+  @ExporttoExcelClientTypesConsolidated
+  Scenario: Should be able to export to Excel Sales Client Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on Sales Client Type Export to Excel button
 
