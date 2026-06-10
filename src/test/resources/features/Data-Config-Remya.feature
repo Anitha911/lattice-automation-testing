@@ -807,3 +807,240 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on Sales Client Type Export to Excel button
 
+  @SalesMasteraddEnquiryTypesConsolidated
+  Scenario: Should be able to Add Sales Enquiry Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master 'Sales Enquiry Types' in side menu
+    Then User clicks on button Sales Enquiry types add 'Add'
+    Then User fills up the Enquiry type 'Enquiry Type Name' details
+    Then User clicks on Enquiry Type save button
+    Then User verify if the Enquiry Type is created
+
+  @SalesMasterEditEnquiryTypesConsolidated
+  Scenario: Should be able to Edit Sales Enquiry Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master 'Sales Enquiry Types' in side menu
+    Then User clicks on active Enquiry Type in the grid
+    Then User clicks on Enquiry Type save button
+    Then User verify if the Enquiry Type is created
+
+  @SalesMasterDeleteEnquiryTypesConsolidated
+  Scenario: Should be able to Edit Sales Enquiry Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master 'Sales Enquiry Types' in side menu
+    Then User clicks on active Enquiry Type in the grid to delete
+    Then User verify if the Enquiry Type is deleted
+
+  @ExporttoExcelEnquiryTypesConsolidated
+  Scenario: Should be able to export to Excel Sales Client Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master 'Sales Enquiry Types' in side menu
+    Then User clicks on Sales Enquiry Type Export to Excel button
+
+  @SalesMasteraddEnquirySourcesConsolidated
+  Scenario: Should be able to Add Sales Enquiry Sources
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master source 'Sales Source' in side menu
+    Then User clicks on button Sales Enquiry Source add 'Add'
+    Then User fills up the Enquiry Source 'Enquiry Source Name' details
+    Then User clicks on Enquiry Source save button
+    Then User verify if the Enquiry Source is created
+
+  @SalesMasterEditEnquirySourcesConsolidated
+  Scenario: Should be able to Edit Sales Enquiry Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master source 'Sales Source' in side menu
+    Then User clicks on active Enquiry Source in the grid
+    Then User clicks on Enquiry Source save button
+    Then User verify if the Enquiry Source is created
+
+  @SalesMasterDeleteEnquirySourcesConsolidated
+  Scenario: Should be able to delete Sales Enquiry Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master source 'Sales Source' in side menu
+    Then User clicks on active Enquiry Source in the grid to delete
+    Then User verify if the Enquiry Source is deleted
+
+  @ExporttoExcelEnquirySourcesConsolidated
+  Scenario: Should be able to Export To Excel Sales Enquiry Source
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master source 'Sales Source' in side menu
+    Then User clicks on Sales Enquiry Source Export to Excel button
+
+  @SalesMasteraddTermsandConditionsConsolidated
+  Scenario: Should be able to Add Sales Terms and Conditions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
+    Then User clicks on button Sales Terms and Conditions add 'Add'
+    Then User fills up the Enquiry Terms and Conditions 'Sales T and C' details
+    Then User clicks on Sales T and C save button
+    Then User verify if the Sales T and C is created
+
+  @SalesMasterEditTermsandConditionsConsolidated
+  Scenario: Should be able to Edit Sales Terms and Conditions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
+    Then User clicks on active T and C in the grid
+    Then User clicks on Sales T and C update button
+    Then User verify if the Sales T and C is created
+
+  @SalesMasterDeleteTermsandConditionsConsolidated
+  Scenario: Should be able to Delete Terms and Conditions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
+    Then User clicks on active T and C in the grid to delete
+    Then User verify if the T and C is deleted
+
+  @SalesMasterExporttoExcelTermsandConditions
+  Scenario: Should be able to Export To Excel T and C
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
+    Then User clicks on T and C Export to Excel Button
+
+  @SalesMasteraddExclusionsConsolidated
+  Scenario: Should be able to Add Sales Exclusions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
+    Then User clicks on button Sales Sales Exclusion add 'Add'
+    Then User fills up the Enquiry Sales Exclusion 'Sales Exclusion' details
+    Then User clicks on Sales Exclusion save button
+    Then User verify if the Sales Exclusion is created
+
+  @SalesMasterEditExclusionsConsolidated
+  Scenario: Should be able to Edit Sales Exclusions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
+    Then User clicks on active Enquiry Exclusion in the grid
+    Then User clicks on Sales Exclusion save button
+    Then User verify if the Sales Exclusion is created
+
+  @SalesMasterDeleteExclusionConsolidateds
+  Scenario: Should be able to Delete Sales Exclusions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
+    Then User clicks on active sales master Exclusions in the grid to delete
+    Then User verify if the sales master Exclusions is deleted
+
+  @SalesMasterExportToExcelExclusionsConsolidated
+  Scenario: Should be able to Export to Excel Sales Exclusions
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
+    Then User clicks on Exclusions Export to Excel Button
+
+  @SalesMasteraddPaymentTermsConsolidated
+  Scenario: Should be able to Add Sales Payment Terms
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
+    Then User clicks on button Sales Payment Terms add 'Add'
+    Then User fills up the Enquiry Payment Terms 'Payment Terms' details
+    Then User clicks on Payment Terms save button
+    Then User verify if the Payment Terms is created
+
+  @SalesMasterEditPaymentTermsConsolidated
+  Scenario: Should be able to Edit Sales Payment Terms
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
+    Then User clicks on active Enquiry Payment Terms in the grid
+    Then User clicks on Payment Terms update button
+    Then User verify if the Payment Terms is created
+
+  @SalesMasterDeletePaymentTermsConsolidated
+  Scenario: Should be able to Delete Sales Payment Terms
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
+    Then User clicks on active sales master Payment Terms in the grid to delete
+    Then User verify if the sales master Payment Terms is deleted
+
+  @SalesMasterExportToExcelPaymentTermsConsolidated
+  Scenario: Should be able to Export to Excel Sales Payment Terms
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
+    Then User Clicks on Export to Excel Button
+
+  @SalesMasterEditQuotationTypesConsolidated
+  Scenario: Should be able to Edit Sales Quotation Types
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Quotation Types 'Quotation Types' in side menu
+    Then User clicks on active Enquiry Quotation Type in the grid to Edit
+    Then User clicks on Quotation Types update button
+
+  @SalesMasterDeleteQuotationTypesConsolidated
+  Scenario: Should be able to Delete Sales Quotation Types
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Quotation Types 'Quotation Types' in side menu
+    Then User clicks on active sales master Quotation Types in the grid to delete
+
+  @SalesMasterExportToExcelQuotationTypesConsolidated
+  Scenario: Should be able to Export to Excel Sales Quotation Types
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Quotation Types 'Quotation Types' in side menu
+    Then User Clicks on Export to Excel Button

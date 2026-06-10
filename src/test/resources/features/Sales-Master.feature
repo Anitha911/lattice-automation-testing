@@ -178,7 +178,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User verify if the Sales Exclusion is created
 
   @SalesMasterEditExclusions
-  Scenario: Should be able to Edit Sales Enquiry Source
+  Scenario: Should be able to Edit Sales Exclusions
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
@@ -189,7 +189,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User verify if the Sales Exclusion is created
 
   @SalesMasterDeleteExclusions
-  Scenario: Should be able to Edit Sales Enquiry Source
+  Scenario: Should be able to Delete Sales Exclusions
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
@@ -199,7 +199,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User verify if the sales master Exclusions is deleted
 
   @SalesMasterExportToExcelExclusions
-  Scenario: Should be able to Edit Sales Enquiry Source
+  Scenario: Should be able to Export to Excel Sales Exclusions
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
