@@ -597,5 +597,15 @@ public class ReactiveServiceMasterSteps {
     public void user_Verify_first_active_SRR_todelete() {
         tmp.verifySRRDelete(generateSRR);
     }
+    //Pagination in grid starts
+    @Then("User clicks on ServiceRequestReasons grid pagination {string}")
+    public void user_click_on_ServiceRequestReasonsPagination(String ServiceRequestReasonsPagination) throws InterruptedException {
+        tmp.ServiceRequestReasonsPagination(ServiceRequestReasonsPagination);
+    }
+    //No of data per page
+    @Then("User clicks on ServiceRequestReasons grid Data Per Page {int}")
+    public void user_click_on_ServiceRequestReasonsDataPerPage(int ServiceRequestReasonsDataPerPage) throws InterruptedException {
+        tmp.ServiceRequestReasonsDataPerPage(ServiceRequestReasonsDataPerPage);
+    }
 }
 
