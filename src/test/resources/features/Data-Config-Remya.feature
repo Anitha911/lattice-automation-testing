@@ -1044,3 +1044,21 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on the sales master Quotation Types 'Quotation Types' in side menu
     Then User Clicks on Export to Excel Button
+
+  @SalesMasterExportToExcelQuotationLineTypesConsolidated
+  Scenario: Should be able to Export to Excel Sales Quotation Line Types
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Quotation Line Types 'Quotation Line Types' in side menu
+    Then User Clicks on Export to Excel Button
+
+  @SalesMasterExportToExcelOtherCostConsolidated
+  Scenario: Should be able to Export to Excel Sales Other Cost
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Quotation Other Cost 'Quotation Other Cost' in side menu
+    Then User Clicks on Export to Excel Button
