@@ -1197,3 +1197,95 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master Item SubCategory 'string' in side menu
     Then User clicks on Inventory Item SubCategory Export to Excel button
+
+  @addUnitConversionConsolidated
+  Scenario: Should be able to add Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+
+  @EditUnitConversionConsolidated
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+    Then User clicks on active Unit Conversion in the grid
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+
+  @DeleteUnitConversionConsolidated
+  Scenario: Should be able to Delete Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on active Unit Conversion in the grid to delete
+    Then User verify if the Unit Conversion is deleted
+
+  @ExportToExcelUnitConversionConsolidated
+  Scenario: Should be able to Export to Excel Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addStoreGroupConsolidated
+  Scenario: Should be able to add Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+
+  @EditStoreGroupConsolidated
+  Scenario: Should be able to Edit Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+    Then User clicks on active Store Group in the grid
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+
+  @DeleteStoreGroupConsolidated
+  Scenario: Should be able to Delete Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on active Store Group in the grid to delete
+    Then User verify if the Store Group is deleted
+
+  @ExportToExcelStoreGroupConsolidated
+  Scenario: Should be able to Export To Excel Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
