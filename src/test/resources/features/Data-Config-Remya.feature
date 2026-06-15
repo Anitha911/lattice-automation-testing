@@ -1289,3 +1289,48 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master Store Group 'string' in side menu
     Then User clicks on Inventory Export to Excel button
+
+  @addUOMConsolidated
+  Scenario: Should be able to add UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @EditUOMConsolidated
+  Scenario: Should be able to Edit UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User clicks on active UOM in the grid
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @DeleteUOMConsolidated
+  Scenario: Should be able to delete UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on active UOM in the grid to delete
+    Then User verify if the UOM is deleted
+
+  @ExportToExcelUOMConsolidated
+  Scenario: Should be able to Export to Excel UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
