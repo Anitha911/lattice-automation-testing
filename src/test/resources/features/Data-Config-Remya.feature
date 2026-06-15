@@ -1334,3 +1334,95 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master UOM 'string' in side menu
     Then User clicks on Inventory Export to Excel button
+
+  @addSupplierTypeConsolidated
+  Scenario: Should be able to add Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @EditSupplierTypeConsolidated
+  Scenario: Should be able to Edit Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+    Then User clicks on active Supplier Type in the grid
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @DeleteSupplierTypeConsolidated
+  Scenario: Should be able to Delete Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on active Supplier Type in the grid to delete
+    Then User verify if the Supplier Type is deleted
+
+  @ExportToExcelSuppliertypeConsolidated
+  Scenario: Should be able to Export to Excel Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addActionReasonsConsolidated
+  Scenario: Should be able to add Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @EditActionReasonsConsolidated
+  Scenario: Should be able to Edit Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+    Then User clicks on active Action Reasons in the grid
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @DeleteActionReasonsConsolidated
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on active Action Reasons in the grid to delete
+    Then User verify if the Action Reasons is deleted
+
+  @ExportToExcelActionReasonsConsolidated
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
