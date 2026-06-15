@@ -347,6 +347,14 @@ public class TestDataGenerator {
 
     //Sales Transaction End
     //Energy Utility start
+    public String generateEnergyType() {
+        String[] mode = {"tstEnergyType1", "tstEnergyType2", "tstEnergyType3", "tstEnergyType4", "tstEnergyType5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+    public String generateEnergyTypeShortName() {
+        String[] mode = {"tstEnergyTypeShrt1", "tstEnergyTypeShrt2", "tstEnergyTypeShrt3", "tstEnergyTypeShrt4", "tstEnergyTypeShrt5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
     public String generatePremiseMeterAccDescNumber() {
         String[] mode = {"tstPMAD1", "tstPMAD2", "tstPMAD3", "tstPMAD4", "tstPMAD5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);    }

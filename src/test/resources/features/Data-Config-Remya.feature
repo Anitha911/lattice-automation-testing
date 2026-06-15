@@ -1426,3 +1426,131 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Inventory 'string' tab
     Then User clicks on the Inventory master Action Reasons 'string' in side menu
     Then User clicks on Inventory Export to Excel button
+
+        #Guard Patrol Module Data Configuration
+  @addPatrolModesConsolidated
+  Scenario: Should be able to add Patrolling modes
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on button patrol add 'Add'
+    Then User fills up the 'Mode' Patrol mode details
+    Then User clicks on Patrol Mode save button
+    Then User verify if the Patrol Mode is created
+
+  @PatrolModesEditConsolidated
+  Scenario: Should be able to edit a company/prevent duplicate
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on active Patrol mode in the grid
+    Then User clicks on Patrol Mode save button
+    Then User verify if the Patrol Mode is created
+
+  @PatrolModesDeleteConsolidated
+  Scenario: Should be able to delete a Patrol Mode
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on first Valid Patrol Mode to delete
+    Then User verify if the Mode is deleted
+
+  @ExportToExcelModeConsolidated
+  Scenario: Should be able to export to excel  Patrol Mode
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on Mode Export to Excel button
+
+  @addPatrolGuardShiftsConsolidated
+  Scenario: Should be able to add Patrolling Shifts
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on the 'Patrol Guard Shifts' in side menu
+    Then User clicks on button shifts add 'Add'
+    Then User fills up the 'Shift' Patrol Shift details
+    Then User clicks on Patrol Shift save button
+    Then User verify if the Patrol Shift is created
+
+  @PatrolShiftEditConsolidated
+  Scenario: Should be able to edit a Patrol Shift
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on the 'Patrol Guard Shifts' in side menu
+    Then User clicks on active Patrol Shift in the grid
+    Then User clicks on Patrol Shift save button
+    Then User verify if the Patrol Shift is created
+
+  @PatrolShiftDeleteConsolidated
+  Scenario: Should be able to delete a Patrol Shift
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on the 'Patrol Guard Shifts' in side menu
+    Then User clicks on first Valid Patrol Shift to delete
+    Then User verify if the Shift is deleted
+
+  @ExportToExcelShiftConsolidated
+  Scenario: Should be able to export to excel Patrol Shift
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the guard optional 'Optional Masters-Guard patrolling Management' tab
+    Then User clicks on the 'Patrol Guard Shifts' in side menu
+    Then User clicks on Mode Export to Excel button
+
+    #Energy Utility DataConfiguration
+  @addEnergyTypeConsolidated
+  Scenario: Should be able to add Energy Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
+    #Then User clicks on the 'Patrol Guard Shifts' in side menu
+    Then User clicks on button Energy Types add 'Add'
+    Then User fills up the 'Energy Types' Energy Types details
+    Then User clicks on Energy Types save button
+    Then User verify if the Energy Type is created
+
+  @EditEnergyTypeConsolidated
+  Scenario: Should be able to Edit Energy Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
+    Then User clicks on active Energy Type in the grid
+    Then User clicks on Energy Types save button
+    Then User verify if the Energy Type is created
+
+  @DeleteEnergyTypeConsolidated
+  Scenario: Should be able to Delete Energy Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
+    Then User clicks on active Energy Type in the grid to Delete
+    Then User verify if the Energy Type is deleted
+
+  @ExportToExcelEnergyTypeConsolidated
+  Scenario: Should be able to Export To Excel Energy Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
+    Then User clicks on Mode Export to Excel button
+
