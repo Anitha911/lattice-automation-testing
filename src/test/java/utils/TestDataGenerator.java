@@ -362,6 +362,10 @@ public class TestDataGenerator {
         double price = ThreadLocalRandom.current().nextDouble(1, 10000);
         return String.format(Locale.US, "%.2f", price);
     }
+    public String generateEnergyGrpName() {
+        String[] mode = {"tstEnergyGrp1", "tstEnergyGrp2", "tstEnergyGrp3", "tstEnergyGrp4", "tstEnergyGrp5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
     //Energy Utility End
     public String generateCompanyType() {
         String[] levels = {"Consultancy", "Expertise", "Digital Provider", "Technical", "Academic"};

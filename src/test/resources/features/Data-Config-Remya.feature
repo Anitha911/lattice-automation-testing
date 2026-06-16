@@ -1554,3 +1554,15 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
     Then User clicks on Mode Export to Excel button
 
+  @addReportingGroupConsolidated
+  Scenario: Should be able to add Reporting Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the Energy TrackingMgmt 'Energy Tracking Management' tab
+    Then User clicks on the Reporting Group 'Reporting Group' in side menu
+    Then User clicks on button Reporting group add 'Add'
+    Then User fills up the 'Reporting Group' Reporting Group details
+    Then User clicks on Reporting Group save button
+    Then User verify if the Reporting Group is created
