@@ -25,6 +25,8 @@ public class EnergyUtilityMasterPage extends BasePage {
     public static final By SAVE_BUTTON_REPORTINGGROUP=By.id("ctl00_ContentPlaceHolder1_RadWinReportingGrp_C_BtnGrpNameSave");
     public static final By SEARCH_REPORTINGGRP = By.cssSelector("[alt='Filter GroupName column']");
     public static final By ENERGYREPORTING_GROUP_INPUT = By.id("RadTextGroupName");
+    public static final By SEARCH_FIRST_REPORTINGGRP=By.id("ctl00_ContentPlaceHolder1_grdReportingGrp_ctl00__0");
+    public static final By DELETE_FIRST_REPORTINGGRP_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdReportingGrp_ctl00_ctl04_ImageButton3");
 
     public void clickOnEnergyTrackingOpt(String clickOnEnergyTrackingOpt) throws InterruptedException {
         try {
@@ -153,6 +155,19 @@ public class EnergyUtilityMasterPage extends BasePage {
     public void verifyReportingGroupSaveButton(String expectedTitle) {
         utils.typeText(SEARCH_REPORTINGGRP,expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_grdReportingGrp_ctl00__0']/td[2]",expectedTitle));
+        utils.isElementVisible(locator);
+    }
+    public void clickActiveReportingGrouptoEdit() {
+        utils.click(SEARCH_FIRST_REPORTINGGRP);
+    }
+    public void clickActivereportingGrptoDelete() {
+        utils.click(DELETE_FIRST_REPORTINGGRP_IN_LIST);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void verifyReportingGrpDelete(String expectedTitle) {
+        utils.typeText(SEARCH_REPORTINGGRP,expectedTitle + Keys.ENTER);
+        By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
 }

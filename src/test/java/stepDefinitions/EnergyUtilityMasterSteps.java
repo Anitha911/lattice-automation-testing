@@ -83,4 +83,16 @@ public class EnergyUtilityMasterSteps {
     public void verifyReportingGrpSaveButton() {
         tmp.verifyReportingGroupSaveButton(generateEnergyGroupName);
     }
+    @Then("User clicks on active Reporting Group in the grid")
+    public void user_clicks_on_first_active_ReportingGroup_to_edit() {
+        tmp.clickActiveReportingGrouptoEdit();
+    }
+    @Then("User clicks on active Reporting Group in the grid to delete")
+    public void user_clicks_on_first_active_ReportingGrp_to_delete() {
+        tmp.clickActivereportingGrptoDelete();
+    }
+    @Then("User verify if the Reporting Group is deleted")
+    public void user_Verify_first_active_ReportingGrp_to_delete() {
+        tmp.verifyReportingGrpDelete(generateEnergyGroupName);
+    }
 }
