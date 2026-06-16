@@ -11,6 +11,12 @@ public class InventoryManagementPage extends BasePage {
     public InventoryManagementPage(WebDriver driver) {
         super(driver);
     }
+    public static final By SUPPLIER_NAME = By.id("txt_SupplierName");
+    public static final By SUPPLIER_EMAIL = By.id("txt_Email");
+    public static final By SUPPLIER_MOBILE = By.id("txt_Mobile");
+    public static final By SUPPLIERTYPPE_DD = By.cssSelector("[value='Select Supplier Type']");
+    public static final By SAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinSupplier_C_RadSave");
+
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("7"));
@@ -39,9 +45,9 @@ public class InventoryManagementPage extends BasePage {
         try {
             WebElement element = driver.findElement(By.id("ContentPlaceHolder1_chkInactive"));
             element.click();
-            System.out.println("Clicked on Inactive Supplier Click: " );
+            System.out.println("Clicked on Inactive Supplier: " );
         } catch (Exception e) {
-            System.out.println("Failed to click on Inactive Supplier Click: " );
+            System.out.println("Failed to click on Inactive Supplier: " );
             throw e;
         }
     }
@@ -92,5 +98,46 @@ public class InventoryManagementPage extends BasePage {
             throw new AssertionError("More rows than expected! Found: " + actualSize);
         }
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    public void enterSupplierName(String SupplierName) {
+        utils.typeText(SUPPLIER_NAME, SupplierName);
+    }
+    public void enterSupplierEmail(String SupplierEmail) {
+        utils.typeText(SUPPLIER_EMAIL, SupplierEmail);
+    }
+    public void enterSupplierMobile(String SupplierMobile) {
+        utils.typeText(SUPPLIER_MOBILE, SupplierMobile);
+    }
+    public void selectSupplierType(String SupplierType) {
+        try {
+            utils.click(SUPPLIERTYPPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", SupplierType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + SupplierType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + SupplierType);
+            throw e;
+        }
+    }
+    public void ClickSupplierSave() {
+        By[] saveButtons = {SAVE_BUTTON_SUPPLIER};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void AddSupplier()throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadAdd"));
+            element.click();
+            System.out.println("Clicked on Add Supplier : " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on Add Supplier : " );
+            throw e;
+        }
     }
 }

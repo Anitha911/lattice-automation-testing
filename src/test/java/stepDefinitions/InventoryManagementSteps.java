@@ -44,4 +44,20 @@ public class InventoryManagementSteps {
     public void user_click_on_InventoryManagementSuppliergridDataPerPage(int GrdSupplierDataPerPage) throws InterruptedException {
         tmp.validatePageSizeGrdSupplier(GrdSupplierDataPerPage);
     }
+    @Then("User Clicks Add Supplier Button {string}" )
+    public void user_click_on_AddSupplier(String title) throws InterruptedException {
+        //String id = "ctl00_ContentPlaceHolder1_RadAdd";
+        tmp.AddSupplier();
+    }
+    @Then("User enters the Supplier Details in the Supplier Pop up")
+    public void userFillsSupplierDetails() {
+        tmp.enterSupplierName(dataGen.generateCustomerName());
+        tmp.enterSupplierEmail(dataGen.generateCustEmail());
+        tmp.enterSupplierMobile(dataGen.generateCustMobile());
+        tmp.selectSupplierType("Supplier");
+    }
+    @Then("User clicks the Supplier Save button")
+    public void user_click_on_SupplierSaveButton() {
+        tmp.ClickSupplierSave();
+    }
 }
