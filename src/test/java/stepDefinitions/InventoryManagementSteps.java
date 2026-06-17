@@ -46,7 +46,6 @@ public class InventoryManagementSteps {
     }
     @Then("User Clicks Add Supplier Button {string}" )
     public void user_click_on_AddSupplier(String title) throws InterruptedException {
-        //String id = "ctl00_ContentPlaceHolder1_RadAdd";
         tmp.AddSupplier();
     }
     @Then("User enters the Supplier Details in the Supplier Pop up")
@@ -59,5 +58,21 @@ public class InventoryManagementSteps {
     @Then("User clicks the Supplier Save button")
     public void user_click_on_SupplierSaveButton() {
         tmp.ClickSupplierSave();
+    }
+    @Then("User clicks the first active Supplier to Edit")
+    public void user_clicks_on_first_active_Supplier_to_edit() {
+        tmp.clickActiveSuppliertoEdit();
+    }
+    @Then("User clicks the Edit Supplier Button")
+    public void user_click_on_SupplierEditButton() {
+        tmp.ClickSupplierEdit();
+    }
+    @Then("User clicks the DeActivate Supplier Button")
+    public void user_click_on_SupplierDeactivateButton() {
+        tmp.ClickSupplierDeactivate();
+    }
+    @Then("User clicks the DeActivate Supplier Yes Button")
+    public void user_click_on_SupplierDeactivateYesButton() {
+        tmp.ClickSupplierDeactivateYes();
     }
 }

@@ -16,6 +16,10 @@ public class InventoryManagementPage extends BasePage {
     public static final By SUPPLIER_MOBILE = By.id("txt_Mobile");
     public static final By SUPPLIERTYPPE_DD = By.cssSelector("[value='Select Supplier Type']");
     public static final By SAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinSupplier_C_RadSave");
+    public static final By SEARCH_FIRST_SUPPLIER_EDIT=By.id("ctl00_ContentPlaceHolder1_Supplier_Grid_ctl00__0");
+    public static final By EDIT_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By DEACTIVATE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btndeactivateS");
+    public static final By DEACTIVATE_YES_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinDeactivate_C_btnDeActivate");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -140,4 +144,18 @@ public class InventoryManagementPage extends BasePage {
             throw e;
         }
     }
+    public void clickActiveSuppliertoEdit() {
+        utils.click(SEARCH_FIRST_SUPPLIER_EDIT);
+    }
+    public void ClickSupplierEdit() {
+        utils.click(EDIT_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierDeactivate() {
+        utils.click(DEACTIVATE_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierDeactivateYes() {
+        utils.click(DEACTIVATE_YES_BUTTON_SUPPLIER);
+    }
 }
+
+

@@ -42,3 +42,28 @@ Feature: Inventory Management Module Automation
     When User Clicks Add Supplier Button 'Add Supplier'
     When User enters the Supplier Details in the Supplier Pop up
     Then User clicks the Supplier Save button
+
+  @TransInventoryMgmtSupplierEditSupplier
+  Scenario: Should be able to Edit Supplier
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory Management 'Inventory Management' in side menu
+    Then User Clicks on Inventory Management Supplier 'Supplier' in side menu
+    When User clicks the first active Supplier to Edit
+    When User clicks the Edit Supplier Button
+    Then User clicks the Supplier Save button
+
+  @TransInventoryMgmtSupplierDeactivateSupplier
+  Scenario: Should be able to Deactivate Supplier on deactivate Button
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory Management 'Inventory Management' in side menu
+    Then User Clicks on Inventory Management Supplier 'Supplier' in side menu
+    When User clicks the first active Supplier to Edit
+    When User clicks the DeActivate Supplier Button
+    When User clicks the DeActivate Supplier Yes Button
+
+
+
+
+
