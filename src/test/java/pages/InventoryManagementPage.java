@@ -20,6 +20,10 @@ public class InventoryManagementPage extends BasePage {
     public static final By EDIT_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btnSave");
     public static final By DEACTIVATE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btndeactivateS");
     public static final By DEACTIVATE_YES_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinDeactivate_C_btnDeActivate");
+    public static final By EMAIL_DOMAIN_SECTION_SUPPLIER=By.xpath(String.format("//*[@id='munEmailDomain']"));
+    public static final By EMAIL_DOMAIN_ADD_SUPPLIER=By.xpath(String.format("//*[@id='Span2220']"));
+    public static final By EMAIL_DOMAINSAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_btnSave");
+    public static final By SUPPLIER_EMAIL_DOMAIN_DETAIL=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_txtdomainname");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -155,6 +159,18 @@ public class InventoryManagementPage extends BasePage {
     }
     public void ClickSupplierDeactivateYes() {
         utils.click(DEACTIVATE_YES_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainSection() {
+        utils.click(EMAIL_DOMAIN_SECTION_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainAdd() {
+        utils.click(EMAIL_DOMAIN_ADD_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainSave() {
+        utils.click(EMAIL_DOMAINSAVE_BUTTON_SUPPLIER);
+    }
+    public void enterSupplierEmailDomainDetail(String enterSupplierEmailDomainDetail) {
+        utils.typeText(SUPPLIER_EMAIL_DOMAIN_DETAIL, enterSupplierEmailDomainDetail);
     }
 }
 

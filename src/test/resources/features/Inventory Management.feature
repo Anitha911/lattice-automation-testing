@@ -63,6 +63,18 @@ Feature: Inventory Management Module Automation
     When User clicks the DeActivate Supplier Button
     When User clicks the DeActivate Supplier Yes Button
 
+  @TransInventoryMgmtSupplierAddEmailDomain
+  Scenario: Should be able to Add Supplier Email Domain
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory Management 'Inventory Management' in side menu
+    Then User Clicks on Inventory Management Supplier 'Supplier' in side menu
+    When User clicks the first active Supplier to Edit
+    Then User clicks EmailDomain section
+    When USer Clicks the Add Email Domain Button
+    Then User Enters Email Domain Name
+    Then User clicks Add Email Domain Save Button
+
 
 
 

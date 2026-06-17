@@ -75,4 +75,20 @@ public class InventoryManagementSteps {
     public void user_click_on_SupplierDeactivateYesButton() {
         tmp.ClickSupplierDeactivateYes();
     }
+    @Then("User clicks EmailDomain section")
+    public void user_click_on_SupplierEmailDomainSection() {
+        tmp.ClickSupplierEmailDomainSection();
+    }
+    @Then("USer Clicks the Add Email Domain Button")
+    public void user_click_on_SupplierEmailDomainAdd() {
+        tmp.ClickSupplierEmailDomainAdd();
+    }
+    @Then("User Enters Email Domain Name")
+    public void user_click_on_EmailDomainDetail() {
+        tmp.enterSupplierEmailDomainDetail(dataGen.generateCustEmail());
+    }
+    @Then("User clicks Add Email Domain Save Button")
+    public void user_click_on_SupplierEmailDomainSave() {
+        tmp.ClickSupplierEmailDomainSave();
+    }
 }
