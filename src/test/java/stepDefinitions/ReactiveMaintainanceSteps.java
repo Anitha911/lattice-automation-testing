@@ -69,4 +69,21 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMNotesSaveButton() {
         tmp.ClickRMNotesSave();
     }
+    //PTW Add
+    @Then("User clicks Permit To Work section in the left side")
+    public void user_click_on_RMDetailPTWSection() throws InterruptedException {
+        tmp.RMDetailPTWSection();
+    }
+    @Then("User Clicks on Add RM Permit To Work {string}")
+    public void user_click_on_RM_AddPermitToWork(String AddPTW) throws InterruptedException {
+        tmp.clickOnAddRMPTW(AddPTW);
+    }
+    @Then("User enters the RM Permit To Work Details")
+    public void userFillsRMPTWDetails() {
+        tmp.selectRMPTWType("12052026RK PTW");
+    }
+    @Then("User Clicks RM Permit To Work Save Button")
+    public void user_click_on_RMPTWSaveButton() {
+        tmp.ClickRMPTWSave();
+    }
 }
