@@ -45,4 +45,15 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_NewRequestSaveButton() {
         tmp.ClickNewRequestSave();
     }
+    //RM Detail Page
+    @Then("User clicks on the RM Console Window Reactive WO {string} tab")
+    public void user_click_on_RMRequestDetail(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-graphs']/div[2]/div/ul[2]/li[2]/a";
+        tmp.RMRequestDetail(xpath);
+    }
+    @Then("User clicks the first WO to open the detail page")
+    public void user_click_on_RMRequestDetailOpen() throws InterruptedException {
+        //String xpath = "//*[@id='tab-graphs']/div[2]/div/ul[2]/li[2]/a";
+        tmp.RMRequestDetailOpen();
+    }
 }

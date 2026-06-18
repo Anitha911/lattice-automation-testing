@@ -165,4 +165,30 @@ public class ReactiveMaintainancePage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //RM Detail Page
+    public void RMRequestDetail(String RMRequestDetail) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-graphs']/div[2]/div/ul[2]/li[2]/a", RMRequestDetail)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on RMNewRequest Detail Page: " + RMRequestDetail);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMNewRequest Detail Page: " + RMRequestDetail);
+            throw e;
+        }
+    }
+    public void RMRequestDetailOpen() throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdRM_ctl00__0"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            Actions actions = new Actions(driver);
+            actions.doubleClick(element).perform();
+            System.out.println("Clicked on RMNewRequest Detail Page First Record:");
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMNewRequest Detail Page First Record: ");
+            throw e;
+        }
+    }
 }
