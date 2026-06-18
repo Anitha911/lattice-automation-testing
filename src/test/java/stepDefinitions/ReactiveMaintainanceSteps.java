@@ -53,7 +53,20 @@ public class ReactiveMaintainanceSteps {
     }
     @Then("User clicks the first WO to open the detail page")
     public void user_click_on_RMRequestDetailOpen() throws InterruptedException {
-        //String xpath = "//*[@id='tab-graphs']/div[2]/div/ul[2]/li[2]/a";
         tmp.RMRequestDetailOpen();
+    }
+    //Add Notes
+    @Then("User Clicks on Add RM Notes {string}")
+    public void user_click_on_RM_Addnotes(String AddNotes) throws InterruptedException {
+        tmp.clickOnAddRMNotes(AddNotes);
+    }
+    @Then("User enters the RM Notes Details")
+    public void userFillsRMNotesDetails() {
+        tmp.enterRMNotesComments(dataGen.generateComments());
+        tmp.selectRMNoteType("Commercial");
+    }
+    @Then("User Clicks RM Notes Save Button")
+    public void user_click_on_RMNotesSaveButton() {
+        tmp.ClickRMNotesSave();
     }
 }

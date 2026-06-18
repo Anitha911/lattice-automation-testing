@@ -22,7 +22,9 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By FAULTCATEGORY_DD = By.cssSelector("[value='Select Fault Category']");
     public static final By FAULTCODE_DD = By.cssSelector("[value='Select Fault Code']");
     public static final By SUBMITREQUEST = By.id("ctl00_ContentPlaceHolder1_btnSave");
-
+    public static final By RM_NOTES = By.id("ctl00_ContentPlaceHolder1_Notes_radwin_addnotes_popup_C_AddNotes_txtApprovalNote");
+    public static final By RM_NOTETYPE_DD = By.cssSelector("[value='Select Note Type / Category']");
+    public static final By SAVE_BUTTON_RMNOTES = By.id("ctl00_ContentPlaceHolder1_Notes_radwin_addnotes_popup_C_AddNotes_btnNoteSave");
 
 
     public void MenuRM(String MenuRM) throws InterruptedException {
@@ -190,5 +192,59 @@ public class ReactiveMaintainancePage extends BasePage{
             System.out.println("Failed to click on RMNewRequest Detail Page First Record: ");
             throw e;
         }
+    }
+    public void clickOnAddRMNotes(String clickOnAddRMNotes) {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.getWindowHandles().size() > 1);
+
+            for (String handle : driver.getWindowHandles()) {
+                if (!handle.equals(parentWindow)) {
+                    driver.switchTo().window(handle);
+                    break;
+                }
+            }
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            WebElement el = wait.until(
+                    ExpectedConditions.presenceOfElementLocated
+                            (By.xpath(("(//*[@id='addnotes'])[2]")))
+
+            );
+            js.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+            js.executeScript("arguments[0].click();", el);
+            System.out.println("Clicked on the RM detail Page Note: " + clickOnAddRMNotes);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the RM Detail Page Note: " + clickOnAddRMNotes);
+            throw e;
+        }
+    }
+    public void enterRMNotesComments(String enterNotesComments) {
+        utils.typeText(RM_NOTES, enterNotesComments);
+    }
+    public void selectRMNoteType(String selectNoteType) {
+        try {
+            //
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0, -500);");
+            utils.click(RM_NOTETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectNoteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectNoteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectNoteType);
+            throw e;
+        }
+    }
+    public void ClickRMNotesSave() {
+        By[] saveButtons = {SAVE_BUTTON_RMNOTES};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
     }
 }
