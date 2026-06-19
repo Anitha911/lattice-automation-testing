@@ -23,7 +23,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User verify if the Client Type is created
 
   @SalesMasterDeleteClientTypes
-  Scenario: Should be able to add Sales Client Type
+  Scenario: Should be able to Delete Sales Client Type
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
@@ -63,7 +63,7 @@ Feature: Sales Enquiry data configuration Module Automation
       Then User verify if the Enquiry Type is created
 
   @SalesMasterDeleteEnquiryTypes
-  Scenario: Should be able to Edit Sales Enquiry Type
+  Scenario: Should be able to Delete Sales Enquiry Type
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
@@ -157,7 +157,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User verify if the T and C is deleted
 
   @SalesMasterExporttoExcelTermsandConditions
-  Scenario: Should be able to Edit Sales Enquiry Source
+  Scenario: Should be able to Export To Excel Terms and Conditions
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
     Then User clicks on Data Config 'Data configuration' in side menu
