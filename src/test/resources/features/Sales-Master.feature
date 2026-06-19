@@ -39,7 +39,20 @@ Feature: Sales Enquiry data configuration Module Automation
       Then User clicks on the additional masters Sales 'string' tab
       Then User clicks on Sales Client Type Export to Excel button
 
-    @SalesMasteraddEnquiryTypes
+  @addSalesClientTypeValidation
+  Scenario: User should not be able to save Sales Client Type form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on button Sales client types add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Sales Client Type
+    Then User clicks on Client Type save button
+    When user verify the inline error message 'Enter Client Type Name' on Sales Client Type
+
+
+  @SalesMasteraddEnquiryTypes
     Scenario: Should be able to Add Sales Enquiry Type
       Given User navigates to 'lattice.url' page
       Then User is at home screen after login with "username" and "password"
@@ -80,6 +93,20 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on the sales master 'Sales Enquiry Types' in side menu
     Then User clicks on Sales Enquiry Type Export to Excel button
+
+  @addSalesEnquiryTypeValidation
+  Scenario: User should not be able to save Sales Enquiry Type form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User waits 2 seconds
+    Then User clicks on 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master 'Sales Enquiry Types' in side menu
+    Then User clicks on button Sales Enquiry types add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Sales Enquiry Type
+    Then User clicks on Enquiry Type save button
+    When user verify the inline error message 'Enter Enquiry Type Name' on Sales Enquiry Type
+
 
   @SalesMasteraddEnquirySources
   Scenario: Should be able to Add Sales Enquiry Sources
@@ -123,6 +150,18 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master source 'Sales Source' in side menu
     Then User clicks on Sales Enquiry Source Export to Excel button
 
+  @addSalesEnquirySourceValidation
+  Scenario: User should not be able to save Sales Enquiry Source  form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master source 'Sales Source' in side menu
+    Then User clicks on button Sales Enquiry Source add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Sales Enquiry Source
+    Then User clicks on Enquiry Source save button
+    When user verify the inline error message 'Enter Enquiry Source Name' on Sales Enquiry Source
+
   @SalesMasteraddTermsandConditions
   Scenario: Should be able to Add Sales Terms and Conditions
     Given User navigates to 'lattice.url' page
@@ -164,6 +203,20 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
     Then User clicks on T and C Export to Excel Button
+
+  @addSalesTermsAndConditionValidation
+  Scenario: User should not be able to save Sales Terms And Condition form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
+    Then User clicks on button Sales Terms and Conditions add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Terms and Conditions
+    When user verify the chars min len as 2 and max len as 50 on Default Value
+    Then User clicks on Sales T and C save button
+    When user verify the inline error message 'Enter Terms And Conditions' on Sales Terms And Conditions
+
 
   @SalesMasteraddExclusions
   Scenario: Should be able to Add Sales Exclusions
@@ -207,6 +260,19 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
     Then User clicks on Exclusions Export to Excel Button
 
+  @addSalesExclusionsValidation
+  Scenario: User should not be able to save Sales Exclusions form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
+    Then User clicks on button Sales Sales Exclusion add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Exclusions
+    Then User clicks on Sales Exclusion save button
+    When user verify the inline error message 'Enter Exclusions' on Sales Exclusions
+
+
   @SalesMasteraddPaymentTerms
   Scenario: Should be able to Add Sales Payment Terms
     Given User navigates to 'lattice.url' page
@@ -248,6 +314,20 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
     Then User Clicks on Export to Excel Button
+
+  @addSalesPaymentTermsValidation
+  Scenario: User should not be able to save Sales Payment Terms form with invalid inputs
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Sales 'string' tab
+    Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
+    Then User clicks on button Sales Payment Terms add 'Add'
+    When user verify the chars min len as 3 and max len as 50 on Payment Terms
+    When user verify the chars min len as 2 and max len as 50 on P T Default Value
+    Then User clicks on Payment Terms save button
+    When user verify the inline error message 'Enter Payment Terms' on Sales Payment Terms
+
 
   @SalesMasterEditQuotationTypes
   Scenario: Should be able to Edit Sales Quotation Types
