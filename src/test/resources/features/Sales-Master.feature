@@ -39,7 +39,7 @@ Feature: Sales Enquiry data configuration Module Automation
       Then User clicks on the additional masters Sales 'string' tab
       Then User clicks on Sales Client Type Export to Excel button
 
-  @addSalesClientTypeValidation
+  @addSalesClientTypeValidationInput
   Scenario: User should not be able to save Sales Client Type form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -94,7 +94,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master 'Sales Enquiry Types' in side menu
     Then User clicks on Sales Enquiry Type Export to Excel button
 
-  @addSalesEnquiryTypeValidation
+  @addSalesEnquiryTypeValidationInput
   Scenario: User should not be able to save Sales Enquiry Type form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -150,7 +150,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master source 'Sales Source' in side menu
     Then User clicks on Sales Enquiry Source Export to Excel button
 
-  @addSalesEnquirySourceValidation
+  @addSalesEnquirySourceValidationInput
   Scenario: User should not be able to save Sales Enquiry Source  form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -204,7 +204,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master Terms and Conditions 'Sales T and C' in side menu
     Then User clicks on T and C Export to Excel Button
 
-  @addSalesTermsAndConditionValidation
+  @addSalesTermsAndConditionValidationInput
   Scenario: User should not be able to save Sales Terms And Condition form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -260,7 +260,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master Exclusions 'Sales Exclusion' in side menu
     Then User clicks on Exclusions Export to Excel Button
 
-  @addSalesExclusionsValidation
+  @addSalesExclusionsValidationInput
   Scenario: User should not be able to save Sales Exclusions form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -315,7 +315,7 @@ Feature: Sales Enquiry data configuration Module Automation
     Then User clicks on the sales master Payment Terms 'Payment terms' in side menu
     Then User Clicks on Export to Excel Button
 
-  @addSalesPaymentTermsValidation
+  @addSalesPaymentTermsValidationInput
   Scenario: User should not be able to save Sales Payment Terms form with invalid inputs
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
