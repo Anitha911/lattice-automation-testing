@@ -177,7 +177,7 @@ public class ReactiveServiceMasterSteps {
         generateFCode = dataGen.generateFCodeName();
         tmp.enterFCodeName(generateFCode);
         tmp.selectFaultCodeSG("Carpentry");
-        tmp.selectFaultCodeFC("Carpentry");
+        //tmp.selectFaultCodeFC("Carpentry");
         tmp.selectFaultCodeWOType("Reactive Maintenance");
         tmp.selectFaultCodeRCA("Mandatory");
     }

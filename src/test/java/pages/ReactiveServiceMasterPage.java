@@ -36,7 +36,9 @@ public class ReactiveServiceMasterPage extends BasePage {
 
     public static final By FCODE_NAME = By.id("radtxtSubTask");
     public static final By FCODE_SG_DD = By.cssSelector("[value='Select Service Group']");
-    public static final By FCODE_FC_DD = By.cssSelector("[value='Select Fault Category']");
+    //public static final By FCODE_FC_DD = By.cssSelector("[value='Select Fault Category']");
+    public static final By FCODE_FC_DD = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpTask']");
+
     public static final By FCODE_WOTYPE_DD = By.cssSelector("[value='Select Work Order Type']");
     public static final By FCODE_RCA_DD = By.cssSelector("[value='Select Root Cause Applicability']");
     public static final By SAVE_BUTTON_FCODE = By.id("ctl00_ContentPlaceHolder1_RadWinSubTask_C_btnSubTask");
@@ -462,7 +464,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void selectFaultCodeFC(String FCodeFC) {
         try {
             utils.click(FCODE_FC_DD);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeFC));
+            By locator = By.xpath(String.format("//li[contains(@class,'rcbItem') and normalize-space()='%s']", FCodeFC));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + FCodeFC);
         } catch (Exception e) {
@@ -473,7 +475,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void selectFaultCodeWOType(String FCodeWOType) {
         try {
             utils.click(FCODE_WOTYPE_DD);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeWOType));
+            By locator = By.xpath(String.format("//li[contains(@class,'rcbItem') and normalize-space()='%s']", FCodeWOType));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + FCodeWOType);
         } catch (Exception e) {
@@ -484,7 +486,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public void selectFaultCodeRCA(String FCodeRCA) {
         try {
             utils.click(FCODE_RCA_DD);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FCodeRCA));
+            By locator = By.xpath(String.format("//li[contains(@class,'rcbItem') and normalize-space()='%s']", FCodeRCA));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + FCodeRCA);
         } catch (Exception e) {

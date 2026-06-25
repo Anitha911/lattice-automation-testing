@@ -139,7 +139,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User fills up the 'Fault Code' Fault Code details
     #
     #When User select the '' Fault Code Service Group dropdown
-    #When User select the '' Fault Code Fault Category dropdown
+    When User select the '' Fault Code Fault Category dropdown
     #When User select the '' Fault Code Work Order Type dropdown
     #When User select the '' Fault Code Root Cause Category dropdown
     #
