@@ -54,7 +54,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_PRIORITY = By.cssSelector("[alt='Filter PriorityName column']");
     public static final By SEARCH_FIRST_PRIORITY_EDIT = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00__0");
     public static final By DELETE_FIRST_PRIORITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00_ctl04_imgDelete");
-    public static final By PRIORITY_SLA_TYPE = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_grdPrioritySla_ctl00_ctl04_txtSLATime");
+    public static final By PRIORITY_SLA_TYPE = By.xpath("//input[contains(@id,'txtSLATime')]");
 
     public static final By WOSOURCE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_radtxtWOSourceName");
     public static final By SAVE_BUTTON_WOSOURCE = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_btnWOSourceOk");

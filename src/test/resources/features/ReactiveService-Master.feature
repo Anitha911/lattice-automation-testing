@@ -200,8 +200,8 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on the Core masters RM Fault Priority 'string' tab
     When User clicks on button Fault Priority add 'Add'
     When User fills up the 'Fault Priority' Fault Priority details
-    #When User clicks on Fault Priority save button
-    When User clicks on RM Master save button
+    When User clicks on Fault Priority save button
+    #When User clicks on RM Master save button
     Then User verify if the Fault Priority is created
 
   @EditFaultPriority
