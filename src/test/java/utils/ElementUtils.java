@@ -9,9 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Utility class to handle Selenium interactions safely with logging and retry logic.
@@ -42,7 +46,7 @@ public class ElementUtils {
         }
     }
 
-    private WebElement waitUntilClickable(By locator) {
+    public WebElement waitUntilClickable(By locator) {
         try {
             return wait.until(ExpectedConditions.elementToBeClickable(locator));
         } catch (TimeoutException e) {
@@ -52,9 +56,19 @@ public class ElementUtils {
         }
     }
 
-    private void performJsClick(WebElement element) {
+    public void performJsClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
         LOGGER.info("[JS CLICK] EXECUTED JAVASCRIPT CLICK AS FALLBACK.");
+    }
+
+    public void performJsClick(By locator) {
+
+        WebElement element = driver.findElement(locator);
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", element);
+
+        LOGGER.info("[JS CLICK] EXECUTED JAVASCRIPT CLICK.");
     }
 
     private WebElement findElementSafely(By locator) {
@@ -66,6 +80,12 @@ public class ElementUtils {
         }
     }
 
+
+    public void waitForElementVisible(By firstItem, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
+    }
     /* ---------------------- ELEMENT INTERACTIONS ---------------------- */
 
     /**
@@ -148,15 +168,15 @@ public class ElementUtils {
     /**
      * Verifies that the page title matches the expected title.
      */
-    public ElementUtils verifyPageTitleIs(String expectedTitle) {
-        LOGGER.info("[ASSERT] VERIFYING PAGE TITLE. EXPECTED: " + expectedTitle);
-        String actualTitle = driver.getTitle().trim();
-        if (!actualTitle.equals(expectedTitle)) {
-            throw new FrameworkException("PAGE TITLE MISMATCH! EXPECTED: " + expectedTitle + " | ACTUAL: " + actualTitle);
-        }
-        LOGGER.info("[PASS] PAGE TITLE VERIFIED: " + actualTitle);
-        return this;
-    }
+//    public ElementUtils verifyPageTitleIs(String expectedTitle) {
+//        LOGGER.info("[ASSERT] VERIFYING PAGE TITLE. EXPECTED: " + expectedTitle);
+//        String actualTitle = driver.getTitle().trim();
+//        if (!actualTitle.equals(expectedTitle)) {
+//            throw new FrameworkException("PAGE TITLE MISMATCH! EXPECTED: " + expectedTitle + " | ACTUAL: " + actualTitle);
+//        }
+//        LOGGER.info("[PASS] PAGE TITLE VERIFIED: " + actualTitle);
+//        return this;
+//    }
 
     /**
      * Verifies that the current URL matches the expected URL.
@@ -294,18 +314,35 @@ public class ElementUtils {
         js.executeScript("arguments[0].click();", element);
         return this;
     }
-
     public ElementUtils waitForElementVisible(By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
         return this;
-
-
     }
 
+    public void waitForElementClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
+    public void jsClick(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+    }
     public void clear(By locator) {
         waitForElementVisible(locator);
         driver.findElement(locator).clear();
     }
-}
+
+//Asset Management
+
+       public void doubleClick(By locator) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("var evt = new MouseEvent('dblclick', {bubbles: true}); arguments[0].dispatchEvent(evt);", element);
+    }
+
+     }
+
+
+
