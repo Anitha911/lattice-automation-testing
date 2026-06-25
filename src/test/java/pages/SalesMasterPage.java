@@ -1,9 +1,9 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.*;
+import utils.ElementUtils;
+
+import static utils.JavaScriptExeUtil.jsClick;
 
 public class SalesMasterPage extends BasePage {
     public SalesMasterPage(WebDriver driver) {
@@ -26,6 +26,7 @@ public class SalesMasterPage extends BasePage {
     public static final By SEARCH_FIRST_ENQUIRY_SOURCE_DELETE = By.id("ctl00_ContentPlaceHolder1_grd_EnquirySource_ctl00_ctl04_ImageButton1");
     public static final By SEARCH_FIRST_ENQUIRY_SOURCE_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_EnquirySource_ctl00__0");
     public static final By ENQUIRY_TANDC_INPUT = By.id("RadtxtTermsConditions");
+    public static final By ENQUIRY_TANDC_INPUT_EDIT = By.id("RadtxtTermsConditionsEdit");
     public static final By SAVE_BUTTON_TANDC_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinTermsAndCon_C_btnTermsConditionsSave");
     public static final By SEARCH_ENQUIRYTANDC = By.cssSelector("[alt='Filter TermsandConditions column']");
     public static final By SEARCH_FIRST_ENQUIRYTANDC_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_TermsAndCondition_ctl00__0");
@@ -37,6 +38,7 @@ public class SalesMasterPage extends BasePage {
     public static final By SEARCH_FIRST_EXCLUSIONS_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_Exclusion_ctl00__0");
     public static final By SEARCH_FIRST_EXCLUSIONS_DELETE = By.id("ctl00_ContentPlaceHolder1_grd_Exclusion_ctl00_ctl04_ImageButton1");
     public static final By ENQUIRY_PAYMENTTERMS_INPUT = By.id("radtxtPaymentTerms");
+    public static final By ENQUIRY_PAYMENTTERMS_INPUT_EDIT = By.id("radtxtPaymentTermsEdit");
     public static final By SAVE_BUTTON_PAYMENTTERMS_INPUT = By.id("ctl00_ContentPlaceHolder1_RadWinPaymentTerms_C_btnPaymentTermsSave");
     public static final By SEARCH_ENQUIRYPAYMENTTERMS = By.cssSelector("[alt='Filter PaymentTerms column']");
     public static final By SEARCH_FIRST_PAYMENTTERMS_EDIT = By.id("ctl00_ContentPlaceHolder1_grd_PaymentsTerms_ctl00__0");
@@ -86,17 +88,41 @@ public class SalesMasterPage extends BasePage {
         utils.typeText(CLIENT_TYPE_NAME_INPUT, name);
     }
 
-    public void userClicksOnClientTypeSaveButton() {
-        By[] saveButtons = {SAVE_BUTTON_CLIENTTYPE};
+    public void userClicksOnSalesMasterSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_CLIENTTYPE,SAVE_BUTTON_ENQUIRYTYPE,SAVE_BUTTON_ENQUIRYSOURCE,SAVE_BUTTON_TANDC_INPUT,
+                SAVE_BUTTON_EXCLUSIONS_INPUT,SAVE_BUTTON_PAYMENTTERMS_INPUT};
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
-                utils.click(button);
+                //utils.click(button);
+                //return;
+                WebElement element = driver.findElement(button);
+                jsClick(driver, element);
+                utils.waitUntilInvisible(button);
+                ElementUtils.waitForLoaderToDisappear();
                 return;
             }
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //
+    public void clickSaveButtonInlineError() {
+        By[] saveButtons = {SAVE_BUTTON_CLIENTTYPE,SAVE_BUTTON_ENQUIRYTYPE,SAVE_BUTTON_ENQUIRYSOURCE,SAVE_BUTTON_TANDC_INPUT,
+                SAVE_BUTTON_EXCLUSIONS_INPUT,SAVE_BUTTON_PAYMENTTERMS_INPUT};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+//                WebElement element = driver.findElement(button);
+//                jsClick(driver, element);
+//                utils.waitUntilInvisible(button);
+//                ElementUtils.waitForLoaderToDisappear();
+//                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
 
+ //
     public void verifyClientTypecreation(String expectedTitle) {
         utils.typeText(SEARCH_CLIENTTYPE, expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_Client_Grid_ctl00__0]/td[1]", expectedTitle));
@@ -107,11 +133,20 @@ public class SalesMasterPage extends BasePage {
         utils.click(SEARCH_FIRST_CLIENT_TYPE_EDIT);
     }
 
-    public void clickActiveClientTypetoDelete() {
-        utils.click(DELETE_FIRST_CLIENT_TYPE_IN_LIST);
-        //driver.switchTo().activeElement();
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
+    public void clickActiveSalesMastertoDelete() {
+        //utils.click(DELETE_FIRST_CLIENT_TYPE_IN_LIST);
+        //
+            By[] deleteButtons = {DELETE_FIRST_CLIENT_TYPE_IN_LIST,SEARCH_FIRST_ENQUIRY_TYPE,SEARCH_FIRST_ENQUIRY_SOURCE_DELETE,
+                    SEARCH_FIRST_TANDC_DELETE,SEARCH_FIRST_EXCLUSIONS_DELETE,SEARCH_FIRST_PAYMENTTERMS_DELETE,SEARCH_FIRST_QUOTATIONTYPES_DELETE};
+            for (By button : deleteButtons) {
+                if (utils.isElementVisible(button)) {
+                    utils.click(button);
+                    Alert alert = driver.switchTo().alert();
+                    alert.accept();
+                    return;
+                }
+            }
+            throw new RuntimeException("No Delete button is present on the page.");
     }
 
     public void verifyClientTypeDelete(String expectedTitle) {
@@ -119,7 +154,6 @@ public class SalesMasterPage extends BasePage {
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }
-
     public void ClientTypeclickExportToExcel(String clickOnExporttoExcelClienttypeButton) throws InterruptedException {
         try {
             By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", clickOnExporttoExcelClienttypeButton));
@@ -130,8 +164,6 @@ public class SalesMasterPage extends BasePage {
             throw e;
         }
     }
-//
-   //
 // Enquiry Type
     public void clickOnEnquiryType(String clickOnEnquiryType) throws InterruptedException {
         try {
@@ -301,7 +333,7 @@ public class SalesMasterPage extends BasePage {
     }
 
     public void enterEnquiryTandC(String name) {
-        utils.typeText(ENQUIRY_TANDC_INPUT, name);
+        utils.typeText(ENQUIRY_TANDC_INPUT_EDIT, name);
     }
 
     public void userClicksOnEnquiryTandCSaveButton() {
@@ -454,7 +486,7 @@ public class SalesMasterPage extends BasePage {
     }
 
     public void enterEnquiryPaymentTerms(String name) {
-        utils.typeText(ENQUIRY_PAYMENTTERMS_INPUT, name);
+        utils.typeText(ENQUIRY_PAYMENTTERMS_INPUT_EDIT, name);
     }
 
     public void userClicksOnEnquiryPaymentTermsSaveButton() {

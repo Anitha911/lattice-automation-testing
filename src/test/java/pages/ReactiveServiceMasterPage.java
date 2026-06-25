@@ -3,10 +3,13 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ElementUtils;
+import utils.HelperUtils;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import static utils.JavaScriptExeUtil.jsClick;
 
 public class ReactiveServiceMasterPage extends BasePage {
     public ReactiveServiceMasterPage(WebDriver driver) {
@@ -20,6 +23,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_SG = By.cssSelector("[alt='Filter ServiceGroupName column']");
     public static final By SEARCH_FIRST_SG_EDIT = By.id("ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00__0");
     public static final By DELETE_FIRST_SG_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_SG_DEPT = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinServiceGrp_C_raddrpDept_DropDown']/div/ul/li");;
 
     public static final By FC_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinTask_C_radtxtTask");
     public static final By FC_DEPT_DD = By.cssSelector("[value='Select Service Group']");
@@ -27,6 +31,8 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_FC = By.cssSelector("[alt='Filter TaskName column']");
     public static final By SEARCH_FIRST_FC_EDIT = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00__0");
     public static final By DELETE_FIRST_FC_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdTask_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_FAULTCATEGORY_SG = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinTask_C_raddrpSerGrp_DropDown']/div/ul/li");;
+
 
     public static final By FCODE_NAME = By.id("radtxtSubTask");
     public static final By FCODE_SG_DD = By.cssSelector("[value='Select Service Group']");
@@ -36,6 +42,10 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SAVE_BUTTON_FCODE = By.id("ctl00_ContentPlaceHolder1_RadWinSubTask_C_btnSubTask");
     public static final By SEARCH_FCODE = By.cssSelector("[alt='Filter SubTaskName column']");
     public static final By DELETE_FIRST_FCODE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSubTask_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_FAULTCODE_SG = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpSubTaskSerGrp_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_FAULTCODE_FAULTCATEGORY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpTask_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_FAULTCODE_WOTYPE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpWorkOrderType_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_RadComRootCauseApp_DropDown']/div/ul/li");;
 
     public static final By PRIORITY_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_radtxtPriority");
     public static final By PRIORITY_NOTES = By.id("radtxtNotes");
@@ -44,6 +54,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_PRIORITY = By.cssSelector("[alt='Filter PriorityName column']");
     public static final By SEARCH_FIRST_PRIORITY_EDIT = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00__0");
     public static final By DELETE_FIRST_PRIORITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdPriority_ctl00_ctl04_imgDelete");
+    public static final By PRIORITY_SLA_TYPE = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_grdPrioritySla_ctl00_ctl04_txtSLATime");
 
     public static final By WOSOURCE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_radtxtWOSourceName");
     public static final By SAVE_BUTTON_WOSOURCE = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_btnWOSourceOk");
@@ -64,6 +75,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_RESCDE = By.cssSelector("[alt='Filter Resolution column']");
     public static final By SEARCH_FIRST_RESCDE_EDIT = By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00__0");
     public static final By DELETE_FIRST_RESCDE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdFailureCode_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE= By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinFailureCode_C_radRootCause_DropDown']/div/ul/li");;
 
     public static final By PCR_NAME = By.id("txtPriorityReason");
     public static final By SAVE_BUTTON_PCR = By.id("ctl00_ContentPlaceHolder1_RadWinPriorityReason_C_btnWoPriReasonSave");
@@ -83,6 +95,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_SLAFJ = By.cssSelector("[alt='Filter Reason column']");
     public static final By SEARCH_FIRST_SLAFJ_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00__0");
     public static final By DELETE_FIRST_SLAFJ_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSLAJustification_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE= By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSLAJustfication_C_RadComSLAType_DropDown']/div/ul/li");;
 
     public static final By CTI_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_RadTxtCTIReason");
     public static final By SAVE_BUTTON_CTI = By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_BtnCTIReasonSave");
@@ -96,6 +109,7 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By SEARCH_SRR = By.cssSelector("[alt='Filter Reason column']");
     public static final By SEARCH_FIRST_SRR_EDIT = By.id("ctl00_ContentPlaceHolder1_grdSRReason_ctl00__0");
     public static final By DELETE_FIRST_SRR_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdSRReason_ctl00_ctl04_ImageButton1");
+    public static final By ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS= By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSRReason_C_raddrpSRReasonType_DropDown']/div/ul/li");;
 
     public void clickOnDataConfiguration(String dataConfiguration) throws InterruptedException {
         try {
@@ -141,6 +155,33 @@ public class ReactiveServiceMasterPage extends BasePage {
             throw e;
         }
     }
+    //SG Department DropDown
+    public void getRandomSGDepartmentDropdown(){
+        try{
+        utils.click(SG_DEPT_DD);
+        ElementUtils.waitForDropdownLoading();
+        utils.waitForVisibility(ALL_OPTIONS_SG_DEPT);
+        HelperUtils.clickRandomElement(driver,ALL_OPTIONS_SG_DEPT);
+
+        //WebElement inputField = driver.findElement(SG_DEPT_DD);
+        //String SelectedValue = inputField.getAttribute("value");
+        //testDataModel.setEnforcingAuthority(SelectedValue);
+
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+//    public static void searchAndSelectACSEnforcingAuthority(String Value){
+//        utils.click(ACS_ENFORCING_AUTHORITY_DROPDOWN);
+//        utils.typeText(ACS_ENFORCING_AUTHORITY_DROPDOWN, Value);
+//        String dropdownfirstValue = "//div[@id='ctl00_ContentPlaceHolder1_RadWinAddAuditCategory_C_radDrpAuthority_DropDown']/div/ul/li[text()='"+Value+"']";
+//        By selValue = By.xpath(dropdownfirstValue);
+//        utils.click(selValue);
+//        testDataModel.setEnforcingAuthority(Value);
+//    }
+//
+
     public void userClicksOnSGSaveButton() {
         By[] saveButtons = {SAVE_BUTTON_SG};
         for (By button : saveButtons) {
@@ -151,6 +192,27 @@ public class ReactiveServiceMasterPage extends BasePage {
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //Save Button Common function in RM data config
+    public void userClicksRMMasterSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_SG,SAVE_BUTTON_FC,SAVE_BUTTON_FCODE,SAVE_BUTTON_PRIORITY,
+                SAVE_BUTTON_WOSOURCE,SAVE_BUTTON_RC,SAVE_BUTTON_RESCODE,SAVE_BUTTON_PCR,
+                SAVE_BUTTON_CGCR,SAVE_BUTTON_SLAFJ,SAVE_BUTTON_CTI,SAVE_BUTTON_SRR};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                //utils.click(button);
+                //return;
+                WebElement element = driver.findElement(button);
+                jsClick(driver, element);
+                utils.waitUntilInvisible(button);
+                ElementUtils.waitForLoaderToDisappear();
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //
+
+
     public void verifySGcreation(String expectedTitle) {
         utils.typeText(SEARCH_SG, expectedTitle + Keys.ENTER);
         By locator = By.xpath(String.format("//*[@id=ctl00_ContentPlaceHolder1_grdServiceGrp_ctl00__0]/td[1]", expectedTitle));
@@ -164,6 +226,22 @@ public class ReactiveServiceMasterPage extends BasePage {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
+    //
+    public void clickActiveRMtoDelete() {
+        By[] deleteButtons = {DELETE_FIRST_SG_IN_LIST,DELETE_FIRST_FC_IN_LIST,DELETE_FIRST_FCODE_IN_LIST,DELETE_FIRST_PRIORITY_IN_LIST,
+                DELETE_FIRST_WOSOURCE_IN_LIST,DELETE_FIRST_RC_IN_LIST,DELETE_FIRST_RESCDE_IN_LIST,DELETE_FIRST_PCR_IN_LIST,
+                DELETE_FIRST_CGCR_IN_LIST,DELETE_FIRST_SLAFJ_IN_LIST,DELETE_FIRST_CTI_IN_LIST,DELETE_FIRST_SRR_IN_LIST};
+        for (By button : deleteButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                Alert alert = driver.switchTo().alert();
+                alert.accept();
+                return;
+            }
+        }
+        throw new RuntimeException("No Delete button is present on the page.");
+    }
+     //
     public void verifySGDelete(String expectedTitle) {
         utils.typeText(SEARCH_SG, expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
@@ -257,6 +335,18 @@ public class ReactiveServiceMasterPage extends BasePage {
             System.out.println("Clicked on the dropdown: " + FCSG);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + FCSG);
+            throw e;
+        }
+    }
+    //Fault Category SG DropDown
+    public void getRandomFaultcategorySGDropdown(){
+        try{
+            utils.click(FC_DEPT_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_FAULTCATEGORY_SG);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCATEGORY_SG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
             throw e;
         }
     }
@@ -402,6 +492,53 @@ public class ReactiveServiceMasterPage extends BasePage {
             throw e;
         }
     }
+    //
+    //Fault Code SG DropDown
+    public void getRandomFaultCodeSGDropdown(){
+        try{
+            utils.click(FCODE_SG_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_SG);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_SG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomFaultCodeFaultCategoryDropdown(){
+        try{
+            utils.click(FCODE_FC_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomFaultCodeWorkOrderTypeDropdown(){
+        try{
+            utils.click(FCODE_WOTYPE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_WOTYPE);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_WOTYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomFaultCodeRootCauseCategorydropdown(){
+        try{
+            utils.click(FCODE_RCA_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+     //
     public void userClicksOnFCodeSaveButton() {
         By[] saveButtons = {SAVE_BUTTON_FCODE};
         for (By button : saveButtons) {
@@ -555,6 +692,9 @@ public class ReactiveServiceMasterPage extends BasePage {
     }
     public void SelectActiveCheckbox() {
         utils.click(PRIORITY_STATUS);
+    }
+    public void SLATypeResponseSLATime(String name) {
+        utils.typeText(PRIORITY_SLA_TYPE, name);
     }
     public void userClicksPrioritySaveButton() {
         By[] saveButtons = {SAVE_BUTTON_PRIORITY};
@@ -863,6 +1003,18 @@ public class ReactiveServiceMasterPage extends BasePage {
             System.out.println("Clicked on the dropdown: " + RootCause);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + RootCause);
+            throw e;
+        }
+    }
+    //Resolution Code Root Cause DropDown
+    public void getRandomResolutionCodeRootCauseDropdown(){
+        try{
+            utils.click(RESCODE_RC_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
             throw e;
         }
     }
@@ -1182,6 +1334,18 @@ public class ReactiveServiceMasterPage extends BasePage {
             throw e;
         }
     }
+    //SLA Failure Justification SLA DropDown
+    public void getRandomSLATypeSLAFailureJustificationDropdown(){
+        try{
+            utils.click(SLAFJ_SLATYPE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
     public void userClicksSLAFJSaveButton() {
         By[] saveButtons = {SAVE_BUTTON_SLAFJ};
         for (By button : saveButtons) {
@@ -1389,6 +1553,18 @@ public class ReactiveServiceMasterPage extends BasePage {
             throw e;
         }
     }
+    //Service Request Reason Type DropDown
+    public void getRandomServiceRequestReasonTypeDropdown(){
+        try{
+            utils.click(SRR_TYPE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS);
+            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
     public void userClicksSRRSaveButton() {
         By[] saveButtons = {SAVE_BUTTON_SRR};
         for (By button : saveButtons) {
@@ -1463,4 +1639,24 @@ public class ReactiveServiceMasterPage extends BasePage {
         }
         System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
     }
+
+    //Save Button Common function in RM data config Inline error
+    public void clickSaveButtonInlineErrorRM() {
+        By[] saveButtons = {SAVE_BUTTON_SG,SAVE_BUTTON_FC,SAVE_BUTTON_FCODE,SAVE_BUTTON_PRIORITY,
+                SAVE_BUTTON_WOSOURCE,SAVE_BUTTON_RC,SAVE_BUTTON_RESCODE,SAVE_BUTTON_PCR,
+                SAVE_BUTTON_CGCR,SAVE_BUTTON_SLAFJ,SAVE_BUTTON_CTI,SAVE_BUTTON_SRR};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+//                WebElement element = driver.findElement(button);
+//                jsClick(driver, element);
+//                utils.waitUntilInvisible(button);
+//                ElementUtils.waitForLoaderToDisappear();
+//                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //
 }

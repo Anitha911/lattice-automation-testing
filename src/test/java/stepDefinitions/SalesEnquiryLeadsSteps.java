@@ -280,7 +280,7 @@ public class SalesEnquiryLeadsSteps {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
             elementUtils.waitForElementVisible(firstItem, 50);  //Uncomment when getting code
-            helperUtils.clickRandomElement(options);
+            helperUtils.clickRandomElement(driver,options);
         }
         //Dropdowns
     @Then("User Clicks on Add Customer Save Button")

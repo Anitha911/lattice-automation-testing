@@ -45,9 +45,9 @@ public class SalesMasterSteps {
         generateClientType = dataGen.generateClientType();
         tmp.enterClientType(generateClientType);
     }
-    @Then("User clicks on Client Type save button")
-    public void userClicksOnClientTypeSaveButton() {
-        tmp.userClicksOnClientTypeSaveButton();
+    @Then("User clicks on Sales Masters save button")
+    public void userClicksOnSalesMasterSaveButton() {
+        tmp.userClicksOnSalesMasterSaveButton();
     }
     @Then("User verify if the Client Type is created")
     public void user_verify_the_success_message_after_creating_Clienttype() {
@@ -59,7 +59,7 @@ public class SalesMasterSteps {
     }
     @Then("User clicks on active Client Type in the grid to delete")
     public void user_clicks_on_first_active_Client_Type_to_delete() {
-        tmp.clickActiveClientTypetoDelete();
+        tmp.clickActiveSalesMastertoDelete();
     }
     @Then("User verify if the Client Type is deleted")
     public void user_Verify_first_active_Client_type_to_delete() {
@@ -97,9 +97,9 @@ public class SalesMasterSteps {
     public void user_clicks_on_first_active_Enquiry_Type_to_edit() {
         tmp.clickActiveEnquiryTypetoEdit();
     }
-    @Then("User clicks on active Enquiry Type in the grid to delete")
-    public void user_clicks_on_first_active_Enquiry_Type_to_delete() {
-        tmp.clickActiveEnquiryTypetoDelete();
+    @Then("User clicks on active Sales Master in the grid to delete")
+    public void user_clicks_on_first_active_Sales_Master_to_delete() {
+        tmp.clickActiveSalesMastertoDelete();
     }
     @Then("User verify if the Enquiry Type is deleted")
     public void user_Verify_first_active_Enquiry_type_to_delete() {
@@ -139,7 +139,7 @@ public class SalesMasterSteps {
     }
     @Then("User clicks on active Enquiry Source in the grid to delete")
     public void user_clicks_on_first_active_Enquiry_Source_to_delete() {
-        tmp.clickActiveEnquirySourcetoDelete();
+        tmp.clickActiveSalesMastertoDelete();
     }
     @Then("User verify if the Enquiry Source is deleted")
     public void user_Verify_first_active_Enquiry_source_to_delete() {
@@ -182,7 +182,7 @@ public class SalesMasterSteps {
     }
     @Then("User clicks on active T and C in the grid to delete")
     public void user_clicks_on_first_active_TandC_to_delete() {
-        tmp.clickActiveTandCtoDelete();
+        tmp.clickActiveSalesMastertoDelete();
     }
     @Then("User verify if the T and C is deleted")
     public void user_Verify_TandC_delete() {
@@ -315,6 +315,10 @@ public class SalesMasterSteps {
         tmp.clickOnSaleOtherCostSortItemCode(btnCostSort);
     }
     //Negative scenarios
+    @When("User clicks on Save button For InLine Error")
+    public void user_clicks_on_save_button_for_in_line_error() {
+        tmp.clickSaveButtonInlineError();
+    }
     @When("user verify the chars min len as {int} and max len as {int} on Sales Client Type")
     public void user_verify_chars_len_ClientTypeName(int minLen, int maxLen) {
         helperUtils.verifyMinAndMaxLength(By.id("radtxtClientType"),maxLen, minLen);

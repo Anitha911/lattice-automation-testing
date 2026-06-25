@@ -1,10 +1,12 @@
 package stepDefinitions;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.InventoryMasterPage;
 import pages.ReactiveServiceMasterPage;
 import utils.DriverFactory;
+import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 
@@ -25,6 +27,9 @@ public class ReactiveServiceMasterSteps {
     public static String generateSLAFJR;
     public static String generateCTIR;
     public static String generateSRR;
+    public static String SLATypeResponseSLATime;
+
+    HelperUtils helperUtils = new HelperUtils(driver);
 
     @Then("User clicks on RM {string} in side menu")
     public void user_click_on_DataConfig(String title) throws InterruptedException {
@@ -48,9 +53,25 @@ public class ReactiveServiceMasterSteps {
         tmp.enterSGName(generateSG);
         tmp.selectDepartment("Finance");
     }
+    //DropDown New Function
+    @When("User select the {string} Service Group Department dropdown")
+    public void user_select_the_SGDepartment_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSGDepartmentDropdown();
+            return;
+        }
+        //tmp.searchAndSelectACSEnforcingAuthority(value);
+    }
+    //
     @Then("User clicks on Service Group save button")
     public void userClicksOnSGSaveButton() {
         tmp.userClicksOnSGSaveButton();
+    }
+
+    //Common function for Save
+    @Then("User clicks on RM Master save button")
+    public void userClicksRMMasterSaveButton() {
+        tmp.userClicksRMMasterSaveButton();
     }
     @Then ("User verify if the Service Group is created")
     public void userVerifyIfTheSGIsCreated() throws InterruptedException {
@@ -63,6 +84,10 @@ public class ReactiveServiceMasterSteps {
     @Then("User clicks on active Service Group in the grid to delete")
     public void user_clicks_on_first_active_SG_to_delete() {
         tmp.clickActiveSGtoDelete();
+    }
+    @Then("User clicks on active RM in the grid to delete")
+    public void user_clicks_on_first_active_RM_to_delete() {
+        tmp.clickActiveRMtoDelete();
     }
     @Then("User verify if the Service Group is deleted")
     public void user_Verify_first_active_SG_to_delete() {
@@ -97,8 +122,16 @@ public class ReactiveServiceMasterSteps {
     public void user_fills_up_the_FC(String type) throws IOException {
         generateFC = dataGen.generateFCName();
         tmp.enterFCName(generateFC);
-        tmp.selectFC("HVAC System");
+        //tmp.selectFC("HVAC System");
     }
+    //DropDown New Function
+    @When("User select the {string} Fault Category Service Group dropdown")
+    public void user_select_the_FaultCategorySG_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomFaultcategorySGDropdown();
+        }
+    }
+    //
     @Then("User clicks on Fault Category save button")
     public void userClicksOnFCSaveButton() {
         tmp.userClicksOnFCSaveButton();
@@ -148,6 +181,35 @@ public class ReactiveServiceMasterSteps {
         tmp.selectFaultCodeWOType("Reactive Maintenance");
         tmp.selectFaultCodeRCA("Mandatory");
     }
+    //DropDown New Function
+    @When("User select the {string} Fault Code Service Group dropdown")
+    public void user_select_the_FaultCodeSG_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomFaultCodeSGDropdown();
+        }
+    }
+    //DropDown New Function
+    @When("User select the {string} Fault Code Fault Category dropdown")
+    public void user_select_the_FaultCodeFaultCategory_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomFaultCodeFaultCategoryDropdown();
+        }
+    }
+    //DropDown New Function
+    @When("User select the {string} Fault Code Work Order Type dropdown")
+    public void user_select_the_FaultCodeWorkOrderType_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomFaultCodeWorkOrderTypeDropdown();
+        }
+    }
+    //DropDown New Function
+    @When("User select the {string} Fault Code Root Cause Category dropdown")
+    public void user_select_the_FaultCodeRootCauseCategorydropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomFaultCodeRootCauseCategorydropdown();
+        }
+    }
+    //
     @Then("User clicks on Fault Code save button")
     public void userClicksOnFCodeSaveButton() {
         tmp.userClicksOnFCodeSaveButton();
@@ -205,6 +267,8 @@ public class ReactiveServiceMasterSteps {
         generatePriorityNote = dataGen.generatePriorityNote();
         tmp.enterPriorityNotes(generatePriorityNote);
         tmp.SelectActiveCheckbox();
+        SLATypeResponseSLATime=dataGen.generateMaxNoParticipants();
+        tmp.SLATypeResponseSLATime(SLATypeResponseSLATime);
     }
     @Then("User clicks on Fault Priority save button")
     public void userClicksPrioritySaveButton() {
@@ -342,8 +406,16 @@ public class ReactiveServiceMasterSteps {
     public void user_fills_up_the_ResolutionCode(String type) throws IOException {
         generateResolutionCodeName = dataGen.generateResolutionCodeName();
         tmp.enterResolutionCode(generateResolutionCodeName);
-        tmp.selectRootCause("Intercom Issues");
+        //tmp.selectRootCause("Intercom Issues");
     }
+    //DropDown New Function
+    @When("User select the {string} Resolution Code Root Cause dropdown")
+    public void user_select_the_ResolutionCodeRootCause_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomResolutionCodeRootCauseDropdown();
+        }
+    }
+    //
     @Then("User clicks on ResolutionCode save button")
     public void userClicksResCdeSaveButton() {
         tmp.userClicksResCdeSaveButton();
@@ -484,8 +556,16 @@ public class ReactiveServiceMasterSteps {
     public void user_fills_up_the_SLAFailureJustification(String type) throws IOException {
         generateSLAFJR = dataGen.generateSLAFJR();
         tmp.enterSLAFJR(generateSLAFJR);
-        tmp.selectSLAType("Resolved");
+        //tmp.selectSLAType("Resolved");
     }
+    //DropDown New Function
+    @When("User select the {string} SLA Type SLAFailureJustification dropdown")
+    public void user_select_the_SLATypeSLAFailureJustification_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSLATypeSLAFailureJustificationDropdown();
+        }
+    }
+    //
     @Then("User clicks on SLAFailureJustification save button")
     public void userClicksSLAFJSaveButton() {
         tmp.userClicksSLAFJSaveButton();
@@ -575,8 +655,16 @@ public class ReactiveServiceMasterSteps {
     public void user_fills_up_the_SRR(String type) throws IOException {
         generateSRR = dataGen.generateSRR();
         tmp.enterSRR(generateSRR);
-        tmp.selectType("Regret");
+        //tmp.selectType("Regret");
     }
+    //DropDown New Function
+    @When("User select the {string} Type ServiceRequestReasons dropdown")
+    public void user_select_the_TypeServiceRequestReasons_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomServiceRequestReasonTypeDropdown();
+        }
+    }
+    //
     @Then("User clicks on ServiceRequestReasons save button")
     public void userClicksSRRSaveButton() {
         tmp.userClicksSRRSaveButton();
@@ -606,6 +694,129 @@ public class ReactiveServiceMasterSteps {
     @Then("User clicks on ServiceRequestReasons grid Data Per Page {int}")
     public void user_click_on_ServiceRequestReasonsDataPerPage(int ServiceRequestReasonsDataPerPage) throws InterruptedException {
         tmp.ServiceRequestReasonsDataPerPage(ServiceRequestReasonsDataPerPage);
+    }
+
+    @When("user verify the inline error message {string} on Service Group")
+    public void userVerifyInlineErrorMessageOnSG(String expectedErrorMessage) {
+        By SGErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinServiceGrp_C_RequiredFieldValidator26");
+        helperUtils.verifyInlineErrorMessage(SGErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Service Group Name")
+    public void user_verify_chars_len_SG(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtServGrp"),maxLen, minLen);
+    }
+    //SAVE INLINE COMMON
+    @When("User clicks on Save button For InLine Error RM")
+    public void user_clicks_on_save_button_for_in_line_error_RM() {
+        tmp.clickSaveButtonInlineErrorRM();
+    }
+    @When("user verify the inline error message {string} on Fault Category")
+    public void userVerifyInlineErrorMessageOnFaultCategoryName(String expectedErrorMessage) {
+        By FaultCatNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTask_C_RequiredFieldValidator29");
+        helperUtils.verifyInlineErrorMessage(FaultCatNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Category Name")
+    public void user_verify_chars_len_FaultCategoryName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinTask_C_radtxtTask"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Code")
+    public void userVerifyInlineErrorMessageOnFaultCodeName(String expectedErrorMessage) {
+        By FaultCodeNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinSubTask_C_RequiredFieldValidator32");
+        helperUtils.verifyInlineErrorMessage(FaultCodeNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Code Name")
+    public void user_verify_chars_len_FaultCodeName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtSubTask"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Priority Name")
+    public void user_verify_chars_len_FaultPriorityName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_radtxtPriority"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Priority")
+    public void userVerifyInlineErrorMessageOnFaultPriorityName(String expectedErrorMessage) {
+        By FaultPriorityNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_RequiredFieldValidator34");
+        helperUtils.verifyInlineErrorMessage(FaultPriorityNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Priority Notes")
+    public void user_verify_chars_len_FaultPriorityNotes(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtNotes"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Priority Notes")
+    public void userVerifyInlineErrorMessageOnFaultPriorityNotes(String expectedErrorMessage) {
+        By FaultPriorityNotesErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinPriority_C_RequiredFieldValidator36");
+        helperUtils.verifyInlineErrorMessage(FaultPriorityNotesErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault WO Source Name")
+    public void user_verify_chars_len_FaultWOSOurceName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_radtxtWOSourceName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault WO Source")
+    public void userVerifyInlineErrorMessageOnFaultWOSource(String expectedErrorMessage) {
+        By FaultWOSourceErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinWorkOrderSource_C_RequiredFieldValidator1");
+        helperUtils.verifyInlineErrorMessage(FaultWOSourceErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Root Cause")
+    public void user_verify_chars_len_FaultRootCause(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtRootCause"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Root Cause")
+    public void userVerifyInlineErrorMessageOnFaultRootCause(String expectedErrorMessage) {
+        By FaultRootCauseErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinRootCause_C_RequiredFieldValidator5");
+        helperUtils.verifyInlineErrorMessage(FaultRootCauseErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Resolution Code")
+    public void user_verify_chars_len_FaultResolutionCode(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtFailureCode"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Resolution Code")
+    public void userVerifyInlineErrorMessageOnFaultResolutionCode(String expectedErrorMessage) {
+        By FaultResolutionCodeErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinFailureCode_C_RequiredFieldValidator7");
+        helperUtils.verifyInlineErrorMessage(FaultResolutionCodeErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Priority Change Reasons")
+    public void user_verify_chars_len_FaultPriorityChangeReasons(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtPriorityReason"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Priority Change Reasons")
+    public void userVerifyInlineErrorMessageOnFaultPriorityChangeReasons(String expectedErrorMessage) {
+        By FaultPriorityChangeReasonsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinPriorityReason_C_RequiredFieldValidator24");
+        helperUtils.verifyInlineErrorMessage(FaultPriorityChangeReasonsErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault Contract Group Change Reasons")
+    public void user_verify_chars_len_FaultContractGroupChangeReasons(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContractReason"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault Contract Group Change Reasons")
+    public void userVerifyInlineErrorMessageOnFaultContractGroupChangeReasons(String expectedErrorMessage) {
+        By FaultContractGroupChangeReasonsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinContractReason_C_RequiredFieldValidator39");
+        helperUtils.verifyInlineErrorMessage(FaultContractGroupChangeReasonsErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault SLA Failure Justification")
+    public void user_verify_chars_len_FaultSLAFailureJustification(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinSLAJustfication_C_RadTxtReasons"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on SLA Failure Justification")
+    public void userVerifyInlineErrorMessageOnFaultSLAFailureJustification(String expectedErrorMessage) {
+        By SLAFailureJustErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinSLAJustfication_C_RequiredFieldValidator37");
+        helperUtils.verifyInlineErrorMessage(SLAFailureJustErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault CTIReasons")
+    public void user_verify_chars_len_CTIReasons(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_RadTxtCTIReason"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on CTIReasons")
+    public void userVerifyInlineErrorMessageOnCTIReasons(String expectedErrorMessage) {
+        By CTIReasonsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinCTIReason_C_RequiredFieldValidator25");
+        helperUtils.verifyInlineErrorMessage(CTIReasonsErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Fault ServiceRequestReasons")
+    public void user_verify_chars_len_ServiceRequestReasons(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinSRReason_C_radtxtReason"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Fault ServiceRequestReasons")
+    public void userVerifyInlineErrorMessageOnsServiceRequestReasons(String expectedErrorMessage) {
+        By ServiceReqReasonsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinSRReason_C_rfvReason");
+        helperUtils.verifyInlineErrorMessage(ServiceReqReasonsErrorLocator, expectedErrorMessage);
     }
 }
 
