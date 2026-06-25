@@ -697,6 +697,14 @@ public class ReactiveServiceMasterPage extends BasePage {
         utils.typeText(PRIORITY_SLA_TYPE, name);
     }
     public void userClicksPrioritySaveButton() {
+        //
+        WebElement saveBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(SAVE_BUTTON_PRIORITY)
+        );
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].focus();", saveBtn);
+
+         //
         By[] saveButtons = {SAVE_BUTTON_PRIORITY};
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {

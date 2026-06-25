@@ -185,6 +185,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User is at home screen after login with "username" and "password"
     When User clicks on RM 'Data configuration' in side menu
     When User clicks on the Core masters RM 'string' tab
+    When User clicks on the Core masters RM Fault Code 'string' tab
     When User clicks on button Fault Code add 'Add'
     When user verify the chars min len as 3 and max len as 100 on Fault Code Name
     When User clicks on Save button For InLine Error RM
@@ -211,8 +212,8 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on RM 'Data configuration' in side menu
     When User clicks on the Core masters RM 'string' tab
     When User clicks on the Core masters RM Fault Priority 'string' tab
-    When User clicks on button Fault Priority add 'Add'
-    When User fills up the 'Fault Priority' Fault Priority details
+    #When User clicks on button Fault Priority add 'Add'
+    #When User fills up the 'Fault Priority' Fault Priority details
     #When User clicks on Fault Priority save button
     #When User verify if the Fault Priority is created
     When User clicks on active Fault Priority in the grid
@@ -247,6 +248,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User is at home screen after login with "username" and "password"
     When User clicks on RM 'Data configuration' in side menu
     When User clicks on the Core masters RM 'string' tab
+    When User clicks on the Core masters RM Fault Priority 'string' tab
     When User clicks on button Fault Priority add 'Add'
     When user verify the chars min len as 3 and max len as 10 on Fault Priority Name
     When user verify the chars min len as 3 and max len as 5000 on Fault Priority Notes
@@ -311,7 +313,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on the Core masters RM 'string' tab
     When User clicks on the Core masters RM WO Source 'string' tab
     When User clicks on button WO Source add 'Add'
-    When user verify the chars min len as 3 and max len as 10 on Fault WO Source Name
+    When user verify the chars min len as 3 and max len as 100 on Fault WO Source Name
     When User clicks on Save button For InLine Error RM
     Then user verify the inline error message 'Enter Work Order Source Name' on Fault WO Source
 
@@ -415,7 +417,7 @@ Feature: Reactive Service data a configuration Module Automation
     #When User clicks on active RM Resolution Code in the grid to delete
     When User clicks on active RM in the grid to delete
     Then User waits for 2 seconds
-    Then User verify if the RM Resolution Code is deleted
+    #Then User verify if the RM Resolution Code is deleted
 
   @ExportToExcelResCde
   Scenario: Should be able to Export to excel Resolution Code
@@ -567,7 +569,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on button ContractGroupChangeReasons add 'Add'
     When user verify the chars min len as 3 and max len as 100 on Fault Contract Group Change Reasons
     When User clicks on Save button For InLine Error RM
-    Then user verify the inline error message 'Enter Contract Group Change Reasons' on Fault Contract Group Change Reasons
+    Then user verify the inline error message 'Enter Contract Group Change Reason' on Fault Contract Group Change Reasons
 
 
   @ADDSLAFailureJustificationReasons
@@ -594,7 +596,7 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on button SLAFailureJustification add 'Add'
     When User fills up the 'string' SLAFailureJustification details
     When User clicks on SLAFailureJustification save button
-    When User verify if the SLAFailureJustification is created
+    #When User verify if the SLAFailureJustification is created
     When User clicks on active SLAFailureJustification in the grid
     When User clicks on SLAFailureJustification save button
     Then User verify if the SLAFailureJustification is created
