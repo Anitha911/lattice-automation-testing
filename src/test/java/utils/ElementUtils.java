@@ -81,8 +81,7 @@ public class ElementUtils {
     }
 
 
-    public void waitForElementVisible(By firstItem, int i)
-    {
+    public void waitForElementVisible(By firstItem, int i) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
     }
@@ -314,6 +313,7 @@ public class ElementUtils {
         js.executeScript("arguments[0].click();", element);
         return this;
     }
+
     public ElementUtils waitForElementVisible(By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -329,6 +329,7 @@ public class ElementUtils {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
+
     public void clear(By locator) {
         waitForElementVisible(locator);
         driver.findElement(locator).clear();
@@ -336,13 +337,87 @@ public class ElementUtils {
 
 //Asset Management
 
-       public void doubleClick(By locator) {
+    public void doubleClick(By locator) {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("var evt = new MouseEvent('dblclick', {bubbles: true}); arguments[0].dispatchEvent(evt);", element);
     }
 
-     }
+    public void selectDropdownByVisibleText(By dropdown, String value) {
+
+        click(dropdown);
+
+        By option = By.xpath("//li[normalize-space()='" + value + "']");
+
+        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+
+    }
+
+    public void scrollToElement(By locator) {
+    }
+
+    public void waitForSeconds(int i) {
+    }
+
+//Asset - Master - Model
+
+    public void selectDropdownByText(By dropdown, String value) {
+
+        click(dropdown);
+
+
+
+        By option = By.xpath("//li[normalize-space(.)='" + value + "']");
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        WebElement element =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(option));
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", element);
+
+        System.out.println("Selected dropdown value: " + value);
+    }
+
+    public void waitUntilDropdownIsPopulated(By dropdown) {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(driver -> {
+
+            String value = driver.findElement(dropdown)
+                    .getAttribute("value");
+
+            System.out.println("Current dropdown value: " + value);
+
+            return value != null
+                    && !value.trim().isEmpty()
+                    && !value.equalsIgnoreCase("Select Make / Brand");
+        });
+    }
+
+    public void waitForElementToDisappear(By locator) {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        try {
+
+            wait.until(
+                    ExpectedConditions.invisibilityOfElementLocated(locator)
+            );
+
+            System.out.println("Loading disappeared successfully.");
+
+        } catch (Exception e) {
+
+            System.out.println("Loading did not disappear within 30 seconds.");
+            throw e;
+        }
+    }
+    }
 
 
 

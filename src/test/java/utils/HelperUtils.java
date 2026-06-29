@@ -132,9 +132,7 @@ public class HelperUtils {
     public void verifyActiveCheckboxSelected(By locator) {
         WebElement checkbox = driver.findElement(locator);
         String html = checkbox.getAttribute("innerHTML");
-        System.out.println("Checkbox HTML: " + html);
-        Assert.assertTrue(
-                html.contains("rbToggleCheckboxChecked"),
+        Assert.assertTrue(html.contains("rbToggleCheckboxChecked"),
                 "Active checkbox is not selected by default");
         System.out.println("PASS: Active checkbox is selected by default");
     }
