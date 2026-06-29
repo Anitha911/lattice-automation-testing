@@ -8,6 +8,7 @@ import java.util.Set;
 import java.time.Duration;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.ElementUtils;
 import utils.HelperUtils;
 import java.util.Random;
 
@@ -84,6 +85,10 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By SITE_SURVEY_DATE = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_dtpStatusSiteSurveyDate_dateInput");
     public static final By ENQUIRY_UPDATE_STATUS_ASSIGNEDTO = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlStatusAssignedTo_Input");
     public static final By QUOTATION_CANCEL = By.id("ctl00_ContentPlaceHolder1_btnCancel");
+    public static final By ALL_OPTIONS_ENQUIRY_TYPE_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquiryType_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_CUSTOMERNAME_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_ENQUIRYSOURCE_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_SALESPERSON_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown']/div/ul/li");;
 
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
@@ -240,6 +245,7 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void selectEnqSource(String EnqSource) {
         try {
+
             utils.click(ENQUIRY_SOURCE_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", EnqSource));
             utils.click(locator);
@@ -252,7 +258,9 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public void selectEnquiryType(String EnqType) {
         try {
             utils.click(ENQUIRY_TYPE_DD);
+            ElementUtils.waitForDropdownLoading();
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", EnqType));
+            utils.waitForVisibility(ALL_OPTIONS_ENQUIRY_TYPE_ADDENQUIRY);
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + EnqType);
         } catch (Exception e) {
@@ -285,6 +293,54 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public void enterEnquiryDesc(String EnquiryDesc) {
         utils.typeText(ENQUIRYDESC, EnquiryDesc);
     }
+    //DropDown
+    //SalesEnquiryCustomerName_Dropdown
+    public static void getRandomSalesEnquiryCustomerNameDropdown(){
+        try{
+            utils.click(ENQUIRY_CUSTOMER_NAME_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_CUSTOMERNAME_ADDENQUIRY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_CUSTOMERNAME_ADDENQUIRY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomSalesEnquirySourceDropdown(){
+        try{
+            utils.click(ENQUIRY_SOURCE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ENQUIRYSOURCE_ADDENQUIRY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ENQUIRYSOURCE_ADDENQUIRY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomSalesEnquiryTypeDropdown(){
+        try{
+            utils.click(ENQUIRY_TYPE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ENQUIRY_TYPE_ADDENQUIRY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ENQUIRY_TYPE_ADDENQUIRY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    public void getRandomSalesEnquirySalesPersonDropdown(){
+        try{
+            utils.click(ENQUIRY_SALESPERSON_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_SALESPERSON_ADDENQUIRY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_SALESPERSON_ADDENQUIRY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+
+    //DropDown
     public void ClickAddEnquirySave() {
         By[] saveButtons = {SAVE_BUTTON_ENQUIRY};
         for (By button : saveButtons) {

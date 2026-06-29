@@ -163,7 +163,7 @@ public class ReactiveServiceMasterPage extends BasePage {
         utils.click(SG_DEPT_DD);
         ElementUtils.waitForDropdownLoading();
         utils.waitForVisibility(ALL_OPTIONS_SG_DEPT);
-        HelperUtils.clickRandomElement(driver,ALL_OPTIONS_SG_DEPT);
+        HelperUtils.clickRandomElement(ALL_OPTIONS_SG_DEPT);
 
         //WebElement inputField = driver.findElement(SG_DEPT_DD);
         //String SelectedValue = inputField.getAttribute("value");
@@ -346,7 +346,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(FC_DEPT_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_FAULTCATEGORY_SG);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCATEGORY_SG);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCATEGORY_SG);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -501,7 +501,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(FCODE_SG_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_SG);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_SG);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_SG);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -512,7 +512,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(FCODE_FC_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -523,7 +523,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(FCODE_WOTYPE_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_WOTYPE);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_WOTYPE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_WOTYPE);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -534,7 +534,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(FCODE_RCA_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_ROOTCAUSECATEGORY);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -1022,7 +1022,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(RESCODE_RC_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ROOTCAUSE_RESOLUTIONCODE);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -1350,7 +1350,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(SLAFJ_SLATYPE_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_SLAFAILUREJUSTIFICATION_SLATYPE);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;
@@ -1569,7 +1569,7 @@ public class ReactiveServiceMasterPage extends BasePage {
             utils.click(SRR_TYPE_DD);
             ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS);
-            HelperUtils.clickRandomElement(driver,ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_TYPE_SERVICEREQUESTREASONS);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " );
             throw e;

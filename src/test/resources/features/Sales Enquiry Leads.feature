@@ -4,14 +4,18 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
   @TransLeadsSalesAddEnquiry
   Scenario: Should be able to add Enquiry
     Given User navigates to 'lattice.url' page
-    Then User is at home screen after login with "username" and "password"
-    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
-    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
-    Then User clicks on button Sales Add Enquiry 'Add'
-    Then User fills the Enquiry details
-    When User selects value in the "Customer Name" dropdown
-    When User selects value in the "Enquiry Source" dropdown
-    When User selects value in the "Sales person" dropdown
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User clicks on button Sales Add Enquiry 'Add'
+    When User fills the Enquiry details
+    When User select the '' Sales Enquiry Add Customer Name dropdown
+    When User select the '' Sales Enquiry Add Enquiry Source dropdown
+    When User select the '' Sales Enquiry Add Sales person dropdown
+    When User select the '' Sales Enquiry Add Enquiry Type dropdown
+    #When User selects value in the "Customer Name" dropdown
+    #When User selects value in the "Enquiry Source" dropdown
+    #When User selects value in the "Sales person" dropdown
     Then User Clicks Enquiry Save Button
 
   @TransLeadsSalesEnquiryExportToExcel

@@ -123,24 +123,24 @@ public class SalesEnquiryLeadsSteps {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
             //add enquiry
-            else if (dropdownName.equalsIgnoreCase("Customer Name")) {
-                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input");
-                elementUtils.click(field);
-                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown'] li");
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            }
-            else if (dropdownName.equalsIgnoreCase("Enquiry Source")) {
-                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_Input");
-                elementUtils.click(field);
-                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown'] li");
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            }
-            else if (dropdownName.equalsIgnoreCase("Sales Person")) {
-                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_Input");
-                elementUtils.click(field);
-                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-            }
+//            else if (dropdownName.equalsIgnoreCase("Customer Name")) {
+//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input");
+//                elementUtils.click(field);
+//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown'] li");
+//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+//            }
+//            else if (dropdownName.equalsIgnoreCase("Enquiry Source")) {
+//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_Input");
+//                elementUtils.click(field);
+//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown'] li");
+//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+//            }
+//            else if (dropdownName.equalsIgnoreCase("Sales Person")) {
+//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_Input");
+//                elementUtils.click(field);
+//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
+//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+//            }
             //Product Category
             else if (dropdownName.equalsIgnoreCase("Product Master Category")) {
                  field = By.cssSelector("input[id*='ddlProdmasterCategory']");
@@ -212,6 +212,7 @@ public class SalesEnquiryLeadsSteps {
                 options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ddlFirstPPMAfter_DropDown'] li");
                 //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
+
             //Product Category Ends
             //Site Survey Requested starts
             else if (dropdownName.equalsIgnoreCase("Property")) {
@@ -280,7 +281,7 @@ public class SalesEnquiryLeadsSteps {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
             elementUtils.waitForElementVisible(firstItem, 50);  //Uncomment when getting code
-            helperUtils.clickRandomElement(driver,options);
+            helperUtils.clickRandomElement(options);
         }
         //Dropdowns
     @Then("User Clicks on Add Customer Save Button")
@@ -290,13 +291,44 @@ public class SalesEnquiryLeadsSteps {
 //Add Enquiry
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
-        tmp.selectEnqCustomer("Alpha Properties");
-        //tmp.selectEnqSource("Online");
-        tmp.selectEnquiryType("Adhoc");
-        //tmp.selectEnquirySalesPerson("Wallace Hull");
-        tmp.selectEnquiryService("BMS");
+//        tmp.selectEnqCustomer("Alpha Properties");
+//        ElementUtils.waitForLoaderToDisappear();
+//        tmp.selectEnqSource("Online");
+//        ElementUtils.waitForLoaderToDisappear();
+//        tmp.selectEnquiryType("Adhoc");
+//        ElementUtils.waitForLoaderToDisappear();
+//        tmp.selectEnquirySalesPerson("Wallace Hull");
+//        ElementUtils.waitForLoaderToDisappear();
+//        tmp.selectEnquiryService("BMS");
+//        ElementUtils.waitForLoaderToDisappear();
         tmp.enterEnquiryDesc(dataGen.generateEnqDesc());
     }
+    //DropDown NEw
+    @When("User select the {string} Sales Enquiry Add Customer Name dropdown")
+    public void user_select_the_SalesEnquiryCustomerName_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSalesEnquiryCustomerNameDropdown();
+        }
+    }
+    @When("User select the {string} Sales Enquiry Add Enquiry Source dropdown")
+    public void user_select_the_SalesEnquirySource_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSalesEnquirySourceDropdown();
+        }
+    }
+    @When("User select the {string} Sales Enquiry Add Enquiry Type dropdown")
+    public void user_select_the_SalesEnquiryType_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSalesEnquiryTypeDropdown();
+        }
+    }
+    @When("User select the {string} Sales Enquiry Add Sales person dropdown")
+    public void user_select_the_SalesEnquirySalesPerson_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomSalesEnquirySalesPersonDropdown();
+        }
+    }
+    //Dropdown New
     @Then("User Clicks Enquiry Save Button")
     public void user_click_on_AddEnquirySaveButton() {
         tmp.ClickAddEnquirySave();
