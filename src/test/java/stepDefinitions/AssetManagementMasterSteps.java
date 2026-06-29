@@ -1,9 +1,12 @@
 package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.AssetManagementMastersPage;
 import utils.DriverFactory;
+import utils.HelperUtils;
 import utils.TestDataGenerator;
 import java.io.IOException;
 
@@ -31,26 +34,23 @@ public class AssetManagementMasterSteps {
     public static String Update_Reading_Unit;
     public static String Technical_Parameters;
     public static String Update_Technical_Parameters;
-    public static int Technical_Parameters_Max_Length;
     public static String Metering_Attributes;
     public static String Update_Metering_Attributes;
-    public static int Metering_Attributes_Decimals;
     public static String Metering_Parameters;
     public static String Update_Metering_Parameters;
     public static String Equipment_Name;
     public static String Update_Equipment_Name;
-    public static int Hourly_Charges_AED ;
-
-
+    public static int Hourly_Charges_AED;
 
 
     private final WebDriver driver = DriverFactory.getDriver();
     AssetManagementMastersPage tmp = new AssetManagementMastersPage(driver);
+    HelperUtils helperUtils = new HelperUtils(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
 
-    @Then("User move to {string} Elements")
-    public void usermovetoElement(String ElementName) {
-        tmp.moveToElementByName(ElementName);
+    @Then("User move to {string} Asset Management Element")
+    public void usermovetoAssetManagementElement(String ElementName) {
+        tmp.moveToAssetManagementElementByName(ElementName);
     }
 
     @And("User clicks on Asset Management Save button")
@@ -61,68 +61,72 @@ public class AssetManagementMasterSteps {
     @Then("User fills the Asset Class details")
     public void user_Add_Asset_Class_details() throws IOException {
         Asset_Class = dataGen.generateAsset_Class();
-        tmp.enterAsset_Class(Asset_Class);
+        tmp.MasterAssetenterAssetClass(Asset_Class);
     }
 
     @Then("User verify if the Asset Class is created")
     public void user_verify_Asset_Class_creation() {
-        tmp.verifyAddAsset_Class(Asset_Class);
+        tmp.MasterAssetverifyAddAssetClass(Asset_Class);
     }
 
     @Then("User clicks on first available Asset Class to edit")
     public void user_clicks_on_first_available_Asset_Class_to_edit() {
-        tmp.clickAsset_ClasstoEdit();
+        tmp.MasterAssetclickAssetClasstoEdit();
     }
 
     @And("User updates the Asset Class details")
     public void user_Updates_Asset_Class_details() throws IOException {
         Update_Asset_Class = dataGen.generateAsset_Class();
-        tmp.updateAsset_Class(Update_Asset_Class);
+        tmp.MasterAssetupdateAssetClass(Update_Asset_Class);
     }
 
     @Then("User verify if the Asset Class is updated")
     public void user_verify_the_success_message_after_updating_Asset_Class() {
-        tmp.verifyUpdateAsset_Class(Update_Asset_Class);
+        tmp.MasterAssetverifyUpdateAssetClass(Update_Asset_Class);
     }
 
     @Then("User clicks on first available Asset Class to delete")
     public void user_clicks_on_first_available_Asset_Class_to_delete() {
-        tmp.clickAsset_ClassToDelete();
+        tmp.MasterAssetclickAssetClassToDelete();
     }
 
     //Asset Master Category
+    @Then("User clicks on button Add in Asset Master Category page")
+    public void user_click__Add_Asset_Master_Category_button() {
+        tmp.MasterAssetclickAddAssetMasterCategory();
+    }
 
     @Then("User fills the Asset Master Category details")
     public void user_Add_Asset_Master_Category_details() throws IOException {
         Asset_Master_Category = dataGen.generateAsset_Master_Category();
-        tmp.enterAsset_Master_Category(Asset_Master_Category);
-        tmp.selectAssetClass("ak asset master");
+        tmp.MasterAssetenterAssetMasterCategory(Asset_Master_Category);
+        tmp.MasterAssetselectAssetClassrando();
     }
 
     @Then("User verify if the Asset Master Category is created")
     public void user_verify_Asset_Master_Category_creation() {
-        tmp.verifyAddAsset_Master_Category(Asset_Master_Category);
+        tmp.MasterAssetverifyAddAssetMasterCategory(Asset_Master_Category);
     }
 
     @Then("User clicks on first available Asset Master Category to edit")
     public void user_clicks_on_first_available_Asset_Master_Category_to_edit() {
-        tmp.clickAsset_Master_Category_toEdit();
+        tmp.MasterAssetclickAssetMasterCategorytoEdit();
     }
 
     @And("User updates the Asset Master Category details")
     public void user_Updates_Asset_Master_Category_details() throws IOException {
         Update_Asset_Master_Category = dataGen.generateAsset_Master_Category();
-        tmp.updateAsset_Master_Category(Update_Asset_Master_Category);
+        tmp.MasterAssetupdateAssetMasterCategory(Update_Asset_Master_Category);
     }
 
     @Then("User verify if the Asset Master Category is updated")
     public void user_verify_the_success_message_after_updating_Asset_Master_Category() {
-        tmp.verifyUpdateAsset_Master_Category(Update_Asset_Master_Category);
+        tmp.MasterAssetverifyUpdateAssetMasterCategory(Update_Asset_Master_Category);
     }
 
     @Then("User clicks on first available Asset Master Category to delete")
     public void user_clicks_on_first_available_Asset_Master_Category_to_delete() {
-        tmp.clickAsset_Master_Category_ToDelete();
+        tmp.MasterAssetclickAssetMasterCategoryToDelete();
     }
 
     // Asset Category
@@ -130,45 +134,45 @@ public class AssetManagementMasterSteps {
     @Then("User fills the Asset Category details")
     public void user_Add_Asset_Category_details() throws IOException {
         Asset_Category = dataGen.generateAsset_Category();
-        tmp.enterAsset_Category(Asset_Category);
-        tmp.selectAsset_Master_Category("ak electronic items");
-          }
+        tmp.MasterAssetenterAssetCategory(Asset_Category);
+        tmp.MasterAssetselectAssetMasterCategoryRandom();
+    }
 
     @Then("User verify if the Asset Category is created")
     public void user_verify_Asset_Category_creation() {
-        tmp.verifyAddAsset_Category(Asset_Category);
+        tmp.MasterAssetverifyAddAssetCategory(Asset_Category);
     }
 
     @Then("User clicks on first available Asset Category to edit")
     public void user_clicks_on_first_available_Asset_Category_to_edit() {
-        tmp.clickAsset_Category_toEdit();
+        tmp.MasterAssetclickAssetCategorytoEdit();
     }
 
     @And("User updates the Asset Category details")
     public void user_Updates_Asset_Category_details() throws IOException {
         Update_Asset_Category = dataGen.generateAsset_Category();
-        tmp.updateAsset_Category(Update_Asset_Category);
+        tmp.MasterAssetupdateAssetCategory(Update_Asset_Category);
     }
 
     @Then("User verify if the Asset Category is updated")
     public void user_verify_the_success_message_after_updating_Asset_Category() {
-        tmp.verifyUpdateAsset_Category(Update_Asset_Category);
+        tmp.MasterAssetverifyUpdateAssetCategory(Update_Asset_Category);
     }
 
     @Then("User clicks on first available Asset Category to delete")
     public void user_clicks_on_first_available_Asset_Category_to_delete() {
-        tmp.clickAsset_Category_ToDelete();
+        tmp.MasterAssetclickAssetCategoryToDelete();
     }
 
 //Asset Sub Category
 
     @Then("User fills the Asset Sub Category details")
-    public void user_Add_Asset_Sub_Category_details() throws IOException {
+    public void user_Add_Asset_Sub_Category_details() throws IOException , InterruptedException {
         Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
-        tmp.enterAsset_Sub_Category(Asset_Sub_Category);
-        tmp.selectAsset_Master_Category("ak electronic items");
-        tmp.selectAsset_Category("ak office electronic items");
-        tmp.selectCriticality("Medium");
+        tmp.MasterAssetenterAsset_Sub_Category(Asset_Sub_Category);
+        tmp.MasterAssetselectSubCategoryMasterCategory("ak electronic items");
+        tmp.MasterAssetselectSubCategoryCategory("ak office electronic items");
+        tmp.MasterAssetselectCriticalityRandom();
     }
 
     @Then("User verify if the Asset Sub Category is created")
@@ -176,21 +180,56 @@ public class AssetManagementMasterSteps {
         tmp.verifyAddAsset_Sub_Category(Asset_Sub_Category);
     }
 
-//    @Then("User clicks on first available Asset Category to edit")
-//    public void user_clicks_on_first_available_Asset_Category_to_edit() {
-//        tmp.clickAsset_Category_toEdit();
-//    }
-//
-//    @And("User updates the Asset Category details")
-//    public void user_Updates_Asset_Category_details() throws IOException {
-//        Update_Asset_Category = dataGen.generateAsset_Category();
-//        tmp.updateAsset_Category(Update_Asset_Category);
-//    }
-//
-//    @Then("User verify if the Asset Category is updated")
-//    public void user_verify_the_success_message_after_updating_Asset_Category() {
-//        tmp.verifyUpdateAsset_Category(Update_Asset_Category);
-//    }
+//Update Asset Sub Category
+@Then("User click on the Manage Asset Subcategory button")
+public void user_click_on_Manage_Asset_Subcategory() {
+    tmp.MasterAssetClickManageAssetSubCategoryicon();
+}
+
+    @And("User updates the Asset Sub Category details")
+    public void user_Updates_Asset_Sub_Category_details() throws IOException {
+        Update_Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
+        tmp.MasterAssetupdateAssetSubCategory(Update_Asset_Sub_Category);
+    }
+
+    @And("User need to click the back icon to move to the Asset Sub Category grid list")
+    public void user_click_back_icon_to_move_Asset_Sub_Category_grid_list() throws IOException {
+         tmp.MasterAssetclickbackicontomoveAssetSubCategorygridlist();
+    }
+
+    @Then("User verify if the Asset Sub Category is updated")
+    public void user_verify_the_success_message_after_updating_Asset_Sub_Category() {
+        tmp.MasterAssetverifyUpdateAssetSubCategory(Update_Asset_Sub_Category);
+    }
+
+
+    //    Link Life Cycle SetUp
+    @Then("User clicks on first available Asset Sub Category to edit")
+    public void user_clicks_on_first_available_Asset_Sub_Category_to_edit() {
+        tmp.MasterAssetclickAssetubCategorytoEdit();
+    }
+
+    @When("User click on the {string} section in the Asset Sub Category detail page")
+    public void userClickOnSectioninAssetSubCategoryDetailpage(String sectionName) {
+        tmp.MasterAssetClickOnSectioninAssetSubCategoryDetailpage(sectionName);
+    }
+
+    @Then("User click on the Add button in the Asset Sub Category Life Cycle Setup section")
+    public void userClickOnAddbuttoninSubCategoryLifeCycleSetupSection() {
+        tmp.MasterAssetClickOnAddbuttoninSubCategoryLifeCycleSetupSection();
+
+    }
+
+    @Then("User fill the Life Cycle details in the Asset Sub Category Life Cycle Setup section")
+    public void userfilldetailsinSubCategoryLifeCycleSetupSection() {
+        tmp.MasterAssetuserfillLifeCycledetailsinSubCategoryLifeCycleSetupSection();
+        tmp.MasterAssetselectDeratingFactorsAndEnterPercentage();
+    }
+
+    @Then("User click Life Cycle save button in the Asset Sub Category Life Cycle Setup section")
+    public void userclickLifeCycleSavebuttoninSubCategorydetailpage() {
+        tmp.MasterAssetclickLifeCycleSavebuttoninSubCategorydetailpage();
+   }
 
     @Then("User clicks on first available Asset Sub Category to delete")
     public void user_clicks_on_first_available_Asset_Sub_Category_to_delete() {
@@ -203,109 +242,105 @@ public class AssetManagementMasterSteps {
     @Then("User fills the OEM details")
     public void user_Add_OEM_details() throws IOException {
         OEM = dataGen.generateOEM();
-        tmp.enterOEM(OEM);
-          }
+        tmp.MasterAssetenterOEM(OEM);
+    }
 
     @Then("User verify if the OEM is created")
     public void user_verify_OEM_creation() {
-        tmp.verifyAddOEM(OEM);
+        tmp.MasterAssetverifyAddOEM(OEM);
     }
 
     @Then("User clicks on first available OEM to edit")
     public void user_clicks_on_first_available_OEM_to_edit() {
-        tmp.clickOEM_toEdit();
+        tmp.MasterAssetclickOEMtoEdit();
     }
 
     @And("User updates the OEM details")
     public void user_Updates_OEM_details() throws IOException {
         Update_OEM = dataGen.generateOEM();
-        tmp.updateOEM(Update_OEM);
+        tmp.MasterAssetupdateOEM(Update_OEM);
     }
 
     @Then("User verify if the OEM is updated")
     public void user_verify_the_success_message_after_updating_OEM() {
-        tmp.verifyUpdateOEM(Update_OEM);
+        tmp.MasterAssetverifyUpdateOEM(Update_OEM);
     }
 
     @Then("User clicks on first available OEM to delete")
     public void user_clicks_on_first_available_OEM_to_delete() {
-        tmp.clickOEM_ToDelete();
+        tmp.MasterAssetclickOEMToDelete();
     }
 
-
-    //    Make / Brand
-
+    //Make / Brand
     @Then("User fills the Make details")
     public void user_Add_Make_details() throws IOException {
         Make = dataGen.generateMake();
-        tmp.enterMake(Make);
-        tmp.selectOEM("TVS");
+        tmp.MasterAssetenterMake(Make);
+        tmp.MasterAssetselectOEMRandom();
     }
 
     @Then("User verify if the Make is created")
     public void user_verify_Make_creation() {
-        tmp.verifyAddMake(Make);
+        tmp.MasterAssetverifyAddMake(Make);
     }
 
     @Then("User clicks on first available Make to edit")
     public void user_clicks_on_first_available_Make_to_edit() {
-        tmp.clickMake_toEdit();
+        tmp.MasterAssetclickMaketoEdit();
     }
 
     @And("User updates the Make details")
     public void user_Updates_Make_details() throws IOException {
         Update_Make = dataGen.generateMake();
-        tmp.updateMake(Update_Make);
-
+        tmp.MasterAssetupdateMake(Update_Make);
     }
 
     @Then("User verify if the Make is updated")
     public void user_verify_the_success_message_after_updating_Make() {
-        tmp.verifyUpdateMake(Update_Make);
+        tmp.MasterAssetverifyUpdateMake(Update_Make);
     }
 
     @Then("User clicks on first available Make to delete")
     public void user_clicks_on_first_available_Make_to_delete() {
-        tmp.clickMake_ToDelete();
+        tmp.MasterAssetclickMakeToDelete();
     }
-
 
     //    Model
     @Then("User fills the Model details")
-    public void user_Add_Model_details() throws IOException {
+    public void user_Add_Model_details() throws IOException , InterruptedException {
         Model = dataGen.generateModel();
-        tmp.enterModel(Model);
-        tmp.selectOEM("TVS");
-        tmp.selectMake("Jupiter");
-        tmp.selectAsset_Master_Category("ak electronic items");
-        tmp.selectAsset_Category("ak office electronic items");
-        tmp.selectAsset_Sub_Category("ak laptop");
+        tmp.MasterAssetenterModel(Model);
+        tmp.MasterAssetModelselectOEM("TVS");
+        tmp.MasterAssetModelselectMake("Jupiter");
+        tmp.MasterAssetModelselectAssetMasterCategory("ak electronic items");
+        tmp.MasterAssetModelselectAssetCategory("ak office electronic items");
+        tmp.MasterAssetModelselectAssetSubCategory("ak laptop");
     }
 
     @Then("User verify if the Model is created")
     public void user_verify_Model_creation() {
-        tmp.verifyAddModel(Model);
+        tmp.MasterAssetverifyAddModel(Model);
     }
 
     @Then("User clicks on first available Model to edit")
     public void user_clicks_on_first_available_Model_to_edit() {
-        tmp.clickModel_toEdit();
+        tmp.MasterAssetclickModeltoEdit();
     }
 
     @And("User updates the Model details")
     public void user_Updates_Model_details() throws IOException {
         Update_Model = dataGen.generateModel();
-        tmp.updateModel(Update_Model);
+        tmp.MasterAssetupdateModel(Update_Model);
     }
 
     @Then("User verify if the Model is updated")
     public void user_verify_the_success_message_after_updating_Model() {
-        tmp.verifyUpdateModel(Update_Model);
+        tmp.MasterAssetverifyUpdateModel(Update_Model);
     }
 
     @Then("User clicks on first available Model to delete")
     public void user_clicks_on_first_available_Model_to_delete() {
-        tmp.clickModel_ToDelete();
+        tmp.MasterAssetclickModelToDelete();
     }
 
 
@@ -314,35 +349,36 @@ public class AssetManagementMasterSteps {
     @Then("User fills the Derating Factor details")
     public void user_Add_Derating_Factor_details() throws IOException {
         Derating_Factor_Code = dataGen.generateDerating_Factor_Code();
-        tmp.enterDerating_Factor_Code(Derating_Factor_Code);
+        tmp.MasterAssetenterDeratingFactorCode(Derating_Factor_Code);
         Derating_Factor_Description = dataGen.generateDerating_Factor_Description();
-        tmp.enterDerating_Factor_Description(Derating_Factor_Description);
-         }
+        tmp.MasterAssetenterDeratingFactorDescription(Derating_Factor_Description);
+        tmp.MasterAssetDeratingFactorActivecheckbox();
+    }
 
     @Then("User verify if the Derating Factor is created")
     public void user_verify_Derating_Factor_creation() {
-        tmp.verifyAddDerating_Factor(Derating_Factor_Code);
+        tmp.MasterAssetverifyAddDeratingFactor(Derating_Factor_Code);
     }
 
     @Then("User clicks on first available Derating Factor to edit")
     public void user_clicks_on_first_available_Derating_Factor_to_edit() {
-        tmp.clickDerating_Factor_toEdit();
+        tmp.MasterAssetclickDeratingFactortoEdit();
     }
 
     @And("User updates the Derating Factor details")
     public void user_Updates_Derating_Factor_details() throws IOException {
         Update_Derating_Factor_Code = dataGen.generateDerating_Factor_Code();
-        tmp.updateDerating_Factor(Update_Derating_Factor_Code);
+        tmp.MasterAssetupdateDeratingFactor(Update_Derating_Factor_Code);
     }
 
     @Then("User verify if the Derating Factor is updated")
     public void user_verify_the_success_message_after_updating_Derating_Factor() {
-        tmp.verifyUpdateDerating_Factor(Update_Derating_Factor_Code);
+        tmp.MasterAssetverifyUpdateDeratingFactor(Update_Derating_Factor_Code);
     }
 
     @Then("User clicks on first available Derating Factor to delete")
     public void user_clicks_on_first_available_Derating_Factor_to_delete() {
-        tmp.clickDerating_Factor_ToDelete();
+        tmp.MasterAssetclickDeratingFactorToDelete();
     }
 
 
@@ -350,186 +386,762 @@ public class AssetManagementMasterSteps {
     @Then("User fills the Reading Unit details")
     public void user_Add_Reading_Unit_details() throws IOException {
         Short_Code_Reading_Unit = dataGen.generateShort_Code_Reading_Unit();
-        tmp.enterShort_Code_Reading_Unit(Short_Code_Reading_Unit);
+        tmp.MasterAssetenterShortCodeReadingUnit(Short_Code_Reading_Unit);
         Reading_Unit = dataGen.generateReading_Unit();
-        tmp.enterReading_Unit(Reading_Unit);
-        tmp.selectReading_Unit_Symbol("W");
+        tmp.MasterAsseenterReading_Unit(Reading_Unit);
+        tmp.MasterAsseselectReadingUnitSymbolRandom();
 
     }
 
     @Then("User verify if the Reading Unit is created")
     public void user_verify_Reading_Unit_creation() {
-        tmp.verifyAddReading_Unit(Reading_Unit);
+        tmp.MasterAsseverifyAddReadingUnit(Reading_Unit);
     }
 
     @Then("User clicks on first available Reading Unit to edit")
     public void user_clicks_on_first_available_Reading_Unit_to_edit() {
-        tmp.clickReading_Unit_toEdit();
+        tmp.MasterAsseclickReadingUnittoEdit();
     }
 
     @And("User updates the Reading Unit details")
     public void user_Updates_Reading_Unit_details() throws IOException {
         Update_Reading_Unit = dataGen.generateReading_Unit();
-        tmp.Update_Reading_Unit(Update_Reading_Unit);
+        tmp.MasterAsseUpdateReadingUnit(Update_Reading_Unit);
     }
 
     @Then("User verify if the Reading Unit is updated")
     public void user_verify_the_success_message_after_updating_Reading_Unit() {
-        tmp.verifyUpdateReading_Unit(Update_Reading_Unit);
+        tmp.MasterAssetverifyUpdateReadingUnit(Update_Reading_Unit);
     }
 
     @Then("User clicks on first available Reading Unit to delete")
     public void user_clicks_on_first_available_Reading_Unit_to_delete() {
-        tmp.clickReading_Unit_ToDelete();
+        tmp.MasterAssetclickReadingUnitToDelete();
     }
 
     //    Technical Parameters
     @Then("User fills the Technical Parameters details")
     public void user_Add_Technical_Parameters_details() throws IOException {
         Technical_Parameters = dataGen.generateTechnical_Parameters();
-        tmp.enterTechnical_Parameters(Technical_Parameters);
-        tmp.selectTechnical_Parameters_Reading_Unit("Watt");
-        tmp.selectTechnical_Parameters_Parameter_Type("Text");
-        Technical_Parameters_Max_Length = dataGen.generateTechnical_Parameters_Max_Length();
-        tmp.enterTechnical_Parameters_Max_Length (String.valueOf(Technical_Parameters_Max_Length));
-        tmp.selectTechnical_Parameters_Box_name("Section 4");
-
+        tmp.MasterAssetenterTechnicalParameters(Technical_Parameters);
+        tmp.MasterAssetselectTechnicalParametersReadingUnitRandom();
+        tmp.MasterAssetselectTechnicalParametersParameterTypeRandom();
+        tmp.MasterAssetselectTechnicalParametersBoxNameRandom();
     }
 
     @Then("User verify if the Technical Parameters is created")
     public void user_verify_Technical_Parameters_creation() {
-        tmp.verifyAddTechnical_Parameters(Technical_Parameters);
+        tmp.MasterAssetverifyAddTechnicalParameters(Technical_Parameters);
     }
 
     @Then("User clicks on first available Technical Parameters to edit")
     public void user_clicks_on_first_available_Technical_Parameters_to_edit() {
-        tmp.clickTechnical_Parameters_toEdit();
+        tmp.MasterAssetclickTechnicalParameterstoEdit();
     }
 
     @And("User updates the Technical Parameters details")
     public void user_Updates_Technical_Parameters_details() throws IOException {
         Update_Technical_Parameters = dataGen.generateTechnical_Parameters();
-        tmp.Update_Technical_Parameters(Update_Technical_Parameters);
+        tmp.MasterAssetUpdateTechnicalParameters(Update_Technical_Parameters);
     }
 
     @Then("User verify if the Technical Parameters is updated")
     public void user_verify_the_success_message_after_updating_Technical_Parameters() {
-        tmp.verifyUpdateTechnical_Parameters(Update_Technical_Parameters);
+        tmp.MasterAssetverifyUpdateTechnicalParameters(Update_Technical_Parameters);
     }
 
     @Then("User clicks on first available Technical Parameters to delete")
     public void user_clicks_on_first_available_Technical_Parameters_to_delete() {
-        tmp.clickTechnical_Parameters_ToDelete();
+        tmp.MasterAssetclickTechnicalParametersToDelete();
     }
 
     //   Metering Attributes
     @Then("User fills the Metering Attributes details")
     public void user_Add_Metering_Attributes_details() throws IOException {
         Metering_Attributes = dataGen.generateMetering_Attributes();
-        tmp.enterMetering_Attributes(Metering_Attributes);
-        tmp.selectTechnical_Parameters_Reading_Unit("Watt");
-        Metering_Attributes_Decimals = dataGen.generateMetering_Attributes_Decimals();
-       tmp.enterMetering_Attribute_Decimals (String.valueOf(Metering_Attributes_Decimals));
+        tmp.MasterAssetenterMeteringAttributes(Metering_Attributes);
+        tmp.MasterAssetselectMeteringAttributesReadingUnitRandom();
+
     }
 
     @Then("User verify if the Metering Attributes is created")
     public void user_verify_Metering_Attributes_creation() {
-        tmp.verifyAddMetering_Attributes(Metering_Attributes);
+        tmp.MasterAssetverifyAddMeteringAttributes(Metering_Attributes);
     }
 
     @Then("User clicks on first available Metering Attributes to edit")
     public void user_clicks_on_first_available_Metering_Attributes_to_edit() {
-        tmp.clickMetering_Attributes_toEdit();
+        tmp.MasterAssetclickMeteringAttributestoEdit();
     }
 
     @And("User updates the Metering Attributes details")
     public void user_Updates_Metering_Attributes_details() throws IOException {
         Update_Metering_Attributes = dataGen.generateMetering_Attributes();
-        tmp.Update_Metering_Attributes(Update_Metering_Attributes);
+        tmp.MasterAssetUpdateMeteringAttributes(Update_Metering_Attributes);
     }
 
     @Then("User verify if the Metering Attributes is updated")
     public void user_verify_the_success_message_after_updating_Metering_Attributes() {
-        tmp.verifyUpdateMetering_Attributes(Update_Metering_Attributes);
+        tmp.MasterAssetverifyUpdateMeteringAttributes(Update_Metering_Attributes);
     }
 
     @Then("User clicks on first available Metering Attributes to delete")
     public void user_clicks_on_first_available_Metering_Attributes_to_delete() {
-        tmp.clickMetering_Attributes_ToDelete();
+        tmp.MasterAssetclickMetering_AttributesToDelete();
     }
 
     //  Metering Parameters
-//    @Then("User fills the Metering Parameters details")
-//    public void user_Add_Metering_Parameters_details() throws IOException {
-//        Metering_Parameters = dataGen.generateMetering_Parameters();
-//        tmp.enterMetering_Parameters(Metering_Parameters);
-//        tmp.selectTechnical_Parameters_Reading_Unit("Watt");
-//        Metering_Attributes_Decimals = dataGen.generateMetering_Attributes_Decimals();
-//        tmp.enterMetering_Attribute_Decimals (String.valueOf(Metering_Attributes_Decimals));
-//    }
-//
-//    @Then("User verify if the Metering Parameters is created")
-//    public void user_verify_Metering_Parameters_creation() {
-//        tmp.verifyAddMetering_Parameters(Metering_Parameters);
-//    }
-//
-//    @Then("User clicks on first available Metering Parameters to edit")
-//    public void user_clicks_on_first_available_Metering_Parameters_to_edit() {
-//        tmp.clickMetering_Parameters_toEdit();
-//    }
-//
-//    @And("User updates the Metering Parameters details")
-//    public void user_Updates_Metering_Parameters_details() throws IOException {
-//        Update_Metering_Parameters = dataGen.generateMetering_Parameters();
-//        tmp.Update_Metering_Parameters(Update_Metering_Parameters);
-//    }
-//
-//    @Then("User verify if the Metering Parameters is updated")
-//    public void user_verify_the_success_message_after_updating_Metering_Parameters() {
-//        tmp.verifyUpdateMetering_Parameters(Update_Metering_Parameters);
-//    }
-//
-//    @Then("User clicks on first available Metering Parameters to delete")
-//    public void user_clicks_on_first_available_Metering_Parameters_to_delete() {
-//        tmp.clickMetering_Parameters_ToDelete();
-//    }
+    @Then("User fills the Metering Parameters details")
+    public void user_Add_Metering_Parameters_details() throws IOException {
+        Metering_Parameters = dataGen.generateMetering_Parameters();
+        tmp.MasterAssetenterMeteringParameters(Metering_Parameters);
+        tmp.MasterAssetselectMeteringParameterAttributeRandom();
+        tmp.MasterAssetselectInputType();
+        tmp.MasterAssetselectReadingType();
+    }
+
+    @Then("User verify if the Metering Parameters is created")
+    public void user_verify_Metering_Parameters_creation() {
+        tmp.MasterAssetverifyAddMeteringParameters(Metering_Parameters);
+    }
+
+    @Then("User clicks on first available Metering Parameters to edit")
+    public void user_clicks_on_first_available_Metering_Parameters_to_edit() {
+        tmp.MasterAssetclickMeteringParameterstoEdit();
+    }
+
+    @And("User updates the Metering Parameters details")
+    public void user_Updates_Metering_Parameters_details() throws IOException {
+        Update_Metering_Parameters = dataGen.generateMetering_Parameters();
+        tmp.MasterAssetUpdateMeteringParameters(Update_Metering_Parameters);
+    }
+
+    @Then("User verify if the Metering Parameters is updated")
+    public void user_verify_the_success_message_after_updating_Metering_Parameters() {
+        tmp.MasterAssetverifyUpdateMeteringParameters(Update_Metering_Parameters);
+    }
+
+    @Then("User clicks on first available Metering Parameter to delete")
+    public void user_clicks_on_first_available_Metering_Parameters_to_delete() {
+        tmp.MasterAssetclickMeteringParameterToDelete();
+    }
 
 
-    //   Tools_&_Equipments
+    //   ToolsandEquipments
 
     @Then("User fills the Tools & Equipments details")
     public void user_Add_Tools_And_Equipments_details() throws IOException {
         Equipment_Name = dataGen.generateTools_And_Equipments();
-        tmp.enterEquipment_Name(Equipment_Name);
-        Hourly_Charges_AED  = dataGen.generateTools_And_Equipments_Hourly_Charges();
-        tmp.enterHourly_Charges_AED (String.valueOf(Hourly_Charges_AED));
-        tmp.selectTools_Unit("PKT");
-
+        tmp.MasterAssetenterEquipmentName(Equipment_Name);
+        Hourly_Charges_AED = dataGen.generateTools_And_Equipments_Hourly_Charges();
+        tmp.MasterAssetenterHourlyChargesAED(String.valueOf(Hourly_Charges_AED));
+        tmp.MasterAssetselectToolsandEqupimentUnitrandom();
     }
 
     @Then("User verify if the Tools & Equipments is created")
     public void user_verify_Tools_And_Equipments_creation() {
-     tmp.verifyAddTools_And_Equipments(Equipment_Name);
+        tmp.MasterAssetverifyAddToolsAndEquipments(Equipment_Name);
     }
 
     @Then("User clicks on first available Tools & Equipments to edit")
     public void user_clicks_on_first_available_Tools_And_Equipments_to_edit() {
-        tmp.clickTools_And_Equipments_toEdit();
+        tmp.MasterAssetclickToolsAndEquipmentstoEdit();
     }
 
     @And("User updates the Tools & Equipments details")
     public void user_Updates_Tools_And_Equipments_details() throws IOException {
         Update_Equipment_Name = dataGen.generateTools_And_Equipments();
-        tmp.Update_Tools_And_Equipments(Update_Equipment_Name);
+        tmp.MasterAssetUpdateToolsAndEquipments(Update_Equipment_Name);
     }
 
     @Then("User verify if the Tools & Equipments is updated")
     public void user_verify_the_success_message_after_updating_Tools_And_Equipments() {
-        tmp.verifyUpdateTools_And_Equipments(Update_Equipment_Name);
+        tmp.MasterAssetverifyUpdateToolsAndEquipments(Update_Equipment_Name);
     }
 
     @Then("User clicks on first available Tools & Equipments to delete")
     public void user_clicks_on_first_available_Tools_And_Equipments_to_delete() {
-        tmp.clickTools_And_Equipments_ToDelete();
+        tmp.MasterAssetclickToolsAndEquipmentsToDelete();
+    }
+
+//    Export to Excel
+
+    @Then("User click on the Master Asset Management Export to Excel button")
+    public void user_clicks_on_Master_Asset_Management_Export_to_Excel_button() {
+        tmp.MasterAssetManagementExporttoExcel();
+    }
+
+//    ValidationAssetClass
+
+    @Then("User verify the inline error message {string} on Asset Class field")
+    public void user_verify_inline_error_message_on_Asset_Class(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Class field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssetClass_C_RequiredFieldValidator20");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Asset Class field")
+    public void user_verify_chars_len_Asset_Class(int minLen, int maxLen) {
+        System.out.println("Verifying Asset Class field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtAssetClass"), maxLen, minLen);
+        System.out.println("Asset Class field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Asset Class field")
+    public void enter_Special_Characters_In_Asset_Class() {
+        System.out.println("Verifying Asset Class field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtAssetClass"));
+        System.out.println("Special character validation completed for Asset Class field");
+    }
+
+    //    Validation Asset Master Category
+    @Then("User verify the inline error message {string} on Asset Master Category field")
+    public void user_verify_inline_error_message_on_Asset_Master_Category(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Master Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssCatType_C_RequiredFieldValidator21");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Class field in Asset Master Category page")
+    public void user_verify_inline_error_message_on_Asset_CLass_in_Asset_Master_Category_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Master Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssCatType_C_RequiredFieldValidator26");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Asset Master Category field")
+    public void user_verify_chars_len_Asset_Master_Category(int minLen, int maxLen) {
+        System.out.println("Verifying Asset Master Category field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtAsscatname"), maxLen, minLen);
+        System.out.println("Asset Master Category field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Asset Master Category field")
+    public void enter_Special_Characters_In_Asset_Master_Category() {
+        System.out.println("Verifying Asset Master Category field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtAsscatname"));
+        System.out.println("Special character validation completed for Asset Master Category field");
+    }
+
+    //    Validation Asset Category
+    @Then("User verify the inline error message {string} on Asset Category field")
+    public void user_verify_inline_error_message_on_Asset_Category(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssCategory_C_RequiredFieldValidator22");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Master Category field in Asset Category page")
+    public void user_verify_inline_error_message_on_Asset_Master_Category_in_Asset_Category_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Master Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssCategory_C_RequiredFieldValidator23");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Asset Category field")
+    public void user_verify_chars_len_Asset_Category(int minLen, int maxLen) {
+        System.out.println("Verifying Asset Category field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtAssCat"), maxLen, minLen);
+        System.out.println("Asset Category field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Asset Category field")
+    public void enter_Special_Characters_In_Asset_Category() {
+        System.out.println("Verifying Asset Category field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("RadtxtAssCat"));
+        System.out.println("Special character validation completed for Asset Category field");
+    }
+
+    //    Validation Asset Subcategory
+    @Then("User verify the inline error message {string} on Asset Subcategory field")
+    public void user_verify_inline_error_message_on_Asset_Subcategory(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Subcategory field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_RequiredFieldValidator24");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Master Category field in Asset Subcategory page")
+    public void user_verify_inline_error_message_on_Asset_Master_Category_in_Asset_Subcategory_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Master Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_RequiredFieldValidator37");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Category field in Asset Subcategory page")
+    public void user_verify_inline_error_message_on_Asset_Category_in_Asset_Subcategory_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_RequiredFieldValidator25");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Criticality field in Asset Subcategory page")
+    public void user_verify_inline_error_message_on_Asset_Criticality_in_Asset_Subcategory_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Criticality field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_RequiredFieldValidator14");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Asset Subcategory field")
+    public void user_verify_chars_len_Asset_Subcategory(int minLen, int maxLen) {
+        System.out.println("Verifying Asset Subcategory field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtAssSubCat"), maxLen, minLen);
+        System.out.println("Asset Subcategory field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Asset Subcategory field")
+    public void enter_Special_Characters_In_Asset_Subcategory() {
+        System.out.println("Verifying Asset Subcategory field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtAssSubCat"));
+        System.out.println("Special character validation completed for Asset Subcategory field");
+    }
+
+//    ValidationOEM
+
+    @Then("User verify the inline error message {string} on OEM field")
+    public void user_verify_inline_error_message_on_OEM(String expectedMessage) {
+        System.out.println("Verifying inline error message for OEM field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinOEM_C_rfvOEMcode");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for OEM field")
+    public void user_verify_chars_len_OEM(int minLen, int maxLen) {
+        System.out.println("Verifying OEM field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtOEMCode"), maxLen, minLen);
+        System.out.println("OEM field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in OEM field")
+    public void enter_Special_Characters_In_OEM() {
+        System.out.println("Verifying OEM field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtOEMCode"));
+        System.out.println("Special character validation completed for OEM field");
+    }
+
+    //    ValidationMake
+    @Then("User verify the inline error message {string} on Make field")
+    public void user_verify_inline_error_message_on_Make(String expectedMessage) {
+        System.out.println("Verifying inline error message for Make field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMake_C_rfvMakecode");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on OEM field in Make page")
+    public void user_verify_inline_error_message_on_OEM_field_in_Make_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for OEM field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMake_C_rfvOEM");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Make field")
+    public void user_verify_chars_len_Make(int minLen, int maxLen) {
+        System.out.println("Verifying Make field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtMakeCode"), maxLen, minLen);
+        System.out.println("Make field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Make field")
+    public void enter_Special_Characters_In_Make_field() {
+        System.out.println("Verifying Make/Brand field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtMakeCode"));
+        System.out.println("Special character validation completed for Make/Brand field");
+    }
+
+
+    //    ValidationModel
+    @Then("User verify the inline error message {string} on Model field")
+    public void user_verify_inline_error_message_on_Model(String expectedMessage) {
+        System.out.println("Verifying inline error message for Model field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvModel");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on OEM field in Model page")
+    public void user_verify_inline_error_message_on_OEM_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Model field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvModelOEM");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Make field in Model page")
+    public void user_verify_inline_error_message_on_Make_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Make / Brand  field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvBrand");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Master Category field in Model page")
+    public void user_verify_inline_error_message_on_Asset_Master_Category_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Master Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvMaster");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Category field in Model page")
+    public void user_verify_inline_error_message_on_Asset_Category_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Category field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvCategory");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Asset Subcategory field in Model page")
+    public void user_verify_inline_error_message_on_Asset_Subcategory_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Asset Subcategory field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_rfvSubCate");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Model field")
+    public void user_verify_chars_len_Model(int minLen, int maxLen) {
+        System.out.println("Verifying Model field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtModel"), maxLen, minLen);
+        System.out.println("Model field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Model field")
+    public void enter_Special_Characters_In_Model_field() {
+        System.out.println("Verifying Model field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtModel"));
+        System.out.println("Special character validation completed for Model field");
+    }
+
+    //    ValidationDeratingFactor
+    @Then("User verify the inline error message {string} on Code field in Derating Factor page")
+    public void user_verify_inline_error_message_on_Code(String expectedMessage) {
+        System.out.println("Verifying inline error message for Code field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinDeRatingFactors_C_RequiredFieldValidator15");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Description field in Derating Factor page")
+    public void user_verify_inline_error_message_on_Description_field_in_Model_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Description field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinDeRatingFactors_C_RequiredFieldValidator16");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Code field in Derating Factor page")
+    public void user_verify_chars_len_Code(int minLen, int maxLen) {
+        System.out.println("Verifying Code field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("txtCode"), maxLen, minLen);
+        System.out.println("Code field length validation verified successfully.");
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Description field in Derating Factor page")
+    public void user_verify_chars_len_Description(int minLen, int maxLen) {
+        System.out.println("Verifying Description field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("txtDescription"), maxLen, minLen);
+        System.out.println("Description field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Description field in Derating Factor page")
+    public void enter_Special_Characters_In_Description_field() {
+        System.out.println("Verifying Description field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("txtDescription"));
+        System.out.println("Special character validation completed for Description field");
+    }
+
+    //    ValidationReadingUnit
+    @Then("User verify the inline error message {string} on Short Code field in Reading Unit page")
+    public void user_verify_inline_error_message_on_Short_Code(String expectedMessage) {
+        System.out.println("Verifying inline error message for Short Code field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReadingUnit_C_RequiredFieldValidator11");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Reading Unit field in Reading Unit page")
+    public void user_verify_inline_error_message_on_Reading_Unit_field_in_Reading_Unit_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Reading Unit field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReadingUnit_C_RequiredFieldValidator9");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Symbol field in Reading Unit page")
+    public void user_verify_inline_error_message_on_Symbol_field_in_Reading_Unit_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Symbol field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinReadingUnit_C_RequiredFieldValidator10");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Short Code field in Reading Unit page")
+    public void user_verify_chars_len_Short_Code(int minLen, int maxLen) {
+        System.out.println("Verifying Short Code field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtshortCode"), maxLen, minLen);
+        System.out.println("Short Code field length validation verified successfully.");
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Reading Unit field in Reading Unit page")
+    public void user_verify_chars_len_Reading_Unit(int minLen, int maxLen) {
+        System.out.println("Verifying Reading Unit field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtReadingUnit"), maxLen, minLen);
+        System.out.println("Reading Unit field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Short Code field in Reading Unit page")
+    public void enter_Special_Characters_In_Short_Code_field() {
+        System.out.println("Verifying Short Code field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtshortCode"));
+        System.out.println("Special character validation completed for Short Code field");
+    }
+
+    @When("User enters special characters in Reading Unit field in Reading Unit page")
+    public void enter_Special_Characters_In_Reading_Unit_field() {
+        System.out.println("Verifying Reading Unit field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtReadingUnit"));
+        System.out.println("Special character validation completed for Reading Unit field");
+    }
+
+    //    ValidationTechnicalParameter
+    @Then("User verify the inline error message {string} on Parameter field in Technical Parameter page")
+    public void user_verify_inline_error_message_on_Parameter_in_Technical_Parameter_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Parameter field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalaPara_C_RequiredFieldValidator3");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Parameter Type field in Technical Parameter page")
+    public void user_verify_inline_error_message_on_Parameter_Type_field_in_Technical_Parameter_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Parameter Type field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalaPara_C_RequiredFieldValidator4");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Box Name field in Technical Parameter page")
+    public void user_verify_inline_error_message_on_Box_Name_field_in_Technical_Parameter_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Box Name field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalaPara_C_RequiredFieldValidator8");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Parameter field in Technical Parameter page")
+    public void user_verify_chars_len_Parameter(int minLen, int maxLen) {
+        System.out.println("Verifying Parameter field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalaPara_C_radtxtParaName"), maxLen, minLen);
+        System.out.println("Parameter field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Parameter field in Technical Parameter page")
+    public void enter_Special_Characters_In_Parameter_field() {
+        System.out.println("Verifying Parameter field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalaPara_C_radtxtParaName"));
+        System.out.println("Special character validation completed for Parameter field");
+    }
+
+    //    Validation Metering Attributes
+    @Then("User verify the inline error message {string} on Attribute field in Metering Attributes page")
+    public void user_verify_inline_error_message_on_Attribute_in_Metering_Attributes_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Attribute field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringAttribute_C_RequiredFieldValidator12");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Reading Unit field in Metering Attributes page")
+    public void user_verify_inline_error_message_on_Reading_Unit_field_in_Metering_Attributes_page(String expectedMessage) {
+        System.out.println("Verifying inline error message for Reading Unit field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringAttribute_C_RequiredFieldValidator13");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Attribute field in Metering Attributes page")
+    public void user_verify_chars_len_Attribute_Metering_Attributes_page(int minLen, int maxLen) {
+        System.out.println("Verifying Attribute field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtAttribute"), maxLen, minLen);
+        System.out.println("Attribute field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Attribute field in Metering Attributes page")
+    public void enter_Special_Characters_In_Attribute_field_Metering_Attributes_page() {
+        System.out.println("Verifying Attribute field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("radtxtAttribute"));
+        System.out.println("Special character validation completed for Attribute field");
+    }
+
+    @Then("User verify Active checkbox is selected by default in Metering Attributes page")
+    public void user_verify_active_checkbox_is_checked_by_default_in_Metering_Attributes_page() {
+        helperUtils.verifyActiveCheckboxSelected(By.id("chkActive"));}
+
+        //    Validation Metering Parameters
+        @Then("User verify the inline error message {string} on Parameter field in Metering Parameters page")
+        public void user_verify_inline_error_message_on_Parameter_in_Metering_Attributes_page (String expectedMessage){
+            System.out.println("Verifying inline error message for Parameter field. Expected message: "
+                    + expectedMessage);
+            By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringPara_C_RequiredFieldValidator17");
+            helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+            System.out.println("Inline error message verified successfully: " + expectedMessage);
+        }
+
+        @Then("User verify the inline error message {string} on Attribute field in Metering Parameters page")
+        public void user_verify_inline_error_message_on_Attribute_in_Metering_Parameters_page (String expectedMessage){
+            System.out.println("Verifying inline error message for Attribute field. Expected message: "
+                    + expectedMessage);
+            By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringPara_C_RequiredFieldValidator18");
+            helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+            System.out.println("Inline error message verified successfully: " + expectedMessage);
+        }
+
+        @Then("User verify the inline error message {string} on Input Type field in Metering Parameters page")
+        public void user_verify_inline_error_message_on_Input_Type_in_Metering_Parameters_page (String expectedMessage){
+            System.out.println("Verifying inline error message for Input Type field. Expected message: "
+                    + expectedMessage);
+            By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringPara_C_RequiredFieldValidator27");
+            helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+            System.out.println("Inline error message verified successfully: " + expectedMessage);
+        }
+
+        @Then("User verify the inline error message {string} on Reading Type field in Metering Parameters page")
+        public void user_verify_inline_error_message_on_Reading_Type_in_Metering_Parameters_page (String expectedMessage)
+        {
+            System.out.println("Verifying inline error message for Reading Type field. Expected message: "
+                    + expectedMessage);
+            By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinMeteringPara_C_RequiredFieldValidator28");
+            helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+            System.out.println("Inline error message verified successfully: " + expectedMessage);
+        }
+
+        @When("User verify the chars min len as {int} and max len as {int} for Parameter field in Metering Parameters page")
+        public void user_verify_chars_len_Parameter_Metering_Parameter_page ( int minLen, int maxLen){
+            System.out.println("Verifying Parameter field length validation. Expected Min Length: "
+                    + minLen + ", Expected Max Length: " + maxLen);
+            helperUtils.verifyMinAndMaxLength(By.id("radtxtParameter"), maxLen, minLen);
+            System.out.println("Parameter field length validation verified successfully.");
+        }
+
+        @When("User enters special characters in Parameter field in Metering Parameters page")
+        public void enter_Special_Characters_In_Parameter_field_Metering_Parameter_page () {
+            System.out.println("Verifying Parameter field accepts/rejects special characters");
+            helperUtils.enterSpecialCharacters(By.id("radtxtParameter"));
+            System.out.println("Special character validation completed for Parameter field");
+        }
+
+        @Then("User verify Active checkbox is selected by default in Metering Parameters page")
+        public void user_verify_active_checkbox_is_checked_by_default_in_Metering_Parameter_page () {
+            helperUtils.verifyActiveCheckboxSelected(By.id("chkMeterparaActive"));
+        }
+
+    //    Validation Tools / Equipments
+    @Then("User verify the inline error message {string} on Equipment Name field in Tools page")
+    public void user_verify_inline_error_message_on_Equipment_Name_in_Tools_page (String expectedMessage){
+        System.out.println("Verifying inline error message for Equipment Name field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_RequiredFieldValidator53");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Hourly Charges field in Tools page")
+    public void user_verify_inline_error_message_on_Hourly_Charges_in_Tools_page (String expectedMessage){
+        System.out.println("Verifying inline error message for Hourly Charges field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_RequiredFieldValidator57");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+    @Then("User verify the inline error message {string} on Unit field in Tools page")
+    public void user_verify_inline_error_message_on_Unit_in_Tools_page (String expectedMessage){
+        System.out.println("Verifying inline error message for Unit field. Expected message: "
+                + expectedMessage);
+        By errorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_RequiredFieldValidator29");
+        helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
+        System.out.println("Inline error message verified successfully: " + expectedMessage);
+    }
+
+     @When("User verify the chars min len as {int} and max len as {int} for Equipment Name field in Tools page")
+    public void user_verify_chars_len_Equipment_Name_Tools_page ( int minLen, int maxLen){
+        System.out.println("Verifying Equipment Name field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_radtxtEquipmentName"), maxLen, minLen);
+        System.out.println("Equipment Name field length validation verified successfully.");
+    }
+
+    @When("User verify the chars min len as {int} and max len as {int} for Hourly Charges field in Tools page")
+    public void user_verify_chars_len_Hourly_Charges_Tools_page ( int minLen, int maxLen){
+        System.out.println("Verifying Hourly Charges field length validation. Expected Min Length: "
+                + minLen + ", Expected Max Length: " + maxLen);
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_radtxtrate"), maxLen, minLen);
+        System.out.println("Hourly Charges field length validation verified successfully.");
+    }
+
+    @When("User enters special characters in Equipment Name field in Tools page")
+    public void enter_Special_Characters_In_Equipment_Name_field_in_Tools_page () {
+        System.out.println("Verifying Equipment Name field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_radtxtEquipmentName"));
+        System.out.println("Special character validation completed for Equipment Name field");
+    }
+
+    @When("User enters special characters in Hourly Charges field in Tools page")
+    public void enter_Special_Characters_In_Parameter_field_in_Tools_page () {
+        System.out.println("Verifying Hourly Charges field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("ctl00_ContentPlaceHolder1_RadWinToolsAndEquipment_C_radtxtrate"));
+        System.out.println("Special character validation completed for Hourly Charges field");
     }
 }
