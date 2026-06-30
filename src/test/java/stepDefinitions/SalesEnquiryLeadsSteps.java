@@ -89,10 +89,10 @@ public class SalesEnquiryLeadsSteps {
         tmp.enterCustMobile(dataGen.generateCustMobile());
         tmp.enterCustEmail(dataGen.generateCustEmail());
         tmp.enterCustAddress(dataGen.generateCustAddress());
-       // tmp.selectClientType("B2B Corporate");
-        //tmp.selectCountry("India");
-        //tmp.selectCity("Chennai");
-        //tmp.selectCustImp("VVIP");
+        tmp.selectClientType("B2B Corporate");
+        tmp.selectCountry("India");
+        tmp.selectCity("Chennai");
+        tmp.selectCustImp("VVIP");
     }
         //Dropdowns
         @When("User selects value in the {string} dropdown")
