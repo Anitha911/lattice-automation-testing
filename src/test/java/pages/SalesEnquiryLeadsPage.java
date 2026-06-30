@@ -184,10 +184,11 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void selectCountry(String Country) {
         try {
+
             utils.click(COUNTRY_DD);
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Country));
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(COUNTRY_DD));
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+           wait.until(ExpectedConditions.visibilityOfElementLocated(COUNTRY_DD));
             utils.click(locator);
             System.out.println("Clicked on the dropdown: " + Country);
         } catch (Exception e) {
