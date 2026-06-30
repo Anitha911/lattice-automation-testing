@@ -136,12 +136,14 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks on the Core masters RM 'string' tab
     When User clicks on the Core masters RM Fault Code 'string' tab
     When User clicks on button Fault Code add 'Add'
-    When User fills up the 'Fault Code' Fault Code details
-    #
-    #When User select the '' Fault Code Service Group dropdown
+
+    When User select the '' Fault Code Service Group dropdown
     When User select the '' Fault Code Fault Category dropdown
     #When User select the '' Fault Code Work Order Type dropdown
     #When User select the '' Fault Code Root Cause Category dropdown
+    When User fills up the 'Fault Code' Fault Code details
+    #
+
     #
     #When User clicks on Fault Code save button
     When User clicks on RM Master save button

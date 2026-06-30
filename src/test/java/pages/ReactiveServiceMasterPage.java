@@ -38,6 +38,12 @@ public class ReactiveServiceMasterPage extends BasePage {
     public static final By FCODE_SG_DD = By.cssSelector("[value='Select Service Group']");
     //public static final By FCODE_FC_DD = By.cssSelector("[value='Select Fault Category']");
     public static final By FCODE_FC_DD = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpTask']");
+    //New DropDown Logic
+    public static By RSM_SERVICE_GROUP = By.xpath("//input[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpSubTaskSerGrp_Input']");
+    public static By ALL_RSM_SERVICE_GROUP = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpSubTaskSerGrp_DropDown']/div/ul/li");
+    public static By FAULTCODE_FAULTCATEGORY = By.xpath("//input[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpTask_Input']");
+    public static By ALL_FAULTCODE_FAULTCATEGORY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinSubTask_C_raddrpTask_DropDown']/div/ul/li");
+    //New DropDown Logic
 
     public static final By FCODE_WOTYPE_DD = By.cssSelector("[value='Select Work Order Type']");
     public static final By FCODE_RCA_DD = By.cssSelector("[value='Select Root Cause Applicability']");
@@ -496,27 +502,30 @@ public class ReactiveServiceMasterPage extends BasePage {
     }
     //
     //Fault Code SG DropDown
-    public void getRandomFaultCodeSGDropdown(){
-        try{
-            utils.click(FCODE_SG_DD);
+    public static void getRandomFaultCodeSGDropdown(){
+//        try{
+            utils.click(RSM_SERVICE_GROUP);
             ElementUtils.waitForDropdownLoading();
-            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_SG);
-            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_SG);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the dropdown: " );
-            throw e;
-        }
+            utils.waitForVisibility(ALL_RSM_SERVICE_GROUP);
+            HelperUtils.clickRandomElement(ALL_RSM_SERVICE_GROUP);
+//        } catch (Exception e) {
+//            System.out.println("Failed to click on the dropdown: " );
+//            throw e;
+//        }
     }
-    public void getRandomFaultCodeFaultCategoryDropdown(){
-        try{
-            utils.click(FCODE_FC_DD);
+    public static void getRandomFaultCodeFaultCategoryDropdown() throws InterruptedException {
+        //try{
+            utils.click(FAULTCODE_FAULTCATEGORY);
             ElementUtils.waitForDropdownLoading();
-            utils.waitForVisibility(ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
-            HelperUtils.clickRandomElement(ALL_OPTIONS_FAULTCODE_FAULTCATEGORY);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the dropdown: " );
-            throw e;
-        }
+            //Thread.sleep(6000);
+            //utils.click(ALL_FAULTCODE_FAULTCATEGORY);
+            utils.waitForVisibility(ALL_FAULTCODE_FAULTCATEGORY);
+            //utils.click(ALL_FAULTCODE_FAULTCATEGORY);
+            HelperUtils.clickRandomElement(ALL_FAULTCODE_FAULTCATEGORY);
+//       // } catch (Exception e) {
+//            System.out.println("Failed to click on the dropdown: " );
+//            throw e;
+//        }
     }
     public void getRandomFaultCodeWorkOrderTypeDropdown(){
         try{

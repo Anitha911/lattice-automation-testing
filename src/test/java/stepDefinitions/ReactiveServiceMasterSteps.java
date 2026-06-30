@@ -176,7 +176,7 @@ public class ReactiveServiceMasterSteps {
     public void user_fills_up_the_FCode(String type) throws IOException {
         generateFCode = dataGen.generateFCodeName();
         tmp.enterFCodeName(generateFCode);
-        tmp.selectFaultCodeSG("Carpentry");
+        //tmp.selectFaultCodeSG("Carpentry");
         //tmp.selectFaultCodeFC("Carpentry");
         tmp.selectFaultCodeWOType("Reactive Maintenance");
         tmp.selectFaultCodeRCA("Mandatory");
