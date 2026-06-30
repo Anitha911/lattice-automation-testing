@@ -21,9 +21,9 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
   @TransLeadsSalesEnquiryExportToExcel
   Scenario: Should be able to Export to Excel Enquiry
     Given User navigates to 'lattice.url' page
-    Then User is at home screen after login with "username" and "password"
-    Then User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
-    Then User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     Then User clicks on Sales Enquiry Management Export to Excel button
 
   @TransLeadsSalesEnquiryOpenTileClick

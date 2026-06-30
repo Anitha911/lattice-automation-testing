@@ -142,9 +142,6 @@ Feature: Reactive Service data a configuration Module Automation
     #When User select the '' Fault Code Work Order Type dropdown
     #When User select the '' Fault Code Root Cause Category dropdown
     When User fills up the 'Fault Code' Fault Code details
-    #
-
-    #
     #When User clicks on Fault Code save button
     When User clicks on RM Master save button
     Then User verify if the Fault Code is created
