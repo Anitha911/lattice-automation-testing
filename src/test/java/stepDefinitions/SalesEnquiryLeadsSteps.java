@@ -94,7 +94,15 @@ public class SalesEnquiryLeadsSteps {
         tmp.selectCity("Chennai");
         tmp.selectCustImp("VVIP");
     }
-        //Dropdowns
+    //DropDown Add Customer New logic
+    @When("User select the {string} Customer Add Client Type dropdown")
+    public void user_select_the_CustomerAddClientType_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomAddClientTypeDropdown();
+        }
+    }
+    //DropDown Add Customer New logic
+    //Dropdowns
         @When("User selects value in the {string} dropdown")
         public void user_selects_dropdown_and_options(String dropdownName) {
             By field;
@@ -123,24 +131,24 @@ public class SalesEnquiryLeadsSteps {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
             //add enquiry
-//            else if (dropdownName.equalsIgnoreCase("Customer Name")) {
-//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input");
-//                elementUtils.click(field);
-//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown'] li");
-//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-//            }
-//            else if (dropdownName.equalsIgnoreCase("Enquiry Source")) {
-//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_Input");
-//                elementUtils.click(field);
-//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown'] li");
-//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-//            }
-//            else if (dropdownName.equalsIgnoreCase("Sales Person")) {
-//                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_Input");
-//                elementUtils.click(field);
-//                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
-//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-//            }
+            else if (dropdownName.equalsIgnoreCase("Customer Name")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+            else if (dropdownName.equalsIgnoreCase("Enquiry Source")) {
+               field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_Input");
+               elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
+           else if (dropdownName.equalsIgnoreCase("Sales Person")) {
+                field = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_Input");
+                elementUtils.click(field);
+                options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown'] li");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+            }
             //Product Category
             else if (dropdownName.equalsIgnoreCase("Product Master Category")) {
                  field = By.cssSelector("input[id*='ddlProdmasterCategory']");
@@ -266,14 +274,11 @@ public class SalesEnquiryLeadsSteps {
                 //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
             //Site Survey Requested Ends
-            //Financial Tracking Starts
-            //Invoice reversal
             else if (dropdownName.equalsIgnoreCase("FinancialTransReason")) {
                 field = By.id("ctl00_ContentPlaceHolder1_CustomerInvoice_RadWinInvoiceReversal_C_ddlInvoiceReversalReason_Input");
                 options = By.cssSelector("[id='ctl00_ContentPlaceHolder1_CustomerInvoice_RadWinInvoiceReversal_C_ddlInvoiceReversalReason_DropDown'] li");
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             }
-            //Financial Tracking Ends
             else {
                 throw new IllegalArgumentException("Unknown dropdown name: " + dropdownName);
             }
@@ -291,16 +296,16 @@ public class SalesEnquiryLeadsSteps {
 //Add Enquiry
     @Then("User fills the Enquiry details")
     public void userFillsUpEnquiryDetails() {
-//        tmp.selectEnqCustomer("Alpha Properties");
-//        ElementUtils.waitForLoaderToDisappear();
-//        tmp.selectEnqSource("Online");
-//        ElementUtils.waitForLoaderToDisappear();
-//        tmp.selectEnquiryType("Adhoc");
-//        ElementUtils.waitForLoaderToDisappear();
-//        tmp.selectEnquirySalesPerson("Wallace Hull");
-//        ElementUtils.waitForLoaderToDisappear();
-//        tmp.selectEnquiryService("BMS");
-//        ElementUtils.waitForLoaderToDisappear();
+        tmp.selectEnqCustomer("Alpha Properties");
+        ElementUtils.waitForLoaderToDisappear();
+        tmp.selectEnqSource("Online");
+        ElementUtils.waitForLoaderToDisappear();
+        tmp.selectEnquiryType("Adhoc");
+        ElementUtils.waitForLoaderToDisappear();
+        tmp.selectEnquirySalesPerson("Wallace Hull");
+        ElementUtils.waitForLoaderToDisappear();
+        tmp.selectEnquiryService("BMS");
+        ElementUtils.waitForLoaderToDisappear();
         tmp.enterEnquiryDesc(dataGen.generateEnqDesc());
     }
     //DropDown NEw
@@ -329,6 +334,66 @@ public class SalesEnquiryLeadsSteps {
         }
     }
     //Dropdown New
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Email textbox")
+    public void user_verify_chars_len_EnquiryADDEmail(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtEnquiryEmail"),maxLen, minLen);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Address textbox")
+    public void user_verify_chars_len_EnquiryADDAddress(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_txtAddress"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Email textbox")
+    public void userVerifyInlineErrorMessageEnquiryAddEmail(String expectedErrorMessage) {
+        By EnquiryAddEmailErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RequiredFieldValidator6");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddEmailErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Description")
+    public void userVerifyInlineErrorMessageEnquiryAddDescription(String expectedErrorMessage) {
+        By EnquiryAddDescErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RequiredFieldValidator10");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddDescErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Address")
+    public void userVerifyInlineErrorMessageEnquiryAddAddress(String expectedErrorMessage) {
+        By EnquiryAddAddressErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RequiredFieldValidator9");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddAddressErrorLocator, expectedErrorMessage);
+    }
+    //customer add validation
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Customer Customer Name textbox")
+    public void user_verify_chars_len_EnquiryADDCustomerName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtCustomerName"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Customer Customer Name")
+    public void userVerifyInlineErrorMessageCustomerName(String expectedErrorMessage) {
+        By EnquiryAddCustomerNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_rfvCustomerName");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddCustomerNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Contact Person textbox")
+    public void user_verify_chars_len_EnquiryADDCustomerPerson(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtContactPerson"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Customer Contact Person")
+    public void userVerifyInlineErrorMessageCustomerPerson(String expectedErrorMessage) {
+        By EnquiryAddCustomerContactPersonErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_RequiredFieldValidator17");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddCustomerContactPersonErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Contact Email textbox")
+    public void user_verify_chars_len_EnquiryADDContactEmail(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtEmail"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Customer Email")
+    public void userVerifyInlineErrorMessageCustomerEmail(String expectedErrorMessage) {
+        By EnquiryAddCustomerEmailErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_RequiredFieldValidator19");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddCustomerEmailErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on Enquiry Add Contact Address textbox")
+    public void user_verify_chars_len_EnquiryADDContactAddress(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_radtxtAddressLine1"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on Enquiry Add Contact Address")
+    public void userVerifyInlineErrorMessageAddContactAddress(String expectedErrorMessage) {
+        By EnquiryAddCustomerAddressErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_RadWinClientAdd_C_RequiredFieldValidator20");
+        helperUtils.verifyInlineErrorMessage(EnquiryAddCustomerAddressErrorLocator, expectedErrorMessage);
+    }
     @Then("User Clicks Enquiry Save Button")
     public void user_click_on_AddEnquirySaveButton() {
         tmp.ClickAddEnquirySave();

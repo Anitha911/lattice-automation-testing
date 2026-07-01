@@ -9,14 +9,28 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     When User clicks on button Sales Add Enquiry 'Add'
     When User fills the Enquiry details
-    When User select the '' Sales Enquiry Add Customer Name dropdown
-    When User select the '' Sales Enquiry Add Enquiry Source dropdown
-    When User select the '' Sales Enquiry Add Sales person dropdown
-    When User select the '' Sales Enquiry Add Enquiry Type dropdown
+    #When User select the '' Sales Enquiry Add Customer Name dropdown
+    #When User select the '' Sales Enquiry Add Enquiry Source dropdown
+    #When User select the '' Sales Enquiry Add Sales person dropdown
+    #When User select the '' Sales Enquiry Add Enquiry Type dropdown
     #When User selects value in the "Customer Name" dropdown
     #When User selects value in the "Enquiry Source" dropdown
     #When User selects value in the "Sales person" dropdown
     Then User Clicks Enquiry Save Button
+
+  @addEnquiryValidationInput
+  Scenario: User should not be able to Add Enquiry with invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User clicks on button Sales Add Enquiry 'Add'
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Email textbox
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Address textbox
+    When User Clicks Enquiry Save Button
+    When user verify the inline error message 'Enter Email' on Enquiry Add Email textbox
+    When user verify the inline error message 'Enter Enquiry Description' on Enquiry Add Description
+    Then user verify the inline error message 'Enter Address' on Enquiry Add Address
 
   @TransLeadsSalesEnquiryExportToExcel
   Scenario: Should be able to Export to Excel Enquiry
@@ -105,7 +119,30 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     #When User selects value in the "Country" dropdown
     #When User selects value in the "City" dropdown
     #When User selects value in the "Customer Importance" dropdown
+    #new dropdown logic
+    #When User select the '' Customer Add Client Type dropdown
+    #When User select the '' Customer Add Country dropdown
+    #When User select the '' Customer Add City dropdown
+    #When User select the '' Customer Add Customer Importance dropdown
     Then User Clicks on Add Customer Save Button
+
+  @addEnquiryCustomerValidationInput
+  Scenario: User should not be able to Add Enquiry Customer with invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User clicks on button Sales Add Enquiry 'Add'
+    When User clicks on button Sales Add Enquiry Add Customer 'AddCustomer'
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Customer Customer Name textbox
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Contact Person textbox
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Contact Email textbox
+    When user verify the chars min len as 3 and max len as 255 on Enquiry Add Contact Address textbox
+    When User Clicks on Add Customer Save Button
+    When user verify the inline error message 'Enter Customer Name' on Enquiry Add Customer Customer Name
+    When user verify the inline error message 'Enter Contact Person' on Enquiry Add Customer Contact Person
+    When user verify the inline error message 'Enter Email' on Enquiry Add Customer Email
+    When user verify the inline error message 'Enter Address Line1' on Enquiry Add Contact Address
 
   @TransLeadsSalesOpenEnquiryDetailPage
   Scenario: Should be able to add Open Enquiry Detail page
@@ -133,8 +170,8 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     When User clicks on button Sales Add Enquiry 'Add'
     When User fills the Enquiry details
-    When User selects value in the "Enquiry Source" dropdown
-    When User selects value in the "Sales person" dropdown
+    #When User selects value in the "Enquiry Source" dropdown
+    #When User selects value in the "Sales person" dropdown
     When User Clicks Enquiry Save Button
     When User clicks on first data in the grid to Open the Detail page
     When User Clicks on status Update Button 'Status Update' in Enquiry Detail Page
@@ -149,8 +186,8 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
     When User clicks on button Sales Add Enquiry 'Add'
     When User fills the Enquiry details
-    When User selects value in the "Enquiry Source" dropdown
-    When User selects value in the "Sales person" dropdown
+    #When User selects value in the "Enquiry Source" dropdown
+    #When User selects value in the "Sales person" dropdown
     When User Clicks Enquiry Save Button
     When User clicks on first data in the grid to Open the Detail page
     When User Clicks on status Update Button 'Status Update' in Enquiry Detail Page

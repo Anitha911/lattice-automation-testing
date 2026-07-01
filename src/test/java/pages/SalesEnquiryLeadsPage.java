@@ -90,6 +90,13 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public static final By ALL_OPTIONS_ENQUIRYSOURCE_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlEnquirySource_DropDown']/div/ul/li");;
     public static final By ALL_OPTIONS_SALESPERSON_ADDENQUIRY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlSalesPerson_DropDown']/div/ul/li");;
 
+    //Dropdown New Logic Start
+    public static By ADDENQUIRY_CUSTOMERNAME = By.xpath("//input[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input']");
+    public static By ADDENQUIRY_ALL_CUSTOMERNAME = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown']/div/ul/li");
+    //public static By ADDENQUIRY_CUSTOMERNAME = By.xpath("//input[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_Input']");
+    //public static By ADDENQUIRY_ALL_CUSTOMERNAME = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinEnquiryAdd_C_Enquiry_ddlCustomerName_DropDown']/div/ul/li");
+    //Dropdown New Logic End
+
     public void SalesEnquiryManagement(String SalesEnquiryManagement) throws InterruptedException {
         try {
             By locator = By.id("13");
@@ -167,6 +174,21 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public void enterCustAddress(String Address) {
         utils.typeText(ADDRESS, Address);
     }
+    //Customer Add New Pop up dropdown logic
+    public void getRandomAddClientTypeDropdown(){
+        try{
+            utils.click(ENQUIRY_SALESPERSON_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_SALESPERSON_ADDENQUIRY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_SALESPERSON_ADDENQUIRY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " );
+            throw e;
+        }
+    }
+    //Customer Add New Pop up dropdown logic
+
+    //
     public void selectClientType(String ClientType) {
         try {
            // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -297,15 +319,15 @@ public class SalesEnquiryLeadsPage extends BasePage{
     //DropDown
     //SalesEnquiryCustomerName_Dropdown
     public static void getRandomSalesEnquiryCustomerNameDropdown(){
-        try{
-            utils.click(ENQUIRY_CUSTOMER_NAME_DD);
+        //try{
+            utils.click(ADDENQUIRY_CUSTOMERNAME);
             ElementUtils.waitForDropdownLoading();
-            utils.waitForVisibility(ALL_OPTIONS_CUSTOMERNAME_ADDENQUIRY);
-            HelperUtils.clickRandomElement(ALL_OPTIONS_CUSTOMERNAME_ADDENQUIRY);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the dropdown: " );
-            throw e;
-        }
+            utils.waitForVisibility(ADDENQUIRY_ALL_CUSTOMERNAME);
+            HelperUtils.clickRandomElement(ADDENQUIRY_ALL_CUSTOMERNAME);
+        /////} catch (Exception e) {
+            //System.out.println("Failed to click on the dropdown: " );
+            //throw e;
+        //}
     }
     public void getRandomSalesEnquirySourceDropdown(){
         try{
