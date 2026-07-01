@@ -158,7 +158,7 @@ public class ReactiveMaintainancePage extends BasePage{
             if (utils.isElementVisible(button)) {
                 utils.click(button);
                 List<WebElement> buttons = driver.findElements(
-                        By.xpath("//*[@id='ctl00_ContentPlaceHolder1_RadWinDuplicateWOWarning_C_btnIngoreCreate']")
+                        By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnSave']")
                 );
                 if (!buttons.isEmpty()) {
                     buttons.get(0).click();

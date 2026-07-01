@@ -1,5 +1,6 @@
 package stepDefinitions;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,6 +55,11 @@ public class ReactiveMaintainanceSteps {
     @Then("User clicks the first WO to open the detail page")
     public void user_click_on_RMRequestDetailOpen() throws InterruptedException {
         tmp.RMRequestDetailOpen();
+    }
+    @When("user verify the inline error message {string} on New Request RM")
+    public void userVerifyInlineErrorMessageOnNewRequestWorkDesc(String expectedErrorMessage) {
+        By NewRequestWorkDescErrorLocator = By.id("ContentPlaceHolder1_RequiredFieldValidator17");
+        helperUtils.verifyInlineErrorMessage(NewRequestWorkDescErrorLocator, expectedErrorMessage);
     }
     //Add Notes
     @Then("User Clicks on Add RM Notes {string}")

@@ -10,6 +10,15 @@ Feature: Reactive Service data a configuration Module Automation
     When User fills up the New Request details
     Then User clicks on RM New Request save button
 
+  @addNewRMRequestValidationInput
+  Scenario: User should not be able to save RM New Request with invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM New Request 'New Request' tab
+    Then User clicks on RM New Request save button
+    Then user verify the inline error message 'Work Description is Required' on New Request RM
+
   @RMRequestDetailPage
   Scenario: Should be able to Open RM Detail Page
     Given User navigates to 'lattice.url' page
