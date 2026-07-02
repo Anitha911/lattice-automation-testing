@@ -281,7 +281,7 @@ public class SalesEnquiryLeadsPage extends BasePage{
     public void selectEnquiryType(String EnqType) {
         try {
             utils.click(ENQUIRY_TYPE_DD);
-            ElementUtils.waitForDropdownLoading();
+            //ElementUtils.waitForDropdownLoading();
             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", EnqType));
             utils.waitForVisibility(ALL_OPTIONS_ENQUIRY_TYPE_ADDENQUIRY);
             utils.click(locator);
@@ -557,8 +557,10 @@ public class SalesEnquiryLeadsPage extends BasePage{
     }
     public void SalesEnquiryClickSiteSurveyRequestedTile(String SalesEnquiryclickSiteSurveyRequestedTile) throws InterruptedException {
         try {
-            By locator = By.xpath(String.format("//*[@id='div10']", SalesEnquiryclickSiteSurveyRequestedTile));
-            utils.click(locator);
+            //By locator = By.xpath(String.format("//*[@id='div10']", SalesEnquiryclickSiteSurveyRequestedTile));
+            driver.findElement(By.xpath("//div[@id='div10' and contains(@class,'site-survey-required')]")).click();
+
+            //utils.click(locator);
             System.out.println("Clicked on Enquiry Site Survey Requested Tile Button: " + SalesEnquiryclickSiteSurveyRequestedTile);
         } catch (Exception e) {
             System.out.println("Failed to click on the Enquiry Site Survey Requested Tile Button:: " + SalesEnquiryclickSiteSurveyRequestedTile);

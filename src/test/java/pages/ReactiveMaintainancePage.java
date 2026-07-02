@@ -158,12 +158,13 @@ public class ReactiveMaintainancePage extends BasePage{
             if (utils.isElementVisible(button)) {
                 utils.click(button);
                 List<WebElement> buttons = driver.findElements(
-                        By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnSave']")
+                        By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnSave' or @id='ctl00_ContentPlaceHolder1_RadWinDuplicateWOWarning_C_btnIngoreCreate']")
                 );
                 if (!buttons.isEmpty()) {
                     buttons.get(0).click();
                 }
                 return;
+
             }
         }
         throw new RuntimeException("No save button is present on the page.");

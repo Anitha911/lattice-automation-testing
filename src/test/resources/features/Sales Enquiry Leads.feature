@@ -51,11 +51,11 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     #check again Start
   @TransLeadsSalesEnquirySiteSurveyTitleClick
   Scenario: Should be able to Click SiteSurvey Requested Tile and corresponding data should be populated in the grid
-    #Given User navigates to 'lattice.url' page
-    #When User is at home screen after login with "username" and "password"
-    #When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
-    #When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
-    #Then User Clicks the Site Survey Requested Tile in Enquiry page
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    Then User Clicks the Site Survey Requested Tile in Enquiry page
     #check again End
 
   @TransLeadsSalesEnquiryGridPagination

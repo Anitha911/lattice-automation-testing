@@ -416,7 +416,7 @@ public class SalesEnquiryLeadsSteps {
     }
     @Then("User Clicks the Site Survey Requested Tile in Enquiry page")
     public void user_clicks_on_Enquiry_SiteSurvey_Requested_Tile() throws InterruptedException {
-        String xpath = "//*[@id='div10']";
+        String xpath = "//div[@id='div10' and contains(@class,'site-survey-required')]";
         tmp.SalesEnquiryClickSiteSurveyRequestedTile(xpath);
     }
 
