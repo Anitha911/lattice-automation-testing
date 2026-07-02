@@ -27,6 +27,7 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By SAVE_BUTTON_RMNOTES = By.id("ctl00_ContentPlaceHolder1_Notes_radwin_addnotes_popup_C_AddNotes_btnNoteSave");
     public static final By RM_PTWTYPE_DD = By.cssSelector("[value='Select PTW Type']");
     public static final By SAVE_BUTTON_RMPTW = By.id("ctl00_ContentPlaceHolder1_PermitToWork_RadWinArea_C_btnPermitSave");
+    public static final By ASSIGN_RMDETAIL = By.id("ctl00_ContentPlaceHolder1_btnPendingAssign");
 
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
@@ -282,13 +283,6 @@ public class ReactiveMaintainancePage extends BasePage{
             String parentWindow = driver.getWindowHandle();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(driver -> driver.getWindowHandles().size() > 1);
-
-//            for (String handle : driver.getWindowHandles()) {
-//                if (!handle.equals(parentWindow)) {
-//                    driver.switchTo().window(handle);
-//                    break;
-//                }
-//            }
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
             WebElement el = wait.until(
@@ -327,4 +321,34 @@ public class ReactiveMaintainancePage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
+    //WO Status Check
+    public void RMRequestDetailWOStatusNotDespatched() throws InterruptedException {
+        String parentWindow = driver.getWindowHandle();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(driver -> driver.getWindowHandles().size() > 1);
+
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(parentWindow)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+        try {
+            String status = "Not Dispatched";
+            List<WebElement> elements = driver.findElements(
+                    By.xpath(String.format("//span/span[normalize-space()='%s']", status))
+            );
+            if (!elements.isEmpty()) {
+                utils.click(ASSIGN_RMDETAIL);
+            }
+            else {
+                System.out.println("No Assign Button present in RMNewRequest Detail Page: " );
+            }
+        } catch (Exception e) {
+            System.out.println("No Assign Button present in RMNewRequest Detail Page: " );
+            throw e;
+        }
+    }
+    //WO status Check
+
 }

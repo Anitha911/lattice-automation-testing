@@ -32,15 +32,15 @@ public class ReactiveMaintainanceSteps {
     }
     @Then("User fills up the New Request details")
     public void userFillsNewRequestDetails() {
-        tmp.selectPropertyOwner("Alpha Properties");
-        tmp.selectPropertyContract("ABC Tower");
-        tmp.selectProperty("ABC Tower");
-        tmp.selectZone("ABC Tower");
-        tmp.selectSubZone("ROOF TOP");
-        tmp.selectBaseUnit("ABC110-ABC110-RF-17 TO H12 CORR [BU1001910]");
-        tmp.selectSG("Carpentry");
-        tmp.selectFaultCategory("Carpentry");
-        tmp.selectFaultCode("12012026RK FC");
+        tmp.selectPropertyOwner("Lattice Demo Client");
+        tmp.selectPropertyContract("EMRILL DEMO CONTRACT");
+        tmp.selectProperty("EMRILL DEMO CONTRACT");
+        tmp.selectZone("Head Office");
+        tmp.selectSubZone("GROUND FLOOR");
+        tmp.selectBaseUnit("EDC-HO-GF-Center of excellence [EDC-BU1000002]");
+        tmp.selectSG("Chemical Dozing Systems");
+        tmp.selectFaultCategory("Card Reader");
+        tmp.selectFaultCode("07102025RK FC");
     }
     @Then("User clicks on RM New Request save button")
     public void user_click_on_NewRequestSaveButton() {
@@ -91,5 +91,10 @@ public class ReactiveMaintainanceSteps {
     @Then("User Clicks RM Permit To Work Save Button")
     public void user_click_on_RMPTWSaveButton() {
         tmp.ClickRMPTWSave();
+    }
+    //WO Status
+    @Then("User Checks the WO Status in the WO detail page NotDespatched")
+    public void user_click_on_RMRequestDetailWOStatusNotDespatched() throws InterruptedException {
+        tmp.RMRequestDetailWOStatusNotDespatched();
     }
 }
