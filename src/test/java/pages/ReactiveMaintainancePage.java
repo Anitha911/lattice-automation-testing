@@ -321,7 +321,7 @@ public class ReactiveMaintainancePage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
-    //WO Status Check
+    //WO Status Check Not Despatched to Assigned
     public void RMRequestDetailWOStatusNotDespatched() throws InterruptedException {
         String parentWindow = driver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -333,56 +333,82 @@ public class ReactiveMaintainancePage extends BasePage{
                 break;
             }
         }
-        try {
-            String status = "Not Dispatched";
-            List<WebElement> elements = driver.findElements(
-                    By.xpath(String.format("//span/span[normalize-space()='%s']", status))
-            );
-            if (!elements.isEmpty()) {
-                utils.click(ASSIGN_RMDETAIL);
+        //String status = "Not Dispatched";
+        List<WebElement> statusList = driver.findElements(
+                By.xpath("//*[@id='ContentPlaceHolder1_dvRMWOSummary']/div/div[1]/div/span/span")
+        );
+        for (WebElement statusElement : statusList) {
+            String status = statusElement.getText().trim();
+            if ("Not Dispatched".equals(status)) {
+                WebElement okButton = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_btnAssignWO_Ok"))
+                );
+                okButton.click();
+                //utils.click(ASSIGN_RMDETAIL);
                 //if technician is present in the Technician Grid Start
                 WebElement row = driver.findElement(
                         By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_Grd_techAssignlist_ctl00__0']")
                 );
                 WebElement firstValueCell = row.findElement(By.xpath("./td[2]"));
                 String firstValue = firstValueCell.getText().trim();
-                    if(!firstValue.isEmpty()) {
-                        WebElement checkbox = driver.findElement(
-                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_Grd_techAssignlist_ctl00_ctl04_SelectedAssignIDSelectCheckBox")
-                        );
-                        checkbox.click();
-                        //if agreed beyond SLA dropdown is enabled start
-                        WebElement dropdown = driver.findElement(
-                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_raddrpReason_Input")
-                        );
-                        if (dropdown.isEnabled()) {
-                            dropdown.click();
-                            dropdown.sendKeys("Due to Customer Request");
-                            dropdown.sendKeys(Keys.ENTER);
-                        } else {
-                            System.out.println("Agreed Beyond SLA Dropdown is disabled.");
-                        }
-                        //if agreed beyond SLA dropdown is enabled End
-                        //Click Assign Button Start
-                        WebElement btn = wait.until(
-                                ExpectedConditions.elementToBeClickable(
-                                        By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_btnAssignWO_Ok")));
-                        btn.click();
-                        //Click Assign button End
+                if (!firstValue.isEmpty()) {
+                    WebElement checkbox = driver.findElement(
+                            By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_Grd_techAssignlist_ctl00_ctl04_SelectedAssignIDSelectCheckBox")
+                    );
+                    checkbox.click();
+                    //if agreed beyond SLA dropdown is enabled start
+                    WebElement dropdown = driver.findElement(
+                            By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_raddrpReason_Input")
+                    );
+                    if (dropdown.isEnabled()) {
+                        dropdown.click();
+                        dropdown.sendKeys("Due to Customer Request");
+                        dropdown.sendKeys(Keys.ENTER);
+                    } else {
+                        System.out.println("Agreed Beyond SLA Dropdown is disabled.");
                     }
-                    else {
-                        System.out.println("No Technician present in RMNewRequest Detail Page: " );
-                    }
+                    //if agreed beyond SLA dropdown is enabled End
+                    //Click Assign Button Start
+                    WebElement btn = wait.until(
+                            ExpectedConditions.elementToBeClickable(
+                                    By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_btnAssignWO_Ok")));
+                    btn.click();
+                    //Click Assign button End
+                } else {
+                    System.out.println("No Technician present in RMNewRequest Detail Page: ");
+                }
                 //if technician is present in the Technician Grid End
             }
-            else {
-                System.out.println("No Assign Button present in RMNewRequest Detail Page: " );
+            //Not Despatched Status End
+            //Appointment Booked to Site Attended Starts
+            if ("Appointment Booked".equals(status)) {
+                WebElement ChangeStatusButton = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_hlkChangeStatus"))
+                );
+                ChangeStatusButton.click();
+                WebElement WOStatusdropdown = driver.findElement(
+                        By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_ddlNewStatus_Input")
+                );
+                WOStatusdropdown.sendKeys("Site Attended");
+                WOStatusdropdown.sendKeys(Keys.ENTER);
+                WebElement remarks = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_txtStatusRemarks"))
+                );
+                remarks.clear();
+                remarks.sendKeys("Remarks entered by when status changed from Appointment booked to Site Attended");
+                WebElement ChangeStatusButtonSave = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_lnkSaveBtn"))
+                );
+                ChangeStatusButtonSave.click();
             }
-        } catch (Exception e) {
-            System.out.println("No Assign Button present in RMNewRequest Detail Page: " );
-            throw e;
+            //Appointment Booked to Site Attended Ends
         }
     }
-    //WO status Check
 
+    //WO Status Appointment Booked to Site Attented
+    //WO status Check
 }
