@@ -340,6 +340,35 @@ public class ReactiveMaintainancePage extends BasePage{
             );
             if (!elements.isEmpty()) {
                 utils.click(ASSIGN_RMDETAIL);
+                //if technician is present in the Technician Grid Start
+                WebElement row = driver.findElement(
+                        By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_Grd_techAssignlist_ctl00__0']")
+                );
+                WebElement firstValueCell = row.findElement(By.xpath("./td[2]"));
+                String firstValue = firstValueCell.getText().trim();
+                    if(!firstValue.isEmpty()) {
+                        WebElement checkbox = driver.findElement(
+                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_Grd_techAssignlist_ctl00_ctl04_SelectedAssignIDSelectCheckBox")
+                        );
+                        checkbox.click();
+                        //if agreed beyond SLA dropdown is enabled start
+                        WebElement dropdown = driver.findElement(
+                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_raddrpReason_Input")
+                        );
+
+                        if (dropdown.isEnabled()) {
+                            dropdown.click();
+                            dropdown.sendKeys("Your Value");
+                            dropdown.sendKeys(Keys.ENTER);
+                        } else {
+                            System.out.println("Dropdown is disabled.");
+                        }
+                        //if agreed beyond SLA dropdown is enabled End
+                    }
+                    else {
+                        System.out.println("No Technician present in RMNewRequest Detail Page: " );
+                    }
+                //if technician is present in the Technician Grid End
             }
             else {
                 System.out.println("No Assign Button present in RMNewRequest Detail Page: " );
