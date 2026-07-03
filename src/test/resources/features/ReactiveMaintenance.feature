@@ -51,7 +51,7 @@ Feature: Reactive Service data a configuration Module Automation
     Then User Clicks RM Permit To Work Save Button
 
   @RMRequestDetailPageCheckWOStatusNotDespatchedAndClickAssign
-  Scenario: Should be able to Open RM Detail Page and Add Check WO Status whether it is NotDespatched and click Assign
+  Scenario: Should be able to Open RM Detail Page and Add Check WO Status whether it is NotDespatched and Assign Technician
     Given User navigates to 'lattice.url' page
     When User is at home screen after login with "username" and "password"
     When User clicks on RM Transactions 'Reactive Maintenance' in side menu

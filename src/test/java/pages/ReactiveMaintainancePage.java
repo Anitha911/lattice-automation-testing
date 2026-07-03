@@ -355,15 +355,20 @@ public class ReactiveMaintainancePage extends BasePage{
                         WebElement dropdown = driver.findElement(
                                 By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_raddrpReason_Input")
                         );
-
                         if (dropdown.isEnabled()) {
                             dropdown.click();
-                            dropdown.sendKeys("Your Value");
+                            dropdown.sendKeys("Due to Customer Request");
                             dropdown.sendKeys(Keys.ENTER);
                         } else {
-                            System.out.println("Dropdown is disabled.");
+                            System.out.println("Agreed Beyond SLA Dropdown is disabled.");
                         }
                         //if agreed beyond SLA dropdown is enabled End
+                        //Click Assign Button Start
+                        WebElement btn = wait.until(
+                                ExpectedConditions.elementToBeClickable(
+                                        By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_btnAssignWO_Ok")));
+                        btn.click();
+                        //Click Assign button End
                     }
                     else {
                         System.out.println("No Technician present in RMNewRequest Detail Page: " );
