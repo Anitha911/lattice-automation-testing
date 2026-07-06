@@ -830,6 +830,7 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
 //            );
             if (!rows.isEmpty()) {
                  //Row exists → click it
+                ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,500);");
                rows.get(0).click();
                 System.out.println("Row found and clicked: ");
             }
@@ -879,14 +880,23 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
 
     //Scope EXP
     public void ClickQuotScopeOfWork(String enterClickQuotScopeOfWork) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(driver -> driver.getWindowHandles().size() >= 3);
-        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(2));
 
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//*[@id='tabScopeofWork']")
-        )).click();
+        WebElement tab = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.id("tabScopeofWork"))
+        );
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});", tab);
+        wait.until(ExpectedConditions.elementToBeClickable(tab));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", tab);
+
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(driver -> driver.getWindowHandles().size() >= 3);
+//        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+//        driver.switchTo().window(tabs.get(2));
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//*[@id='tabScopeofWork']")
+//        )).click();
     }
     public void enterScope(String enterAddLinesComments) {
         utils.typeText(ENQUIRY_QUOT_SCOPEOFWORK, enterAddLinesComments);    }
