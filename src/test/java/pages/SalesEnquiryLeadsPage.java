@@ -794,7 +794,7 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void SalesEnquiryOppClickGridFirstData(String SalesEnquiryOppClickGridFirstData) throws InterruptedException {
         try {
-            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__1']", SalesEnquiryOppClickGridFirstData));//change this
+            By locator = By.xpath(String.format("//*[@id='ctl00_ContentPlaceHolder1_GrdPendingEnquiry_ctl00__0']", SalesEnquiryOppClickGridFirstData));//change this
             utils.click(locator);
             System.out.println("Clicked on Enquiry Grid First data: " + SalesEnquiryOppClickGridFirstData);
         } catch (Exception e) {
@@ -825,9 +825,12 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
             List<WebElement> rows = driver.findElements(
                     By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Quotations_grdQuotationGrp_ctl00__0']")
             );
+//            List<WebElement> rows = driver.findElements(
+//                    By.xpath("//*[@id='grid']//tr")
+//            );
             if (!rows.isEmpty()) {
-                // Row exists → click it
-                rows.get(0).click();
+                 //Row exists → click it
+               rows.get(0).click();
                 System.out.println("Row found and clicked: ");
             }
             else {

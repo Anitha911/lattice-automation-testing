@@ -205,11 +205,11 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User is at home screen after login with "username" and "password"
     When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
     When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
-    #Then User clicks on button Sales Add Enquiry 'Add'
-    #Then User fills the Enquiry details
-    #When User selects value in the "Enquiry Source" dropdown
-    #When User selects value in the "Sales person" dropdown
-    #Then User Clicks Enquiry Save Button
+    When User clicks on button Sales Add Enquiry 'Add'
+    When User fills the Enquiry details
+    When User selects value in the "Enquiry Source" dropdown
+    When User selects value in the "Sales person" dropdown
+    When User Clicks Enquiry Save Button
     When User clicks on first data in the grid to Open the Detail page
     When User Clicks on status Update Button 'Status Update' in Enquiry Detail Page
     When User fills the Enquiry Update Status Pop Up Not To Bid details
@@ -286,7 +286,15 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
     When User clicks on first data in the opportunities grid to Open the Detail page
     When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
-    When User clicks on first data in the Quotations grid to Open the Detail page
+    #When User clicks on first data in the Quotations grid to Open the Detail page
+
+    When User Clicks on Add Quotation 'Add New Quotation' Button
+    When User Clicks on Quotation Details 'Add Lines' Button
+    When User enters on Quotation Add Lines Details
+    Then User clicks the Quotation Save 'Draft' Button
+    When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    When User Clicks on Add Quotation 'Add New Quotation' Button
+
     When User Clicks Scope Of Work data in the 'Scope of Work' Tab
     When User enters Scope Of Work data Details
     When User clicks the Quotation Save Finalize 'Finalize' Button
