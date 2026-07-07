@@ -904,10 +904,10 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     //Scope Exp
     public void ClickQuotSaveFinalize(String clickQuotSaveFinalize) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(driver -> driver.getWindowHandles().size() >= 3);
-            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(2));
+            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            //wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            //List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            //driver.switchTo().window(tabs.get(2));
             By[] saveButtons = {SAVE_BUTTON_QUOT_FINALIZE};
             for (By button : saveButtons) {
                 if (utils.isElementVisible(button)) {
@@ -924,9 +924,9 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     public void ClickQuotSaveFinalizeSubmit(String ClickQuotSaveFinalizeSubmit) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(driver -> driver.getWindowHandles().size() >= 3);
-            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(2));
+            //wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            //List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            //driver.switchTo().window(tabs.get(2));
             By[] saveButtons = {SAVE_BUTTON_QUOT_FINALIZE_SUBMIT};
             for (By button : saveButtons) {
                 if (utils.isElementVisible(button)) {
@@ -943,10 +943,10 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     //Quotation Cancel button in quotation detail page Start
     public void ClickQuotCancelButton(String ClickQuotCancelButton) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(driver -> driver.getWindowHandles().size() >= 3);
-            List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(2));
+            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            //wait.until(driver -> driver.getWindowHandles().size() >= 3);
+            //List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+            //driver.switchTo().window(tabs.get(2));
             By[] saveButtons = {QUOTATION_CANCEL};
             for (By button : saveButtons) {
                 if (utils.isElementVisible(button)) {
