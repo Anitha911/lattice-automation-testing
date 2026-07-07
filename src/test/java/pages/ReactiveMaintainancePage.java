@@ -342,7 +342,7 @@ public class ReactiveMaintainancePage extends BasePage{
             if ("Not Dispatched".equals(status)) {
                 WebElement okButton = wait.until(
                         ExpectedConditions.elementToBeClickable(
-                                By.id("ctl00_ContentPlaceHolder1_radwinPendingAsignModel_C_btnAssignWO_Ok"))
+                                By.id("ctl00_ContentPlaceHolder1_btnPendingAssign"))
                 );
                 okButton.click();
                 //utils.click(ASSIGN_RMDETAIL);
@@ -388,27 +388,35 @@ public class ReactiveMaintainancePage extends BasePage{
                                 By.id("ctl00_ContentPlaceHolder1_hlkChangeStatus"))
                 );
                 ChangeStatusButton.click();
-                WebElement WOStatusdropdown = driver.findElement(
-                        By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_ddlNewStatus_Input")
-                );
-                WOStatusdropdown.sendKeys("Site Attended");
-                WOStatusdropdown.sendKeys(Keys.ENTER);
+                //
+                WebElement statusDropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_ddlNewStatus_Input")));
+                statusDropdown.click();
+                statusDropdown.sendKeys("Site Attended");
+
+                WebElement option = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.xpath("//li[contains(text(),'Site Attended')]")));
+                option.click();
+                //
                 WebElement remarks = wait.until(
                         ExpectedConditions.visibilityOfElementLocated(
                                 By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_txtStatusRemarks"))
                 );
-                remarks.clear();
-                remarks.sendKeys("Remarks entered by when status changed from Appointment booked to Site Attended");
-                WebElement ChangeStatusButtonSave = wait.until(
-                        ExpectedConditions.elementToBeClickable(
+               // remarks.clear();
+                //remarks.sendKeys("Remarks entered  when status changed from Appointment booked to Site Attended");
+                WebElement saveButton = wait.until(
+                        ExpectedConditions.presenceOfElementLocated(
                                 By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_lnkSaveBtn"))
                 );
-                ChangeStatusButtonSave.click();
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", saveButton);
             }
             //Appointment Booked to Site Attended Ends
         }
     }
-
     //WO Status Appointment Booked to Site Attented
     //WO status Check
 }
