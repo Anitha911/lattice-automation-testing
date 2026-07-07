@@ -94,13 +94,8 @@ public class ReactiveMaintainanceSteps {
         tmp.ClickRMPTWSave();
     }
     //WO Status
-    @Then("User Checks the WO Status in the WO detail page NotDespatched and Assign to Technician and Site Attented")
+    @Then("User Checks the WO Status in the WO detail page")
     public void user_click_on_RMRequestDetailWOStatusNotDespatched() throws InterruptedException {
         tmp.RMRequestDetailWOStatusNotDespatched();
     }
-//    @When("User clicks Change Status Button and select Site Attented option")
-//    public void userClicksChangeStatusButtonAndSelectSiteAttentedOption() throws InterruptedException {
-//        tmp.RMRequestDetailWOStatusNotDespatchedSiteAttented();
-//
-//    }
 }

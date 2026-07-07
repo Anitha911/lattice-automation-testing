@@ -333,7 +333,6 @@ public class ReactiveMaintainancePage extends BasePage{
                 break;
             }
         }
-        //String status = "Not Dispatched";
         List<WebElement> statusList = driver.findElements(
                 By.xpath("//*[@id='ContentPlaceHolder1_dvRMWOSummary']/div/div[1]/div/span/span")
         );
@@ -399,13 +398,10 @@ public class ReactiveMaintainancePage extends BasePage{
                         ExpectedConditions.elementToBeClickable(
                                 By.xpath("//li[contains(text(),'Site Attended')]")));
                 option.click();
-                //
                 WebElement remarks = wait.until(
                         ExpectedConditions.visibilityOfElementLocated(
                                 By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_txtStatusRemarks"))
                 );
-               // remarks.clear();
-                //remarks.sendKeys("Remarks entered  when status changed from Appointment booked to Site Attended");
                 WebElement saveButton = wait.until(
                         ExpectedConditions.presenceOfElementLocated(
                                 By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_lnkSaveBtn"))
@@ -415,8 +411,69 @@ public class ReactiveMaintainancePage extends BasePage{
                         "arguments[0].click();", saveButton);
             }
             //Appointment Booked to Site Attended Ends
+
+            //Site Attended to Work Started
+            if ("Site Attended".equals(status)) {
+                WebElement ChangeStatusButton = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_hlkChangeStatus"))
+                );
+                ChangeStatusButton.click();
+                WebElement statusDropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_ddlNewStatus_Input")));
+                statusDropdown.click();
+                statusDropdown.sendKeys("Work Started");
+
+                WebElement option = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.xpath("//li[contains(text(),'Work Started')]")));
+                option.click();
+                WebElement remarks = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_txtStatusRemarks"))
+                );
+                WebElement saveButton = wait.until(
+                        ExpectedConditions.presenceOfElementLocated(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_lnkSaveBtn"))
+                );
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", saveButton);
+            }
+            //Site Attended to Work Started Ends
+            //Work Started to Completed Start
+            if ("Work Started".equals(status)) {
+                WebElement ChangeStatusButton = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_hlkChangeStatus"))
+                );
+                ChangeStatusButton.click();
+                WebElement statusDropdown = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_ddlNewStatus_Input")));
+                statusDropdown.click();
+                statusDropdown.sendKeys("Completed");
+
+                WebElement option = wait.until(
+                        ExpectedConditions.elementToBeClickable(
+                                By.xpath("//li[contains(text(),'Completed')]")));
+                option.click();
+                WebElement remarks = wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_txtStatusRemarks"))
+                );
+                WebElement saveButton = wait.until(
+                        ExpectedConditions.presenceOfElementLocated(
+                                By.id("ctl00_ContentPlaceHolder1_RadWinStatusChange_C_lnkSaveBtn"))
+                );
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", saveButton);
+            }
+            //Work Started to Completed End
         }
     }
-    //WO Status Appointment Booked to Site Attented
+
     //WO status Check
 }
