@@ -300,14 +300,15 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
     When User clicks on first data in the opportunities grid to Open the Detail page
     When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
-    #When User clicks on first data in the Quotations grid to Open the Detail page
+    When User clicks on first data in the Quotations grid to Open the Detail page
 
-    When User Clicks on Add Quotation 'Add New Quotation' Button
+    #When User Clicks on Add Quotation 'Add New Quotation' Button
     #When User Clicks on Quotation Details 'Add Lines' Button
     When User enters on Quotation Add Lines Details
     When User clicks the Quotation Save 'Draft' Button
     When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
-    When User Clicks on Add Quotation 'Add New Quotation' Button
+    #When User Clicks on Add Quotation 'Add New Quotation' Button
+    When User clicks on first data in the Quotations grid to Open the Detail page
 
     When User Clicks Scope Of Work data in the 'Scope of Work' Tab
     When User enters Scope Of Work data Details
