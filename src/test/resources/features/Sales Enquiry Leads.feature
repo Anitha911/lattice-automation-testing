@@ -144,6 +144,20 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When user verify the inline error message 'Enter Email' on Enquiry Add Customer Email
     When user verify the inline error message 'Enter Address Line1' on Enquiry Add Contact Address
 
+  @addPackageProdStoreFrontValidationInput
+  Scenario: User should not be able to Add Package Store Front with invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Package Product 'Product Store Front' in side menu
+    When User clicks on Sales Enquiry Management Package Product Add 'Add'
+    Then User Clicks on Add Product Save Button
+    When user verify the inline error message 'Enter Internal Name' on Product Store Front Internal Name
+    When user verify the inline error message 'Enter Display Name' on Product Store Front Display Name
+    When user verify the inline error message 'Enter Short Description' on Product Store Front Short Description
+    When user verify the inline error message 'Enter inspection charges' on Product Store Inspection Charges
+    When user verify the inline error message 'Enter Max PPM Schedule Count' on Product Store Enter Max PPM Schedule Count
+
   @TransLeadsSalesOpenEnquiryDetailPage
   Scenario: Should be able to add Open Enquiry Detail page
     Given User navigates to 'lattice.url' page
@@ -400,6 +414,19 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User enters Rate Card details
     When User Clicks on Add RateCard Save Button
     Then User clicks on first data in the Rate Card grid to Open the Detail page
+
+  @TransSalesRateCardAddInputValidation
+  Scenario: Should not be able to add Rate Card with Invalid Inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Rate Card 'Product Rate Card' in side menu
+    When User clicks on Sales Enquiry Management Rate Card Add 'Add'
+    When user verify the chars min len as 3 and max len as 200 on RateCard Number textbox
+    When user verify the chars min len as 3 and max len as 200 on RateCard Name textbox
+    When User Clicks on Add RateCard Save Button
+    When user verify the inline error message 'Enter Rate Card #' on RateCard Number
+    When user verify the inline error message 'Enter Rate Card Name' on RateCard Name
 
   @TransSalesRateCardEditUpdate
   Scenario: Should be able to Edit Rate Card

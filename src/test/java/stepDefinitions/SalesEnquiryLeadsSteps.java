@@ -604,6 +604,33 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_AddProdButton() {
         tmp.ClickAddProdSave();
     }
+    //Validation Prod Store Front
+    @When("user verify the inline error message {string} on Product Store Front Internal Name")
+    public void userVerifyInlineErrorMessageProdStoreFrontInternalName(String expectedErrorMessage) {
+        By ProdStoreFrontInternalNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ReqtxtInternlName");
+        helperUtils.verifyInlineErrorMessage(ProdStoreFrontInternalNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Product Store Front Display Name")
+    public void userVerifyInlineErrorMessageProdStoreFrontDisplayName(String expectedErrorMessage) {
+        By ProdStoreFrontDisplayNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ReqtxtDisplayName");
+        helperUtils.verifyInlineErrorMessage(ProdStoreFrontDisplayNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Product Store Front Short Description")
+    public void userVerifyInlineErrorMessageProdStoreFrontShortDesc(String expectedErrorMessage) {
+        By ProdStoreShortDescNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ReqtxtShrtDescription");
+        helperUtils.verifyInlineErrorMessage(ProdStoreShortDescNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Product Store Inspection Charges")
+    public void userVerifyInlineErrorMessageProdStoreFrontInspectionCharges(String expectedErrorMessage) {
+        By ProdStoreInspectionChargesErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ReqtxtInspectionCharges");
+        helperUtils.verifyInlineErrorMessage(ProdStoreInspectionChargesErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Product Store Enter Max PPM Schedule Count")
+    public void userVerifyInlineErrorMessageProdStoreFrontMaxPPMCount(String expectedErrorMessage) {
+        By ProdStoreMaxPPMCountErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinB2CPro_C_ReqtxtMaxPPMScheduleCount");
+        helperUtils.verifyInlineErrorMessage(ProdStoreMaxPPMCountErrorLocator, expectedErrorMessage);
+    }
+
     //export to excel Product Package
     @Then ("User clicks on Export To Excel Product Store Front")
     public void user_clicks_on_ProdPackage_export_to_excel_button() throws InterruptedException{
@@ -670,6 +697,26 @@ public class SalesEnquiryLeadsSteps {
     public void user_click_on_AddrateCardButton() {
         tmp.ClickAddRateCardSave();
     }
+    //Rate Card Input Validation
+    @When("user verify the chars min len as {int} and max len as {int} on RateCard Number textbox")
+    public void user_verify_chars_len_RateCardNumber(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtRateCardNo"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on RateCard Number")
+    public void userVerifyInlineErrorMessageRateCardNumber(String expectedErrorMessage) {
+        By RateCardNumberErrorLocator = By.id("RequiredFieldValidator20");
+        helperUtils.verifyInlineErrorMessage(RateCardNumberErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars min len as {int} and max len as {int} on RateCard Name textbox")
+    public void user_verify_chars_len_RateCardName(int minLen, int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtRateCard"),maxLen, minLen);
+    }
+    @When("user verify the inline error message {string} on RateCard Name")
+    public void userVerifyInlineErrorMessageRateCardName(String expectedErrorMessage) {
+        By RateCardNameErrorLocator = By.id("RequiredFieldValidator1");
+        helperUtils.verifyInlineErrorMessage(RateCardNameErrorLocator, expectedErrorMessage);
+    }
+    //
     @Then("User clicks on first data in the Rate Card grid to Open the Detail page")
     public void user_clicks_on_Enquiry_RCGridFirstData() throws InterruptedException  {
         String RCGridFirstData = "//*[@id='ctl00_ContentPlaceHolder1_GrdRateCard_ctl00__0']";
