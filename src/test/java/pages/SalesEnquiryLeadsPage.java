@@ -804,13 +804,13 @@ public void clickOnCustomerFollowUp(String clickOnCustomerFollowUp) {
     }
     public void clickOnSalesOpp(String clickOnSalesOpp) {
         try {
-            Set<String> allTabs = driver.getWindowHandles();
-            for (String tab : allTabs) {
-                if (!tab.equals(mainTab)) {
-                    driver.switchTo().window(tab);
-                    break;
-                }
-            }
+//            Set<String> allTabs = driver.getWindowHandles();
+//            for (String tab : allTabs) {
+//                if (!tab.equals(mainTab)) {
+//                    driver.switchTo().window(tab);
+//                    break;
+//                }
+//            }
             By locator = By.xpath(String.format("//*[@id='tdQuotation']", clickOnSalesOpp));
             utils.click(locator);
             System.out.println("Clicked on the Sales Opp Quotation: " + clickOnSalesOpp);
