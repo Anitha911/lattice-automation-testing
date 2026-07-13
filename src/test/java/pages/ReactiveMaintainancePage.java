@@ -4,9 +4,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ElementUtils;
 import utils.HelperUtils;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
+
+import static utils.JavaScriptExeUtil.jsClick;
 
 public class ReactiveMaintainancePage extends BasePage{
     public ReactiveMaintainancePage(WebDriver driver) {
@@ -28,6 +32,23 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By RM_PTWTYPE_DD = By.cssSelector("[value='Select PTW Type']");
     public static final By SAVE_BUTTON_RMPTW = By.id("ctl00_ContentPlaceHolder1_PermitToWork_RadWinArea_C_btnPermitSave");
     public static final By ASSIGN_RMDETAIL = By.id("ctl00_ContentPlaceHolder1_btnPendingAssign");
+
+//    public static final By RMDETAIL_SERVICEGROUP_DD = By.cssSelector("[value='Select Service Group']");
+//    public static final By RMDETAIL_FAULTCATEGORY_DD = By.cssSelector("[value='Select Fault Category']");
+//    public static final By RMDETAIL_FAULTCODE_DD = By.cssSelector("[value='Select Fault Code']");
+//    public static final By RMDETAIL_PRIORITY_DD = By.cssSelector("[value='Select Priority']")
+//    ;
+    public static final By RMDETAIL_SERVICEGROUP_DD = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlServiceGroup_Input");
+    public static final By RMDETAIL_FAULTCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlFaultCategory_Input");
+    public static final By RMDETAIL_FAULTCODE_DD = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlFaultCode_Input");
+    public static final By RMDETAIL_PRIORITY_DD = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlPriority_Input");
+
+    public static final By ALL_OPTIONS_RMDETAIL_FAULTCATEGORY_SG = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlServiceGroup_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_FAULTCATEGORY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlFaultCategory_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_FAULTCODE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlFaultCode_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_PRIORITY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlPriority_DropDown']/div/ul/li");;
+    public static final By SAVE_BUTTON_RMMODIFYFAULTCODE = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_btn_SaveModifyFaultCode");
+
 
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
@@ -474,6 +495,94 @@ public class ReactiveMaintainancePage extends BasePage{
             //Work Started to Completed End
         }
     }
-
     //WO status Check
+    //Modify Fault Code start
+    public void RMRequestDetailModifyFC(String RMRequestDetailModifyFC) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            List<WebElement> elements = driver.findElements(By.id("hlkEdit"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailModifyFC: " + RMRequestDetailModifyFC);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailModifyFC: " + RMRequestDetailModifyFC);
+            throw e;
+        }
+    }
+    //RM Detail SG DropDown
+    public void getRandomRMDetailSG_Dropdown(){
+        try{
+            utils.click(RMDETAIL_SERVICEGROUP_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_FAULTCATEGORY_SG);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_FAULTCATEGORY_SG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail SG" );
+            throw e;
+        }
+    }
+    //RM Detail Fault Category DropDown
+    public void getRandomRMDetailFaultCategory_Dropdown(){
+        try{
+            utils.click(RMDETAIL_FAULTCATEGORY_DD);
+            //ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_FAULTCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_FAULTCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail SG" );
+            throw e;
+        }
+    }
+    //RM Detail Fault Code DropDown
+    public void getRandomRMDetailFaultCode_Dropdown(){
+        try{
+            utils.click(RMDETAIL_FAULTCODE_DD);
+           // ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_FAULTCODE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_FAULTCODE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail SG" );
+            throw e;
+        }
+    }
+    //RM Detail Priority DropDown
+    public void getRandomRMDetailPriority_Dropdown(){
+        try{
+            utils.click(RMDETAIL_PRIORITY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_PRIORITY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_PRIORITY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail SG" );
+            throw e;
+        }
+    }
+    //Save Button Common function in RM Transaction
+    public void userClicksRMTransactionSaveButton() {
+        By[] saveButtons = {SAVE_BUTTON_RMMODIFYFAULTCODE};
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                WebElement element = driver.findElement(button);
+                jsClick(driver, element);
+                utils.waitUntilInvisible(button);
+                ElementUtils.waitForLoaderToDisappear();
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    //
 }

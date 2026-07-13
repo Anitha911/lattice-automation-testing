@@ -93,9 +93,43 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMPTWSaveButton() {
         tmp.ClickRMPTWSave();
     }
-    //WO Status
+    //WO Status from Not Despached to Completed
     @Then("User Checks the WO Status in the WO detail page")
     public void user_click_on_RMRequestDetailWOStatusNotDespatched() throws InterruptedException {
         tmp.RMRequestDetailWOStatusNotDespatched();
+    }
+    //Modify Fault Code in WO detail Page
+    @Then("User clicks Modify Fault Code button {string} if available")
+    public void user_click_on_RMRequestDetailModifyFC(String ModifyFC) throws InterruptedException {
+        tmp.RMRequestDetailModifyFC(ModifyFC);
+    }
+    @When("User select the {string} Service Group dropdown")
+    public void user_select_the_RMDetailSG_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailSG_Dropdown();
+        }
+    }
+    @When("User select the {string} Fault Category dropdown")
+    public void user_select_the_RMDetailFautCategory_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailFaultCategory_Dropdown();
+        }
+    }
+    @When("User select the {string} Fault Code dropdown")
+    public void user_select_the_RMDetailFautCode_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailFaultCode_Dropdown();
+        }
+    }
+    @When("User select the {string} Priority dropdown")
+    public void user_select_the_RMDetailPriority_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailPriority_Dropdown();
+        }
+    }
+    //Common function for Save in RM TRANSACTION
+    @Then("User Clicks the Save Fault Code button")
+    public void userClicksRMTransactionSaveButton() {
+        tmp.userClicksRMTransactionSaveButton();
     }
 }

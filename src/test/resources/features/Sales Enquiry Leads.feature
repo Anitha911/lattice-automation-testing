@@ -315,7 +315,8 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User clicks the Quotation Save Finalize 'Finalize' Button
     Then User clicks the Quotation Submit 'Submit' Button
 
-  @TransLeadsSalesEnquiryQuotationCancelQuoDetailPage
+  @TransLeadsSalesEnquiryQuotationCancelQuoDetailPageNoQuotationLineAdded
+    #If no Quotation line are there
   Scenario: Should be able to add Quotation and Cancel in Quotation Detail Page
     Given User navigates to 'lattice.url' page
     When User is at home screen after login with "username" and "password"
@@ -329,6 +330,24 @@ Feature: Sales Enquiry Management Leads Transaction Module Automation
     When User enters on Quotation Add Lines Details
     When User clicks the Quotation Save 'Draft' Button
     When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    When User clicks on first data in the Quotations grid to Open the Detail page
+    Then User clicks on Cancel Quotation 'Cancel Quotation' Button
+
+  @TransLeadsSalesEnquiryQuotationCancelQuoDetailPageAlreadyQuotationLineAdded
+    #If  Quotation line are there
+  Scenario: Should be able to open Quotation and Cancel in Quotation Detail Page
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Sales Enquiry Management 'Sales Enquiry Management' in side menu
+    When User clicks on Sales Enquiry Management Leads 'Sales Enquiry Management Leads' in side menu
+    When User clicks on Sales Enquiry Management My Pending Actions Opportunities 'My Pending Actions Opportunities' in side menu
+    When User clicks on first data in the opportunities grid to Open the Detail page
+    When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
+    #When User Clicks on Add Quotation 'Add New Quotation' Button
+    #When User Clicks on Quotation Details 'Add Lines' Button
+    #When User enters on Quotation Add Lines Details
+    #When User clicks the Quotation Save 'Draft' Button
+    #When User Clicks on Quotation section in the left side menu 'Quotation' in Opportunities page
     When User clicks on first data in the Quotations grid to Open the Detail page
     Then User clicks on Cancel Quotation 'Cancel Quotation' Button
 
