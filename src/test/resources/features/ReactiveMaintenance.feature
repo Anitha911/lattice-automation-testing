@@ -72,11 +72,36 @@ Feature: Reactive Service data a configuration Module Automation
     When User select the '' Service Group dropdown
     When User select the '' Fault Category dropdown
     When User select the '' Fault Code dropdown
-    When User select the '' Priority dropdown
+    #When User select the '' Priority dropdown
     #When User enters the details in the Modify Fault Code pop up
     Then User Clicks the Save Fault Code button
 
+  @RMRequestDetailPageMarkADuplicate
+  Scenario: Should be able to Open RM Detail Page and Mark a Duplicate WO when Mark Duplicate is clicked and saved
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
+    When User clicks the first WO to open the detail page
+    When User clicks Mark A Duplicate button 'Mark A Duplicate' if available
+    When User Selects Primary WO from the Mark A Duplicate 'Mark A Duplicate' pop up
+    Then User clicks on RM New Request save button
+    #same save function for duplicate WO save
 
-
+  @RMRequestDetailPageAddChildWO
+  Scenario: Should be able to Open RM Detail Page and Add Child WO
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
+    When User clicks the first WO to open the detail page
+    When User clicks the Add Child WO in the side menu if available and click Add Child WO 'Add Child WO' button
+    When User enters details in the Child WO pop up 'child WO'
+    When User select the Child WO '' Service Group dropdown
+    When User select the Child WO '' Fault Category dropdown
+    When User select the Child WO '' Fault Code dropdown
+    When User select the Child WO '' Technician dropdown
+    Then User clicks on RM New Request save button
+    #same save function for Child WO save
 
 

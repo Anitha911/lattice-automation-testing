@@ -132,4 +132,46 @@ public class ReactiveMaintainanceSteps {
     public void userClicksRMTransactionSaveButton() {
         tmp.userClicksRMTransactionSaveButton();
     }
+    //Mark As Duplicate in WO detail Page
+    @Then("User clicks Mark A Duplicate button {string} if available")
+    public void user_click_on_RMRequestDetailMarkADuplicate(String RMRequestDetailMarkADuplicate) throws InterruptedException {
+        tmp.RMRequestDetailMarkADuplicate(RMRequestDetailMarkADuplicate);
+    }
+    @Then("User Selects Primary WO from the Mark A Duplicate {string} pop up")
+    public void user_click_on_RMRequestDetailMarkADuplicateSelectPrimaryWO(String RMRequestDetailMarkADuplicateSelectPrimaryWO) throws InterruptedException {
+        tmp.RMRequestDetailMarkADuplicateSelectPrimaryWO(RMRequestDetailMarkADuplicateSelectPrimaryWO);
+    }
+    //Create Child WO in WO Detail Page
+    @Then("User clicks the Add Child WO in the side menu if available and click Add Child WO {string} button")
+    public void user_click_on_RMRequestDetailAddChildWO(String RMRequestDetailAddChildWO) throws InterruptedException {
+        tmp.RMRequestDetailAddChildWO(RMRequestDetailAddChildWO);
+    }
+    @Then("User enters details in the Child WO pop up {string}")
+    public void user_click_on_RMRequestDetailChildWODetail(String RMRequestDetailChildWODetail) throws InterruptedException {
+        tmp.RMRequestDetailChildWODetail(RMRequestDetailChildWODetail);
+    }
+    @When("User select the Child WO {string} Service Group dropdown")
+    public void user_select_the_RMDetailChildWOSG_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailChildWOSG_Dropdown();
+        }
+    }
+    @When("User select the Child WO {string} Fault Category dropdown")
+    public void user_select_the_RMDetailChildWOFaultCategory_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailChildWOFaultCategory_Dropdown();
+        }
+    }
+    @When("User select the Child WO {string} Fault Code dropdown")
+    public void user_select_the_RMDetailChildWOFaultCode_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailChildWOFaultCode_Dropdown();
+        }
+    }
+    @When("User select the Child WO {string} Technician dropdown")
+    public void user_select_the_RMDetailChildWOTechnician_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailChildWOTechnician_Dropdown();
+        }
+    }
 }

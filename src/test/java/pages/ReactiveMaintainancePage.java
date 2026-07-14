@@ -48,6 +48,19 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By ALL_OPTIONS_RMDETAIL_FAULTCODE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlFaultCode_DropDown']/div/ul/li");;
     public static final By ALL_OPTIONS_RMDETAIL_PRIORITY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_ddlPriority_DropDown']/div/ul/li");;
     public static final By SAVE_BUTTON_RMMODIFYFAULTCODE = By.id("ctl00_ContentPlaceHolder1_radwinModifyFaultCode_C_btn_SaveModifyFaultCode");
+    public static final By MARK_DUPLICATE_BUTTON = By.id("ctl00_ContentPlaceHolder1_RadWinMarkDuplicateWO_C_btnMarkDuplicate");
+    public static final By RMDETAIL_CHILDWO_DESC = By.id("Rad_txt_workdesc");
+
+    //Child WO
+    public static final By ALL_OPTIONS_RMDETAIL_CHILDWO_SG = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_ServiceGroup_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCATEGORY = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_faultcategory_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCODE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_faultcode_DropDown']/div/ul/li");;
+    public static final By RMDETAIL_CHILDWO_SERVICEGROUP_DD = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_ServiceGroup_Input");
+    public static final By RMDETAIL_CHILDWO_FAULTCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_faultcategory_Input");
+    public static final By RMDETAIL_CHILDWO_FAULTCODE_DD = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_Rad_drpdwn_faultcode_Input");
+    public static final By ALL_OPTIONS_RMDETAIL_CHILDWO_TECHNICIAN = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_drpdwn_Technician_DropDown']/div/ul/li");;
+    public static final By RMDETAIL_CHILDWO_TECHNICIAN_DD = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_drpdwn_Technician_Input");
+    public static final By RMDETAIL_CHILDWO_BUTTON = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_RadSave");
 
 
     public void MenuRM(String MenuRM) throws InterruptedException {
@@ -174,19 +187,18 @@ public class ReactiveMaintainancePage extends BasePage{
         }
     }
     public void ClickNewRequestSave() {
-        By[] saveButtons = {SUBMITREQUEST};
+        By[] saveButtons = {SUBMITREQUEST,MARK_DUPLICATE_BUTTON,RMDETAIL_CHILDWO_BUTTON};
 
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
                 utils.click(button);
-                List<WebElement> buttons = driver.findElements(
-                        By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnSave' or @id='ctl00_ContentPlaceHolder1_RadWinDuplicateWOWarning_C_btnIngoreCreate']")
+                List<WebElement> buttons = driver.findElements(button
+                        //By.xpath("//*[@id='ctl00_ContentPlaceHolder1_btnSave' or @id='ctl00_ContentPlaceHolder1_RadWinDuplicateWOWarning_C_btnIngoreCreate']")
                 );
-                if (!buttons.isEmpty()) {
-                    buttons.get(0).click();
-                }
-                return;
-
+//                if (!buttons.isEmpty()) {
+//                    buttons.get(0).click();
+//                }
+                //return;
             }
         }
         throw new RuntimeException("No save button is present on the page.");
@@ -584,5 +596,134 @@ public class ReactiveMaintainancePage extends BasePage{
         }
         throw new RuntimeException("No save button is present on the page.");
     }
-    //
+    //Mark As Duplicate start
+    public void RMRequestDetailMarkADuplicate(String RMRequestDetailMarkAsDuplicate) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            List<WebElement> elements = driver.findElements(By.id("ctl00_ContentPlaceHolder1_btnMarkDuplicateWO"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailMarkAsDuplicate: " + RMRequestDetailMarkAsDuplicate);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailMarkAsDuplicate: " + RMRequestDetailMarkAsDuplicate);
+            throw e;
+        }
+    }
+    public void RMRequestDetailMarkADuplicateSelectPrimaryWO(String RMRequestDetailMarkADuplicateSelectPrimaryWO) throws InterruptedException {
+        try {
+//            String parentWindow = driver.getWindowHandle();
+//            Set<String> allWindows = driver.getWindowHandles();
+//            for (String window : allWindows) {
+//                if (!window.equals(parentWindow)) {
+//                    driver.switchTo().window(window);
+//                    break;
+//                }
+//            }
+            List<WebElement> elements = driver.findElements(By.id("ctl00_ContentPlaceHolder1_RadWinMarkDuplicateWO_C_SelectDuplicateWO_Grid_ctl00_ctl04_WOSelectColumn1234SelectCheckBox"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailMarkADuplicateSelectPrimaryWO: " + RMRequestDetailMarkADuplicateSelectPrimaryWO);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailMarkADuplicateSelectPrimaryWO: " + RMRequestDetailMarkADuplicateSelectPrimaryWO);
+            throw e;
+        }
+    }
+    //Child WO
+    public void RMRequestDetailAddChildWO(String RMRequestDetailAddChildWO) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            List<WebElement> elements = driver.findElements(By.id("muchildworkorder"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                    WebElement button = wait.until(
+                            ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_btnMaterialRequest"))
+                    );
+                    button.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailAddChildWO: " + RMRequestDetailAddChildWO);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailAddChildWO: " + RMRequestDetailAddChildWO);
+            throw e;
+        }
+    }
+    public void RMRequestDetailChildWODetail(String RMRequestDetailChildWODetail) {
+        utils.typeText(RMDETAIL_CHILDWO_DESC, RMRequestDetailChildWODetail);//Work Desc
+    }
+    public void getRandomRMDetailChildWOSG_Dropdown(){
+        try{
+            utils.click(RMDETAIL_CHILDWO_SERVICEGROUP_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CHILDWO_SG);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_SG);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail Child WO SG" );
+            throw e;
+        }
+    }
+    public void getRandomRMDetailChildWOFaultCategory_Dropdown(){
+        try{
+            utils.click(RMDETAIL_CHILDWO_FAULTCATEGORY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail Child WO Fault Category" );
+            throw e;
+        }
+    }
+    public void getRandomRMDetailChildWOFaultCode_Dropdown(){
+        try{
+            utils.click(RMDETAIL_CHILDWO_FAULTCODE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCODE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_FAULTCODE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail Child WO Fault Code" );
+            throw e;
+        }
+    }
+    public void getRandomRMDetailChildWOTechnician_Dropdown(){
+        try{
+            utils.click(RMDETAIL_CHILDWO_TECHNICIAN_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CHILDWO_TECHNICIAN);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_TECHNICIAN);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail Child WO Fault Category" );
+            throw e;
+        }
+    }
 }
