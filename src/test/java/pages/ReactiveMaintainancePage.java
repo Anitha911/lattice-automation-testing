@@ -61,7 +61,9 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By ALL_OPTIONS_RMDETAIL_CHILDWO_TECHNICIAN = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_drpdwn_Technician_DropDown']/div/ul/li");;
     public static final By RMDETAIL_CHILDWO_TECHNICIAN_DD = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_drpdwn_Technician_Input");
     public static final By RMDETAIL_CHILDWO_BUTTON = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_RadSave");
-
+    public static final By RMDETAIL_CHILDWO_STARTTIME = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_timepicker_StartTime_dateInput");
+    public static final By RMDETAIL_CHILDWO_ENDTIME = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_timepicker_EndTime_dateInput");
+    public static final By RMDETAIL_CHILDWO_ENDDATE = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_RadEndDatePicker_dateInput");
 
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
@@ -681,11 +683,32 @@ public class ReactiveMaintainancePage extends BasePage{
     }
     public void RMRequestDetailChildWODetail(String RMRequestDetailChildWODetail) {
         utils.typeText(RMDETAIL_CHILDWO_DESC, RMRequestDetailChildWODetail);//Work Desc
+        //String workDate = "15/07/2026";
+        //utils.typeText(RMDETAIL_CHILDWO_ENDDATE, workDate);
+        //String StartTime = "10.00AM";
+        //utils.typeText(RMDETAIL_CHILDWO_STARTTIME, StartTime);
+        //String EndTime = "11.00AM";
+        //utils.typeText(RMDETAIL_CHILDWO_ENDTIME, EndTime);
+        //
+        WebElement calendarBtn = driver.findElement(By.id(
+                "ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_datepicker_Date_popupButton"));
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});", calendarBtn);
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(calendarBtn));
+        calendarBtn.click();
+        WebElement day = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//table[contains(@class,'rcMainTable')]//a[text()='15']")));
+        day.click();
+        WebElement dateInput = driver.findElement(By.id(
+                "ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_datepicker_Date_dateInput"));
+        String dateValue = dateInput.getAttribute("value");
+        utils.typeText(RMDETAIL_CHILDWO_ENDDATE, dateValue);
     }
     public void getRandomRMDetailChildWOSG_Dropdown(){
         try{
             utils.click(RMDETAIL_CHILDWO_SERVICEGROUP_DD);
-            ElementUtils.waitForDropdownLoading();
+            //ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CHILDWO_SG);
             HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_SG);
         } catch (Exception e) {

@@ -89,6 +89,7 @@ Feature: Reactive Service data a configuration Module Automation
     #same save function for duplicate WO save
 
   @RMRequestDetailPageAddChildWO
+    #Not Working as Date Picker is not accepting direct typing of values in the field.
   Scenario: Should be able to Open RM Detail Page and Add Child WO
     Given User navigates to 'lattice.url' page
     When User is at home screen after login with "username" and "password"
