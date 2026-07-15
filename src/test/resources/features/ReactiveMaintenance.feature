@@ -105,4 +105,15 @@ Feature: Reactive Service data a configuration Module Automation
     Then User clicks on RM New Request save button
     #same save function for Child WO save
 
-
+  @RMRequestDetailPageCancelWO
+  Scenario: Should be able to Open RM Detail Page and Cancel WO
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
+    When User clicks the first WO to open the detail page
+    When User Clicks the Cancel WO Button if available and Add Cancel WO 'Cancel WO'
+    When User enters details in the Cancel WO pop up 'Remarks for Cancel WO'
+    When User select the Cancel WO '' Reason for Cancellation dropdown
+    Then User clicks on RM Cancel WO Save button 'Save Cancel WO'
+    #Same Save function for WO Cancel function

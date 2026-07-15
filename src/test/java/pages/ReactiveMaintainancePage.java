@@ -65,6 +65,12 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By RMDETAIL_CHILDWO_ENDTIME = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_rad_timepicker_EndTime_dateInput");
     public static final By RMDETAIL_CHILDWO_ENDDATE = By.id("ctl00_ContentPlaceHolder1_ChildWoUtilized_radwinChildWorkorder_C_ChildWorkorderAdd_RadEndDatePicker_dateInput");
 
+    //Cancel WO
+    public static final By RMDETAIL_CANCELWO_REMARKS = By.id("txtCancelRemark");
+    public static final By RMDETAIL_CANCELWO_REASON_DD = By.id("ctl00_ContentPlaceHolder1_radwinCancelWO_C_RadComboCancelReason_Input");
+    public static final By ALL_OPTIONS_RMDETAIL_CANCELWO_REASON = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinCancelWO_C_RadComboCancelReason_DropDown']/div/ul/li");;
+    public static final By RMDETAIL_CANCELWO_BUTTON = By.id("ctl00_ContentPlaceHolder1_radwinCancelWO_C_radbtnCancelWOSave");
+
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("4"));
@@ -746,6 +752,62 @@ public class ReactiveMaintainancePage extends BasePage{
             HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CHILDWO_TECHNICIAN);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: RM Detail Child WO Fault Category" );
+            throw e;
+        }
+    }
+    //Cancel WO in WO Detail Page
+    public void RMRequestDetailCancelWO(String RMRequestDetailCancelWO) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            WebElement cancelButton = driver.findElement(
+                    By.id("ctl00_ContentPlaceHolder1_btnCancelWO")
+            );
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", cancelButton);
+            System.out.println("Clicked on RMRequestDetailCancelWO: " + RMRequestDetailCancelWO);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailCancelWO: " + RMRequestDetailCancelWO);
+            throw e;
+        }
+    }
+    public void RMRequestDetailCancelWODetail(String RMRequestDetailCancelWODetail) {
+        utils.typeText(RMDETAIL_CANCELWO_REMARKS, RMRequestDetailCancelWODetail);//Cancel WO Remarks
+    }
+    public void getRandomRMDetailCancelWOReason_Dropdown(){
+        try{
+            utils.click(RMDETAIL_CANCELWO_REASON_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_CANCELWO_REASON);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_CANCELWO_REASON);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail CancelWOReason" );
+            throw e;
+        }
+    }
+    public void RMRequestDetailSaveCancelWO(String RMRequestDetailSaveCancelWO) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            WebElement cancelButton = driver.findElement(RMDETAIL_CANCELWO_BUTTON);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", cancelButton);
+            System.out.println("Clicked on RMRequestDetailSaveCancelWO: " + RMRequestDetailSaveCancelWO);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailSaveCancelWO: " + RMRequestDetailSaveCancelWO);
             throw e;
         }
     }

@@ -174,4 +174,23 @@ public class ReactiveMaintainanceSteps {
             tmp.getRandomRMDetailChildWOTechnician_Dropdown();
         }
     }
+    //Cancel WO in WO detail page
+    @Then("User Clicks the Cancel WO Button if available and Add Cancel WO {string}")
+    public void user_click_on_RMRequestDetailCancelWO(String RMRequestDetailCancelWO) throws InterruptedException {
+        tmp.RMRequestDetailCancelWO(RMRequestDetailCancelWO);
+    }
+    @Then("User enters details in the Cancel WO pop up {string}")
+    public void user_click_on_RMRequestDetailCancelWODetail(String RMRequestDetailCancelWODetail) throws InterruptedException {
+        tmp.RMRequestDetailCancelWODetail(RMRequestDetailCancelWODetail);
+    }
+    @When("User select the Cancel WO {string} Reason for Cancellation dropdown")
+    public void user_select_the_RMDetailCancelWOReason_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailCancelWOReason_Dropdown();
+        }
+    }
+    @Then("User clicks on RM Cancel WO Save button {string}")
+    public void user_click_on_RMRequestDetailSaveCancelWO(String RMRequestDetailSaveCancelWO) throws InterruptedException {
+        tmp.RMRequestDetailSaveCancelWO(RMRequestDetailSaveCancelWO);
+    }
 }
