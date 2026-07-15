@@ -193,4 +193,9 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMRequestDetailSaveCancelWO(String RMRequestDetailSaveCancelWO) throws InterruptedException {
         tmp.RMRequestDetailSaveCancelWO(RMRequestDetailSaveCancelWO);
     }
+    //Add Material Request in WO detail page
+    @Then("User clicks the Add Material Request in the side menu if available and click Add Material Request {string} button")
+    public void user_click_on_RMRequestDetailMR(String RMRequestDetailMR) throws InterruptedException {
+        tmp.RMRequestDetailMR(RMRequestDetailMR);
+    }
 }

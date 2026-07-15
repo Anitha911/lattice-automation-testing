@@ -632,14 +632,6 @@ public class ReactiveMaintainancePage extends BasePage{
     }
     public void RMRequestDetailMarkADuplicateSelectPrimaryWO(String RMRequestDetailMarkADuplicateSelectPrimaryWO) throws InterruptedException {
         try {
-//            String parentWindow = driver.getWindowHandle();
-//            Set<String> allWindows = driver.getWindowHandles();
-//            for (String window : allWindows) {
-//                if (!window.equals(parentWindow)) {
-//                    driver.switchTo().window(window);
-//                    break;
-//                }
-//            }
             List<WebElement> elements = driver.findElements(By.id("ctl00_ContentPlaceHolder1_RadWinMarkDuplicateWO_C_SelectDuplicateWO_Grid_ctl00_ctl04_WOSelectColumn1234SelectCheckBox"));
             if (!elements.isEmpty()) {
                 WebElement element = elements.get(0);
@@ -808,6 +800,37 @@ public class ReactiveMaintainancePage extends BasePage{
             System.out.println("Clicked on RMRequestDetailSaveCancelWO: " + RMRequestDetailSaveCancelWO);
         } catch (Exception e) {
             System.out.println("Failed to click on RMRequestDetailSaveCancelWO: " + RMRequestDetailSaveCancelWO);
+            throw e;
+        }
+    }
+    //WO Material Request
+    public void RMRequestDetailMR(String RMRequestDetailMR) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            List<WebElement> elements = driver.findElements(By.id("murequest"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                    WebElement button = wait.until(
+                            ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_MaterialRequest_btnMaterialRequest"))
+                    );
+                    button.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailMR: " + RMRequestDetailMR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailMR: " + RMRequestDetailMR);
             throw e;
         }
     }

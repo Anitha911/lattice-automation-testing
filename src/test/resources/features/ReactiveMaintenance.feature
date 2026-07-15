@@ -116,4 +116,14 @@ Feature: Reactive Service data a configuration Module Automation
     When User enters details in the Cancel WO pop up 'Remarks for Cancel WO'
     When User select the Cancel WO '' Reason for Cancellation dropdown
     Then User clicks on RM Cancel WO Save button 'Save Cancel WO'
-    #Same Save function for WO Cancel function
+
+  @RMRequestDetailPageAddMaterialRequest
+  Scenario: Should be able to Open RM Detail Page and Add Material Request
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
+    When User clicks the first WO to open the detail page
+    When User clicks the Add Material Request in the side menu if available and click Add Material Request 'Add Material Request' button
+
+
