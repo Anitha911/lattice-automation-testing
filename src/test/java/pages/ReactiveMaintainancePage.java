@@ -71,6 +71,12 @@ public class ReactiveMaintainancePage extends BasePage{
     public static final By ALL_OPTIONS_RMDETAIL_CANCELWO_REASON = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_radwinCancelWO_C_RadComboCancelReason_DropDown']/div/ul/li");;
     public static final By RMDETAIL_CANCELWO_BUTTON = By.id("ctl00_ContentPlaceHolder1_radwinCancelWO_C_radbtnCancelWOSave");
 
+    //MR in Work Detail
+    public static final By RMDETAIL_MR_QUANTITY= By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_txtReqQty");
+    public static final By RMDETAIL_MRITEMNAME_DD = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadItemName_Combo_Input");
+    public static final By ALL_OPTIONS_RMDETAIL_MRITEMNAME = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadItemName_Combo_DropDown']/div/ul/li");
+    public static final By RMDETAIL_STORE_DD = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_cmbStore_Input");
+    public static final By ALL_OPTIONS_RMDETAIL_STORE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_cmbStore_DropDown']/div/ul/li");;
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("4"));
@@ -831,6 +837,35 @@ public class ReactiveMaintainancePage extends BasePage{
             System.out.println("Clicked on RMRequestDetailMR: " + RMRequestDetailMR);
         } catch (Exception e) {
             System.out.println("Failed to click on RMRequestDetailMR: " + RMRequestDetailMR);
+            throw e;
+        }
+    }
+    public void generateMRQuantity(String generateMRQuantity) {
+        utils.typeText(RMDETAIL_MR_QUANTITY, generateMRQuantity);//Cancel WO Remarks
+    }
+
+    public void getRandomRMDetailMRItemName_Dropdown(){
+        try{
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0, -1000);");
+            utils.click(RMDETAIL_MRITEMNAME_DD);
+            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            //ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_MRITEMNAME);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_MRITEMNAME);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown:ALL_OPTIONS_RMDETAIL_MRITEMNAME" );
+            throw e;
+        }
+    }
+    public void getRandomRMDetailStore_Dropdown(){
+        try{
+            utils.click(RMDETAIL_STORE_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_STORE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_STORE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: RM Detail MR ALL_OPTIONS_RMDETAIL_STORE" );
             throw e;
         }
     }

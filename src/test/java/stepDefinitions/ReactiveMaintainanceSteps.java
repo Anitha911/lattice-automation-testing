@@ -20,6 +20,7 @@ public class ReactiveMaintainanceSteps {
     HelperUtils helperUtils = new HelperUtils(driver);
     ReactiveMaintainancePage tmp = new ReactiveMaintainancePage(driver);
     ElementUtils elementUtils= new ElementUtils(driver);
+    public static String generateMRQuantity;
 
     @Then("User clicks on RM Transactions {string} in side menu")
     public void user_click_on_ReactiveM(String title) throws InterruptedException {
@@ -197,5 +198,22 @@ public class ReactiveMaintainanceSteps {
     @Then("User clicks the Add Material Request in the side menu if available and click Add Material Request {string} button")
     public void user_click_on_RMRequestDetailMR(String RMRequestDetailMR) throws InterruptedException {
         tmp.RMRequestDetailMR(RMRequestDetailMR);
+    }
+    @Then("User Enters details in the Material Request pop up {string}")
+    public void user_click_on_RMRequestDetailMRDetail(String RMRequestDetailMRDetail) throws InterruptedException {
+        generateMRQuantity=dataGen.generateMaxNoParticipants();
+        tmp.generateMRQuantity(generateMRQuantity);
+    }
+    @When("User select the Item name {string} from Item Name dropdown")
+    public void user_select_the_RMDetailMRItemName_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailMRItemName_Dropdown();
+        }
+    }
+    @When("User select the Store {string} from Store dropdown")
+    public void user_select_the_RMDetailStore_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomRMDetailStore_Dropdown();
+        }
     }
 }
