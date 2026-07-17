@@ -226,4 +226,9 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMRequestDetailSubmitMR(String RMRequestDetailSubmitMR) throws InterruptedException {
         tmp.RMRequestDetailSubmitMR(RMRequestDetailSubmitMR);
     }
+    //New SR in WO detail page
+    @Then("User clicks New Service Request With Same Base Unit {string} and click Yes")
+    public void user_click_on_RMRequestDetailNewServiceRequest(String RMRequestDetailNewServiceRequest) throws InterruptedException {
+        tmp.RMRequestDetailNewServiceRequest(RMRequestDetailNewServiceRequest);
+    }
 }

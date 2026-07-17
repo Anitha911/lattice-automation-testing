@@ -1,5 +1,5 @@
-@dataconfigReactiveMaintenance
-Feature: Reactive Service data a configuration Module Automation
+@ReactiveMaintenanceTransactionScreenAutomation
+Feature: Reactive Maintenance Transaction Module Automation
 
   @addNewRMRequest
   Scenario: Should be able to add New Request RM
@@ -131,5 +131,13 @@ Feature: Reactive Service data a configuration Module Automation
     When User Clicks the Add Material Request Button 'Add Material Request'
     Then User clicks the Submit Request Button 'Submit MR'
 
+  @RMRequestDetailPageNewServiceRequestSameBaseUnitInLeftSideMenu
+  Scenario: Should be able to create a New Service Request from RM Detail Page With Same Base Unit
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on RM Transactions 'Reactive Maintenance' in side menu
+    When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
+    When User clicks the first WO to open the detail page
+    When User clicks New Service Request With Same Base Unit 'Left Side' and click Yes
 
 

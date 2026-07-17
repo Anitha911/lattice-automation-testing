@@ -936,4 +936,36 @@ public class ReactiveMaintainancePage extends BasePage{
             throw e;
         }
     }
+    //New SR in WO detail page
+    public void RMRequestDetailNewServiceRequest(String RMRequestDetailNewServiceRequest) throws InterruptedException {
+        try {
+            String parentWindow = driver.getWindowHandle();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows) {
+                if (!window.equals(parentWindow)) {
+                    driver.switchTo().window(window);
+                    break;
+                }
+            }
+            List<WebElement> elements = driver.findElements(By.id("ContentPlaceHolder1_lnkbtnRedirectService"));
+            if (!elements.isEmpty()) {
+                WebElement element = elements.get(0);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", element);
+                if (element.isDisplayed() && element.isEnabled()) {
+                    element.click();
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                    js.executeScript("arguments[0].scrollIntoView(true);", element);
+                    WebElement button = wait.until(
+                            ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_RadWinConfirmation_C_RadButton10"))
+                    );
+                    button.click();
+                }
+            }
+            System.out.println("Clicked on RMRequestDetailNewServiceRequest: " + RMRequestDetailNewServiceRequest);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailNewServiceRequest: " + RMRequestDetailNewServiceRequest);
+            throw e;
+        }
+    }
 }
