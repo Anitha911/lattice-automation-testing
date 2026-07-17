@@ -126,10 +126,10 @@ Feature: Reactive Service data a configuration Module Automation
     When User clicks the first WO to open the detail page
     When User clicks the Add Material Request in the side menu if available and click Add Material Request 'Add Material Request' button
     When User Enters details in the Material Request pop up 'Quantity'
-    #enter Quantity in qty textbox
-    When User select the Item name '' from Item Name dropdown
-    When User select the Store '' from Store dropdown
-
+    #When User select the Item name '' from Item Name dropdown
+    #When User select the Store '' from Store dropdown
+    When User Clicks the Add Material Request Button 'Add Material Request'
+    Then User clicks the Submit Request Button 'Submit MR'
 
 
 

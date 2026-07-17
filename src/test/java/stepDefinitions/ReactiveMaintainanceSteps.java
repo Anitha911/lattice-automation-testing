@@ -203,6 +203,8 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMRequestDetailMRDetail(String RMRequestDetailMRDetail) throws InterruptedException {
         generateMRQuantity=dataGen.generateMaxNoParticipants();
         tmp.generateMRQuantity(generateMRQuantity);
+        tmp.selectItemName("10022026 Item RK");
+        tmp.selectStore("09012026Rk");
     }
     @When("User select the Item name {string} from Item Name dropdown")
     public void user_select_the_RMDetailMRItemName_Dropdown(String value) throws InterruptedException {
@@ -215,5 +217,13 @@ public class ReactiveMaintainanceSteps {
         if(value == null || value.isEmpty()){
             tmp.getRandomRMDetailStore_Dropdown();
         }
+    }
+    @Then("User Clicks the Add Material Request Button {string}")
+    public void user_click_on_RMRequestDetailADDMR(String RMRequestDetailADDMR) throws InterruptedException {
+        tmp.RMRequestDetailADDMR(RMRequestDetailADDMR);
+    }
+    @Then("User clicks the Submit Request Button {string}")
+    public void user_click_on_RMRequestDetailSubmitMR(String RMRequestDetailSubmitMR) throws InterruptedException {
+        tmp.RMRequestDetailSubmitMR(RMRequestDetailSubmitMR);
     }
 }

@@ -73,10 +73,13 @@ public class ReactiveMaintainancePage extends BasePage{
 
     //MR in Work Detail
     public static final By RMDETAIL_MR_QUANTITY= By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_txtReqQty");
-    public static final By RMDETAIL_MRITEMNAME_DD = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadItemName_Combo_Input");
+    public static final By RMDETAIL_MRITEMNAME_DD = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadItemName_Combo_Arrow");
     public static final By ALL_OPTIONS_RMDETAIL_MRITEMNAME = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadItemName_Combo_DropDown']/div/ul/li");
     public static final By RMDETAIL_STORE_DD = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_cmbStore_Input");
-    public static final By ALL_OPTIONS_RMDETAIL_STORE = By.xpath("//div[@id='ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_cmbStore_DropDown']/div/ul/li");;
+    public static final By ALL_OPTIONS_RMDETAIL_STORE = By.xpath("//div[contains(@id,'RadItemName_Combo_DropDown')]//li");
+    public static final By RMDETAIL_ADD_MR = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_rdbtn_Add");
+    public static final By RMDETAIL_SUBMIT_MR = By.id("ctl00_ContentPlaceHolder1_MaterialRequest_radwinIssueRequest_C_AddIssueRequest_RadSave");
+
     public void MenuRM(String MenuRM) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("4"));
@@ -847,14 +850,39 @@ public class ReactiveMaintainancePage extends BasePage{
     public void getRandomRMDetailMRItemName_Dropdown(){
         try{
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("window.scrollBy(0, -1000);");
-            utils.click(RMDETAIL_MRITEMNAME_DD);
-            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            js.executeScript("window.scrollBy(0, -500);");
+            WebElement dropdown = driver.findElement(RMDETAIL_MRITEMNAME_DD);
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();", dropdown);
+            //utils.click(RMDETAIL_MRITEMNAME_DD);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             //ElementUtils.waitForDropdownLoading();
             utils.waitForVisibility(ALL_OPTIONS_RMDETAIL_MRITEMNAME);
             HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_MRITEMNAME);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown:ALL_OPTIONS_RMDETAIL_MRITEMNAME" );
+            throw e;
+        }
+    }
+    public void selectItemName(String selectItemName) {
+        try {
+            utils.click(RMDETAIL_MRITEMNAME_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectItemName));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectItemName);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectItemName);
+            throw e;
+        }
+    }
+    public void selectStore(String selectStore) {
+        try {
+            utils.click(RMDETAIL_STORE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", selectStore));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + selectStore);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + selectStore);
             throw e;
         }
     }
@@ -866,6 +894,45 @@ public class ReactiveMaintainancePage extends BasePage{
             HelperUtils.clickRandomElement(ALL_OPTIONS_RMDETAIL_STORE);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: RM Detail MR ALL_OPTIONS_RMDETAIL_STORE" );
+            throw e;
+        }
+    }
+    public void RMRequestDetailADDMR(String RMRequestDetailADDMR) throws InterruptedException {
+        try {
+//            String parentWindow = driver.getWindowHandle();
+//            Set<String> allWindows = driver.getWindowHandles();
+//            for (String window : allWindows) {
+//                if (!window.equals(parentWindow)) {
+//                    driver.switchTo().window(window);
+//                    break;
+//                }
+//            }
+            WebElement ADDMRButton = driver.findElement(RMDETAIL_ADD_MR);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", ADDMRButton);
+            System.out.println("Clicked on RMRequestDetailADDMR: " + RMRequestDetailADDMR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailADDMR: " + RMRequestDetailADDMR);
+            throw e;
+        }
+    }
+    public void RMRequestDetailSubmitMR(String RMRequestDetailSubmitMR) throws InterruptedException {
+        try {
+//            String parentWindow = driver.getWindowHandle();
+//            Set<String> allWindows = driver.getWindowHandles();
+//            for (String window : allWindows) {
+//                if (!window.equals(parentWindow)) {
+//                    driver.switchTo().window(window);
+//                    break;
+//                }
+//            }
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0, 500);");
+            WebElement submitMRButton = driver.findElement(RMDETAIL_SUBMIT_MR);
+            js.executeScript("arguments[0].click();", submitMRButton);
+            System.out.println("Clicked on RMRequestDetailSubmitMR: " + RMRequestDetailSubmitMR);
+        } catch (Exception e) {
+            System.out.println("Failed to click on RMRequestDetailSubmitMR: " + RMRequestDetailSubmitMR);
             throw e;
         }
     }
