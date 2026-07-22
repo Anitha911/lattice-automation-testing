@@ -139,5 +139,6 @@ Feature: Reactive Maintenance Transaction Module Automation
     When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
     When User clicks the first WO to open the detail page
     When User clicks New Service Request With Same Base Unit 'Left Side' and click Yes
+    Then User clicks on RM New Request save button
 
 

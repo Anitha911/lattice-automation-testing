@@ -205,7 +205,6 @@ public class ReactiveMaintainancePage extends BasePage{
     }
     public void ClickNewRequestSave() {
         By[] saveButtons = {SUBMITREQUEST,MARK_DUPLICATE_BUTTON,RMDETAIL_CHILDWO_BUTTON};
-
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
                 utils.click(button);
@@ -955,11 +954,23 @@ public class ReactiveMaintainancePage extends BasePage{
                 if (element.isDisplayed() && element.isEnabled()) {
                     element.click();
                     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                    js.executeScript("arguments[0].scrollIntoView(true);", element);
                     WebElement button = wait.until(
-                            ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_RadWinConfirmation_C_RadButton10"))
+                            ExpectedConditions.visibilityOfElementLocated(
+                                    By.id("ctl00_ContentPlaceHolder1_RadWinConfirmation_C_RadButton10")
+                            )
                     );
-                    button.click();
+                    js.executeScript("arguments[0].scrollIntoView({block:'center'});", button);
+                    wait.until(ExpectedConditions.elementToBeClickable(button)).click();
+                    //tAB
+                    String originalTab = driver.getWindowHandle();
+                    wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+                    for (String windowHandle : driver.getWindowHandles()) {
+                        if (!windowHandle.equals(originalTab)) {
+                            driver.switchTo().window(windowHandle);
+                            break;
+                        }
+                    }
+                    //Tab
                 }
             }
             System.out.println("Clicked on RMRequestDetailNewServiceRequest: " + RMRequestDetailNewServiceRequest);
