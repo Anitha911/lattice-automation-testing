@@ -39,6 +39,9 @@ public class InventoryManagementPage extends BasePage {
     public static final By ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadDefaultUnit_Combo_DropDown')]//li");
     public static final By ITEMDEFINITION_ITEMNAME = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_txtItmName");
     public static final By ITEMDEFINITION_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_EDIT = By.id("ctl00_ContentPlaceHolder1_ItemMaster_Grid_ctl00__0");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_EDIT_BUTTON = By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -331,6 +334,15 @@ public class InventoryManagementPage extends BasePage {
     }
     public void generateItemName(String name) {
         utils.typeText(ITEMDEFINITION_ITEMNAME, name);
+    }
+    public void clickActiveItemDefinitiontoEdit() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_EDIT);
+    }
+    public void clickActiveItemDefinitiontoEditButton() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_EDIT_BUTTON);
+    }
+    public void ItemDefUpdateButtonClick() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON);
     }
 }
 

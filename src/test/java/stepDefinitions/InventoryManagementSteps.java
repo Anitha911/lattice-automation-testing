@@ -149,4 +149,27 @@ public class InventoryManagementSteps {
     public void user_click_on_ItemDefinitionSave() {
         tmp.ItemDefinitionSave();
     }
+    @Then("User clicks Active Item Definition")
+    public void user_clicks_on_first_active_Item_def_to_edit() {
+        tmp.clickActiveItemDefinitiontoEdit();
+    }
+    @Then("User clicks Item Definition Edit")
+    public void user_clicks_on_first_active_Item_def_edit_Button() {
+        tmp.clickActiveItemDefinitiontoEditButton();
+    }
+    @When("User enters the Item definition details EDIT {string}")
+    public void user_click_on_ItemDefinitionEdit(String ItemDefinitionItemName) throws InterruptedException {
+        //tmp.ItemDefinitionItemName(ItemDefinitionItemName);
+        //generateItemName = dataGen.generateItemName();
+        //tmp.generateItemName(generateItemName);
+        tmp.ItemDefItemType("rk 1106202 upd");
+        //tmp.ItemDefItemCategory("11062026RK ICC upd");
+        //tmp.ItemDefItemSubCategory("11062026RK Item SubCategory upd");
+        tmp.ItemDefIssuingUnit("rk1506 Unit Name  upd");
+        tmp.ItemDefReceivingUnit("rk1506 Unit Name  upd");
+    }
+    @Then("User clicks Item Definition Edit Update Button Click {string}")
+    public void user_clicks_on_ItemDefUpdateButtonClick(String ItemDefinitionUpdate) throws InterruptedException {
+        tmp.ItemDefUpdateButtonClick();
+    }
 }

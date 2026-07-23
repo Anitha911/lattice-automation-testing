@@ -90,6 +90,19 @@ Feature: Inventory Management Module Automation
     When User enters the Item Name Item definition details 'Item Name'
     Then User clicks the Save button
 
+  @TransInventoryMgmtEditItemDefinition
+  Scenario: Should be able to Edit Inventory Item
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Item Definition 'Item Definition' in side menu
+    When User clicks Active Item Definition
+    When User clicks Item Definition Edit
+    When User enters the Item definition details EDIT 'Edit'
+    Then User clicks Item Definition Edit Update Button Click 'Update'
+
+
+
 
 
 
