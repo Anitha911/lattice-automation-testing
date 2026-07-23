@@ -195,6 +195,10 @@ public class TestDataGenerator {
         String[] mode = {"tstItemSubCatName1", "tstItemSubCatName2", "tstItemSubCatName3", "tstItemSubCatName4", "tstItemSubCatName5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    public String generateItemName() {
+        String[] mode = {"tstItemName1", "tstItemName2", "tstItemName3", "tstItemName4", "tstItemName5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
     //Inventory-Unit Conversion
     public String generateConvFactor() {
         return String.valueOf(random.nextInt(1000000000));

@@ -3,6 +3,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ElementUtils;
 import utils.HelperUtils;
 import java.time.Duration;
 import java.util.List;
@@ -24,6 +25,20 @@ public class InventoryManagementPage extends BasePage {
     public static final By EMAIL_DOMAIN_ADD_SUPPLIER=By.xpath(String.format("//*[@id='Span2220']"));
     public static final By EMAIL_DOMAINSAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_btnSave");
     public static final By SUPPLIER_EMAIL_DOMAIN_DETAIL=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_txtdomainname");
+
+    //Item Definition
+    public static final By ITEMDEFINITION_ITEMTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemType_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemType_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadMainGroup_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadMainGroup_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMSUBCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSubGroups_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadSubGroups_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ISSUINGUNIT_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemUnit_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemUnit_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_RECEIVINGUNIT_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadDefaultUnit_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadDefaultUnit_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMNAME = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_txtItmName");
+    public static final By ITEMDEFINITION_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -171,6 +186,151 @@ public class InventoryManagementPage extends BasePage {
     }
     public void enterSupplierEmailDomainDetail(String enterSupplierEmailDomainDetail) {
         utils.typeText(SUPPLIER_EMAIL_DOMAIN_DETAIL, enterSupplierEmailDomainDetail);
+    }
+    //ItemDefinition
+    public void ItemDefinition(String ItemDefinition) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[3]/a", ItemDefinition)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on ItemDefinition Click: " + ItemDefinition);
+        } catch (Exception e) {
+            System.out.println("Failed to click on ItemDefinition Click: " + ItemDefinition);
+            throw e;
+        }
+    }
+    public void ItemDefinitionAddButtonClick(String ItemDefinitionAddButtonClick) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadAddItem"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on ItemDefinitionAddButtonClick: " + ItemDefinitionAddButtonClick);
+        } catch (Exception e) {
+            System.out.println("Failed to click on ItemDefinitionAddButtonClick: " + ItemDefinitionAddButtonClick);
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemType_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMTYPE_DD);
+            //ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemcategory_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMCATEGORY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemSubcategory_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMSUBCATEGORY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefIssuingUnit_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ISSUINGUNIT_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefReceivingUnit_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_RECEIVINGUNIT_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT" );
+            throw e;
+        }
+    }
+    public void ItemDefinitionItemName(String ItemDefinitionItemName) {
+        utils.typeText(ITEMDEFINITION_ITEMNAME, ItemDefinitionItemName);
+    }
+    public void ItemDefinitionSave() {
+        utils.click(ITEMDEFINITION_SAVE);
+    }
+    //Item definition dropdown values
+    public void ItemDefItemType(String ItemDefItemType) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemType);
+            throw e;
+        }
+    }
+    public void ItemDefItemCategory(String ItemDefItemCategory) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMCATEGORY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemCategory);
+            throw e;
+        }
+    }
+    public void ItemDefItemSubCategory(String ItemDefItemSubCategory) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMSUBCATEGORY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemSubCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemSubCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemSubCategory);
+            throw e;
+        }
+    }
+    public void ItemDefIssuingUnit(String ItemDefIssuingUnit) {
+        try {
+            utils.click(ITEMDEFINITION_ISSUINGUNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefIssuingUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefIssuingUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefIssuingUnit);
+            throw e;
+        }
+    }
+    public void ItemDefReceivingUnit(String ItemDefReceivingUnit) {
+        try {
+            utils.click(ITEMDEFINITION_RECEIVINGUNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefReceivingUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefReceivingUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefReceivingUnit);
+            throw e;
+        }
+    }
+    public void generateItemName(String name) {
+        utils.typeText(ITEMDEFINITION_ITEMNAME, name);
     }
 }
 

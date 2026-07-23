@@ -1,5 +1,6 @@
 package stepDefinitions;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,6 +20,7 @@ public class InventoryManagementSteps {
     HelperUtils helperUtils = new HelperUtils(driver);
     InventoryManagementPage tmp = new InventoryManagementPage(driver);
     ElementUtils elementUtils= new ElementUtils(driver);
+    public static String generateItemName;
 
     @Then("User clicks on Inventory Management {string} in side menu")
     public void user_click_on_InventoryManagement(String title) throws InterruptedException {
@@ -90,5 +92,61 @@ public class InventoryManagementSteps {
     @Then("User clicks Add Email Domain Save Button")
     public void user_click_on_SupplierEmailDomainSave() {
         tmp.ClickSupplierEmailDomainSave();
+    }
+    //Item Definition
+    @Then("User Clicks on Inventory Management Item Definition {string} in side menu")
+    public void user_click_on_InvMgmtItemDefinition(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[3]/a";
+        tmp.ItemDefinition(xpath);
+    }
+    @Then("User clicks Inventory Management Item Definition Add {string} Button")
+    public void user_click_on_InvMgmtItemDefinitionAddClick(String title) throws InterruptedException {
+        String id = "ctl00_ContentPlaceHolder1_RadAddItem";
+        tmp.ItemDefinitionAddButtonClick(id);
+    }
+    @When("User select the Item Type {string} from Item Type dropdown")
+    public void user_select_the_ItemDefItemType_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomItemDefItemType_Dropdown();
+        }
+    }
+    @When("User select the Item Category {string} from Item Category dropdown")
+    public void user_select_the_ItemDefItemCategory_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomItemDefItemcategory_Dropdown();
+        }
+    }
+    @When("User select the Item SubCategory {string} from Item SubCategory dropdown")
+    public void user_select_the_ItemDefItemSubCategory_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomItemDefItemSubcategory_Dropdown();
+        }
+    }
+    @When("User select the Issuing Unit {string} from Issuing Unit dropdown")
+    public void user_select_the_ItemDefIssuingUnit_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomItemDefIssuingUnit_Dropdown();
+        }
+    }
+    @When("User select the Default Receiving Unit {string} from Default Receiving dropdown")
+    public void user_select_the_ItemDefReceivingUnit_Dropdown(String value) throws InterruptedException {
+        if(value == null || value.isEmpty()){
+            tmp.getRandomItemDefReceivingUnit_Dropdown();
+        }
+    }
+    @When("User enters the Item Name Item definition details {string}")
+    public void user_click_on_ItemDefinitionItemName(String ItemDefinitionItemName) throws InterruptedException {
+        tmp.ItemDefinitionItemName(ItemDefinitionItemName);
+        generateItemName = dataGen.generateItemName();
+        tmp.generateItemName(generateItemName);
+        tmp.ItemDefItemType("rk 1106202 upd");
+        tmp.ItemDefItemCategory("11062026RK ICC upd");
+        tmp.ItemDefItemSubCategory("11062026RK Item SubCategory upd");
+        tmp.ItemDefIssuingUnit("rk1506 Unit Name  upd");
+        tmp.ItemDefReceivingUnit("rk1506 Unit Name  upd");
+    }
+    @When("User clicks the Save button")
+    public void user_click_on_ItemDefinitionSave() {
+        tmp.ItemDefinitionSave();
     }
 }
