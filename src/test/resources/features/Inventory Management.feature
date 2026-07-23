@@ -91,7 +91,7 @@ Feature: Inventory Management Module Automation
     Then User clicks the Save button
 
   @TransInventoryMgmtEditItemDefinition
-  Scenario: Should be able to Edit Inventory Item
+  Scenario: Should be able to Edit Inventory Item Definition
     Given User navigates to 'lattice.url' page
     When User is at home screen after login with "username" and "password"
     When User clicks on Inventory Management 'Inventory Management' in side menu
@@ -100,6 +100,16 @@ Feature: Inventory Management Module Automation
     When User clicks Item Definition Edit
     When User enters the Item definition details EDIT 'Edit'
     Then User clicks Item Definition Edit Update Button Click 'Update'
+
+  @TransInventoryMgmtAddStore
+  Scenario: Should be able to Add Inventory Store
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    When User clicks Inventory Management Add Store button 'Add Store'
+    When User enters details in Store pop up 'Store Pop up Details'
+
 
 
 

@@ -208,6 +208,10 @@ public class TestDataGenerator {
         String[] mode = {"tstStoreGrp1", "tstStoreGrp2", "tstStoreGrp3", "tstStoreGrp4", "tstStoreGrp5"};
         return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
+    public String generateStoreLocationDetails() {
+        String[] mode = {"tstStoreLoc1", "tstStoreLoc2", "tstStoreLoc3", "tstStoreLoc4", "tstStoreLoc5"};
+        return mode[random.nextInt(mode.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
     //Inventory UOM code
     public String generateUOMCode() {
         String[] mode = {"tsUOM1", "tsUOM2", "tsUOM3", "tsUOM4", "tsUOM5"};

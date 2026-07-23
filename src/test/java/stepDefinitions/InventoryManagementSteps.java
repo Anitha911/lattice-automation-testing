@@ -2,26 +2,21 @@ package stepDefinitions;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.FinancialTrackingPage;
 import pages.InventoryManagementPage;
 import utils.DriverFactory;
 import utils.ElementUtils;
 import utils.HelperUtils;
 import utils.TestDataGenerator;
-import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
 
 public class InventoryManagementSteps {
     private final WebDriver driver = DriverFactory.getDriver();
     TestDataGenerator dataGen = new TestDataGenerator();
-    HelperUtils helperUtils = new HelperUtils(driver);
+    //HelperUtils helperUtils = new HelperUtils(driver);
     InventoryManagementPage tmp = new InventoryManagementPage(driver);
-    ElementUtils elementUtils= new ElementUtils(driver);
+    //ElementUtils elementUtils= new ElementUtils(driver);
     public static String generateItemName;
-
+    public static String generateStoreName;
+    public static String generateStoreLocationDetails;
     @Then("User clicks on Inventory Management {string} in side menu")
     public void user_click_on_InventoryManagement(String title) throws InterruptedException {
         String id = "7";
@@ -136,7 +131,7 @@ public class InventoryManagementSteps {
     }
     @When("User enters the Item Name Item definition details {string}")
     public void user_click_on_ItemDefinitionItemName(String ItemDefinitionItemName) throws InterruptedException {
-        tmp.ItemDefinitionItemName(ItemDefinitionItemName);
+        //tmp.ItemDefinitionItemName(ItemDefinitionItemName);
         generateItemName = dataGen.generateItemName();
         tmp.generateItemName(generateItemName);
         tmp.ItemDefItemType("rk 1106202 upd");
@@ -159,12 +154,7 @@ public class InventoryManagementSteps {
     }
     @When("User enters the Item definition details EDIT {string}")
     public void user_click_on_ItemDefinitionEdit(String ItemDefinitionItemName) throws InterruptedException {
-        //tmp.ItemDefinitionItemName(ItemDefinitionItemName);
-        //generateItemName = dataGen.generateItemName();
-        //tmp.generateItemName(generateItemName);
         tmp.ItemDefItemType("rk 1106202 upd");
-        //tmp.ItemDefItemCategory("11062026RK ICC upd");
-        //tmp.ItemDefItemSubCategory("11062026RK Item SubCategory upd");
         tmp.ItemDefIssuingUnit("rk1506 Unit Name  upd");
         tmp.ItemDefReceivingUnit("rk1506 Unit Name  upd");
     }
@@ -172,4 +162,25 @@ public class InventoryManagementSteps {
     public void user_clicks_on_ItemDefUpdateButtonClick(String ItemDefinitionUpdate) throws InterruptedException {
         tmp.ItemDefUpdateButtonClick();
     }
+    //Store
+    @Then("User Clicks on Inventory Management Store {string} in side menu")
+    public void user_click_on_InvMgmtStoreMenu(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[4]/a";
+        tmp.InvMgmtStoreMenu(xpath);
+    }
+    @Then("User clicks Inventory Management Add Store button {string}")
+    public void user_clicks_on_AddStoreButton(String AddStore) throws InterruptedException {
+        tmp.clickAddStoreButton(AddStore);
+    }
+    @When("User enters details in Store pop up {string}")
+    public void user_click_on_StorepopUpDetails(String StorepopUpDetails) throws InterruptedException {
+        generateStoreName = dataGen.generateStoreGroup();
+        tmp.generateStoreName(generateStoreName);
+        tmp.StoreGroup("rk 1703 up");
+        tmp.StoreType("Central Store");
+        tmp.OwnerType("Own");
+        generateStoreLocationDetails = dataGen.generateStoreLocationDetails();
+        tmp.generateStoreLocationDetails(generateStoreLocationDetails);
+    }
+
 }

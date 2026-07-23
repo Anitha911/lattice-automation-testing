@@ -43,6 +43,14 @@ public class InventoryManagementPage extends BasePage {
     public static final By SEARCH_FIRST_ITEMDEFINITION_EDIT_BUTTON = By.id("ctl00_ContentPlaceHolder1_btnSave");
     public static final By SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
 
+    //Store
+    public static final By STORE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_txt_StoreName");
+    public static final By STORE_LOCDETAILS = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_Txt_LocationDetails");
+    public static final By STOREGRP_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreGrp_Input");
+    public static final By STORETYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreType_Input");
+    public static final By OWNERTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_OwnerType_Combo_Input");
+
+
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("7"));
@@ -343,6 +351,70 @@ public class InventoryManagementPage extends BasePage {
     }
     public void ItemDefUpdateButtonClick() {
         utils.click(SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON);
+    }
+    //Store
+    public void InvMgmtStoreMenu(String InvMgmtStoreMenu) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[4]/a", InvMgmtStoreMenu)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on InvMgmtStoreMenu Click: " + InvMgmtStoreMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on InvMgmtStoreMenu Click: " + InvMgmtStoreMenu);
+            throw e;
+        }
+    }
+    public void clickAddStoreButton(String clickAddStoreButton) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_BtnAdd"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on clickAddStoreButton: " + clickAddStoreButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on clickAddStoreButton: " + clickAddStoreButton);
+            throw e;
+        }
+    }
+    public void generateStoreName(String name) {
+        utils.typeText(STORE_NAME, name);
+    }
+    public void generateStoreLocationDetails(String name) {
+        utils.typeText(STORE_LOCDETAILS, name);
+    }
+    public void StoreGroup(String StoreGroup) {
+        try {
+            utils.click(STOREGRP_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", StoreGroup));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + StoreGroup);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + StoreGroup);
+            throw e;
+        }
+    }
+    public void StoreType(String StoreType) {
+        try {
+            utils.click(STORETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", StoreType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + StoreType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + StoreType);
+            throw e;
+        }
+    }
+    public void OwnerType(String OwnerType) {
+        try {
+            utils.click(OWNERTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", OwnerType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + OwnerType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + OwnerType);
+            throw e;
+        }
     }
 }
 
