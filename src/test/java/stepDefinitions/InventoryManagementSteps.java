@@ -176,11 +176,14 @@ public class InventoryManagementSteps {
     public void user_click_on_StorepopUpDetails(String StorepopUpDetails) throws InterruptedException {
         generateStoreName = dataGen.generateStoreGroup();
         tmp.generateStoreName(generateStoreName);
-        tmp.StoreGroup("rk 1703 up");
+        tmp.StoreGroup("Test1StoreGroup");
         tmp.StoreType("Central Store");
         tmp.OwnerType("Own");
         generateStoreLocationDetails = dataGen.generateStoreLocationDetails();
         tmp.generateStoreLocationDetails(generateStoreLocationDetails);
     }
-
+    @When("User clicks the Store Save button")
+    public void user_click_on_InventoryStoreSave() {
+        tmp.InventoryStoreSave();
+    }
 }

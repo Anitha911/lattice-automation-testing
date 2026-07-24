@@ -49,7 +49,7 @@ public class InventoryManagementPage extends BasePage {
     public static final By STOREGRP_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreGrp_Input");
     public static final By STORETYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreType_Input");
     public static final By OWNERTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_OwnerType_Combo_Input");
-
+    public static final By INVSTORE_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadSave");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -386,8 +386,15 @@ public class InventoryManagementPage extends BasePage {
     public void StoreGroup(String StoreGroup) {
         try {
             utils.click(STOREGRP_DD);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", StoreGroup));
-            utils.click(locator);
+            By optionLocator = By.xpath(String.format(
+                    "//li[contains(@class,'rcbItem') and contains(normalize-space(.), '%s')]",
+                    StoreGroup));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            WebElement option = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(optionLocator));
+            wait.until(ExpectedConditions.elementToBeClickable(optionLocator));
+
+            option.click();
             System.out.println("Clicked on the dropdown: " + StoreGroup);
         } catch (Exception e) {
             System.out.println("Failed to click on the dropdown: " + StoreGroup);
@@ -415,6 +422,9 @@ public class InventoryManagementPage extends BasePage {
             System.out.println("Failed to click on the dropdown: " + OwnerType);
             throw e;
         }
+    }
+    public void InventoryStoreSave() {
+        utils.click(INVSTORE_SAVE);
     }
 }
 

@@ -109,6 +109,7 @@ Feature: Inventory Management Module Automation
     When User Clicks on Inventory Management Store 'Store' in side menu
     When User clicks Inventory Management Add Store button 'Add Store'
     When User enters details in Store pop up 'Store Pop up Details'
+    Then User clicks the Store Save button
 
 
 
