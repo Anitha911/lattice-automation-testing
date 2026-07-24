@@ -11,9 +11,9 @@ import utils.TestDataGenerator;
 public class InventoryManagementSteps {
     private final WebDriver driver = DriverFactory.getDriver();
     TestDataGenerator dataGen = new TestDataGenerator();
-    //HelperUtils helperUtils = new HelperUtils(driver);
+    HelperUtils helperUtils = new HelperUtils(driver);
     InventoryManagementPage tmp = new InventoryManagementPage(driver);
-    //ElementUtils elementUtils= new ElementUtils(driver);
+    ElementUtils elementUtils= new ElementUtils(driver);
     public static String generateItemName;
     public static String generateStoreName;
     public static String generateStoreLocationDetails;
@@ -140,7 +140,7 @@ public class InventoryManagementSteps {
         tmp.ItemDefIssuingUnit("rk1506 Unit Name  upd");
         tmp.ItemDefReceivingUnit("rk1506 Unit Name  upd");
     }
-    @When("User clicks the Save button")
+    @When("User clicks the Item Definition Save button")
     public void user_click_on_ItemDefinitionSave() {
         tmp.ItemDefinitionSave();
     }
@@ -161,6 +161,11 @@ public class InventoryManagementSteps {
     @Then("User clicks Item Definition Edit Update Button Click {string}")
     public void user_clicks_on_ItemDefUpdateButtonClick(String ItemDefinitionUpdate) throws InterruptedException {
         tmp.ItemDefUpdateButtonClick();
+    }
+    @When("user verify the inline error message {string} on Item Name")
+    public void userVerifyInlineErrorMessageItemName(String expectedErrorMessage) {
+        By ItemNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RequiredFieldValidatortxtItmName");
+        helperUtils.verifyInlineErrorMessage(ItemNameErrorLocator, expectedErrorMessage);
     }
     //Store
     @Then("User Clicks on Inventory Management Store {string} in side menu")
@@ -185,5 +190,15 @@ public class InventoryManagementSteps {
     @When("User clicks the Store Save button")
     public void user_click_on_InventoryStoreSave() {
         tmp.InventoryStoreSave();
+    }
+    @When("user verify the inline error message {string} on Store Name")
+    public void userVerifyInlineErrorMessageStoreName(String expectedErrorMessage) {
+        By StoreNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RequiredFieldValidator2");
+        helperUtils.verifyInlineErrorMessage(StoreNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on Store Location Details")
+    public void userVerifyInlineErrorMessageStoreLocDetaila(String expectedErrorMessage) {
+        By StoreLocDetailsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RequiredFieldValidator5");
+        helperUtils.verifyInlineErrorMessage(StoreLocDetailsErrorLocator, expectedErrorMessage);
     }
 }

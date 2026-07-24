@@ -88,7 +88,7 @@ Feature: Inventory Management Module Automation
     #When User select the Issuing Unit '' from Issuing Unit dropdown
     #When User select the Default Receiving Unit '' from Default Receiving dropdown
     When User enters the Item Name Item definition details 'Item Name'
-    Then User clicks the Save button
+    Then User clicks the Item Definition Save button
 
   @TransInventoryMgmtEditItemDefinition
   Scenario: Should be able to Edit Inventory Item Definition
@@ -101,6 +101,17 @@ Feature: Inventory Management Module Automation
     When User enters the Item definition details EDIT 'Edit'
     Then User clicks Item Definition Edit Update Button Click 'Update'
 
+  @TransInventoryMgmItemDefinitionValidationInput
+  Scenario: User should not be able to save Item Definition With invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Item Definition 'Item Definition' in side menu
+    When User clicks Inventory Management Item Definition Add 'Item Definition Add' Button
+    #When user verify the chars min len as 3 and max len as 200 on RateCard Number textbox
+    Then User clicks the Item Definition Save button
+    When user verify the inline error message 'Enter Item Name!' on Item Name
+
   @TransInventoryMgmtAddStore
   Scenario: Should be able to Add Inventory Store
     Given User navigates to 'lattice.url' page
@@ -111,6 +122,17 @@ Feature: Inventory Management Module Automation
     When User enters details in Store pop up 'Store Pop up Details'
     Then User clicks the Store Save button
 
+  @TransInventoryMgmtStoreValidationInput
+  Scenario: User should not be able to save Store With invalid inputs
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    When User clicks Inventory Management Add Store button 'Add Store'
+    #When user verify the chars min len as 3 and max len as 250 on Store Name textbox
+    Then User clicks the Store Save button
+    When user verify the inline error message 'Enter Store name' on Store Name
+    When user verify the inline error message 'Enter Location Details' on Store Location Details
 
 
 
