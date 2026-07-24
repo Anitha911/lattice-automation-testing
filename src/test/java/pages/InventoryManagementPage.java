@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ElementUtils;
 import utils.HelperUtils;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryManagementPage extends BasePage {
@@ -50,6 +51,8 @@ public class InventoryManagementPage extends BasePage {
     public static final By STORETYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreType_Input");
     public static final By OWNERTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_OwnerType_Combo_Input");
     public static final By INVSTORE_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadSave");
+    public static final By DELETE_FIRST_STORE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdStore_ctl00_ctl04_imgDelete");
+
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -425,6 +428,61 @@ public class InventoryManagementPage extends BasePage {
     }
     public void InventoryStoreSave() {
         utils.click(INVSTORE_SAVE);
+    }
+    public void StoreExportToExcel(String StoreExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", StoreExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Store" + StoreExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Store " + StoreExportToExcel);
+            throw e;
+        }
+    }
+    public void InventoryStoreDelete() {
+
+        List<WebElement> buttons = driver.findElements(DELETE_FIRST_STORE_IN_LIST);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            if (!"Record cannot be deleted.".equals(btn.getAttribute("title"))) {
+                btn.click();
+                System.out.println("Button clicked.");
+            } else {
+                System.out.println("Button is disabled or not visible.");
+            }
+        } else {
+            System.out.println("Button is not present.");
+        }
+    }
+    //Activate Deactivate
+    public void InvMgmtActiveStore() {
+        By button = By.id("ctl00_ContentPlaceHolder1_grdStore_ctl00__0");
+        List<WebElement> buttons = driver.findElements(button);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            btn.click();
+        } else {
+            System.out.println("Button is not present.");
+        }
+    }
+    public void InvMgmtActiveDeactiveButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        By button = By.id("ctl00_ContentPlaceHolder1_btnDeActivestore");
+        List<WebElement> buttons = driver.findElements(button);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            btn.click();
+            System.out.println("Deactivated Store");
+        } else {
+            By buttonActive = By.id("ctl00_ContentPlaceHolder1_btnActivestore");
+            List<WebElement> buttonsActive = driver.findElements(buttonActive);
+            WebElement btn = buttonsActive.get(0);
+            btn.click();
+            System.out.println("Activated Store");
+        }
     }
 }
 

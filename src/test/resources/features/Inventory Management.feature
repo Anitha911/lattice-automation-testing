@@ -134,6 +134,32 @@ Feature: Inventory Management Module Automation
     When user verify the inline error message 'Enter Store name' on Store Name
     When user verify the inline error message 'Enter Location Details' on Store Location Details
 
+  @TransInventoryMgmtStoreExportToExcel
+  Scenario: Should be able to Export To Excel Store
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    Then User clicks on Export To Excel Inventory Management Store
+
+  @TransInventoryMgmtStoreDelete
+  Scenario: User should  be able to Delete Store
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    Then User Clicks the Store Delete button
+
+  @TransInventoryMgmtStoreDeactivate
+  Scenario: User should  be able to Deactivate a Store
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    When User clicks an active Store from the grid 'Active Store'
+    Then User clicks Deactivate Active Button 'ActivateDeactivate'
+
+
 
 
 

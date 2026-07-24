@@ -201,4 +201,23 @@ public class InventoryManagementSteps {
         By StoreLocDetailsErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RequiredFieldValidator5");
         helperUtils.verifyInlineErrorMessage(StoreLocDetailsErrorLocator, expectedErrorMessage);
     }
+    //export to excel Store
+    @Then ("User clicks on Export To Excel Inventory Management Store")
+    public void user_clicks_on_Store_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.StoreExportToExcel(xpath);
+    }
+    @When("User Clicks the Store Delete button")
+    public void user_click_on_InventoryStoreDelete() {
+        tmp.InventoryStoreDelete();
+    }
+    //Activate Deactivate
+    @Then("User clicks an active Store from the grid {string}")
+    public void user_click_on_InvMgmtActiveStore(String title) throws InterruptedException {
+        tmp.InvMgmtActiveStore();
+    }
+    @Then("User clicks Deactivate Active Button {string}")
+    public void user_click_on_InvMgmtActiveDeactiveButton(String title) throws InterruptedException {
+        tmp.InvMgmtActiveDeactiveButton();
+    }
 }
