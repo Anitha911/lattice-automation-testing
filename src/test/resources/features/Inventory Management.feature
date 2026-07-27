@@ -190,6 +190,11 @@ Feature: Inventory Management Module Automation
     When User enters details in the Notes pop up 'Notes Details'
     Then User Clicks the Notes Save
 
-
-
+  @TransInventoryMgmtPRExportToExcel
+  Scenario: Should be able to Export To Excel PR
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Purchase Request 'PR' in side menu
+    Then User clicks the PR Export To Excel
 

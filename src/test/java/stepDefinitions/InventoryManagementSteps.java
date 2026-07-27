@@ -251,4 +251,16 @@ public class InventoryManagementSteps {
     public void user_click_on_InventoryStoreNotesSave() {
         tmp.InventoryStoreNotesSave();
     }
+    //Purchase Request
+    @Then("User Clicks on Inventory Management Purchase Request {string} in side menu")
+    public void user_click_on_InvMgmtPRmenu(String title) throws InterruptedException {
+        String xpath = "//*[@id='tab-Inventory']/div[2]/div/ul[2]/li[2]/a";
+        tmp.InvMgmtPRmenu(xpath);
+    }
+    //export to excel PR
+    @Then ("User clicks the PR Export To Excel")
+    public void user_clicks_on_PR_export_to_excel_button() throws InterruptedException{
+        String xpath = "//*[@id='btnExportToExcel']";
+        tmp.PRExportToExcel(xpath);
+    }
 }

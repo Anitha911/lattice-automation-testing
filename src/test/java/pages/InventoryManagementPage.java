@@ -533,6 +533,30 @@ public class InventoryManagementPage extends BasePage {
         driver.switchTo().window(tabs.get(1));
         driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_btnNoteSave']")).click();
     }
+    //PR
+    public void InvMgmtPRmenu(String InvMgmtPRmenu) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[2]/li[2]/a", InvMgmtPRmenu)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on PR Click: " + InvMgmtPRmenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on PR Click: " + InvMgmtPRmenu);
+            throw e;
+        }
+    }
+    //Export To Excel
+    public void PRExportToExcel(String PRExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", PRExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel PR" + PRExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel PR " + PRExportToExcel);
+            throw e;
+        }
+    }
 }
 
 
