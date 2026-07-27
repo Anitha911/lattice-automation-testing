@@ -52,7 +52,8 @@ public class InventoryManagementPage extends BasePage {
     public static final By OWNERTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_OwnerType_Combo_Input");
     public static final By INVSTORE_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadSave");
     public static final By DELETE_FIRST_STORE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdStore_ctl00_ctl04_imgDelete");
-
+    public static final By STORENOTETYPE_DD=By.id("ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_ddlDocType_Input");
+    public static final By STORE_NOTES = By.id("txtApprovalNote");
 
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
@@ -494,6 +495,43 @@ public class InventoryManagementPage extends BasePage {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
         utils.click(By.id("ctl00_ContentPlaceHolder1_btnEditdetail"));
+    }
+    public void InvMgmtStoreLeftSideMenu() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        WebElement span = driver.findElement(By.xpath("//a[@id='tdNotes']/span"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", span);
+    }
+
+    public void InventoryStoreAddNOteButtonClick() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        driver.findElement(By.xpath("//span[contains(normalize-space(),'Add Notes')]")).click();
+    }
+    public void SelectNoteType(String SelectNoteType) {
+        try {
+            utils.click(STORENOTETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", SelectNoteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + SelectNoteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + SelectNoteType);
+            throw e;
+        }
+    }
+    public void generateStorepopUpDetails(String generateStorepopUpDetails) {
+        utils.typeText(STORE_NOTES, generateStorepopUpDetails);
+    }
+    public void InventoryStoreNotesSave() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_btnNoteSave']")).click();
     }
 }
 

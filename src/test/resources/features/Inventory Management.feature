@@ -178,6 +178,18 @@ Feature: Inventory Management Module Automation
     When User enters details in Store pop up 'Store Pop up Details'
     Then User clicks the Store Save button
 
+  @TransInventoryMgmtEditStoreAddNote
+  Scenario: Should be able to Add Note in Inventory Store Detail Page
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    When User clicks an active Store from the grid 'Active Store'
+    When User clicks the Note in the left side menu 'Note in left side'
+    When User clicks the Add Note Button
+    When User enters details in the Notes pop up 'Notes Details'
+    Then User Clicks the Notes Save
+
 
 
 

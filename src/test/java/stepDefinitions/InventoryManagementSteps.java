@@ -17,6 +17,8 @@ public class InventoryManagementSteps {
     public static String generateItemName;
     public static String generateStoreName;
     public static String generateStoreLocationDetails;
+    public static String generateStoreNotes;
+
     @Then("User clicks on Inventory Management {string} in side menu")
     public void user_click_on_InventoryManagement(String title) throws InterruptedException {
         String id = "7";
@@ -227,5 +229,26 @@ public class InventoryManagementSteps {
     @When("User clicks the Edit Store Button")
     public void user_click_on_InventoryStoreEdit() {
         tmp.InventoryStoreEdit();
+    }
+    //Add Notes in Store
+    @Then("User clicks the Note in the left side menu {string}")
+    public void user_click_on_InvMgmtStoreLeftSideMenu(String InactiveStore) throws InterruptedException {
+        tmp.InvMgmtStoreLeftSideMenu();
+    }
+    @When("User clicks the Add Note Button")
+    public void user_click_on_InventoryStoreAddNOteButtonClick() {
+        tmp.InventoryStoreAddNOteButtonClick();
+    }
+    @When("User enters details in the Notes pop up {string}")
+    public void user_click_on_StoreNotesPopUpDetails(String StoreNotespopUpDetails) throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 0);");
+        tmp.SelectNoteType("Notes");
+        generateStoreNotes = dataGen.generateDisplayName();
+        tmp.generateStorepopUpDetails(generateStoreNotes);
+    }
+    @When("User Clicks the Notes Save")
+    public void user_click_on_InventoryStoreNotesSave() {
+        tmp.InventoryStoreNotesSave();
     }
 }
