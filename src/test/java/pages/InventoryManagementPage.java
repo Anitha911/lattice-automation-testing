@@ -484,6 +484,17 @@ public class InventoryManagementPage extends BasePage {
             System.out.println("Activated Store");
         }
     }
+    public void InvMgmtInactiveStore() {
+        WebElement checkbox = driver.findElement(By.id("ctl00_ContentPlaceHolder1_chkIncludeInActivated"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkbox);
+    }
+    public void InventoryStoreEdit() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        utils.click(By.id("ctl00_ContentPlaceHolder1_btnEditdetail"));
+    }
 }
 
 

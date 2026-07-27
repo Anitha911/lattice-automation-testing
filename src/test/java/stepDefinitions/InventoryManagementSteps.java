@@ -220,4 +220,12 @@ public class InventoryManagementSteps {
     public void user_click_on_InvMgmtActiveDeactiveButton(String title) throws InterruptedException {
         tmp.InvMgmtActiveDeactiveButton();
     }
+    @Then("User clicks the Include Inactive Store Checkbox {string}")
+    public void user_click_on_InvMgmtInactiveStore(String InactiveStore) throws InterruptedException {
+        tmp.InvMgmtInactiveStore();
+    }
+    @When("User clicks the Edit Store Button")
+    public void user_click_on_InventoryStoreEdit() {
+        tmp.InventoryStoreEdit();
+    }
 }

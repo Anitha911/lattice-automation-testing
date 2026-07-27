@@ -159,8 +159,24 @@ Feature: Inventory Management Module Automation
     When User clicks an active Store from the grid 'Active Store'
     Then User clicks Deactivate Active Button 'ActivateDeactivate'
 
+  @TransInventoryMgmtStoreIncludeInactiveStore
+  Scenario: User should be able to check include Inactive Store Checkbox and corresponding data should be displayed
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    Then User clicks the Include Inactive Store Checkbox 'Include Inactive Store'
 
-
+  @TransInventoryMgmtEditStore
+  Scenario: Should be able to Edit Inventory Store
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Store 'Store' in side menu
+    When User clicks an active Store from the grid 'Active Store'
+    When User clicks the Edit Store Button
+    When User enters details in Store pop up 'Store Pop up Details'
+    Then User clicks the Store Save button
 
 
 
