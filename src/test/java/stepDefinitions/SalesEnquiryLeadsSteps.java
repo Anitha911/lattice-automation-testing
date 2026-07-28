@@ -1,4 +1,5 @@
 package stepDefinitions;
+import groovyjarjarantlr4.v4.misc.Utils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
@@ -285,7 +286,7 @@ public class SalesEnquiryLeadsSteps {
             elementUtils.click(field);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
             By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
-            elementUtils.waitForElementVisible(firstItem, 50);  //Uncomment when getting code
+            elementUtils.waitForVisibility(firstItem);  //Uncomment when getting code
             helperUtils.clickRandomElement(options);
         }
         //Dropdowns
