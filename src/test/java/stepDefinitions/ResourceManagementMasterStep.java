@@ -12,7 +12,6 @@ import utils.HelperUtils;
 
 public class ResourceManagementMasterStep {
     private final WebDriver driver = DriverFactory.getDriver();
-    AuditInspections auditInspections = new AuditInspections(driver);
     private final HelperUtils helperUtils = new HelperUtils(driver);
 
     @When("User get Trade default code field value")

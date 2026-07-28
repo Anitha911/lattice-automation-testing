@@ -155,11 +155,6 @@ public class TestDataModel {
     private String BUCriticalityBaseUnit;
     private String RemarksBaseUnit;
     private String BaseUnitReferenceCode;
-
-
-
-
-
     private String SubUnitCode;
     private String SubUnitName;
     private String PropertySubUnit;
@@ -183,6 +178,25 @@ public class TestDataModel {
     private String BUSizeAttributeBUSizeType;
     private String BUFunctionalTypeBUSizeType;
     private String BUFunctionalSubTypeBUSizeType;
+    //Property&Client Management Transaction
+    private String ClientCode;
+    private String ClientExtRefCode;
+    private String ClientClientType;
+    private String ClientContactPerson;
+    private String ClientMobileNumber;
+    private String ClientEmail;
+    private String ClientAddress;
+    private String ClientCountry;
+    private String ClientCity;
+    private String ClientCustomerImportance;
+    private String ContactName;
+    private String ContactExtRefCode;
+    private String ContactsContactType;
+    private String ContactEmail;
+    private String ContactMobileNumber;
+    private String ContactWhatsappNumber;
+    private String ParameterCode;
+
 
 
 
