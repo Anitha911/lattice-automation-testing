@@ -20,6 +20,21 @@ public class TestDataGenerator {
         return "user_" + timestamp + "_" + UUID.randomUUID().toString().substring(0, 5) + "@example.com";
     }
 
+    //Generate Random Email
+    public String generateRandomEmail() {
+        String[] domains = {"gmail.com", "lattice.com", "glic.com", "yahoo.com", "outlook.com"};
+        String chars = "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder randomName = new StringBuilder();
+        Random random = new Random();
+        // Generate random 8 character name
+        for (int i = 0; i < 8; i++) {
+            randomName.append(chars.charAt(random.nextInt(chars.length())));
+        }
+        // Get random domain
+        String randomDomain = domains[random.nextInt(domains.length)];
+        return randomName + "@" + randomDomain;
+    }
+
     // Generate a unique phone number
     public String generatePhoneNumber() {
         return "03" + (random.nextInt(900000000) + 100000000) + random.nextInt(10);
@@ -36,6 +51,54 @@ public class TestDataGenerator {
     public String generateCompanyName() {
         String[] companies = {"Acme Corp", "Globex Inc", "Initech", "Umbrella Corp", "Wayne Enterprises"};
         return companies[random.nextInt(companies.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
+
+    // Generate a unique short name
+    public String generateShortName() {
+        TestDataGenerator data = new TestDataGenerator();
+        return data.generateRandomStringwithLength(5);
+    }
+
+    public String generateRandomNumbericwithLength(int length){
+        String alphabets ="1234567890";
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<length;i++){
+            sb.append(alphabets.charAt(random.nextInt(alphabets.length())));
+        }
+        return sb.toString();
+    }
+
+    //Generate Unique String with Length
+    public String generateRandomStringwithLength(int length){
+        String alphabets ="ABCDEFGHIJKLMNOPQRSTUWXYZ";
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<length;i++){
+            sb.append(alphabets.charAt(random.nextInt(alphabets.length())));
+        }
+        return sb.toString();
+    }
+
+    //Genrate Unique .com String with length
+    public String generateRandomCOMStringwithLength(int length) {
+        String alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            sb.append(alphabets.charAt(random.nextInt(alphabets.length())));
+        }
+
+        String randomString = sb.toString().toLowerCase();
+        String finalString = randomString.substring(0, 1).toUpperCase() + randomString.substring(1);
+
+        return finalString + ".com";
+    }
+
+
+    // Generate a unique category name
+    public String generateCategoryName() {
+        TestDataGenerator data = new TestDataGenerator();
+        return data.generateRandomStringwithLength(50);
     }
 
     // Generate a unique address
@@ -87,7 +150,56 @@ public class TestDataGenerator {
 
     // Generate weightage (0–100 as string)
     public String generateWeightage() {
+
         return String.valueOf(random.nextInt(101)); // 0–100
+    }
+
+    //Generate Single digit (1-9 as String)
+    public String generateRandomSingledigit() {
+
+        return String.valueOf(random.nextInt(9) + 1); // 1–9
+    }
+
+    //Generate Four digit (0-9999 as String)
+    public String generateRandomFourDigit() {
+        return String.valueOf(random.nextInt(10000)); // 0–9999
+    }
+
+    //Generate RandomCode (A-Z + 0-9 as string)
+    public String generateRandomCode(int length) {
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String digits = "0123456789";
+        String allChars = letters + digits;
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            // randomly pick from letters + digits
+            sb.append(allChars.charAt(random.nextInt(allChars.length())));
+        }
+        return sb.toString();
+    }
+
+
+    // Generate random frequency - both numbered and fixed
+    public String generateRandomFrequencyName() {
+        String[] fixedFrequencies = {
+                "Yearly", "Half-Yearly", "Quarterly", "Daily", "Monthly", "Weekly"
+        };
+
+        String[] numberedTypes = {
+                "Monthly", "Daily", "Quarterly", "Half-Yearly", "Annually", "Weekly"
+        };
+
+        // Randomly pick fixed or numbered
+        if (random.nextBoolean()) {
+            // Fixed: "Yearly", "Weekly" etc.
+            return fixedFrequencies[random.nextInt(fixedFrequencies.length)];
+        } else {
+            // Numbered: "3 Monthly", "7 Daily" etc.
+            int number = random.nextInt(12) + 1; // 1 to 12
+            String type = numberedTypes[random.nextInt(numberedTypes.length)];
+            return number + " " + type;
+        }
     }
 
     // Generate a unique frequency name

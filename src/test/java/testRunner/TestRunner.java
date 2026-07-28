@@ -1,5 +1,6 @@
 package testRunner;
 
+import io.cucumber.core.cli.Main;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.Test;
@@ -13,9 +14,13 @@ import org.testng.annotations.Test;
                 "pretty"
         },
         monochrome = true,
-        tags = "@validation",
+        tags = "@AuditCategorySetup and @Create",
         dryRun = false
 )
 @Test
 public class TestRunner extends AbstractTestNGCucumberTests {
+//    @Test(invocationCount = 7)
+//    public void runTestMultipleTimes() {
+//        Main.run(new String[]{"--tags", "@AuditMasterCategory and @Delete"});
+//    }
 }
