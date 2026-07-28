@@ -50,19 +50,6 @@ Feature: Audit Management Module Automation
     Then user verify the inline error message 'Select Legal & Other Requirements' on Audit Inspections
     Then user verify the inline error message 'Select Work Order Generation Type' on Audit Inspections
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #  /////////////////////// @AuditSchedules
   @AuditSchedules @Create
   Scenario: User Should be able to add it in AMC
