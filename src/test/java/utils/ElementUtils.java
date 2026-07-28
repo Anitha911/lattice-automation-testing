@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class ElementUtils {
 
     private final WebDriver driver;
-    private WebDriverWait wait;
+    private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(ElementUtils.class.getName());
     private static final int DEFAULT_WAIT_SECONDS = 30;
     private static final int RETRY_COUNT = 2;
@@ -278,5 +278,85 @@ public class ElementUtils {
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
+    }
+    /**
+     * Waits until the element becomes invisible.
+     */
+    public boolean waitUntilInvisible(By locator) {
+        LOGGER.info("[WAIT] WAITING FOR INVISIBILITY OF ELEMENT: " + locator);
+
+        for (int attempt = 1; attempt <= RETRY_COUNT; attempt++) {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_SECONDS));
+                boolean isInvisible = wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+
+                if (isInvisible) {
+                    LOGGER.info("[SUCCESS] ELEMENT IS INVISIBLE: " + locator);
+                    return true;
+                }
+            } catch (TimeoutException e) {
+                LOGGER.warning("[RETRY " + attempt + "] ELEMENT STILL VISIBLE. RETRYING...");
+            }
+        }
+
+        throw new FrameworkException("[FAILED] ELEMENT DID NOT BECOME INVISIBLE AFTER RETRIES: " + locator);
+    }
+    /*
+Full Page loader to disappear
+ */
+    public static void waitForLoaderToDisappear() {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//*[contains(@id,'LoadingPanelctl00_ContentPlaceHolder1')]")));
+        } catch (Exception e) {
+            // loader may not appear, ignore
+        }
+    }
+    /**
+     * Waits until the element becomes visible.
+     */
+
+//    Newly updated wait because if i used old wait getting stale element
+    public WebElement waitForVisibility(By locator) {
+        LOGGER.info("[WAIT] WAITING FOR VISIBILITY OF ELEMENT: " + locator);
+
+        for (int attempt = 1; attempt <= RETRY_COUNT; attempt++) {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_SECONDS));
+                WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+                if (element != null && element.isDisplayed()) {
+                    LOGGER.info("[SUCCESS] ELEMENT IS VISIBLE: " + locator);
+                    return element;
+                }
+            } catch (TimeoutException e) {
+                LOGGER.warning("[RETRY " + attempt + "] ELEMENT STILL NOT VISIBLE. RETRYING...");
+            } catch (StaleElementReferenceException e) {
+                // ✅ Re-find on next retry
+                LOGGER.warning("[RETRY " + attempt + "] STALE ELEMENT, RETRYING VISIBILITY CHECK...");
+            }
+        }
+
+        throw new FrameworkException("[FAILED] ELEMENT DID NOT BECOME VISIBLE AFTER RETRIES: " + locator);
+    }
+    public static void waitForDropdownLoading() {
+        try {
+            // Wait for LoadingDiv to APPEAR first
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//*[contains(@id, 'LoadingDiv')]")));
+            System.out.println("Dropdown loader appeared");
+        } catch (Exception e) {
+            System.out.println("LoadingDiv not appeared - already loaded");
+        }
+        try {
+            // Then wait for it to DISAPPEAR
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//*[contains(@id, 'LoadingDiv')]")));
+            System.out.println("Dropdown loader disappeared");
+        } catch (TimeoutException e) {
+            System.out.println("Dropdown loader timeout - continuing");
+        } catch (Exception e) {
+            System.out.println("Dropdown loader not found - continuing");
+        }
     }
 }

@@ -13,4 +13,9 @@ public class JavaScriptExeUtil {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].value=arguments[1];", element, text);
     }
+    public static void jsClick(WebDriver driver, WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", element);
+
+    }
 }

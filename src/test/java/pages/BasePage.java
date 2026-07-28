@@ -9,8 +9,8 @@ import java.time.Duration;
 
 public class BasePage {
     final Wait<WebDriver> wait;
-    protected WebDriver driver;
-    protected ElementUtils utils;
+    protected static WebDriver driver;
+    protected static ElementUtils utils;
 
 
     public BasePage(WebDriver driver) {
@@ -18,4 +18,5 @@ public class BasePage {
         this.utils = new ElementUtils(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
+
 }

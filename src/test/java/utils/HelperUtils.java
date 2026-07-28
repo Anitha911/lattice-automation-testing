@@ -13,10 +13,10 @@ import java.util.Random;
 
 public class HelperUtils {
 
-    private final WebDriver driver;
+    private static WebDriver driver = null;
     private WebDriverWait wait;
     public HelperUtils(WebDriver driver) {
-        this.driver = driver;
+        HelperUtils.driver = driver;
     }
 
     /**
@@ -51,7 +51,7 @@ public class HelperUtils {
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Inline error message mismatch");
     }
 
-    public void clickRandomElement(By locator) {
+    public static void clickRandomElement(By locator) {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
