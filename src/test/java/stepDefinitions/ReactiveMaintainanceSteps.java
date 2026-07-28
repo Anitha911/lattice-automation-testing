@@ -104,30 +104,30 @@ public class ReactiveMaintainanceSteps {
     public void user_click_on_RMRequestDetailModifyFC(String ModifyFC) throws InterruptedException {
         tmp.RMRequestDetailModifyFC(ModifyFC);
     }
-    @When("User select the {string} Service Group dropdown")
+    @When("User select the {string} RM Service Group dropdown")
     public void user_select_the_RMDetailSG_Dropdown(String value) throws InterruptedException {
         if(value == null || value.isEmpty()){
             tmp.getRandomRMDetailSG_Dropdown();
         }
     }
-    @When("User select the {string} Fault Category dropdown")
-    public void user_select_the_RMDetailFautCategory_Dropdown(String value) throws InterruptedException {
+    @When("User select the {string} RM Fault Category dropdown")
+    public void user_select_the_ReactiveMaintRMDetailFautCategory_Dropdown(String value) throws InterruptedException {
         if(value == null || value.isEmpty()){
             tmp.getRandomRMDetailFaultCategory_Dropdown();
         }
     }
-    @When("User select the {string} Fault Code dropdown")
+    @When("User select the {string} RM Fault Code dropdown")
     public void user_select_the_RMDetailFautCode_Dropdown(String value) throws InterruptedException {
         if(value == null || value.isEmpty()){
             tmp.getRandomRMDetailFaultCode_Dropdown();
         }
     }
-    @When("User select the {string} Priority dropdown")
-    public void user_select_the_RMDetailPriority_Dropdown(String value) throws InterruptedException {
-        if(value == null || value.isEmpty()){
-            tmp.getRandomRMDetailPriority_Dropdown();
-        }
-    }
+    @When("User select the RM {string} Priority dropdown")
+//    public void user_select_the_RMDetailPriority_Dropdown(String value) throws InterruptedException {
+//        if(value == null || value.isEmpty()){
+//            tmp.getRandomRMDetailPriority_Dropdown();
+//        }
+//    }
     //Common function for Save in RM TRANSACTION
     @Then("User Clicks the Save Fault Code button")
     public void userClicksRMTransactionSaveButton() {

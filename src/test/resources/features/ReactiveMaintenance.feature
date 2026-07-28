@@ -69,10 +69,10 @@ Feature: Reactive Maintenance Transaction Module Automation
     When User clicks on the RM Console Window Reactive WO 'Console Window Reactive WO' tab
     When User clicks the first WO to open the detail page
     When User clicks Modify Fault Code button 'Modify FC' if available
-    When User select the '' Service Group dropdown
-    When User select the '' Fault Category dropdown
-    When User select the '' Fault Code dropdown
-    #When User select the '' Priority dropdown
+    When User select the '' RM Service Group dropdown
+    When User select the '' RM Fault Category dropdown
+    When User select the '' RM Fault Code dropdown
+    #When User select the RM '' Priority dropdown
     #When User enters the details in the Modify Fault Code pop up
     Then User Clicks the Save Fault Code button
 

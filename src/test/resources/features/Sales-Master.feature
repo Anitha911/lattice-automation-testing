@@ -52,7 +52,7 @@ Feature: Sales Enquiry data configuration Module Automation
     When User clicks on button Sales client types add 'Add'
     When user verify the chars min len as 3 and max len as 50 on Sales Client Type
     #When User clicks on Sales Masters save button
-    When User clicks on Save button For InLine Error
+    When User clicks on Sales Save button For InLine Error
     Then user verify the inline error message 'Enter Client Type Name' on Sales Client Type
 
 
