@@ -18,6 +18,8 @@ public class InventoryManagementSteps {
     public static String generateStoreName;
     public static String generateStoreLocationDetails;
     public static String generateStoreNotes;
+    public static String generatePRQuantity;
+
 
     @Then("User clicks on Inventory Management {string} in side menu")
     public void user_click_on_InventoryManagement(String title) throws InterruptedException {
@@ -262,5 +264,23 @@ public class InventoryManagementSteps {
     public void user_clicks_on_PR_export_to_excel_button() throws InterruptedException{
         String xpath = "//*[@id='btnExportToExcel']";
         tmp.PRExportToExcel(xpath);
+    }
+    @When("User clicks Add PR Button")
+    public void user_click_on_InventoryPRButtonClick() {
+        tmp.InventoryPRButtonClick();
+    }
+    @When("User Enters details in the PR form")
+    public void user_enter_InventoryPRPopUPDetails() {
+
+        tmp.PRRequestedBy("Aarav Patel");
+        tmp.PRStore("14072025 RK Store");
+        tmp.PRItemName("06072026rk item 1");
+        tmp.PRSupplier("12012026RK");
+        generatePRQuantity = dataGen.generateMaxNoParticipants();
+        tmp.generatePRQuantity(generatePRQuantity);
+    }
+    @When("User clicks ADD PR Details in the grid")
+    public void user_click_on_InventoryPRDetailsInTheGridADD() {
+        tmp.InventoryPRDetailsInTheGridADD();
     }
 }

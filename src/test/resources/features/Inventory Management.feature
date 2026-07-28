@@ -198,3 +198,12 @@ Feature: Inventory Management Module Automation
     When User Clicks on Inventory Management Purchase Request 'PR' in side menu
     Then User clicks the PR Export To Excel
 
+  @TransInventoryMgmtAddPurchaseRequest
+  Scenario: Should be able to Add PR
+    Given User navigates to 'lattice.url' page
+    When User is at home screen after login with "username" and "password"
+    When User clicks on Inventory Management 'Inventory Management' in side menu
+    When User Clicks on Inventory Management Purchase Request 'PR' in side menu
+    When User clicks Add PR Button
+    When User Enters details in the PR form
+    When User clicks ADD PR Details in the grid

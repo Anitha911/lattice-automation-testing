@@ -55,6 +55,13 @@ public class InventoryManagementPage extends BasePage {
     public static final By STORENOTETYPE_DD=By.id("ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_ddlDocType_Input");
     public static final By STORE_NOTES = By.id("txtApprovalNote");
 
+    //PR
+    public static final By PR_QUATITY = By.id("ctl00_ContentPlaceHolder1_radtxt_qty");
+    public static final By PR_REQUESTED_BY_DD = By.id("ctl00_ContentPlaceHolder1_rcbRequestedBy_Input");
+    public static final By PR_SUPPLIER_DD = By.id("ctl00_ContentPlaceHolder1_Combo_Supplier_Input");
+    public static final By PR_STORE_DD = By.id("ctl00_ContentPlaceHolder1_radcmb_item_Store_Input");
+    public static final By PR_ITEMNAME_DD = By.id("ctl00_ContentPlaceHolder1_cmbbx_ItemsName_Input");
+
     public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
         try {
             WebElement element = driver.findElement(By.id("7"));
@@ -556,6 +563,63 @@ public class InventoryManagementPage extends BasePage {
             System.out.println("Failed to click on Export to Excel PR " + PRExportToExcel);
             throw e;
         }
+    }
+    public void InventoryPRButtonClick() {
+        driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_RadCancel']")).click();
+    }
+    public void generatePRQuantity(String name) {
+        utils.typeText(PR_QUATITY, name);
+    }
+    public void PRRequestedBy(String RequestedBy) {
+        try {
+            utils.click(PR_REQUESTED_BY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", RequestedBy));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + RequestedBy);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + RequestedBy);
+            throw e;
+        }
+    }
+    public void PRStore(String Store) {
+        try {
+            utils.click(PR_STORE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Store));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + Store);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + Store);
+            throw e;
+        }
+    }
+    public void PRItemName(String PRItemName) {
+        try {
+            utils.click(PR_ITEMNAME_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PRItemName));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PRItemName);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PRItemName);
+            throw e;
+        }
+    }
+    public void PRSupplier(String PRSupplier) {
+        try {
+            utils.click(PR_SUPPLIER_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PRSupplier));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PRSupplier);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PRSupplier);
+            throw e;
+        }
+    }
+    public void InventoryPRDetailsInTheGridADD() {
+        By addButton = By.id("ctl00_ContentPlaceHolder1_rdbtn_Add");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.refreshed(
+                        ExpectedConditions.elementToBeClickable(addButton)))
+                .click();
     }
 }
 
