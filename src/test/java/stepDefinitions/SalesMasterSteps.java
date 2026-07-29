@@ -315,7 +315,7 @@ public class SalesMasterSteps {
         tmp.clickOnSaleOtherCostSortItemCode(btnCostSort);
     }
     //Negative scenarios
-    @When("User clicks on Save button For InLine Error")
+    @When("User clicks on Sales Save button For InLine Error")
     public void user_clicks_on_save_button_for_in_line_error() {
         tmp.clickSaveButtonInlineError();
     }
