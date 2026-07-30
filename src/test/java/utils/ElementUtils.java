@@ -167,15 +167,15 @@ public class ElementUtils {
     /**
      * Verifies that the page title matches the expected title.
      */
-//    public ElementUtils verifyPageTitleIs(String expectedTitle) {
-//        LOGGER.info("[ASSERT] VERIFYING PAGE TITLE. EXPECTED: " + expectedTitle);
-//        String actualTitle = driver.getTitle().trim();
-//        if (!actualTitle.equals(expectedTitle)) {
-//            throw new FrameworkException("PAGE TITLE MISMATCH! EXPECTED: " + expectedTitle + " | ACTUAL: " + actualTitle);
-//        }
-//        LOGGER.info("[PASS] PAGE TITLE VERIFIED: " + actualTitle);
-//        return this;
-//    }
+    public ElementUtils verifyPageTitleIs(String expectedTitle) {
+        LOGGER.info("[ASSERT] VERIFYING PAGE TITLE. EXPECTED: " + expectedTitle);
+        String actualTitle = driver.getTitle().trim();
+        if (!actualTitle.equals(expectedTitle)) {
+            throw new FrameworkException("PAGE TITLE MISMATCH! EXPECTED: " + expectedTitle + " | ACTUAL: " + actualTitle);
+        }
+        LOGGER.info("[PASS] PAGE TITLE VERIFIED: " + actualTitle);
+        return this;
+    }
 
     /**
      * Verifies that the current URL matches the expected URL.
@@ -344,13 +344,9 @@ public class ElementUtils {
     }
 
     public void selectDropdownByVisibleText(By dropdown, String value) {
-
         click(dropdown);
-
         By option = By.xpath("//li[normalize-space()='" + value + "']");
-
         wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-
     }
 
     public void scrollToElement(By locator) {
@@ -362,61 +358,15 @@ public class ElementUtils {
 //Asset - Master - Model
 
     public void selectDropdownByText(By dropdown, String value) {
-
         click(dropdown);
-
-
-
         By option = By.xpath("//li[normalize-space(.)='" + value + "']");
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        WebElement element =
-                wait.until(ExpectedConditions.visibilityOfElementLocated(option));
-
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].click();", element);
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(option));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
         System.out.println("Selected dropdown value: " + value);
     }
 
-    public void waitUntilDropdownIsPopulated(By dropdown) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        wait.until(driver -> {
-
-            String value = driver.findElement(dropdown)
-                    .getAttribute("value");
-
-            System.out.println("Current dropdown value: " + value);
-
-            return value != null
-                    && !value.trim().isEmpty()
-                    && !value.equalsIgnoreCase("Select Make / Brand");
-        });
-    }
-
-    public void waitForElementToDisappear(By locator) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        try {
-
-            wait.until(
-                    ExpectedConditions.invisibilityOfElementLocated(locator)
-            );
-
-            System.out.println("Loading disappeared successfully.");
-
-        } catch (Exception e) {
-
-            System.out.println("Loading did not disappear within 30 seconds.");
-            throw e;
-        }
-    }
     }
 
 
