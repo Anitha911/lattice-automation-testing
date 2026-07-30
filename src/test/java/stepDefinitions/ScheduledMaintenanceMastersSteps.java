@@ -208,7 +208,7 @@ public class ScheduledMaintenanceMastersSteps {
     @When("User enters special characters in Parameter")
     public void enter_SpecialCharactersInParameter() {
         System.out.println("Verifying Parameter field accepts/rejects special characters");
-        helperUtils.enterSpecialCharacters(By.id("radtxtParameter"));
+        helperUtils.verifySpecialCharactersNotAllowed(By.id("radtxtParameter"));
         System.out.println("Special character validation completed for Parameter");
     }
 
