@@ -1,0 +1,626 @@
+package pages;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ElementUtils;
+import utils.HelperUtils;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InventoryManagementPage extends BasePage {
+    public InventoryManagementPage(WebDriver driver) {
+        super(driver);
+    }
+    public static final By SUPPLIER_NAME = By.id("txt_SupplierName");
+    public static final By SUPPLIER_EMAIL = By.id("txt_Email");
+    public static final By SUPPLIER_MOBILE = By.id("txt_Mobile");
+    public static final By SUPPLIERTYPPE_DD = By.cssSelector("[value='Select Supplier Type']");
+    public static final By SAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinSupplier_C_RadSave");
+    public static final By SEARCH_FIRST_SUPPLIER_EDIT=By.id("ctl00_ContentPlaceHolder1_Supplier_Grid_ctl00__0");
+    public static final By EDIT_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By DEACTIVATE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_btndeactivateS");
+    public static final By DEACTIVATE_YES_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_RadWinDeactivate_C_btnDeActivate");
+    public static final By EMAIL_DOMAIN_SECTION_SUPPLIER=By.xpath(String.format("//*[@id='munEmailDomain']"));
+    public static final By EMAIL_DOMAIN_ADD_SUPPLIER=By.xpath(String.format("//*[@id='Span2220']"));
+    public static final By EMAIL_DOMAINSAVE_BUTTON_SUPPLIER=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_btnSave");
+    public static final By SUPPLIER_EMAIL_DOMAIN_DETAIL=By.id("ctl00_ContentPlaceHolder1_SupplierEmailDomain_EmainDomainWindow_C_txtdomainname");
+
+    //Item Definition
+    public static final By ITEMDEFINITION_ITEMTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemType_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemType_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadMainGroup_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadMainGroup_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMSUBCATEGORY_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSubGroups_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadSubGroups_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ISSUINGUNIT_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemUnit_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadItemUnit_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_RECEIVINGUNIT_DD = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadDefaultUnit_Combo_Input");
+    public static final By ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT = By.xpath("//div[contains(@id,'ctl00_ContentPlaceHolder1_RadWinItem_C_RadDefaultUnit_Combo_DropDown')]//li");
+    public static final By ITEMDEFINITION_ITEMNAME = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_txtItmName");
+    public static final By ITEMDEFINITION_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_EDIT = By.id("ctl00_ContentPlaceHolder1_ItemMaster_Grid_ctl00__0");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_EDIT_BUTTON = By.id("ctl00_ContentPlaceHolder1_btnSave");
+    public static final By SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON = By.id("ctl00_ContentPlaceHolder1_RadWinItem_C_RadSave");
+
+    //Store
+    public static final By STORE_NAME = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_txt_StoreName");
+    public static final By STORE_LOCDETAILS = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_Txt_LocationDetails");
+    public static final By STOREGRP_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreGrp_Input");
+    public static final By STORETYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadCombo_StoreType_Input");
+    public static final By OWNERTYPE_DD = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_OwnerType_Combo_Input");
+    public static final By INVSTORE_SAVE = By.id("ctl00_ContentPlaceHolder1_RadWinStore_C_RadSave");
+    public static final By DELETE_FIRST_STORE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdStore_ctl00_ctl04_imgDelete");
+    public static final By STORENOTETYPE_DD=By.id("ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_ddlDocType_Input");
+    public static final By STORE_NOTES = By.id("txtApprovalNote");
+
+    //PR
+    public static final By PR_QUATITY = By.id("ctl00_ContentPlaceHolder1_radtxt_qty");
+    public static final By PR_REQUESTED_BY_DD = By.id("ctl00_ContentPlaceHolder1_rcbRequestedBy_Input");
+    public static final By PR_SUPPLIER_DD = By.id("ctl00_ContentPlaceHolder1_Combo_Supplier_Input");
+    public static final By PR_STORE_DD = By.id("ctl00_ContentPlaceHolder1_radcmb_item_Store_Input");
+    public static final By PR_ITEMNAME_DD = By.id("ctl00_ContentPlaceHolder1_cmbbx_ItemsName_Input");
+
+    public void MenuInventoryManagement(String MenuInventoryManagement) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("7"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on the MenuInventoryManagement: " + MenuInventoryManagement);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the MenuInventoryManagement: " + MenuInventoryManagement);
+            throw e;
+        }
+    }
+    public void SupplierClick(String SupplierClick) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[2]/a", SupplierClick)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on Supplier Click: " + SupplierClick);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Supplier Click: " + SupplierClick);
+            throw e;
+        }
+    }
+    public void InclInactiveSupplier()throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ContentPlaceHolder1_chkInactive"));
+            element.click();
+            System.out.println("Clicked on Inactive Supplier: " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on Inactive Supplier: " );
+            throw e;
+        }
+    }
+    //Supplier Pagination Start
+    public void GrdSupplierPagination(String GrdSupplierPagination) throws InterruptedException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement firstRowBefore = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Supplier_Grid_GridData']")));
+            String beforeText = firstRowBefore.getText();
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            WebElement nextBtn = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Supplier_Grid_ctl00_Pager']/tbody/tr/td/table/tbody/tr/td/div[3]/input[1]"));
+            nextBtn.click();
+            wait.until(ExpectedConditions.stalenessOf(firstRowBefore));
+            WebElement firstRowAfter = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Supplier_Grid_GridData']")));
+            String afterText = firstRowAfter.getText();
+            if (beforeText.equals(afterText)) {
+                throw new AssertionError("Pagination failed: Same data on next page");
+            } else {
+                System.out.println("Pagination working correctly");
+            }
+        } catch (Exception e) {
+            System.out.println("Pagination failed: Data did not change" + GrdSupplierPagination);
+            throw e;
+        }
+    }
+    //Supplier Pagination Ends
+    //Supplier Data per page check starts
+    public void validatePageSizeGrdSupplier(int expectedSize) {
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_Supplier_Grid_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        dropdown.click();
+        WebElement option = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//li[normalize-space()='" + expectedSize + "']")
+                )
+        );
+        option.click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loading-spinner")));
+        List<WebElement> rows = wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                        By.cssSelector(".rgDataDiv tbody tr")
+                )
+        );
+        int actualSize = rows.size();
+        if (actualSize > expectedSize) {
+            throw new AssertionError("More rows than expected! Found: " + actualSize);
+        }
+        System.out.println("Expected: " + expectedSize + ", Actual: " + actualSize);
+    }
+    public void enterSupplierName(String SupplierName) {
+        utils.typeText(SUPPLIER_NAME, SupplierName);
+    }
+    public void enterSupplierEmail(String SupplierEmail) {
+        utils.typeText(SUPPLIER_EMAIL, SupplierEmail);
+    }
+    public void enterSupplierMobile(String SupplierMobile) {
+        utils.typeText(SUPPLIER_MOBILE, SupplierMobile);
+    }
+    public void selectSupplierType(String SupplierType) {
+        try {
+            utils.click(SUPPLIERTYPPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", SupplierType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + SupplierType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + SupplierType);
+            throw e;
+        }
+    }
+    public void ClickSupplierSave() {
+        By[] saveButtons = {SAVE_BUTTON_SUPPLIER};
+
+        for (By button : saveButtons) {
+            if (utils.isElementVisible(button)) {
+                utils.click(button);
+                return;
+            }
+        }
+        throw new RuntimeException("No save button is present on the page.");
+    }
+    public void AddSupplier()throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadAdd"));
+            element.click();
+            System.out.println("Clicked on Add Supplier : " );
+        } catch (Exception e) {
+            System.out.println("Failed to click on Add Supplier : " );
+            throw e;
+        }
+    }
+    public void clickActiveSuppliertoEdit() {
+        utils.click(SEARCH_FIRST_SUPPLIER_EDIT);
+    }
+    public void ClickSupplierEdit() {
+        utils.click(EDIT_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierDeactivate() {
+        utils.click(DEACTIVATE_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierDeactivateYes() {
+        utils.click(DEACTIVATE_YES_BUTTON_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainSection() {
+        utils.click(EMAIL_DOMAIN_SECTION_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainAdd() {
+        utils.click(EMAIL_DOMAIN_ADD_SUPPLIER);
+    }
+    public void ClickSupplierEmailDomainSave() {
+        utils.click(EMAIL_DOMAINSAVE_BUTTON_SUPPLIER);
+    }
+    public void enterSupplierEmailDomainDetail(String enterSupplierEmailDomainDetail) {
+        utils.typeText(SUPPLIER_EMAIL_DOMAIN_DETAIL, enterSupplierEmailDomainDetail);
+    }
+    //ItemDefinition
+    public void ItemDefinition(String ItemDefinition) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[3]/a", ItemDefinition)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on ItemDefinition Click: " + ItemDefinition);
+        } catch (Exception e) {
+            System.out.println("Failed to click on ItemDefinition Click: " + ItemDefinition);
+            throw e;
+        }
+    }
+    public void ItemDefinitionAddButtonClick(String ItemDefinitionAddButtonClick) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadAddItem"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on ItemDefinitionAddButtonClick: " + ItemDefinitionAddButtonClick);
+        } catch (Exception e) {
+            System.out.println("Failed to click on ItemDefinitionAddButtonClick: " + ItemDefinitionAddButtonClick);
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemType_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMTYPE_DD);
+            //ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMTYPE" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemcategory_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMCATEGORY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefItemSubcategory_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ITEMSUBCATEGORY_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ITEMSUBCATEGORY);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ITEMCATEGORY" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefIssuingUnit_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_ISSUINGUNIT_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_ISSUINGUNIT" );
+            throw e;
+        }
+    }
+    public void getRandomItemDefReceivingUnit_Dropdown(){
+        try{
+            utils.click(ITEMDEFINITION_RECEIVINGUNIT_DD);
+            ElementUtils.waitForDropdownLoading();
+            utils.waitForVisibility(ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT);
+            HelperUtils.clickRandomElement(ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: ALL_OPTIONS_ITEMDEFINITION_RECEIVINGUNIT" );
+            throw e;
+        }
+    }
+    public void ItemDefinitionItemName(String ItemDefinitionItemName) {
+        utils.typeText(ITEMDEFINITION_ITEMNAME, ItemDefinitionItemName);
+    }
+    public void ItemDefinitionSave() {
+        utils.click(ITEMDEFINITION_SAVE);
+    }
+    //Item definition dropdown values
+    public void ItemDefItemType(String ItemDefItemType) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemType);
+            throw e;
+        }
+    }
+    public void ItemDefItemCategory(String ItemDefItemCategory) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMCATEGORY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemCategory);
+            throw e;
+        }
+    }
+    public void ItemDefItemSubCategory(String ItemDefItemSubCategory) {
+        try {
+            utils.click(ITEMDEFINITION_ITEMSUBCATEGORY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefItemSubCategory));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefItemSubCategory);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefItemSubCategory);
+            throw e;
+        }
+    }
+    public void ItemDefIssuingUnit(String ItemDefIssuingUnit) {
+        try {
+            utils.click(ITEMDEFINITION_ISSUINGUNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefIssuingUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefIssuingUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefIssuingUnit);
+            throw e;
+        }
+    }
+    public void ItemDefReceivingUnit(String ItemDefReceivingUnit) {
+        try {
+            utils.click(ITEMDEFINITION_RECEIVINGUNIT_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ItemDefReceivingUnit));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + ItemDefReceivingUnit);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + ItemDefReceivingUnit);
+            throw e;
+        }
+    }
+    public void generateItemName(String name) {
+        utils.typeText(ITEMDEFINITION_ITEMNAME, name);
+    }
+    public void clickActiveItemDefinitiontoEdit() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_EDIT);
+    }
+    public void clickActiveItemDefinitiontoEditButton() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_EDIT_BUTTON);
+    }
+    public void ItemDefUpdateButtonClick() {
+        utils.click(SEARCH_FIRST_ITEMDEFINITION_UPDATE_BUTTON);
+    }
+    //Store
+    public void InvMgmtStoreMenu(String InvMgmtStoreMenu) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[1]/li[4]/a", InvMgmtStoreMenu)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on InvMgmtStoreMenu Click: " + InvMgmtStoreMenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on InvMgmtStoreMenu Click: " + InvMgmtStoreMenu);
+            throw e;
+        }
+    }
+    public void clickAddStoreButton(String clickAddStoreButton) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.id("ctl00_ContentPlaceHolder1_BtnAdd"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on clickAddStoreButton: " + clickAddStoreButton);
+        } catch (Exception e) {
+            System.out.println("Failed to click on clickAddStoreButton: " + clickAddStoreButton);
+            throw e;
+        }
+    }
+    public void generateStoreName(String name) {
+        utils.typeText(STORE_NAME, name);
+    }
+    public void generateStoreLocationDetails(String name) {
+        utils.typeText(STORE_LOCDETAILS, name);
+    }
+    public void StoreGroup(String StoreGroup) {
+        try {
+            utils.click(STOREGRP_DD);
+            By optionLocator = By.xpath(String.format(
+                    "//li[contains(@class,'rcbItem') and contains(normalize-space(.), '%s')]",
+                    StoreGroup));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            WebElement option = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(optionLocator));
+            wait.until(ExpectedConditions.elementToBeClickable(optionLocator));
+
+            option.click();
+            System.out.println("Clicked on the dropdown: " + StoreGroup);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + StoreGroup);
+            throw e;
+        }
+    }
+    public void StoreType(String StoreType) {
+        try {
+            utils.click(STORETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", StoreType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + StoreType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + StoreType);
+            throw e;
+        }
+    }
+    public void OwnerType(String OwnerType) {
+        try {
+            utils.click(OWNERTYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", OwnerType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + OwnerType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + OwnerType);
+            throw e;
+        }
+    }
+    public void InventoryStoreSave() {
+        utils.click(INVSTORE_SAVE);
+    }
+    public void StoreExportToExcel(String StoreExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", StoreExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel Store" + StoreExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel Store " + StoreExportToExcel);
+            throw e;
+        }
+    }
+    public void InventoryStoreDelete() {
+
+        List<WebElement> buttons = driver.findElements(DELETE_FIRST_STORE_IN_LIST);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            if (!"Record cannot be deleted.".equals(btn.getAttribute("title"))) {
+                btn.click();
+                System.out.println("Button clicked.");
+            } else {
+                System.out.println("Button is disabled or not visible.");
+            }
+        } else {
+            System.out.println("Button is not present.");
+        }
+    }
+    //Activate Deactivate
+    public void InvMgmtActiveStore() {
+        By button = By.id("ctl00_ContentPlaceHolder1_grdStore_ctl00__0");
+        List<WebElement> buttons = driver.findElements(button);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            btn.click();
+        } else {
+            System.out.println("Button is not present.");
+        }
+    }
+    public void InvMgmtActiveDeactiveButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        By button = By.id("ctl00_ContentPlaceHolder1_btnDeActivestore");
+        List<WebElement> buttons = driver.findElements(button);
+        if (!buttons.isEmpty()) {
+            WebElement btn = buttons.get(0);
+            btn.click();
+            System.out.println("Deactivated Store");
+        } else {
+            By buttonActive = By.id("ctl00_ContentPlaceHolder1_btnActivestore");
+            List<WebElement> buttonsActive = driver.findElements(buttonActive);
+            WebElement btn = buttonsActive.get(0);
+            btn.click();
+            System.out.println("Activated Store");
+        }
+    }
+    public void InvMgmtInactiveStore() {
+        WebElement checkbox = driver.findElement(By.id("ctl00_ContentPlaceHolder1_chkIncludeInActivated"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkbox);
+    }
+    public void InventoryStoreEdit() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        utils.click(By.id("ctl00_ContentPlaceHolder1_btnEditdetail"));
+    }
+    public void InvMgmtStoreLeftSideMenu() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        WebElement span = driver.findElement(By.xpath("//a[@id='tdNotes']/span"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", span);
+    }
+
+    public void InventoryStoreAddNOteButtonClick() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        driver.findElement(By.xpath("//span[contains(normalize-space(),'Add Notes')]")).click();
+    }
+    public void SelectNoteType(String SelectNoteType) {
+        try {
+            utils.click(STORENOTETYPE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", SelectNoteType));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + SelectNoteType);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + SelectNoteType);
+            throw e;
+        }
+    }
+    public void generateStorepopUpDetails(String generateStorepopUpDetails) {
+        utils.typeText(STORE_NOTES, generateStorepopUpDetails);
+    }
+    public void InventoryStoreNotesSave() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_Notes_NotesWindow1_C_btnNoteSave']")).click();
+    }
+    //PR
+    public void InvMgmtPRmenu(String InvMgmtPRmenu) throws InterruptedException {
+        try {
+            WebElement element = driver.findElement(By.xpath(String.format("//*[@id='tab-Inventory']/div[2]/div/ul[2]/li[2]/a", InvMgmtPRmenu)));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", element);
+            element.click();
+            System.out.println("Clicked on PR Click: " + InvMgmtPRmenu);
+        } catch (Exception e) {
+            System.out.println("Failed to click on PR Click: " + InvMgmtPRmenu);
+            throw e;
+        }
+    }
+    //Export To Excel
+    public void PRExportToExcel(String PRExportToExcel) throws InterruptedException {
+        try {
+            By locator = By.xpath(String.format("//*[@id='btnExportToExcel']", PRExportToExcel));
+            utils.click(locator);
+            System.out.println("Clicked on Export to Excel PR" + PRExportToExcel);
+        } catch (Exception e) {
+            System.out.println("Failed to click on Export to Excel PR " + PRExportToExcel);
+            throw e;
+        }
+    }
+    public void InventoryPRButtonClick() {
+        driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_RadCancel']")).click();
+    }
+    public void generatePRQuantity(String name) {
+        utils.typeText(PR_QUATITY, name);
+    }
+    public void PRRequestedBy(String RequestedBy) {
+        try {
+            utils.click(PR_REQUESTED_BY_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", RequestedBy));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + RequestedBy);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + RequestedBy);
+            throw e;
+        }
+    }
+    public void PRStore(String Store) {
+        try {
+            utils.click(PR_STORE_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Store));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + Store);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + Store);
+            throw e;
+        }
+    }
+    public void PRItemName(String PRItemName) {
+        try {
+            utils.click(PR_ITEMNAME_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PRItemName));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PRItemName);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PRItemName);
+            throw e;
+        }
+    }
+    public void PRSupplier(String PRSupplier) {
+        try {
+            utils.click(PR_SUPPLIER_DD);
+            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", PRSupplier));
+            utils.click(locator);
+            System.out.println("Clicked on the dropdown: " + PRSupplier);
+        } catch (Exception e) {
+            System.out.println("Failed to click on the dropdown: " + PRSupplier);
+            throw e;
+        }
+    }
+    public void InventoryPRDetailsInTheGridADD() {
+        By addButton = By.id("ctl00_ContentPlaceHolder1_rdbtn_Add");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.refreshed(
+                        ExpectedConditions.elementToBeClickable(addButton)))
+                .click();
+    }
+}
+
+
