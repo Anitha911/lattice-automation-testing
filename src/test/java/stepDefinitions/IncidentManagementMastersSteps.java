@@ -36,15 +36,15 @@ public class IncidentManagementMastersSteps {
     IncidentManagementMastersPage tmp = new IncidentManagementMastersPage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
 
-    @Then("User clicks on hamburger icon")
-    public void userClicksOnHamburgerIcon() {
-        tmp.clickHamburgerIcon();
-    }
+//    @Then("User clicks on hamburger icon")
+//    public void userClicksOnHamburgerIcon() {
+//        tmp.clickHamburgerIcon();
+//    }
 
-    @Then("User clicks on the {string} tab in data configuration page")
-    public void userClicksOnTheTab(String tabTitle) {
-        tmp.clickOnTabByTitle(tabTitle);
-    }
+//    @Then("User clicks on the {string} tab in data configuration page")
+//    public void userClicksOnTheTab(String tabTitle) {
+//        tmp.clickOnTabByTitle(tabTitle);
+//    }
 
     @Then("User fills the Incident Type details")
     public void user_Add_incident_type_details() throws IOException {

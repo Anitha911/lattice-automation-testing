@@ -170,17 +170,6 @@ public class AdministrationMastersPage extends BasePage {
             System.out.println("The Entered Document Type is : " + DocumentType);
             driver.findElement(DOCUMENT_TYPE).sendKeys(Keys.TAB);
         }
-//
-//    public void selectDocumentRelatedTo(String value1, String value2) {
-//        utils.click(documentrealete);
-//        By option1 = By.xpath("//ul[contains(@id,'radDrpDocumentRT1_listbox')]//li[normalize-space()='" + value1 + "']");
-//        utils.click(option1);
-//        utils.click(documentrealete);
-//        By option2 = By.xpath("//ul[contains(@id,'radDrpDocumentRT1_listbox')]//li[normalize-space()='" + value2 + "']");
-//        utils.click(option2);
-//        utils.click(documentrealete);
-//
-//    }
 
     public void selectDocumentRelatedTo(String... values) {
         utils.click(DOCUMENT_RELATED_TO);

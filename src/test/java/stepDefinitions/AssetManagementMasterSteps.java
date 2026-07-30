@@ -41,6 +41,10 @@ public class AssetManagementMasterSteps {
     public static String Equipment_Name;
     public static String Update_Equipment_Name;
     public static int Hourly_Charges_AED;
+    public static String Master_Trigger_Name;
+    public static String Master_Asset_Trigger_Comparison_Type;
+    public static String Master_Asset_Trigger_Work_Order_Type;
+    public static String Master_Asset_Trigger_Description;
 
 
     private final WebDriver driver = DriverFactory.getDriver();
@@ -202,6 +206,92 @@ public void user_click_on_Manage_Asset_Subcategory() {
         tmp.MasterAssetverifyUpdateAssetSubCategory(Update_Asset_Sub_Category);
     }
 
+    //    Asset Sub Category - Applicable Fault Category
+    @Then("User click Manage Applicable Fault Category icon in the Fault Category of the Asset Sub Category detail page")
+    public void  userclickManageFaultCategoryiconinFaultCategorySectionofSubCategorydetailpage() {
+        tmp.MasterAssetClickManageFaultCategoryiconinFaultCategorySectionofSubCategorydetailpage();
+    }
+
+    @Then("User fill the Fault Category details in the Fault Category section of the Asset Sub Category detail page")
+    public void userfillFaultCategorydetailinFaultCategorySectionofSubCategorydetailpage() {
+        tmp.MasterAssetselectServiceGroupinFaultCategorySectionofSubCategorydetailpage();
+        tmp.waitForSeconds();
+        tmp.MasterAssetselectFaultCategoryinFaultCategorypopupofSubCategorydetailpage();
+    }
+
+    @Then("User click Fault Category save button in the Fault Category pop up of the Asset Sub Category detail page")
+    public void userClicksavebuttoninFaultCategorySectionofSubCategorydetailpage() {
+        tmp.MasterAssetClicksavebuttoninFaultCategorySectionofSubCategorydetailpage();
+    }
+
+
+    //    Asset Sub Category - Technical Parameters
+    @Then("User click Manage Technical Parameter icon in the Technical Parameter of the Asset Sub Category detail page")
+    public void userClickManageTechnicalParameterinSubCategoryTechnicalParameterSection() {
+        tmp.MasterAssetClickManageTechnicalParametericoninTechnicalParameterSection();
+      }
+
+    @Then("User fill the Link Technical Parameter details in the Technical Parameter section")
+    public void userClickfillLinkTechnicalParameterdetailinTechnicalParameterSection() {
+        tmp.MasterAssetClickfillLinkTechnicalParameterdetailinTechnicalParameterSection();
+        tmp.waitForSeconds();
+        tmp.MasterAssetClickAddbuttoninTechnicalParameterpopup();
+    }
+
+    @Then("User click Technical Parameter save button in the Technical Parameter of the Asset Sub Category detail page")
+    public void userClicksavebuttoninTechnicalParameterSection() {
+        tmp.MasterAssetClicksavebuttoninTechnicalParameterSection();
+    }
+
+    //    Asset Sub Category - Metering Parameters
+    @Then("User click Link Parameter Setup in the Metering Parameters of the Asset Sub Category detail page")
+    public void userClickOnLinkParameterSetupinSubCategoryMeteringParameterSection() {
+        tmp.MasterAssetClickOnLinkParameterSetupinMeteringParameterSection();
+        tmp.waitForSeconds();
+    }
+
+    @Then("User fill the Link Parameter Setup details in the Metering Parameter section")
+    public void userfilldetailinnLinkParameterSetupinMeteringParameterSection() {
+        tmp.MasterAssetfillLinkParameterSetupdetailinMeteringParameterSection();
+    }
+
+    @Then("User click Link Parameter Setup save button in the Asset Sub Category Metering Parameters section")
+    public void userClickOnLinkParameterSetupsavebuttoninSubCategoryMeteringParameterSection() {
+        tmp.MasterAssetClickOnLinkParameterSetupsavebutton();
+    }
+
+//    Asset Sub Category - Trigger
+    @Then("User click on the Add button in the Asset Sub Category Trigger section")
+    public void userClickOnAddbuttoninSubCategoryTriggerSection() {
+        tmp.MasterAssetClickOnAddbuttoninSubCategoryTriggerSection();
+    }
+
+    @Then("User fill the Trigger details in the Asset Sub Category detail page")
+    public void userfillTriggerSectiondetailsinSubCategory() {
+        Master_Trigger_Name = dataGen.generateMaster_Asset_Trigger_Name();
+        tmp.MasterAssetEnterTriggerName(Master_Trigger_Name);
+        tmp.MasterAssetSelectTriggerParameterRandom();
+        Master_Asset_Trigger_Comparison_Type=dataGen.generateComparison_Type();
+        tmp.Master_Asset_enterAsset_Trigger_Comparison_Type(Master_Asset_Trigger_Comparison_Type);
+        tmp.Master_Asset_enterAssetTriggerEventAndValues(Master_Asset_Trigger_Comparison_Type);
+        tmp.Master_Asset_selectAssetTriggerReasonRandom();
+        tmp.waitForSeconds();
+        tmp.waitForLoaderToDisappear();
+        tmp.Master_Asset_selectAssetTriggerContractGroupRandom();
+        Master_Asset_Trigger_Work_Order_Type=dataGen.generateAsset_Trigger_Work_Order_Type();
+        tmp.Master_Asset_enterAsset_Trigger_Work_Order_Type(Master_Asset_Trigger_Work_Order_Type);
+        tmp.waitForSeconds();
+        tmp.waitForLoaderToDisappear();
+        tmp.Master_Asset_validateFieldsBasedOnWorkOrderType(Master_Asset_Trigger_Work_Order_Type);
+        tmp.waitForSeconds();
+        tmp.waitForLoaderToDisappear();
+    }
+
+
+    @Then("User click Trigger save button in the Asset Sub Category Trigger section")
+    public void userclickTriggerSavebuttoninSubCategorydetailpage() {
+        tmp.MasterAssetclickTriggerSavebuttoninSubCategorydetailpage();
+    }
 
     //    Link Life Cycle SetUp
     @Then("User clicks on first available Asset Sub Category to edit")
@@ -217,7 +307,6 @@ public void user_click_on_Manage_Asset_Subcategory() {
     @Then("User click on the Add button in the Asset Sub Category Life Cycle Setup section")
     public void userClickOnAddbuttoninSubCategoryLifeCycleSetupSection() {
         tmp.MasterAssetClickOnAddbuttoninSubCategoryLifeCycleSetupSection();
-
     }
 
     @Then("User fill the Life Cycle details in the Asset Sub Category Life Cycle Setup section")
@@ -229,8 +318,29 @@ public void user_click_on_Manage_Asset_Subcategory() {
     @Then("User click Life Cycle save button in the Asset Sub Category Life Cycle Setup section")
     public void userclickLifeCycleSavebuttoninSubCategorydetailpage() {
         tmp.MasterAssetclickLifeCycleSavebuttoninSubCategorydetailpage();
-   }
+    }
 
+    //    Asset Sub Category - Link Applicable Trade
+
+    @Then("User click on the Manage Applicable Trade button in the Applicable Trades section")
+    public void userclickManageApplicableTradebuttoninApplicableTradesection() {
+        tmp.MasterAssetclickManageApplicableTradebutton();
+    }
+
+    @Then("User link the Applicable Trade detail in the Applicable Trades section")
+    public void userlinkApplicableTradedetailinApplicableTradesection() {
+        tmp.MasterAssetlinkApplicableTradedetail();
+        tmp.waitForSeconds();
+        tmp.MasterAssetClickAddbuttoninApplicableTradepopup();
+    }
+
+    @Then("User click Applicable Trade save button in the Asset Sub Category detail page")
+    public void userclickApplicableTradesavebutton() {
+        tmp.userclickApplicableTradesavebutton();
+    }
+
+
+    //    Asset Sub Category - Delete
     @Then("User clicks on first available Asset Sub Category to delete")
     public void user_clicks_on_first_available_Asset_Sub_Category_to_delete() {
         tmp.clickAsset_Sub_Category_ToDelete();

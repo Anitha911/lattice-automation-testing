@@ -176,8 +176,92 @@ Feature: Asset Management Master Module Automation
     Then User verify if the Asset Sub Category is updated
     Then User waits for 3 seconds
 
-     # Asset Sub Category -  Link Life Cycle Setup
-  @AssetSubCategoryLinkLifeCycleStUp
+     # Asset Sub Category -  Applicable Fault Category
+  @AssetSubCategoryApplicableFaultCategory
+  Scenario: Should be able to link Fault Category to Asset Sub Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Asset Management' tab in data configuration page
+    Then User move to 'Asset Subcategory' Asset Management Element
+    Then User clicks on first available Asset Sub Category to edit
+    Then User waits for 5 seconds
+    When User switches to new tab
+    When User click on the "Applicable Fault Category" section in the Asset Sub Category detail page
+    Then User waits for 10 seconds
+    Then User click Manage Applicable Fault Category icon in the Fault Category of the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User fill the Fault Category details in the Fault Category section of the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User click Fault Category save button in the Fault Category pop up of the Asset Sub Category detail page
+    Then User waits for 10 seconds
+
+
+     # Asset Sub Category -  Technical Parameters
+  @AssetSubCategoryTechnicalParameter
+  Scenario: Should be able to link Technical Parameter to Asset Sub Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Asset Management' tab in data configuration page
+    Then User move to 'Asset Subcategory' Asset Management Element
+    Then User clicks on first available Asset Sub Category to edit
+    Then User waits for 5 seconds
+    When User switches to new tab
+    When User click on the "Technical Parameters" section in the Asset Sub Category detail page
+    Then User waits for 10 seconds
+    Then User click Manage Technical Parameter icon in the Technical Parameter of the Asset Sub Category detail page
+    Then User waits for 20 seconds
+    Then User fill the Link Technical Parameter details in the Technical Parameter section
+    Then User waits for 5 seconds
+    Then User click Technical Parameter save button in the Technical Parameter of the Asset Sub Category detail page
+    Then User waits for 10 seconds
+
+    # Asset Sub Category -  Link Metering Parameters
+  @AssetSubCategoryMeteringParameter
+  Scenario: Should be able to link Metering Parameter to Asset Sub Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Asset Management' tab in data configuration page
+    Then User move to 'Asset Subcategory' Asset Management Element
+    Then User clicks on first available Asset Sub Category to edit
+    Then User waits for 5 seconds
+    When User switches to new tab
+    When User click on the "Metering Parameters" section in the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User click Link Parameter Setup in the Metering Parameters of the Asset Sub Category detail page
+    Then User fill the Link Parameter Setup details in the Metering Parameter section
+    Then User waits for 5 seconds
+    Then User click Link Parameter Setup save button in the Asset Sub Category Metering Parameters section
+    Then User waits for 10 seconds
+
+      # Asset Sub Category -  Link Trigger
+  @AssetSubCategoryTrigger
+  Scenario: Should be able to create Trigger to Asset Sub Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Asset Management' tab in data configuration page
+    Then User move to 'Asset Subcategory' Asset Management Element
+    Then User clicks on first available Asset Sub Category to edit
+    Then User waits for 5 seconds
+    When User switches to new tab
+    When User click on the "Triggers" section in the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User click on the Add button in the Asset Sub Category Trigger section
+    Then User waits for 5 seconds
+    Then User fill the Trigger details in the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User click Trigger save button in the Asset Sub Category Trigger section
+    Then User waits for 10 seconds
+
+   # Asset Sub Category -  Link Life Cycle Setup
+  @AssetSubCategoryLinkLifeCycleSetUp
   Scenario: Should be able to Link Life Cycle to Asset Sub Category
     Given User navigates to 'lattice.url' page
     Then User is at home screen after login with "username" and "password"
@@ -195,6 +279,27 @@ Feature: Asset Management Master Module Automation
     Then User fill the Life Cycle details in the Asset Sub Category Life Cycle Setup section
     Then User waits for 5 seconds
     Then User click Life Cycle save button in the Asset Sub Category Life Cycle Setup section
+    Then User waits for 10 seconds
+
+ # Asset Sub Category -  Link Applicable Trades
+  @AssetSubCategoryLinkApplicableTrades
+  Scenario: Should be able to Link Applicable Trades to Asset Sub Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' in navigation panel
+    Then User clicks on hamburger icon
+    And User clicks on the 'Asset Management' tab in data configuration page
+    Then User move to 'Asset Subcategory' Asset Management Element
+    Then User clicks on first available Asset Sub Category to edit
+    Then User waits for 5 seconds
+    When User switches to new tab
+    When User click on the "Applicable Trades" section in the Asset Sub Category detail page
+    Then User waits for 5 seconds
+    Then User click on the Manage Applicable Trade button in the Applicable Trades section
+    Then User waits for 5 seconds
+    Then User link the Applicable Trade detail in the Applicable Trades section
+    Then User waits for 5 seconds
+    Then User click Applicable Trade save button in the Asset Sub Category detail page
     Then User waits for 10 seconds
 
   @deleteAssetSubCategory

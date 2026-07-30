@@ -1,10 +1,13 @@
 package pages;
+import com.microsoft.schemas.office.visio.x2012.main.TriggerType;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
 import java.time.Duration;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class AssetManagementMastersPage extends BasePage {
@@ -27,21 +30,9 @@ public class AssetManagementMastersPage extends BasePage {
     public static final By MASTER_ASSET_MODEL = By.id("radtxtModel");
     public static final By MASTER_ASSET_MODEL_OEM_SELECT =
             By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpModelOEM_Input");
-    public static final By MASTER_ASSET_MODEL_MAKE_SELECT =
-            By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpBrand_Input");
-
-    public static final By MASTER_ASSET_MODEL_MASTER_CATEGORY_SELECT =
+   public static final By MASTER_ASSET_MODEL_MASTER_CATEGORY_SELECT =
             By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpMaster_Input");
-
-    public static final By MASTER_ASSET_MODEL_ASSET_CATEGORY_SELECT =
-            By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpCategory_Input");
-
-    public static final By MODEL_LOADING =
-            By.xpath("//*[contains(text(),'LOADING')]");
-
-    public static final By MASTER_ASSET_MODEL_ASSET_SUB_CATEGORY_SELECT =
-            By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpSubCategory_Input");
-    public static final By MASTER_ASSET_DERATING_FACTOR_CODE = By.id("txtCode");
+   public static final By MASTER_ASSET_DERATING_FACTOR_CODE = By.id("txtCode");
     public static final By MASTER_ASSET_DERATING_FACTOR_DESCRIPTION = By.id("txtDescription");
     public static final By MASTER_ASSET_DERATING_FACTOR_ACTIVE_CHECKBOX = By.id("chkFactorActive");
     public static final By MASTER_ASSET_READING_UNIT_SHORT_CODE = By.id("radtxtshortCode");
@@ -124,6 +115,22 @@ public class AssetManagementMastersPage extends BasePage {
 
     public static final By MASTER_ASSET_MANAGEMENT_EXPORT_TO_EXCEL_BUTTON= By.id("btnExportToExcel");
 
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_APPLICABLE_FAULT_CATEGORY_BUTTON= By.id("ContentPlaceHolder1_Span7");
+    public static final By MASTER_ASSET_SUBCATEGORY_SERVICE_GROUP_DROPDOWN =
+            By.xpath("//a[contains(@id,'ddlServiceGroup_Arrow')]");
+
+
+
+    private static final By MASTER_ASSET_FAULT_CATEGORY_DROPDOWN =
+            By.xpath("//div[contains(@class,'k-multiselect')]");
+
+    private static final By MASTER_ASSET_FAULT_CATEGORY_VALUES =
+            By.xpath("//ul[@role='listbox']//li");;
+
+
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_FAULT_CATEGORY_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinApplicableFaultCategory_C_btnSaveApplicableFaultCategory");
+
+
     public static final By MASTER_ASSET_CLICK_ADD_LIFE_CYCLE_SETUP= By.id("ContentPlaceHolder1_Span3");
     public static final By MASTER_ASSET_LIFE_CYCLE_EXP_MTBF= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryLifeCycleSetup_C_txtExpectedMTBF");
     public static final By MASTER_ASSET_LIFE_CYCLE_EXP_MTTR= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryLifeCycleSetup_C_txtExpectedMTTR");
@@ -136,6 +143,41 @@ public class AssetManagementMastersPage extends BasePage {
     public static final By MASTER_ASSET_LIFE_CYCLE_T_AND_C_COST= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryLifeCycleSetup_C_txtTermscost");
     public static final By MASTER_ASSET_LIFE_CYCLE_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryLifeCycleSetup_C_btnSaveLifeCycleSetup");
 
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_TECHNICAL_PARAMETER_BUTTON= By.id("ContentPlaceHolder1_Span5");
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_TECHNICAL_PARAMETER_ADD_BUTTON=  By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalParameter_C_btnAddParameter");
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_TECHNICAL_PARAMETER_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinTechnicalParameter_C_btnTechnicalParameterSave");
+
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_LINK_PARAMETER_SETUP_BUTTON= By.id("ContentPlaceHolder1_Span1");
+    public static final By MASTER_ASSET_SUBCATEGORY_LINK_PARAMETER_SETUP_PARAMETER_DROPDOWN=  By.xpath("//a[contains(@id,'ddlParmParameter_Arrow')]");
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_LINK_PARAMETER_SETUP_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryParameter_C_btnSaveParameter");
+
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_ADD_TRIGGER_BUTTON= By.id("ContentPlaceHolder1_Span2");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_NAME= By.id("radtxtTriggerName");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_btnTriggerSave");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_DROPDOWN = By.xpath("//a[contains(@id,'raddrpTriggerPara_Arrow')]");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_COMPARISON_TYPE =  By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpCompareType_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_EVENT_DROPDOWN =     By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpTriggerEvent_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_VALUE_FROM = By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_radtxtParaValueFrom");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_VALUE_TO = By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_radtxtParaValueTo");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_TOLERANCE_PLUS =
+            By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_radtxtToleranceP");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_TOLERANCE_MINUS =
+            By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_radtxtToleranceM");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_REASON_DROPDOWN = By.xpath("//a[contains(@id,'raddrpTriggerReason_Arrow')]");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_CONTRACT_GROUP_DROPDOWN =
+            By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpContract_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_WORK_ORDER_TYPE =  By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_RaddrpWorkorder_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_SERVICE_GROUP_DROPDOWN =  By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpServiceGrp_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_FAULT_CATEGORY_DROPDOWN =  By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpFaultCat_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_FAULT_CODE_DROPDOWN = By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpFaultCode_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_PRIORITY_DROPDOWN =  By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_radrpPriority_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_WO_GEN_WAIT_TIME = By.id("radtxtWoGenertWait");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_PPM_TASK_SHEET_DROPDOWN = By.id("ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpPPMTaskSheet_Input");
+    public static final By MASTER_ASSET_SUBCATEGORY_TRIGGER_DESCRIPTION = By.id("radtxtDescription");
+
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_APPLICABLE_TRADE_BUTTON= By.id("ContentPlaceHolder1_Span8");
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_TRADE_ADD_BUTTON=  By.id("ctl00_ContentPlaceHolder1_RadWinApplicableTrade_C_btnAddTrade");
+    public static final By MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_TRADE_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinApplicableTrade_C_btnAssetTradeSave");
 
     public void moveToAssetManagementElementByName(String ElementName) {
         String subMenuId = switch (ElementName.trim()) {
@@ -174,12 +216,12 @@ public class AssetManagementMastersPage extends BasePage {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt(); // best practice
+                    Thread.currentThread().interrupt();
                 }
                 return;
             }
         }
-        throw new RuntimeException("No save button is present on the page.");
+        throw new RuntimeException("No save button is present on the page");
     }
 
 //Asset Class
@@ -196,7 +238,7 @@ public class AssetManagementMastersPage extends BasePage {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }
         System.out.println("Verified Added Asset Class Successfully");
     }
@@ -206,7 +248,7 @@ public class AssetManagementMastersPage extends BasePage {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -223,7 +265,7 @@ public class AssetManagementMastersPage extends BasePage {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }        ;
         System.out.println("Verified Updated Asset Class Successfully");
     }
@@ -235,7 +277,7 @@ public class AssetManagementMastersPage extends BasePage {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         };
         System.out.println("Asset Class Deleted Successfully");
 
@@ -381,7 +423,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }        ;
         System.out.println("Updated Asset Category is Verified Successfully");
     }
@@ -393,7 +435,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }        ;
         System.out.println("Asset Category Deleted Successfully");
     }
@@ -476,7 +518,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         }        ;
         System.out.println("Updated Asset Sub Category is Verified Successfully");
     }
@@ -520,7 +562,77 @@ public void MasterAssetclickAssetubCategorytoEdit(){
         System.out.println("Clicked on section: " + sectionName);
     }
 
-        public void MasterAssetClickOnAddbuttoninSubCategoryLifeCycleSetupSection(){
+    //    Asset Sub Category - Applicable Fault Category
+    public void MasterAssetClickManageFaultCategoryiconinFaultCategorySectionofSubCategorydetailpage() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_APPLICABLE_FAULT_CATEGORY_BUTTON);
+    }
+
+    public void MasterAssetselectServiceGroupinFaultCategorySectionofSubCategorydetailpage() {
+           WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+            Random random = new Random();
+            By dropdown =   By.xpath("//div[contains(@id,'ddlServiceGroup_DropDown')]");
+            By options =   By.xpath("//div[contains(@id,'ddlServiceGroup_DropDown')]//li[contains(@class,'rcbItem')]");
+            waitForLoaderToDisappear();
+            // Open dropdown
+            WebElement arrow =  wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_SERVICE_GROUP_DROPDOWN));
+            ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+            // Wait dropdown visible
+            wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+            // Get count only
+            int size = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(options)).size();
+            System.out.println("Service Group count: " + size);
+            if (size == 0) {
+                throw new RuntimeException("No Service Group values found");
+            }
+            // Random index
+            int index = random.nextInt(size) + 1;
+            // Re-fetch fresh element
+            By optionByIndex = By.xpath("(//div[contains(@id,'ddlServiceGroup_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]" );
+            WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+            String value = option.getText().trim();
+            // Scroll
+            ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});",
+                    option);
+            // Click
+            ((JavascriptExecutor) driver)  .executeScript("arguments[0].click();", option);
+            waitForLoaderToDisappear();
+            System.out.println("Selected Service Group: " + value);
+        }
+
+
+    public void MasterAssetselectFaultCategoryinFaultCategorypopupofSubCategorydetailpage() {
+        utils.click(MASTER_ASSET_FAULT_CATEGORY_DROPDOWN);
+        utils.waitForSeconds(3);
+        List<WebElement> faultCategories =  driver.findElements(MASTER_ASSET_FAULT_CATEGORY_VALUES);
+        System.out.println("Fault Categories Found: " + faultCategories.size());
+        if (faultCategories.isEmpty()) {
+            throw new RuntimeException("No Fault Categories found.");
+        }
+        // Remove empty values
+        faultCategories.removeIf(e -> e.getText().trim().isEmpty());
+        Random random = new Random();
+        WebElement selectedFaultCategory = faultCategories.get(random.nextInt(faultCategories.size()));
+        String faultCategoryName = selectedFaultCategory.getText().trim();
+        System.out.println("Selecting Fault Category: " + faultCategoryName);
+        ((JavascriptExecutor) driver)
+                .executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        selectedFaultCategory);
+        utils.waitForSeconds(1);
+        // Select one value
+        utils.jsClick(selectedFaultCategory);
+        utils.waitForSeconds(1);
+        utils.click(MASTER_ASSET_FAULT_CATEGORY_DROPDOWN);
+        System.out.println("Selected Fault Category: " + faultCategoryName);
+    }
+
+    public void MasterAssetClicksavebuttoninFaultCategorySectionofSubCategorydetailpage() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_FAULT_CATEGORY_SAVE_BUTTON);
+    }
+
+    //    Asset Sub Category - Life Cycle Setup
+    public void MasterAssetClickOnAddbuttoninSubCategoryLifeCycleSetupSection(){
         utils.click(MASTER_ASSET_CLICK_ADD_LIFE_CYCLE_SETUP);
         try {
             Thread.sleep(5000);
@@ -536,7 +648,7 @@ public void MasterAssetclickAssetubCategorytoEdit(){
         utils.typeText(MASTER_ASSET_LIFE_CYCLE_EXP_ENERGY_COST, "1000");
         utils.typeText(MASTER_ASSET_LIFE_CYCLE_MAINTENANCE_HOURS_PER_YEAR, "500");
         utils.typeText(MASTER_ASSET_LIFE_CYCLE_EFFICIENCY_OF_TECHNICIANS_AT_WORK, "80");
-            utils.typeText(MASTER_ASSET_LIFE_CYCLE_NUMBER_OF_TECHNICIANS, "10");
+        utils.typeText(MASTER_ASSET_LIFE_CYCLE_NUMBER_OF_TECHNICIANS, "10");
         utils.typeText(MASTER_ASSET_LIFE_CYCLE_INSTALLATION_COST, "10");
         utils.typeText(MASTER_ASSET_LIFE_CYCLE_T_AND_C_COST, "10");
         System.out.println("Life Cycle details entered successfully.");
@@ -544,8 +656,8 @@ public void MasterAssetclickAssetubCategorytoEdit(){
 
     public void MasterAssetselectDeratingFactorsAndEnterPercentage() {
     List<WebElement> checkBoxes =
-       driver.findElements(By.xpath(
-                        "//table[contains(@id,'grdlinklifecycle')]//tr[@class='rgRow' or @class='rgAltRow']//input[@type='checkbox']"
+        driver.findElements(By.xpath(
+              "//table[contains(@id,'grdlinklifecycle')]//tr[@class='rgRow' or @class='rgAltRow']//input[@type='checkbox']"
                 ));
     List<WebElement> percentageBoxes =
                 driver.findElements(By.xpath(
@@ -553,16 +665,14 @@ public void MasterAssetclickAssetubCategorytoEdit(){
                 ));
         System.out.println("Checkboxes found: " + checkBoxes.size());
         System.out.println("Percentages found: " + percentageBoxes.size());
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        // First factor
         utils.jsClick(checkBoxes.get(0));
         js.executeScript("arguments[0].removeAttribute('disabled');",
                 percentageBoxes.get(0));
         percentageBoxes.get(0).clear();
         percentageBoxes.get(0).sendKeys("2");
         utils.waitForSeconds(1);
-        // Second factor
+
         utils.jsClick(checkBoxes.get(1));
         js.executeScript("arguments[0].removeAttribute('disabled');",
                 percentageBoxes.get(1));
@@ -575,6 +685,661 @@ public void MasterAssetclickAssetubCategorytoEdit(){
         utils.click(MASTER_ASSET_LIFE_CYCLE_SAVE_BUTTON);
     }
 
+    //    Asset Sub Category - Technical Parameters
+    public void MasterAssetClickManageTechnicalParametericoninTechnicalParameterSection() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_TECHNICAL_PARAMETER_BUTTON);
+    }
+
+    public void MasterAssetClickfillLinkTechnicalParameterdetailinTechnicalParameterSection() {
+    List<WebElement> rows = driver.findElements(
+                By.xpath("//table[contains(@id,'grdParameter_ctl00')]//tr[@class='rgRow' or @class='rgAltRow']")
+        );
+        System.out.println("Technical Parameter Rows Found: " + rows.size());
+        if (rows.size() < 2) {
+            throw new RuntimeException("Less than 2 Technical Parameters available.");
+        }
+        Random random = new Random();
+        Set<Integer> indexes = new HashSet<>();
+        while (indexes.size() < 2) {
+            indexes.add(random.nextInt(rows.size()));
+        }
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        for (Integer index : indexes) {
+            WebElement row = rows.get(index);
+            try {
+                WebElement checkbox = row.findElement(By.tagName("input"));
+                js.executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        checkbox
+                );
+                Thread.sleep(1000);
+                utils.jsClick(checkbox);
+               String parameterName = row.findElement(By.xpath("./td[2]"))
+                        .getAttribute("title");
+                System.out.println("Selected Technical Parameter: " + parameterName);
+            } catch (Exception e) {
+     System.out.println("Skipping row " + index +" because no checkbox was found.");
+            }
+        }
+    }
+
+    public void MasterAssetClickAddbuttoninTechnicalParameterpopup()
+    { utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_TECHNICAL_PARAMETER_ADD_BUTTON);
+    }
+
+    public void MasterAssetClicksavebuttoninTechnicalParameterSection() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_TECHNICAL_PARAMETER_SAVE_BUTTON);
+    }
+
+    //    Asset Sub Category - Metering Parameters
+    public void MasterAssetClickOnLinkParameterSetupinMeteringParameterSection() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_LINK_PARAMETER_SETUP_BUTTON);
+    }
+
+    public void MasterAssetfillLinkParameterSetupdetailinMeteringParameterSection() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        By dropdown =   By.xpath("//div[contains(@id,'ddlParmParameter_DropDown')]");
+        By options =   By.xpath("//div[contains(@id,'ddlParmParameter_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =  wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_LINK_PARAMETER_SETUP_PARAMETER_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count only
+        int size = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(options)).size();
+        System.out.println("Parameter count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Parameter values found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Re-fetch fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'ddlParmParameter_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]" );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});",
+                option);
+        // Click
+        ((JavascriptExecutor) driver)  .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Metering Parameter: " + value);
+    }
+
+    public void MasterAssetClickOnLinkParameterSetupsavebutton() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_LINK_PARAMETER_SETUP_SAVE_BUTTON);
+    }
+
+//    Asset Sub Category - Trigger
+public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
+    utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_ADD_TRIGGER_BUTTON);
+}
+
+    public void MasterAssetEnterTriggerName(String Trigger_Name) {
+        utils.typeText(MASTER_ASSET_SUBCATEGORY_TRIGGER_NAME,Trigger_Name);
+    }
+
+    public void waitForLoaderToDisappear() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                By.xpath("//div[contains(@id,'LoadingPanel')]")));
+    }
+
+    public void MasterAssetSelectTriggerParameterRandom() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        By dropdown =   By.xpath("//div[contains(@id,'raddrpTriggerPara_DropDown')]");
+        By options =   By.xpath("//div[contains(@id,'raddrpTriggerPara_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =  wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count only
+        int size = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(options)).size();
+        System.out.println("Parameter count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Parameter values found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Re-fetch fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'raddrpTriggerPara_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]" );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});",
+                option);
+        // Click
+        ((JavascriptExecutor) driver)  .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Parameter: " + value);
+    }
+
+    public void Master_Asset_enterAsset_Trigger_Comparison_Type(String Comparison_Type) {
+        utils.click(MASTER_ASSET_SUBCATEGORY_TRIGGER_COMPARISON_TYPE);
+        By option = By.xpath("//li[contains(@class,'rcbItem') and normalize-space()='"
+                + Comparison_Type + "']");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(option));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", element);
+        System.out.println("Selected Trigger_Comparison_Type: " + Comparison_Type);
+    }
+
+    public void selectAddAssetRadComboBox(By arrow, String value, String idPart) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        By dropdown =
+                By.xpath("//*[contains(@id,'" + idPart + "_DropDown')]");
+        By option =
+                By.xpath("//*[contains(@id,'" + idPart + "_DropDown')]//li[normalize-space()='" + value + "']");
+        for (int i = 0; i < 2; i++) {
+            try {
+                waitForLoaderToDisappear();
+                wait.until(ExpectedConditions.elementToBeClickable(arrow)).click();
+                wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(option));
+                ((JavascriptExecutor) driver).executeScript(   "arguments[0].scrollIntoView({block:'center'});", element);
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+                } catch (Exception e) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+                }
+                waitForLoaderToDisappear();
+                break;
+            } catch (StaleElementReferenceException e) {
+                System.out.println("Retrying dropdown...");
+            }
+        }
+    }
+
+    public void Master_Asset_enterAssetTriggerEventAndValues(String comparisonType) {
+        Random random = new Random();
+        String event;
+        if (comparisonType.equalsIgnoreCase("Standard")) {
+            String[] events = {
+                    "Between",
+                    "NotBetween",
+                    "Greater than",
+                    "Less than"
+            };
+            event = events[random.nextInt(events.length)];
+        } else {
+            event = "Tolerance %";
+        }
+        selectAddAssetRadComboBox( MASTER_ASSET_SUBCATEGORY_TRIGGER_EVENT_DROPDOWN,event,
+                "ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_raddrpTriggerEvent"
+        );
+        waitForLoaderToDisappear();
+        waitForSeconds();
+        System.out.println("Selected Trigger Event: " + event);
+        // ================= STANDARD =================
+        if (comparisonType.equalsIgnoreCase("Standard")) {
+            int fromValue = random.nextInt(75) + 1;
+            utils.typeText(MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_VALUE_FROM,String.valueOf(fromValue));
+            if (event.equalsIgnoreCase("Between")
+                    || event.equalsIgnoreCase("NotBetween")) {
+                int toValue = fromValue + random.nextInt(75 - fromValue) + 1;
+                utils.typeText(
+                        MASTER_ASSET_SUBCATEGORY_TRIGGER_PARAMETER_VALUE_TO,
+                        String.valueOf(toValue) );
+                System.out.println("Parameter From Value: " + fromValue);
+                System.out.println("Parameter To Value: " + toValue);
+            }
+        }
+        // ================= COMMISSIONING / DESIGN =================
+        else {
+            int tolerancePlus = random.nextInt(10) + 1;   // 1-10
+            int toleranceMinus = random.nextInt(10) + 1;  // 1-10
+            utils.typeText(
+                    MASTER_ASSET_SUBCATEGORY_TRIGGER_TOLERANCE_PLUS,
+                    String.valueOf(tolerancePlus) );
+            utils.typeText(
+                    MASTER_ASSET_SUBCATEGORY_TRIGGER_TOLERANCE_MINUS,
+                    String.valueOf(toleranceMinus)  );
+            System.out.println("Tolerance + : " + tolerancePlus);
+            System.out.println("Tolerance - : " + toleranceMinus);
+        }
+    }
+
+    public void Master_Asset_selectAssetTriggerReasonRandom() {
+        WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        By dropdown =  By.xpath("//div[contains(@id,'raddrpTriggerReason_DropDown')]");
+        By options =  By.xpath("//div[contains(@id,'raddrpTriggerReason_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =  wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_REASON_DROPDOWN));
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", arrow);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        List<WebElement> allOptions =
+                wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(options));
+        System.out.println("Trigger Reason count: " + allOptions.size());
+        if (allOptions.size() == 0) {
+            throw new RuntimeException("No Trigger Reason values found");
+        }
+        // Random selection
+        WebElement option =   allOptions.get(random.nextInt(allOptions.size()));
+        String value = option.getText().trim();
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});",
+                option);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Trigger Reason: " + value);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", option);
+
+        waitForLoaderToDisappear();
+
+// CLOSE THE DROPDOWN
+        new Actions(driver)
+                .sendKeys(Keys.ESCAPE)
+                .perform();
+
+        waitForSeconds();
+        System.out.println("Selected Trigger Reason: " + value);
+    }
+
+
+    public void waitForContractGroupLoadingToDisappear() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        try {
+
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//*[contains(text(),'Loading...')]")));
+
+        } catch (Exception e) {
+
+            System.out.println("Loading popup not found.");
+        }
+    }
+
+    public void Master_Asset_selectAssetTriggerContractGroupRandom() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        Random random = new Random();
+
+        By dropdown =
+                By.xpath("//div[contains(@id,'raddrpContract_DropDown')]");
+
+        // More generic locator
+        By options =
+                By.xpath("//div[contains(@id,'raddrpContract_DropDown')]//li");
+
+        waitForLoaderToDisappear();
+
+        // Open dropdown
+        WebElement arrow =
+                wait.until(ExpectedConditions.elementToBeClickable(
+                        MASTER_ASSET_SUBCATEGORY_TRIGGER_CONTRACT_GROUP_DROPDOWN));
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", arrow);
+
+        // VERY IMPORTANT
+        waitForContractGroupLoadingToDisappear();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+
+        List<WebElement> allOptions =
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(options));
+
+        // Remove empty rows
+        allOptions.removeIf(e -> e.getText().trim().isEmpty());
+
+        System.out.println("Contract Group count: " + allOptions.size());
+
+        if (allOptions.isEmpty()) {
+            throw new RuntimeException("No Contract Group values found");
+        }
+
+        WebElement option =
+                allOptions.get(random.nextInt(allOptions.size()));
+
+        String value = option.getText().trim();
+
+        ((JavascriptExecutor) driver)
+                .executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        option);
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", option);
+
+        waitForLoaderToDisappear();
+
+        System.out.println("Selected Contract Group: " + value);
+    }
+
+        public void Master_Asset_enterAsset_Trigger_Work_Order_Type(String workOrderType) {
+            waitForLoaderToDisappear();
+            waitForSeconds();
+            selectAddAssetRadComboBox(
+                    MASTER_ASSET_SUBCATEGORY_TRIGGER_WORK_ORDER_TYPE,
+                    workOrderType,
+                    "ctl00_ContentPlaceHolder1_RadWinAssetSubCategoryTriggerParameter_C_RaddrpWorkorder"
+            );
+            System.out.println("Selected Work Order Type: " + workOrderType);
+        }
+
+    public void Master_Asset_validateFieldsBasedOnWorkOrderType(String workOrderType) {
+               waitForLoaderToDisappear();
+            waitForSeconds();
+
+            if (workOrderType.equalsIgnoreCase("RM")) {
+
+                System.out.println("RM selected. Filling RM fields...");
+
+                MasterAssetselectTriggerServiceGroupRandom();
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                MasterAssetselectTriggerFaultCategoryRandom();
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                MasterAssetselectTriggerFaultCodeRandom();
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                MasterAssetselectTriggerPriorityRandom();
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                // WO Generation Waiting (RM only)
+                int waitTime = new Random().nextInt(10) + 1;
+
+                utils.typeText(
+                        MASTER_ASSET_SUBCATEGORY_TRIGGER_WO_GEN_WAIT_TIME,
+                        String.valueOf(waitTime)
+                );
+
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                String description =
+                        "Trigger Description " + System.currentTimeMillis();
+
+                Master_Asset_enterAsset_Trigger_Description(description);
+
+                System.out.println("RM fields completed successfully.");
+            }
+
+            else if (workOrderType.equalsIgnoreCase("PM")) {
+
+                System.out.println("PM selected. Filling PM fields...");
+
+                MasterAssetselectTriggerPPMTaskSheetRandom();
+
+                waitForLoaderToDisappear();
+                waitForSeconds();
+
+                System.out.println("PM fields completed successfully.");
+            }
+
+    }
+
+    public void MasterAssetselectTriggerServiceGroupRandom() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        Random random = new Random();
+
+        By dropdown =
+                By.xpath("//div[contains(@id,'raddrpServiceGrp_DropDown')]");
+
+        By options =
+                By.xpath("//div[contains(@id,'raddrpServiceGrp_DropDown')]//li[contains(@class,'rcbItem')]");
+
+        waitForLoaderToDisappear();
+        waitForSeconds();
+
+        WebElement input =
+                wait.until(ExpectedConditions.elementToBeClickable(
+                        MASTER_ASSET_SUBCATEGORY_TRIGGER_SERVICE_GROUP_DROPDOWN));
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", input);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+
+        List<WebElement> allOptions =
+                wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(options));
+
+        System.out.println("Service Group Count: " + allOptions.size());
+
+        if (allOptions.isEmpty()) {
+            throw new RuntimeException("No Service Group found");
+        }
+
+        WebElement option =
+                allOptions.get(random.nextInt(allOptions.size()));
+
+        String value = option.getText().trim();
+
+        ((JavascriptExecutor) driver)
+                .executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        option);
+
+        wait.until(ExpectedConditions.elementToBeClickable(option));
+
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", option);
+
+        waitForLoaderToDisappear();
+
+        System.out.println("Selected Service Group: " + value);
+    }
+
+    public void MasterAssetselectTriggerFaultCategoryRandom() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        // Dropdown container
+        By dropdown =  By.xpath("//div[contains(@id,'raddrpFaultCat_DropDown')]");
+        // All options
+        By options =  By.xpath("//div[contains(@id,'raddrpFaultCat_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =    wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_FAULT_CATEGORY_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count
+        int size = wait.until( ExpectedConditions.presenceOfAllElementsLocatedBy(options) ).size();
+        System.out.println("Fault Category count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Fault Category found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'raddrpFaultCat_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]"        );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        // Click
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Fault Category is: " + value);
+    }
+
+    public void MasterAssetselectTriggerFaultCodeRandom() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        // Dropdown container
+        By dropdown =  By.xpath("//div[contains(@id,'raddrpFaultCode_DropDown')]");
+        // All options
+        By options =  By.xpath("//div[contains(@id,'raddrpFaultCode_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =    wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_FAULT_CODE_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count
+        int size = wait.until( ExpectedConditions.presenceOfAllElementsLocatedBy(options) ).size();
+        System.out.println("Fault Code count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Fault Code found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'raddrpFaultCode_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]"        );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        // Click
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Fault Code is: " + value);
+    }
+
+    public void MasterAssetselectTriggerPriorityRandom() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        // Dropdown container
+        By dropdown =  By.xpath("//div[contains(@id,'radrpPriority_DropDown')]");
+        // All options
+        By options =  By.xpath("//div[contains(@id,'radrpPriority_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =    wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_PRIORITY_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count
+        int size = wait.until( ExpectedConditions.presenceOfAllElementsLocatedBy(options) ).size();
+        System.out.println("Priority count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Priority found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'radrpPriority_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]"        );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        // Click
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Priority is: " + value);
+    }
+
+    public void MasterAssetselectTriggerPPMTaskSheetRandom() {
+        WebDriverWait wait =   new WebDriverWait(driver, Duration.ofSeconds(20));
+        Random random = new Random();
+        // Dropdown container
+        By dropdown =  By.xpath("//div[contains(@id,'raddrpPPMTaskSheet_DropDown')]");
+        // All options
+        By options =  By.xpath("//div[contains(@id,'raddrpPPMTaskSheet_DropDown')]//li[contains(@class,'rcbItem')]");
+        waitForLoaderToDisappear();
+        // Open dropdown
+        WebElement arrow =    wait.until(ExpectedConditions.elementToBeClickable(MASTER_ASSET_SUBCATEGORY_TRIGGER_PPM_TASK_SHEET_DROPDOWN));
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", arrow);
+        // Wait dropdown visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dropdown));
+        // Get count
+        int size = wait.until( ExpectedConditions.presenceOfAllElementsLocatedBy(options) ).size();
+        System.out.println("Task Sheets count: " + size);
+        if (size == 0) {
+            throw new RuntimeException("No Task Sheets found");
+        }
+        // Random index
+        int index = random.nextInt(size) + 1;
+        // Fresh element
+        By optionByIndex = By.xpath("(//div[contains(@id,'raddrpPPMTaskSheet_DropDown')]//li[contains(@class,'rcbItem')])[" + index + "]"        );
+        WebElement option =   wait.until(ExpectedConditions.elementToBeClickable(optionByIndex));
+        String value = option.getText().trim();
+        // Scroll
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+        // Click
+        ((JavascriptExecutor) driver) .executeScript("arguments[0].click();", option);
+        waitForLoaderToDisappear();
+        System.out.println("Selected Task Sheet is: " + value);
+    }
+
+    public void waitForSeconds() {
+        try {
+            Thread.sleep(5000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Master_Asset_enterAsset_Trigger_Description(String Trigger_Description) {
+        utils.typeText(MASTER_ASSET_SUBCATEGORY_TRIGGER_DESCRIPTION, Trigger_Description);
+    }
+
+
+    public void MasterAssetclickTriggerSavebuttoninSubCategorydetailpage() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_TRIGGER_SAVE_BUTTON);
+    }
+
+   //    Asset Sub Category - Technical Parameters
+    public void MasterAssetclickManageApplicableTradebutton() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_MANAGE_APPLICABLE_TRADE_BUTTON);
+    }
+
+    public void MasterAssetlinkApplicableTradedetail() {
+        List<WebElement> rows = driver.findElements(
+                By.xpath("//table[contains(@id,'grdtrade_ctl00')]//tr[@class='rgRow' or @class='rgAltRow']")
+        );
+        System.out.println("Applicable Trades Rows Found: " + rows.size());
+        if (rows.size() < 2) {
+            throw new RuntimeException("Less than 2 Applicable Trades available.");
+        }
+        Random random = new Random();
+        Set<Integer> indexes = new HashSet<>();
+        while (indexes.size() < 2) {
+            indexes.add(random.nextInt(rows.size()));
+        }
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        for (Integer index : indexes) {
+            WebElement row = rows.get(index);
+            try {
+                WebElement checkbox = row.findElement(By.tagName("input"));
+                js.executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});",
+                        checkbox
+                );
+                Thread.sleep(1000);
+                utils.jsClick(checkbox);
+                String parameterName = row.findElement(By.xpath("./td[2]"))
+                        .getAttribute("title");
+                System.out.println("Selected Applicable Trades: " + parameterName);
+            } catch (Exception e) {
+                System.out.println("Skipping row " + index +" because no checkbox was found.");
+            }
+        }
+    }
+
+    public void MasterAssetClickAddbuttoninApplicableTradepopup()
+    { utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_TRADE_ADD_BUTTON);
+    }
+
+    public void userclickApplicableTradesavebutton() {
+        utils.click(MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_TRADE_SAVE_BUTTON);
+    }
+
+//    Asset Sub Category - Delete
+
     public void clickAsset_Sub_Category_ToDelete() {
         utils.click(DELETE_FIRST_ASSET_SUB_CATEGORY_IN_LIST);
         Alert alert = driver.switchTo().alert();
@@ -582,7 +1347,7 @@ public void MasterAssetclickAssetubCategorytoEdit(){
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // best practice
+            Thread.currentThread().interrupt();
         };
     }
 

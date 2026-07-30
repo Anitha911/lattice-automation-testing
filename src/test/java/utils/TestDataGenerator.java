@@ -418,6 +418,10 @@ public class TestDataGenerator {
         return Asset_Sub_Category[random.nextInt(Asset_Sub_Category.length)];
     }
 
+    public String generateMaster_Asset_Trigger_Name() {
+        return "Trigger_" + System.currentTimeMillis();
+    }
+
     public String generateOEM() {
         String[] OEM = {"OEM1", "OEM2", "OEM3", "OEM4", "OEM5", "OEM6"};
         return OEM[random.nextInt(OEM.length)];
@@ -769,6 +773,8 @@ public class TestDataGenerator {
     public String generateParameter_Master_ScheduledMaintenance() {
         return "Parameter" + System.currentTimeMillis();
     }
+
+
 
 
 }

@@ -276,9 +276,7 @@ public class EssentialServicesMastersSteps {
         Violation_Type = dataGen.generateViolation_Type();
         tmp.enterViolation_Type(Violation_Type);
         tmp.selectServiceGroup("Additional Work");  // selects service + moves to next
-
         tmp.selectFaultCategory("Additional Code Fault"); // selects fault + moves next
-
         tmp.selectFaultCode("Civil Works-AW");
         tmp.selectPriority("P3");
         tmp.selectGenerateWoOn("True");
