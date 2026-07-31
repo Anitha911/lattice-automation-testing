@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -90,6 +91,7 @@ public class ElementUtils {
             // loader may not appear, ignore
         }
     }
+
 
     public static void waitForDropdownLoading() {
         try {
