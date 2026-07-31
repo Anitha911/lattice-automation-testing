@@ -38,8 +38,9 @@ public class IncidentManagementTransactionSteps {
         tmp.userClicksOnThesection(tabTitle);
     }
 
-    @When("User selects value in the {string} dropdown")
-    public void user_incident_selects_dropdown_and_options(String dropdownName) {
+    @Deprecated
+    @When("Deprecate_User selects value in the {string} dropdown")
+    public void user_selects_Value_from_Incident_transaction_Drop_Down(String dropdownName) {
         By field;
         By options;
 
