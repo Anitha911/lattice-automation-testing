@@ -28,7 +28,9 @@ public class LoginSteps {
     }
 
     @Then("User is at home screen after login with {string} and {string}")
-    public void user_is_at_home_screen_after_login_with_and(String username, String pw) throws InterruptedException {
-        latticePage.login(username, pw);
+    public void user_is_at_home_screen_after_login_with_and(String username, String pw)
+            throws InterruptedException
+    {
+       latticePage.login(username, pw);
     }
 }

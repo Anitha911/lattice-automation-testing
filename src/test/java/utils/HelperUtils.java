@@ -13,6 +13,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
+import static groovy.xml.Entity.times;
+
 public class HelperUtils {
 
     private static WebDriver driver = null;
@@ -151,6 +153,20 @@ public class HelperUtils {
                 }
             }
         }
+    }
+    public void enterSpecialCharacters(By locator) {
+        String specialChars = "@#$%^&*";
+        System.out.println("Entering special characters: " + specialChars);
+        driver.findElement(locator).sendKeys(specialChars);
+        System.out.println("Special characters entered successfully");
+    }
+
+    public void verifyActiveCheckboxSelected(By locator) {
+        WebElement checkbox = driver.findElement(locator);
+        String html = checkbox.getAttribute("innerHTML");
+        Assert.assertTrue(html.contains("rbToggleCheckboxChecked"),
+                "Active checkbox is not selected by default");
+        System.out.println("PASS: Active checkbox is selected by default");
     }
 
 

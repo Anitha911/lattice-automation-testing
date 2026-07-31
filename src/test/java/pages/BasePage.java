@@ -18,5 +18,4 @@ public class BasePage {
         this.utils = new ElementUtils(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
-
 }
