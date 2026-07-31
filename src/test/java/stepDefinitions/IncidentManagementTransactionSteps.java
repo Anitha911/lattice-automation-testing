@@ -39,7 +39,7 @@ public class IncidentManagementTransactionSteps {
     }
 
     @When("User selects value in the {string} dropdown")
-    public void user_selects_dropdown_and_options(String dropdownName) {
+    public void user_incident_selects_dropdown_and_options(String dropdownName) {
         By field;
         By options;
 
