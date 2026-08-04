@@ -17,6 +17,7 @@ import utils.ConfigReader;
 import utils.ExcelUtils;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 
@@ -38,6 +39,12 @@ public class ManageLocationMasterSteps {
     public static String BUFunctionalType;
     public static String BUFunctionalSubType;
     public static int sqft=12000;
+    public static String BUSizeAttributeCode;
+    public static String BUSizeAttributeName;
+    public static String BUSizeTypeCode;
+    public static String BUSizeTypeName;
+    public static String BUCriticalityName;
+    public static String MeasuringValue;
     private final WebDriver driver = DriverFactory.getDriver();
     ManageLocationMasterPage tmp = new ManageLocationMasterPage(driver);
     TestDataGenerator dataGen = new TestDataGenerator();
@@ -58,8 +65,6 @@ public class ManageLocationMasterSteps {
     {
         tmp.clickonbutton(button);
     }
-
-
 
     @Then("User enters the {string} details")
     public void user_fill_up_the_city_details(String type) throws IOException
@@ -149,18 +154,36 @@ public class ManageLocationMasterSteps {
         tmp.selectFirstServiceGroup();
     }
 
-    //@Then("User enters the BU Size Attribute details")
-    //public void user_fill_up_the_BU_Size_Attribute_details() throws IOException
-    //{
-    // BUSizeAttribute = dataGen.generateBUSizeAttribute();
-    // tmp.enterBUSizeAttribute(BUSizeAttribute);
-    // BUSizeAttributeCode = dataGen.generateBUSizeAttributeCode();
-    // tmp.enterBUSizeAttributeCode(BUSizeAttributeCode);
-    // tmp.enterMeasuringValue;
-
-    //}
+    @Then("User enters the BU Size Attribute details")
+    public void user_fill_up_the_BU_Size_Attribute_details() throws IOException
+    {
+        BUSizeAttributeCode = dataGen.generateBUSizeAttributeCode();
+        tmp.enterBUSizeAttributeCode(BUSizeAttributeCode);
+        BUSizeAttributeName = dataGen.generateBUSizeAttributeName();
+        tmp.enterBUSizeAttributeName(BUSizeAttributeName);
+        String[] MeasuringValue = {"Psn","Sft","Kg", "Rs"};
+        tmp.enterMeasuringValue(MeasuringValue);
+    }
+    @Then("User enters the BU Size Type Attribute details")
+    public void user_fill_up_the_BU_Size_Type_Attribute_details() throws IOException
+    {
+        BUSizeTypeCode = dataGen.generateBUSizeTypeCode();
+        tmp.enterBUSizeTypeCode(BUSizeTypeCode);
+        BUSizeTypeName = dataGen.generateBUSizeTypeName();
+        tmp.enterBUSizeTypeName(BUSizeTypeName);
+        tmp.selectBUSizeAttribute();
+        tmp.selectBUFunctionalType();
+        tmp.selectBUFunctionalSubType();
+    }
+    @Then("User enters the BU Criticality details")
+    public void user_fill_up_the_BU_Criticality_details() throws IOException
+    {
+        BUCriticalityName = dataGen.generateBUCriticalityName();
+        tmp.enterBUCriticalityName(BUCriticalityName);
+    }
     @Then("User clicks on save action button")
-    public void userClicksOnSaveActionButton() {
+    public void userClicksOnSaveActionButton()
+    {
         tmp.clickSaveActionButton();
     }
 
@@ -221,7 +244,21 @@ public class ManageLocationMasterSteps {
     {
         tmp.verifyBUFuncSubTypeName(BUFunctionalSubType);
     }
-
+    @Then("User verify if the BU Size Attribute is created")
+    public void user_verify_the_success_message_after_creating_BUSizeAttribute()
+    {
+        tmp.verifyBUSizeAttributeName(BUSizeAttributeName);
+    }
+    @Then("User verify if the BU Size Attribute Type is created")
+    public void user_verify_the_success_message_after_creating_BUSizeAttributeType()
+    {
+        tmp.verifyBUSizeAttributeType(BUSizeTypeName);
+    }
+    @Then("User verify if the BU Size Criticality is created")
+    public void user_verify_the_success_message_after_creating_BUCriticality()
+    {
+        tmp.verifyBUCriticality(BUCriticalityName);
+    }
     @Then("User clicks on first available city to edit")
     public void userclicksFirstCity()
     {
@@ -341,5 +378,16 @@ public class ManageLocationMasterSteps {
     {
         tmp.clickonBUSizeAttribute();
         //div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'BU Size Attribute')]
+    }
+    @Then("User clicks on 'BU Size Type' menu")
+    public void userClicksonBUSizeType()
+    {
+        tmp.clickonBUSizeType();
+    }
+
+    @Then("User clicks on 'BU Criticality' menu")
+    public void userClicksonBUCriticality()
+    {
+        tmp.clickonBUCriticality();
     }
 }

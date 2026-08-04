@@ -57,6 +57,19 @@ Feature: Location Management Module Automation
     Then User verify if the Area Group is created
     Then User waits for 10 seconds
 
+  @EditAreaGroup
+  Scenario: Should be able to edit AreaGroup
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' icon in side panel
+    Then User clicks on respective 'Location Management' tab
+    Then User clicks on first available Area Group
+    Then User edits the 'Area Group' details
+    Then User waits for 10 seconds
+    Then User clicks on update button
+    Then User waits for 20 seconds
+    Then User verify if the Area Group is updated
+
   @AddArea
   Scenario: Should be able to add Area
     Given User navigates to 'lattice.url' page
@@ -235,4 +248,40 @@ Feature: Location Management Module Automation
     Then User clicks on save action button
     Then User waits for 10 seconds
     Then User verify if the BU Size Attribute is created
+    Then User waits for 10 seconds
+
+  @AddBUSizeType
+  Scenario: Should be able to add BUSizeType
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' icon in side panel
+    Then User clicks on respective 'Location Management' tab
+    #Then User waits for 2 seconds
+    Then User clicks on 'BU Size Type' menu
+    Then User waits for 3 seconds
+    Then User clicks on action button 'Add'
+    Then User waits for 3 seconds
+    Then User enters the BU Size Type Attribute details
+    Then User waits for 10 seconds
+    Then User clicks on save action button
+    Then User waits for 10 seconds
+    Then User verify if the BU Size Attribute Type is created
+    Then User waits for 10 seconds
+
+  @AddBUCriticality
+  Scenario: Should be able to add BUCriticality
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on 'Data Configurations' icon in side panel
+    Then User clicks on respective 'Location Management' tab
+    #Then User waits for 2 seconds
+    Then User clicks on 'BU Criticality' menu
+    Then User waits for 3 seconds
+    Then User clicks on action button 'Add'
+    Then User waits for 3 seconds
+    Then User enters the BU Criticality details
+    Then User waits for 10 seconds
+    Then User clicks on save action button
+    Then User waits for 10 seconds
+    Then User verify if the BU Size Criticality is created
     Then User waits for 10 seconds

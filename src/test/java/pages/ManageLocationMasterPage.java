@@ -36,6 +36,12 @@ public class ManageLocationMasterPage extends BasePage {
     public static final By ZoneGroupCriticality_NAME_INPUT = By.id("radtxtZoneGroupCriticality");
     public static final By BUFunctionalType_NAME_INPUT = By.id("radtxtBusinesstype");
     public static final By BUFunctionalSubType_NAME_INPUT = By.id("radtxtBussubtypename");
+    public static final By BUFunctionalSubType_TotalSqft_INPUT = By.id("radtxtTotalSqft");
+    public static final By BU_Size_Attribute_NAME_INPUT = By.id("radtxtAttributeName");
+    public static final By BU_Size_Type_Code_INPUT = By.id("radtxtBUSizeTypeCode");
+    public static final By BU_Size_Type_Name_INPUT = By.id("radtxtBUSizeTypeName");
+    public static final By BU_Criticality_Name_INPUT = By.id("radtxtBUCriticalityName");
+    public static final By MeasuringValue_INPUT = By.id("radtxtMeasuringValue");
     public static final By COUNTRY_DD = By.id("radDrpCountry");
     public static final By AREA_GROUP_DD = By.id("ctl00_ContentPlaceHolder1_RadWinArea_C_raddrpAreaGroup_Input");
     public static final By CITY_DD = By.id("ctl00_ContentPlaceHolder1_RadWinArea_C_radDrpCity_Input");
@@ -52,6 +58,9 @@ public class ManageLocationMasterPage extends BasePage {
     public static final By BUCriticality_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBaseUnit_C_raddrpBuBusCriticality_Input");
     public static final By FirstScopeType_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBaseUnit_C_RadComScope_Input");
     public static final By BUFunctionalType_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBusSubType_C_raddrpBussubtype_Input");
+    public static final By BUSizeAttribute_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBUSizeType_C_radDrpAttribute_Input");
+    public static final By BU_Functional_Type_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBUSizeType_C_radDrpBUFunType_Input");
+    public static final By BU_Functional_Sub_Type_DD = By.id("ctl00_ContentPlaceHolder1_RadWinBUSizeType_C_radDrpBUFunSubType_Input");
     public static final By SAVE_BUTTON_CITY =
             By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk");
     public static final By SAVE_BUTTON_AreaGroup =
@@ -65,6 +74,9 @@ public class ManageLocationMasterPage extends BasePage {
     public static final By SAVE_BUTTON_ZONEGROUPCRITICALITY = By.id("ctl00_ContentPlaceHolder1_RadWinZoneGroupCriticality_C_btnZoneGroupCriticalityOk");
     public static final By SAVE_BUTTON_BU_Functional_Type = By.id("ctl00_ContentPlaceHolder1_RadWinBusType_C_btnBusType");
     public static final By SAVE_BUTTON_BU_Func_Sub_Type = By.id("ctl00_ContentPlaceHolder1_RadWinBusSubType_C_btnBusSubType");
+    public static final By SAVE_BUTTON_BU_Size_Attribute = By.id("ctl00_ContentPlaceHolder1_RadWinAttribute_C_btnAttribute");
+    public static final By SAVE_BUTTON_BU_Size_Type = By.id("ctl00_ContentPlaceHolder1_RadWinBUSizeType_C_btnBUSizeType");
+    public static final By SAVE_BUTTON_BU_Criticality = By.id("ctl00_ContentPlaceHolder1_RadWinBUCriticality_C_btnBUCriticality");
     public static final By UPDATE_BUTTON_CITY =
             // By.xpath("//div[@id='ctl00_ContentPlaceHolder1_RadWinCity_C']//button[@type='button' and @id='ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk']");
             By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityOk");
@@ -76,9 +88,12 @@ public class ManageLocationMasterPage extends BasePage {
     public  static final By BaseUnit = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'Base Unit')]");
     public  static final By ZoneCriticality = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'Zone Criticality')]");
     public  static final By ZoneGroupCriticality = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'Zone Group Criticality')]");
-    public  static final By BUFunctionalType = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'BU Functional Type')]");
-    public  static final By BUFunctionalSubType = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'BU Functional Sub Type')]");
-    public  static final By BUSizeAttribute = By.xpath("//div[@class='tags']//a[i[@class='icon-receipt'] and contains (., 'BU Size Attribute')]");
+    public  static final By BUFunctionalType = By.xpath("//div[@class='tags']//a[i[@class='icon-label text-primary'] and contains (., 'BU Functional Type')]");
+    public  static final By BUFunctionalSubType = By.xpath("//div[@class='tags']//a[i[@class='icon-label text-secondary'] and contains (., 'BU Functional Sub Type')]");
+    public  static final By BUSizeAttribute = By.xpath("//div[@class='tags']//a[i[@class='icon-label text-warning'] and contains (., 'BU Size Attribute')]");
+    public  static final By BU_Size_Attribute_Code_NAME_INPUT = By.id("radtxtAttributeCode");
+    public  static final By BUSizeType = By.xpath("//div[@class='tags']//a[i[@class='icon-label text-success'] and contains (., 'BU Size Type')]");
+    public  static final By BUCriticality = By.xpath("//div[@class='tags']//a[i[@class='icon-label text-info'] and contains (., 'BU Criticality')]");
     public static final By CANCEL_BUTTON_CITY = By.id("ctl00_ContentPlaceHolder1_RadWinCity_C_btnCityClose_ClientState");
     public static final By FIRST_CITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCity_ctl00__0");
     public static final By DELETE_FIRST_CITY_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCity_ctl00_ctl04_ImageButton2");
@@ -96,6 +111,9 @@ public class ManageLocationMasterPage extends BasePage {
             By.id("ctl00_ContentPlaceHolder1_grdZoneGroupCriticality_ctl00_ctl02_ctl02_FilterTextBox_ZoneGroupCriticality");
     public static final By SEARCH_BUFuncTypeName = By.id("ctl00_ContentPlaceHolder1_grdBusType_ctl00_ctl02_ctl02_FilterTextBox_BusinessTypeName");
     public static final By SEARCH_BUFuncSubTypeName = By.id("ctl00_ContentPlaceHolder1_grdBusSubType_ctl00_ctl02_ctl02_FilterTextBox_BusinessSubTypeName");
+    public static final By SEARCH_BUSizeAttributeName = By.id("ctl00_ContentPlaceHolder1_grdAttribute_ctl00_ctl02_ctl02_FilterTextBox_AttributeName");
+    public static final By SEARCH_BUSizeAttributeType = By.id("ctl00_ContentPlaceHolder1_grdBUSizeType_ctl00_ctl02_ctl02_FilterTextBox_BusinessUnitSizeTypeName");
+    public static final By SEARCH_BUCriticality = By.id("ctl00_ContentPlaceHolder1_grdBUCriticality_ctl00_ctl02_ctl02_FilterTextBox_BaseunitCriticalityType");
     public void clickOnIcon(String dataConfig) {
         try {
             By locator = By.xpath(String.format("//div[@class='nav sideMenuScroll']//a[@id='10']",
@@ -179,11 +197,38 @@ public class ManageLocationMasterPage extends BasePage {
     }
 
     public void enterTotalAreaSqft(int sqft) {
-        utils.typeText(BUFunctionalType_NAME_INPUT, String.valueOf(sqft));
+        utils.typeText(BUFunctionalSubType_TotalSqft_INPUT, String.valueOf(sqft));
     }
 
     public void enterBUFunctionalSubType(String name) {
         utils.typeText(BUFunctionalSubType_NAME_INPUT, name);
+    }
+    public void enterBUSizeAttributeCode(String name) {
+        utils.typeText(BU_Size_Attribute_Code_NAME_INPUT, name);
+    }
+    public void enterBUSizeAttributeName(String name)
+    {
+        utils.typeText(BU_Size_Attribute_NAME_INPUT, name);
+    }
+    public void enterBUSizeTypeCode(String name)
+    {
+        utils.typeText(BU_Size_Type_Code_INPUT, name);
+    }
+    public void enterBUSizeTypeName(String name)
+    {
+        utils.typeText(BU_Size_Type_Name_INPUT, name);
+    }
+    public void enterBUCriticalityName(String name)
+    {
+        utils.typeText(BU_Criticality_Name_INPUT, name);
+    }
+    public void enterMeasuringValue(String[] MeasuringValue)
+    {
+        for (String value : MeasuringValue)
+        {
+            utils.typeText(MeasuringValue_INPUT, value);
+        }
+
     }
     public void getFirstCityName() {
         utils.click(FIRST_CITY_IN_LIST);
@@ -331,6 +376,33 @@ public class ManageLocationMasterPage extends BasePage {
         //wait.until(ExpectedConditions.elementToBeClickable(firstItem)).click();
         utils.click(firstItem);
     }
+    public void selectBUSizeAttribute()
+    {
+        utils.click(BUSizeAttribute_DD);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
+        utils.waitForElementVisible(firstItem, 30);
+        //wait.until(ExpectedConditions.elementToBeClickable(firstItem)).click();
+        utils.click(firstItem);
+    }
+    public void selectBUFunctionalType()
+    {
+        utils.click(BU_Functional_Type_DD);//ctl00_ContentPlaceHolder1_RadWinBUSizeType_C_radDrpBUFunType_Input
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
+        utils.waitForElementVisible(firstItem, 50);
+        //wait.until(ExpectedConditions.elementToBeClickable(firstItem)).click();
+        utils.click(firstItem);
+    }
+    public void selectBUFunctionalSubType()
+    {
+        utils.click(BU_Functional_Sub_Type_DD);//
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        By firstItem = By.xpath("(//ul[contains(@class,'rcbList')]/li[contains(@class,'rcbItem')])[1]");
+        utils.waitForElementVisible(firstItem, 50);
+        //wait.until(ExpectedConditions.elementToBeClickable(firstItem)).click();
+        utils.click(firstItem);
+    }
     public String modifiesCityName(String modifiedCity) {
         try {
             By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdCity_ctl00__0']/td[3]");
@@ -464,12 +536,39 @@ public class ManageLocationMasterPage extends BasePage {
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBusSubType_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
         utils.isElementVisible(locator, 5);
-        System.out.println("Newly created BU Functional Type identified during search:" + savedBUFuncSubTypeName);
+        System.out.println("Newly created BU Functional Sub Type identified during search:" + savedBUFuncSubTypeName);
+    }
+    public void verifyBUSizeAttributeName(String savedBUSizeAttributeName)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        utils.typeText(SEARCH_BUSizeAttributeName, savedBUSizeAttributeName + Keys.ENTER);
+        By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdAttribute_ctl00__0']/td[2][@title]");
+        utils.waitForElement(locator);
+        utils.isElementVisible(locator, 5);
+        System.out.println("Newly created BU Size Attribute Name identified during search:" + savedBUSizeAttributeName);
+    }
+    public void verifyBUSizeAttributeType(String savedBUSizeAttributeType)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        utils.typeText(SEARCH_BUSizeAttributeType, savedBUSizeAttributeType + Keys.ENTER);
+        By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBUSizeType_ctl00__0']/td[2][@title]");
+        utils.waitForElement(locator);
+        utils.isElementVisible(locator, 5);
+        System.out.println("Newly created BU Size Type Name identified during search:" + savedBUSizeAttributeType);
+    }
+    public void verifyBUCriticality(String savedBUCriticality)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        utils.typeText(SEARCH_BUCriticality, savedBUCriticality + Keys.ENTER);
+        By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBUCriticality_ctl00__0']/td[1][@title]");
+        utils.waitForElement(locator);
+        utils.isElementVisible(locator, 5);
+        System.out.println("Newly created BU Size Type Name identified during search:" + savedBUCriticality);
     }
     public void clickSaveActionButton() {
         By[] saveButtons = {SAVE_BUTTON_CITY, SAVE_BUTTON_AreaGroup, SAVE_BUTTON_AREA, SAVE_BUTTON_PROPERTY, SAVE_BUTTON_ZONE,
                 SAVE_BUTTON_SUBZONE, SAVE_BUTTON_BU, SAVE_BUTTON_ZONECRITICALITY, SAVE_BUTTON_ZONEGROUPCRITICALITY, SAVE_BUTTON_BU_Functional_Type,
-        SAVE_BUTTON_BU_Func_Sub_Type};
+        SAVE_BUTTON_BU_Func_Sub_Type, SAVE_BUTTON_BU_Size_Attribute, SAVE_BUTTON_BU_Size_Type, SAVE_BUTTON_BU_Criticality};
 
         for (By button : saveButtons)
         {
@@ -637,6 +736,32 @@ public class ManageLocationMasterPage extends BasePage {
         catch (Exception e)
         {
             System.out.println("Failed to click on BU Size Attribute menu");
+            throw e;
+        }
+    }
+    public void clickonBUSizeType()
+    {
+        try
+        {
+            utils.click(BUSizeType);
+            System.out.println("Clicked on BU Size Type menu" );
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to click on BU Size Type menu");
+            throw e;
+        }
+    }
+    public void clickonBUCriticality()
+    {
+        try
+        {
+            utils.click(BUCriticality);
+            System.out.println("Clicked on BU Criticality menu" );
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to click on BU Criticality menu");
             throw e;
         }
     }

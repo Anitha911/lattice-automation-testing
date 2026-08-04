@@ -159,4 +159,45 @@ public class TestDataGenerator {
         String[] BUFunctionalSubType = {"Utilities Operations", "Electrical Maintenance", "Occupational Safety", "Cost Control", "Warehousing", "Infrastructure & Network", "Workforce Planning", "Vendor Performance"};
         return BUFunctionalSubType[random.nextInt(BUFunctionalSubType.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
     }
+
+    public String generateBUSizeAttributeCode()
+    {
+        String[] BUSizeAttributeCode = {"BUAC -"};
+        return BUSizeAttributeCode[random.nextInt(BUSizeAttributeCode.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUSizeAttributeName()
+    {
+        String[] BUSizeAttributeName = {"Headcount","Square Feet","Volume", "Annual turnover"};
+        return BUSizeAttributeName[random.nextInt(BUSizeAttributeName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUSizeTypeCode()
+    {
+        String[] BUSizeTypeCode = {"STC -"};
+        return BUSizeTypeCode[random.nextInt(BUSizeTypeCode.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateBUSizeTypeName()
+    {
+        String[] BUSizeTypeName = {"Common","Studio Apartment","Roof Top Apartment", "Watchman Room"};
+        return BUSizeTypeName[random.nextInt(BUSizeTypeName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUCriticalityName()
+    {
+        String[] BUCriticalityName = {"Severe","Major","Moderate", "Minor"};
+        return BUCriticalityName[random.nextInt(BUCriticalityName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generatePTWType()
+    {
+        String[] PTWType = {"High Risk Work Permits","Maintenance and Operations Permits","Specialized Work Permits", "Facility and Civil Work Permits", "General or Administrative Permits"};
+        return PTWType[random.nextInt(PTWType.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateSN()
+    {
+        String[] ShortName = {"HWP","MOP","SWP", "Civil", "Common"};
+        return ShortName[random.nextInt(ShortName.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateTOWI()
+    {
+        String[] TOWI = {"Welding or Soldering","Mechanical or Pipeline Work","Chemical or Radiation", "Drilling or Scaffolding", "Site Access or Inspection"};
+        return TOWI[random.nextInt(TOWI.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
 }
