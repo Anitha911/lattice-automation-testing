@@ -55,6 +55,7 @@ public class HelperUtils {
         String actualErrorMessage = errorElement.getText().trim();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Inline error message mismatch");
     }
+
     public void verifySpecialCharactersNotAllowed(By locator) {
         WebElement fieldElement = driver.findElement(locator);
 
@@ -75,6 +76,7 @@ public class HelperUtils {
             Assert.fail("Special characters were allowed in the field - Test Failed!");
         }
     }
+
     public String getAndStoreDefaultFieldValue(WebDriver driver, By fieldLocator) {
         WebElement fieldElement = driver.findElement(fieldLocator);
         String fieldValue = fieldElement.getAttribute("value");
@@ -154,6 +156,7 @@ public class HelperUtils {
             }
         }
     }
+
     public void enterSpecialCharacters(By locator) {
         String specialChars = "@#$%^&*";
         System.out.println("Entering special characters: " + specialChars);
@@ -168,8 +171,4 @@ public class HelperUtils {
                 "Active checkbox is not selected by default");
         System.out.println("PASS: Active checkbox is selected by default");
     }
-
-
-
-
 }

@@ -44,7 +44,7 @@ public class TrainingManagementMastersSteps {
     public void user_clicks_on_first_available_company_type_to_delete() {
         tmp.clickCompanyTypetoDelete();
     }
-    @Then("User verify if the record is deleted")
+    @Then("User verify if the company type is deleted")
     public void user_verify_record_deleted() {
         tmp.verifyRecordDeleted(generateCompanyType);
     }
