@@ -1,0 +1,366 @@
+@dataconfigInventory
+Feature: Inventory data configuration Module Automation
+
+  @addItemType
+  Scenario: Should be able to add Item Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on button Item Type add 'Add'
+    Then User fills up the 'Item type' Item Type details
+    Then User clicks on Item Type save button
+    Then User verify if the Item Type is created
+
+  @EditItemType
+  Scenario: Should be able to Edit Item Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on button Item Type add 'Add'
+    Then User fills up the 'Item type' Item Type details
+    Then User clicks on Item Type save button
+    Then User verify if the Item Type is created
+    Then User clicks on active Item Type in the grid
+    Then User clicks on Item Type save button
+    Then User verify if the Item Type is created
+
+  @DeleteItemType
+  Scenario: Should be able to Delete Inventory Item Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on active Item Type in the grid to delete
+    Then User verify if the Item Type is deleted
+
+  @ExporttoExcelItemTypes
+  Scenario: Should be able to export to Excel Inventory Item Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on Inventory Item Type Export to Excel button
+
+  @addItemCategory
+  Scenario: Should be able to add Item Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item Category 'string' in side menu
+    Then User clicks on button Item Category add 'Add'
+    Then User fills up the 'Item Category' Item Category details
+    Then User clicks on Item Category save button
+    Then User verify if the Item Category is created
+
+    @EditItemCategory
+    Scenario: Should be able to Edit Item Category
+      Given User navigates to 'lattice.url' page
+      Then User is at home screen after login with "username" and "password"
+      Then User clicks on Inventory 'Data configuration' in side menu
+      Then User clicks on the additional masters Inventory 'string' tab
+      Then User clicks on the Inventory master Item Category 'string' in side menu
+      Then User clicks on button Item Category add 'Add'
+      Then User fills up the 'Item Category' Item Category details
+      Then User clicks on Item Category save button
+      Then User verify if the Item Category is created
+      Then User clicks on active Item Category in the grid
+      Then User clicks on Item Category save button
+      Then User verify if the Item Category is created
+
+@DeleteItemCategory
+    Scenario: Should be able to Edit Item Category
+      Given User navigates to 'lattice.url' page
+      Then User is at home screen after login with "username" and "password"
+      Then User clicks on Inventory 'Data configuration' in side menu
+      Then User clicks on the additional masters Inventory 'string' tab
+      Then User clicks on the Inventory master Item Category 'string' in side menu
+      Then User clicks on active Item Category in the grid to delete
+      Then User verify if the Item Category is deleted
+
+  @ExporttoExcelItemCategory
+  Scenario: Should be able to export to Excel Inventory Item Category
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Data Config 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item Category 'string' in side menu
+    Then User clicks on Inventory Item Category Export to Excel button
+
+  @addItemSubCategory
+  Scenario: Should be able to add Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on button Item SubCategory add 'Add'
+    Then User fills up the 'Item SubCategory' Item SubCategory details
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
+
+  @EditItemSubCategory
+  Scenario: Should be able to Edit Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on button Item SubCategory add 'Add'
+    Then User fills up the 'Item SubCategory' Item SubCategory details
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
+    Then User clicks on active Item SubCategory in the grid
+    Then User clicks on Item SubCategory save button
+    Then User verify if the Item SubCategory is created
+
+  @DeleteItemSubCategory
+  Scenario: Should be able to Delete Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on active Item SubCategory in the grid to delete
+    Then User verify if the Item SubCategory is deleted
+
+  @ExportToExcelItemSubCategory
+  Scenario: Should be able to Export to Excel Item SubCategory
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Item SubCategory 'string' in side menu
+    Then User clicks on Inventory Item SubCategory Export to Excel button
+
+  @addUnitConversion
+  Scenario: Should be able to add Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+
+  @EditUnitConversion
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on button Unit Conversion add 'Add'
+    Then User fills up the 'Unit Conversion' Unit Conversion details
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+    Then User clicks on active Unit Conversion in the grid
+    Then User clicks on Unit Conversion save button
+    Then User verify if the Unit Conversion is created
+
+  @DeleteUnitConversion
+  Scenario: Should be able to Edit Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on active Unit Conversion in the grid to delete
+    Then User verify if the Unit Conversion is deleted
+
+  @ExportToExcelUnitConversion
+  Scenario: Should be able to Export to Excel Unit Conversion
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Unit Conversion 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addStoreGroup
+  Scenario: Should be able to add Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+
+  @EditStoreGroup
+  Scenario: Should be able to Edit Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on button Store Group add 'Add'
+    Then User fills up the 'Store Group' Store Group details
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+    Then User clicks on active Store Group in the grid
+    Then User clicks on Store Group save button
+    Then User verify if the Store Group is created
+
+  @DeleteStoreGroup
+  Scenario: Should be able to Delete Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on active Store Group in the grid to delete
+    Then User verify if the Store Group is deleted
+
+  @ExportToExcelStoreGroup
+  Scenario: Should be able to Export To Excel Store Group
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Store Group 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addUOM
+  Scenario: Should be able to add UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @EditUOM
+  Scenario: Should be able to Edit UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on button UOM add 'Add'
+    Then User fills up the 'UOM' UOM details
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+    Then User clicks on active UOM in the grid
+    Then User clicks on UOM save button
+    Then User verify if the UOM is created
+
+  @DeleteUOM
+  Scenario: Should be able to delete UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on active UOM in the grid to delete
+    Then User verify if the UOM is deleted
+
+  @ExportToExcelUOM
+  Scenario: Should be able to Export to Excel UOM
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master UOM 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addSupplierType
+  Scenario: Should be able to add Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @EditSupplierType
+  Scenario: Should be able to Edit Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on button Supplier Type add 'Add'
+    Then User fills up the 'Supplier Type' Supplier Type details
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+    Then User clicks on active Supplier Type in the grid
+    Then User clicks on Supplier Type save button
+    Then User verify if the Supplier Type is created
+
+  @DeleteSupplierType
+  Scenario: Should be able to Delete Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on active Supplier Type in the grid to delete
+    Then User verify if the Supplier Type is deleted
+
+  @ExportToExcelSuppliertype
+  Scenario: Should be able to Export to Excel Supplier Type
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Supplier Type 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
+
+  @addActionReasons
+  Scenario: Should be able to add Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @EditActionReasons
+  Scenario: Should be able to Edit Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on button Action Reasons add 'Add'
+    Then User fills up the 'Action Reasons' Action Reasons details
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+    Then User clicks on active Action Reasons in the grid
+    Then User clicks on Action Reasons save button
+    Then User verify if the Action Reasons is created
+
+  @DeleteActionReasons
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on active Action Reasons in the grid to delete
+    Then User verify if the Action Reasons is deleted
+
+  @ExportToExcelActionReasons
+  Scenario: Should be able to Delete Action Reasons
+    Given User navigates to 'lattice.url' page
+    Then User is at home screen after login with "username" and "password"
+    Then User clicks on Inventory 'Data configuration' in side menu
+    Then User clicks on the additional masters Inventory 'string' tab
+    Then User clicks on the Inventory master Action Reasons 'string' in side menu
+    Then User clicks on Inventory Export to Excel button
