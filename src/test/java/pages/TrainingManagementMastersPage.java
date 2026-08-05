@@ -21,7 +21,6 @@ public class TrainingManagementMastersPage extends BasePage {
     public static final By SEARCH_COMPANYTYPE = By.cssSelector("[alt='Filter CompanyType column']");
     public static final By FIRST_COMPANY_TYPE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCompanyType_ctl00__0");
     public static final By DELETE_FIRST_COMPANY_TYPE_IN_LIST = By.id("ctl00_ContentPlaceHolder1_grdCompanyType_ctl00_ctl04_imgDelete");
-    public static final By SEARCH_DELETEDRECORD = By.cssSelector("[alt='Filter CompanyType column']");
     public static final By UPDATE_BUTTON = By.xpath("//span[text()='UPDATE']");
 
 
@@ -64,7 +63,7 @@ public class TrainingManagementMastersPage extends BasePage {
         alert.accept();
     }
     public void verifyRecordDeleted(String expectedTitle) {
-        utils.typeText(SEARCH_DELETEDRECORD,expectedTitle + Keys.ENTER);
+        utils.typeText(SEARCH_COMPANYTYPE,expectedTitle + Keys.ENTER);
         By locator = By.xpath(("//tr[@class=\"rgNoRecords\"]//div[text()='No records to display.']"));
         utils.isElementVisible(locator);
     }

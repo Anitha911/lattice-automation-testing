@@ -173,5 +173,8 @@ public class TestDataGenerator {
     public static String getCurrentTimePlus3Minutes() {
         return LocalTime.now().plusMinutes(120).format(TIME_FORMATTER);
     }
-
+    public String generateCriticality() {
+        String[] levels = {"Working at Height", "Confined Space Entry", "Hot Work Welding or Cutting", "Electrical Isolation", "Chemical Handling"};
+        return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
+    }
 }

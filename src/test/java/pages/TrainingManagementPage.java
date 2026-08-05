@@ -85,10 +85,10 @@ public class TrainingManagementPage extends BasePage {
     private By STATUS_DROPDOWN = By.id("ctl00_ContentPlaceHolder1_RadWinStatusUpdate_C_ddlNewStatus_Input");
 
     public static final By COURSEDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpCourse_Input");
-    public static final By LEVELDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpLevel_Input");
+    public static final By LEVELDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpLevel2_Input");
     public static final By TRAINERDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpTrainer_Input");
     public static final By VENUEDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpVenue_Input");
-    public static final By PLATFORMDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpPlatform_Input");
+    public static final By PLATFORMDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpPlatform2_Input");
     public static final By FREQUENCYDD = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_raddrpFrequency_Input");
     public static final By REMARKSa = By.id("radtxtRemark");
     public static final By DDOPTIONS = By.xpath("(//li[@class='rcbItem'])[1]");
@@ -99,6 +99,8 @@ public class TrainingManagementPage extends BasePage {
 
     public static final By ENDTIMEICON = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_timePopupLink");
     public static final By ENDTIME = By.xpath("(//*[@id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpEndtime_timeView_tdl']//a)[3]");
+    public static final By SAVE_CRITICALITY = By.xpath("//button[@id='ctl00_ContentPlaceHolder1_RadWinHWCriticality_C_btnHWCriticalityOk']");
+    public static final By SAVE_BUTTON_FIELD = By.xpath("//button[@id='ctl00_ContentPlaceHolder1_RadWinChecklistField_C_ChecklistFieldadd']");
 
     public void clickOnTabByTitle(String tabTitle) {
         try {
@@ -195,8 +197,8 @@ public class TrainingManagementPage extends BasePage {
     }
 
     public void clickSaveButton() {
-        By[] saveButtons = {SAVE_BUTTON_SCDHEULE,SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE, SAVE_BUTTON_TRAINING_COMPANY, SAVE_BUTTON_PARTICIPANTS};
-
+        By[] saveButtons = {SAVE_BUTTON_SCDHEULE,SAVE_BUTTON_COMPANY, SAVE_BUTTON_COURSE, SAVE_BUTTON_TRAINING_LEVEL, SAVE_BUTTON_TRAINING_FREQUENCY, SAVE_BUTTON_VANUE, SAVE_BUTTON_TRAINING_COMPANY, SAVE_BUTTON_PARTICIPANTS,SAVE_CRITICALITY,
+        SAVE_BUTTON_FIELD};
         for (By button : saveButtons) {
             if (utils.isElementVisible(button)) {
                 utils.click(button);
@@ -375,19 +377,19 @@ public class TrainingManagementPage extends BasePage {
     public void scheduleDetails() throws IOException, InterruptedException {
         utils.click(LEVELDD);
         utils.click(DDOPTIONS);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(COURSEDD);
         utils.click(DDOPTIONS);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(TRAINERDD);
         utils.click(DDOPTIONS);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(VENUEDD);
         utils.click(DDOPTIONS);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(PLATFORMDD);
         utils.click(DDOPTIONS);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(FREQUENCYDD);
         utils.click(DDOPTIONS);
         utils.typeText(REMARKS, "Testing the schedule");
@@ -404,14 +406,14 @@ public class TrainingManagementPage extends BasePage {
 
         utils.click(STARTDATE);
         utils.click(dateCell1);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.typeText(By.id("ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_radDtpStarttime1_dateInput"), TestDataGenerator.getCurrentTime());
 
         By dateCell2 = By.cssSelector(
                 "[id='ctl00_ContentPlaceHolder1_RadWinTrainingSche_C_RadEndDate_calendar_Top'] " +
                         "td[title='" + dateToSelect2 + "']"
         );
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         utils.click(ENDDATE);
         utils.click(dateCell2);
         Thread.sleep(1000);
