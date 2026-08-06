@@ -171,4 +171,11 @@ public class HelperUtils {
                 "Active checkbox is not selected by default");
         System.out.println("PASS: Active checkbox is selected by default");
     }
+
+    public void verifyMaxLength(By locator, int maxLength) {
+        WebElement element = driver.findElement(locator);
+        String maxAttr = element.getAttribute("maxlength");
+        Assert.assertNotNull(maxAttr,"maxlength attribute is missing");
+        Assert.assertEquals(Integer.parseInt(maxAttr),maxLength,"maxlength value mismatch");
+    }
 }

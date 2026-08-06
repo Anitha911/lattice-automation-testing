@@ -563,95 +563,78 @@ public class TestDataGenerator {
         return levels[random.nextInt(levels.length)] + " " + UUID.randomUUID().toString().substring(0, 4);
     }
 
+    //Incident Management - Master
     //Generate Incident Type Code
-    public String generateIncident_Type_Code() {
-        String[] codes = {"TRA1", "UI78", "IPJK6", "COG07", "JIN9", "PAM1"};
-        return codes[random.nextInt(codes.length)];
+    public String generateIncidentTypeCode() {
+        return "INC" + (int)(Math.random() * 10000);
     }
 
     //Generate Incident Type
-    public String generateIncident_Type() {
-        String[] incidentType = {
-                "Fire Incident",
-                "Medical",
-                "Security Incident",
-                "Workplace Incident",
-                "Chemical Spill Hazard",
-                "Power Incident",
-                "Network Incident",
-                "Unauthorized Access Hazard",
-                "Nature Hazard",
-                "Equipment Malfunction "
-        };
-        return incidentType[random.nextInt(incidentType.length)];
+    public String generateIncidentType() {
+        return "Incident Type " + (int)(Math.random() * 10000);
     }
 
     //Generate Incident Sub Type Code
-    public String generateIncident_Sub_Type_Code() {
-        String[] codes = {"SK", "U7", "56", "C6", "L7", "P3"};
-        return codes[random.nextInt(codes.length)];
+    public String generateIncidentSubTypeCode() {
+        return "Sub" + (int)(Math.random() * 10000);
     }
 
     //Generate Incident Sub Type
-    public String generateIncident_Sub_Type() {
-        String[] incidentSubType = {
-                "Plane",
-                "Medical",
-                "Security",
-                "Work",
-                "Chemical",
-                "Power",
-                "Network",
-                "Spill",
-                "Nature",
-                "Equip"
-        };
-        return incidentSubType[random.nextInt(incidentSubType.length)];
+    public String generateIncidentSubType() {
+        return "SubTy" + (int)(Math.random() * 10000);
     }
 
-    public String generateIncident_Severity() {
-        String[] codes = {"P5", "P1", "P2", "P3", "P4", "P6"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Severity
+    public String generateIncidentSeverity() {
+        String[] severity = {"Minor", "Major", "Medium"};
+        String selectedSeverity = severity[random.nextInt(severity.length)];
+        int number = 1000 + random.nextInt(9000);
+        return selectedSeverity + number;
     }
 
-    public String generateAffected_Group() {
-        String[] codes = {"Children", "Family Members", "Victims/Employees", "Local Residents", "Organization", "Coworkers"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Affected Group
+    public String generateIncidentAffectedGroup() {
+        String[] groups = {"Electrical","Mechanical", "Security","Housekeeping","IT Support"};
+        return groups[random.nextInt(groups.length)] + (1000 + random.nextInt(9000));
     }
 
-    public String generateCaused_By() {
-        String[] codes = {"Human Factors", "Negligent Acts", "System Failures", "Faulty equipments", "Improper supervision", "Ignoring safety protocols"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Caused By
+    public String generateIncidentCausedBy() {
+        String[] CausedBy = {"Human Factors", "Negligent Acts", "System Failures", "Faulty equipments", "Improper supervision", "Ignoring safety protocols"};
+        return CausedBy[random.nextInt(CausedBy.length)] + (1000 + random.nextInt(9000));
     }
 
-    public String generateImpact_Type() {
-        String[] codes = {"Critical", "Low", "None", "High", "Informational", "Maintenance"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Impact Type
+    public String generateIncidentImpactType() {
+        String[] ImpactType = {"Critical", "Low", "None", "High", "Informational", "Maintenance"};
+        return ImpactType[random.nextInt(ImpactType.length)] + (1000 + random.nextInt(9000));
     }
 
-    public int generateImpact_Type_Sort_Order() {
-        int[] codes = {1, 2, 3, 4, 5, 6};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Impact Type Sort Order
+    public int generateIncidentImpactTypeSortOrder() {
+        return 1 + random.nextInt(90000);
     }
 
-    public String generateSection_Name() {
-        String[] codes = {"Resolution Details", "Incident Details", "Business Impact", "Related Records", "Activity/Notes", "Impact/Urgency/Priority"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident - Section Name
+    public String generateIncidentSectionName() {
+        String[] SectionName = {"ResolutionDetails", "IncidentDetails", "BusinessImpact", "RelatedRecords", "Activity/Notes", "Impact/Urgency/Priority"};
+        return SectionName[random.nextInt(SectionName.length)] + (1000 + random.nextInt(9000));
     }
 
-    public int generateSection_Sort_Order() {
-        int[] codes = {1, 2, 3, 4, 5, 6};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident - Section Sort Order
+    public int generateIncidentSectionSortOrder() {
+        return 1 + random.nextInt(100);
     }
 
-    public String generateField_Name() {
-        String[] codes = {"Description of the Incident", "Incident Details", "Who Caused The Incident", "Incident Photos", "Reason for the Incident Happened", "Where the Incident happens"};
-        return codes[random.nextInt(codes.length)];
+    //Generate Incident Field
+    public String generateIncidentFieldName() {
+        String[] Field = {"Description of the Incident", "Incident Details", "Who Caused The Incident", "Incident Photos", "Reason for the Incident Happened", "Where the Incident happens"};
+        return Field[random.nextInt(Field.length)] + random.nextInt(90000);
     }
 
-    public String generateList_of_Values() {
-        String[] LOV = {"LOV11", "LOV12", "LO1V3", "LOV14", "LOV15", "LOV16"};
-        return LOV[random.nextInt(LOV.length)];
+    //Generate Incident - ListofValues
+    public String generateIncidentListofValues() {
+        return "LOV" + (int)(Math.random() * 100);
     }
 
     public String generateRegulatory_Body() {
