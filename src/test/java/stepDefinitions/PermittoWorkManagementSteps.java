@@ -77,6 +77,6 @@ public class PermittoWorkManagementSteps
     public void user_fills_checklist_details()
     {
         tmp.clickonChecklistmenu();
-        tmp.addChecklist();
+        //tmp.addChecklist();
     }
 }

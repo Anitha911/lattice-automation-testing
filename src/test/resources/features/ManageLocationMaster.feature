@@ -24,7 +24,7 @@ Feature: Location Management Module Automation
      Then User clicks on first available city to edit
      Then User edits the 'City' details
      Then User waits for 10 seconds
-     Then User clicks on update button
+     Then User clicks on update button manage Master manage Master
      Then User waits for 20 seconds
      Then User verify if the city is updated
 
@@ -66,7 +66,7 @@ Feature: Location Management Module Automation
     Then User clicks on first available Area Group
     Then User edits the 'Area Group' details
     Then User waits for 10 seconds
-    Then User clicks on update button
+    Then User clicks on update button manage Master manage Master
     Then User waits for 20 seconds
     Then User verify if the Area Group is updated
 

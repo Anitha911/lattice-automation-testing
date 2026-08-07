@@ -274,8 +274,8 @@ public class ManageLocationMasterSteps {
         return updatedCity;
     }
 
-    @Then("User clicks on update button")
-    public void user_clicks_on_update_button()
+    @Then("User clicks on update button manage Master")
+    public void user_clicks_update_button_manageMaster()
     {
         tmp.clickUpdateButton();
         //tmp.clickSaveActionButton();

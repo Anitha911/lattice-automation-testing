@@ -117,7 +117,7 @@ public class PermittoWorkManagementPage extends BasePage
 
         for (By button : saveButtons)
         {
-            if (utils.isElementVisible(button, 5))
+            if (utils.isElementVisible(button))
             {
                 utils.click(button);
                 return;
@@ -131,7 +131,7 @@ public class PermittoWorkManagementPage extends BasePage
         utils.typeText(SEARCH_TYPE, savedtypeName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdPTWType_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created type identified during search:" + savedtypeName);
     }
     public void filterAndClickDraftRecord()

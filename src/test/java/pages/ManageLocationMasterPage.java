@@ -424,8 +424,8 @@ public class ManageLocationMasterPage extends BasePage {
         By[] updateButtons = {UPDATE_BUTTON_CITY};
 
         for (By button : updateButtons) {
-            if (utils.isElementVisible(button, 5)) {
-                utils.waitForElementToBeClickable(button, 10);
+            if (utils.isElementVisible(button)) {
+                utils.waitForElementToBeClickable(button);
                 utils.click(button);
                 utils.click(button);
                 //utils.waitForInvisibility(CITY_POPUP, 15);
@@ -441,7 +441,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_CITY, savedCityName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdCity_ctl00__0']/td[3][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created city identified during search:" + savedCityName);
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -452,7 +452,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_AreaGroup, savedAGName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdAreaGroup_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Area Group identified during search:" + savedAGName);
     }
     public void verifyAreaName(String savedAreaName)
@@ -461,7 +461,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_Area, savedAreaName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdArea_ctl00__0']/td[3][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Area identified during search:" + savedAreaName);
     }
     public void verifyPropertyName(String savedPropertyName)
@@ -470,7 +470,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_Property, savedPropertyName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdProperty_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Property identified during search:" + savedPropertyName);
     }
     public void verifyZoneName(String savedZoneName)
@@ -479,7 +479,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_Zone, savedZoneName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdZone_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Zone identified during search:" + savedZoneName);
     }
     public void verifySubZoneName(String savedSubZoneName)
@@ -488,7 +488,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_SubZone, savedSubZoneName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdSubZone_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created SubZone identified during search:" + savedSubZoneName);
     }
     public void verifyBUName(String savedBUName)
@@ -497,7 +497,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUName, savedBUName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBaseUnit_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Base unit identified during search:" + savedBUName);
     }
     public void verifyZCName(String savedZCName)
@@ -506,7 +506,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_ZCName, savedZCName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdZoneCriticality_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Zone criticality identified during search:" + savedZCName);
     }
     public void verifyZGCName(String savedZGCName)
@@ -515,7 +515,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_ZGCName, savedZGCName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdZoneGroupCriticality_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created Zone Group Criticality identified during search:" + savedZGCName);
     }
 
@@ -525,7 +525,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUFuncTypeName, savedBUFuncTypeName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBusType_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created BU Functional Type identified during search:" + savedBUFuncTypeName);
     }
 
@@ -535,7 +535,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUFuncSubTypeName, savedBUFuncSubTypeName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBusSubType_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created BU Functional Sub Type identified during search:" + savedBUFuncSubTypeName);
     }
     public void verifyBUSizeAttributeName(String savedBUSizeAttributeName)
@@ -544,7 +544,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUSizeAttributeName, savedBUSizeAttributeName + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdAttribute_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created BU Size Attribute Name identified during search:" + savedBUSizeAttributeName);
     }
     public void verifyBUSizeAttributeType(String savedBUSizeAttributeType)
@@ -553,7 +553,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUSizeAttributeType, savedBUSizeAttributeType + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBUSizeType_ctl00__0']/td[2][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created BU Size Type Name identified during search:" + savedBUSizeAttributeType);
     }
     public void verifyBUCriticality(String savedBUCriticality)
@@ -562,7 +562,7 @@ public class ManageLocationMasterPage extends BasePage {
         utils.typeText(SEARCH_BUCriticality, savedBUCriticality + Keys.ENTER);
         By locator = By.xpath("//tr[@id='ctl00_ContentPlaceHolder1_grdBUCriticality_ctl00__0']/td[1][@title]");
         utils.waitForElement(locator);
-        utils.isElementVisible(locator, 5);
+        utils.isElementVisible(locator);
         System.out.println("Newly created BU Size Type Name identified during search:" + savedBUCriticality);
     }
     public void clickSaveActionButton() {
@@ -572,7 +572,7 @@ public class ManageLocationMasterPage extends BasePage {
 
         for (By button : saveButtons)
         {
-            if (utils.isElementVisible(button, 5))
+            if (utils.isElementVisible(button))
             {
                 utils.click(button);
                 return;
