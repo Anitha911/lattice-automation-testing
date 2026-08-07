@@ -613,6 +613,19 @@ public class ElementUtils {
     public void waitForSeconds(int i) {
     }
 
+    public void waitForElement(By locator)
+    {
+        waitUntilClickable(locator);
+    }
+
+
+    public void waitForInvisibility(By locator, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
 //Asset - Master - Model
     public void selectDropdownByText(By locator, String visibleText) {
         try {
@@ -637,6 +650,7 @@ public class ElementUtils {
         );
     }
     }
+
 
 
 

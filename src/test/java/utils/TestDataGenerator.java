@@ -230,8 +230,8 @@ public class TestDataGenerator {
     }
     //Guard Shift Generate a random Patrol Shift Code
     public String generatePatrolShiftCode() {
-            return String.valueOf(random.nextInt(1000));
-        }
+        return String.valueOf(random.nextInt(1000));
+    }
     //Sales-Client type
     public String generateClientType() {
         String[] mode = {"tstClient1", "tstClient2", "tstClient3", "tstClient4", "tstClient5"};
@@ -1133,8 +1133,107 @@ public class TestDataGenerator {
     public String generateParameter_Master_ScheduledMaintenance() {
         return "Parameter" + System.currentTimeMillis();
     }
+    public String generateCityName()
+    {
+        String[] cities = {"Dubai", "Abu Dhabi", "Sharjah", "Fujairah", "Ajman", "Ras Al Khaimah", "Umm Al Quwain", "Kalba"};
+        return cities[random.nextInt(cities.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateAGName()
+    {
+        String[] Areagroups = {"Central Dubai", "Downtown Area", "Residential Community", "Suburbs", "Industrial", "Outer Areas", "New Developments", "Municipality systems"};
+        return Areagroups[random.nextInt(Areagroups.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateAreaName()
+    {
+        String[] AreaName = {"Deira", "Downtown Dubai", "Oud Metha", "Business Bay", "Jumeirah", "Mirdif", "Dubai Marina", "International city"};
+        return AreaName[random.nextInt(AreaName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generatePropertyName()
+    {
+        String[] PropertyName = {"Dubai South", "Palm Jumeirah", "Arabian Ranches", "The Springs", "Town Square", "Bluewater Island", "City walk", "Emirates Hills"};
+        return PropertyName[random.nextInt(PropertyName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateZoneName()
+    {
+        String[] ZoneName = {"Jebel Ali Free Zone", "Dubai Airport Free Zone", "Silicon Oasis", "Master Panned Zones", "Mainland Areas"};
+        return ZoneName[random.nextInt(ZoneName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateSubZoneName()
+    {
+        String[] SubZoneName = {"JNaif", "Al Ras", "DIFC", "Al Barsha South", "Abu Hail"};
+        return SubZoneName[random.nextInt(SubZoneName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUName()
+    {
+        String[] BUName = {"Block A", "Lift A", "Garden A", "Corridor A", "Pool A"};
+        return BUName[random.nextInt(BUName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBURemarks()
+    {
+        String[] BURemarks = {"Remarks 1", "Remarks 2", "Remarks 3"};
+        return BURemarks[random.nextInt(BURemarks.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateZoneCriticality()
+    {
+        String[] ZoneCriticality = {"Critical", "High", "Medium", "Low", "Non-Critical"};
+        return ZoneCriticality[random.nextInt(ZoneCriticality.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateZoneGroupCriticality()
+    {
+        String[] ZoneGroupCriticality = {"Safety-Critical Zone", "Production-Critical Zone", "Operational-Support Zone", "Non-Critical / Administrative Zone", "Environmental-Sensitive Zone"};
+        return ZoneGroupCriticality[random.nextInt(ZoneGroupCriticality.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUFunctionalType()
+    {
+        String[] BUFunctionalType = {"Operations", "Maintenance", "HSE", "Finance", "Supply Chain", "Digital", "HR", "Sales"};
+        return BUFunctionalType[random.nextInt(BUFunctionalType.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
 
+    public String generateBUFunctionalSubType()
+    {
+        String[] BUFunctionalSubType = {"Utilities Operations", "Electrical Maintenance", "Occupational Safety", "Cost Control", "Warehousing", "Infrastructure & Network", "Workforce Planning", "Vendor Performance"};
+        return BUFunctionalSubType[random.nextInt(BUFunctionalSubType.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
 
-
-
+    public String generateBUSizeAttributeCode()
+    {
+        String[] BUSizeAttributeCode = {"BUAC -"};
+        return BUSizeAttributeCode[random.nextInt(BUSizeAttributeCode.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUSizeAttributeName()
+    {
+        String[] BUSizeAttributeName = {"Headcount","Square Feet","Volume", "Annual turnover"};
+        return BUSizeAttributeName[random.nextInt(BUSizeAttributeName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUSizeTypeCode()
+    {
+        String[] BUSizeTypeCode = {"STC -"};
+        return BUSizeTypeCode[random.nextInt(BUSizeTypeCode.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateBUSizeTypeName()
+    {
+        String[] BUSizeTypeName = {"Common","Studio Apartment","Roof Top Apartment", "Watchman Room"};
+        return BUSizeTypeName[random.nextInt(BUSizeTypeName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generateBUCriticalityName()
+    {
+        String[] BUCriticalityName = {"Severe","Major","Moderate", "Minor"};
+        return BUCriticalityName[random.nextInt(BUCriticalityName.length)] + " " + UUID.randomUUID().toString().substring(0, 6);
+    }
+    public String generatePTWType()
+    {
+        String[] PTWType = {"High Risk Work Permits","Maintenance and Operations Permits","Specialized Work Permits", "Facility and Civil Work Permits", "General or Administrative Permits"};
+        return PTWType[random.nextInt(PTWType.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateSN()
+    {
+        String[] ShortName = {"HWP","MOP","SWP", "Civil", "Common"};
+        return ShortName[random.nextInt(ShortName.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
+    public String generateTOWI()
+    {
+        String[] TOWI = {"Welding or Soldering","Mechanical or Pipeline Work","Chemical or Radiation", "Drilling or Scaffolding", "Site Access or Inspection"};
+        return TOWI[random.nextInt(TOWI.length)] + " " + UUID.randomUUID().toString().substring(0, 3);
+    }
 }
+
