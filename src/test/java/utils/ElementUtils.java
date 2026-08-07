@@ -6,6 +6,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -626,17 +627,28 @@ public class ElementUtils {
 
 
 //Asset - Master - Model
+    public void selectDropdownByText(By locator, String visibleText) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            Select select = new Select(element);
+            select.selectByVisibleText(visibleText);
 
-    public void selectDropdownByText(By dropdown, String value) {
-        click(dropdown);
-        By option = By.xpath("//li[normalize-space(.)='" + value + "']");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(option));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-        System.out.println("Selected dropdown value: " + value);
+            System.out.println("Selected '" + visibleText + "' from the dropdown.");
+        } catch (Exception e) {
+            System.out.println("Failed to select '" + visibleText + "'. Error: " + e.getMessage());
+            throw e;
+        }
     }
+    public static void waitForAjaxToComplete(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-
+        wait.until(d ->
+                ((JavascriptExecutor) d).executeScript(
+                        "return (typeof jQuery !== 'undefined') ? jQuery.active == 0 : true"
+                )
+        );
+    }
     }
 
 
