@@ -360,6 +360,7 @@ Feature: Audit Management Module Automation
     And User clicks on Save button in Audit Management Elements Section
     Then User verifies added Audit Frequency details in table
 
+
   @AuditFrequency @Edit
   Scenario: User Should be able to add it in AuditFrequency
     Given User navigates to 'lattice.url' page
