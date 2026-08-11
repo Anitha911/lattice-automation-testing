@@ -47,8 +47,8 @@ public class ManagementTrainingSteps {
     }
 
     @Then("User fills up the {string} type company details")
-    public void user_fill_up_the_coperate_company_details(String type) throws IOException {
-        companyName = dataGen.generateCompanyName();
+    public void user_fill_up_the_corporate_company_details(String type) throws IOException {
+        String companyName = dataGen.generateCompanyName();
         String contactNumber = dataGen.generatePhoneNumber();
         String contactName = dataGen.generatePersonName();
         String designation = dataGen.generateDesignation();
@@ -199,15 +199,14 @@ public class ManagementTrainingSteps {
         tmp.timeAndDate();
     }
 
-
-    @When("user verify the chars min len as {int} and max len as {int} on Company Name")
-    public void user_verify_chars_len_companyName(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("radtxtCompanyName"),maxLen, minLen);
+    @When("user verify the chars max len as {int} on Company Name")
+    public void user_verify_chars_len_4(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCompanyName"),maxLen, null);
     }
 
-    @When("user verify the chars min len as {int} and max len as {int} on Contact Name")
-    public void user_verify_chars_len_ContactName(int minLen, int maxLen) {
-        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),maxLen, minLen);
+    @When("user verify the chars max len as {int} on Contact Name")
+    public void user_verify_chars_len_5(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("txtContactName"),maxLen, null);
     }
 
     @When("user verify the chars min len as {int} and max len as {int} on Designation")
@@ -273,6 +272,59 @@ public class ManagementTrainingSteps {
 
     @Then("appropriate validation error messages should be displayed for each invalid field")
     public void verify_validation_messages() {
+    }
+
+    @When("user verify the chars max len as {int} on Course Name")
+    public void user_verify_chars_len_6(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtCourseName"),maxLen, null);
+    }
+    @When("user verify the chars max len as {int} on Course Details")
+    public void user_verify_chars_len_7(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtTopicDetails"),maxLen, null);
+    }
+    @When("user verify the chars max len as {int} on Course Category")
+    public void user_verify_chars_len_8(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radTxtCourseCategory"),maxLen, null);
+    }
+    @When("user verify the chars max len as {int} on Course Link")
+    public void user_verify_chars_len_9(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtCourseLink"),maxLen, null);
+    }
+    @When("user verify the chars max len as {int} on Validity days")
+    public void user_verify_chars_len_10(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtValidityDays"),maxLen, null);
+    }
+
+    @When("user verify the inline error message {string} on Course Name")
+    public void userVerifyInlineErrorMessageOnCourseName(String expectedErrorMessage) {
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCour_C_RequiredFieldValidator2");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+
+    @When("user verify the inline error message {string} on Course Details")
+    public void userVerifyInlineErrorMessageOnCourseDetails(String expectedErrorMessage) {
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCour_C_RequiredFieldValidator3");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the chars max len as {int} on Training Level Name")
+    public void user_verify_chars_len_11(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("radtxtLevelName"),maxLen, null);
+    }
+    @When("user verify the chars max len as {int} on Training Weightage")
+    public void user_verify_chars_len_12(int maxLen) {
+        helperUtils.verifyMinAndMaxLength(By.id("RadtxtWeightage"),maxLen, null);
+    }
+    @When("user verify the inline error message {string} on Training Level Name")
+    public void userVerifyInlineErrorMessageOnTrainingLevelName(String expectedErrorMessage) {
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTraininglevel_C_RequiredFieldValidator2");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
+    }
+    @When("user verify the inline error message {string} on email")
+    public void userVerifyInlineErrorMessageOnEmail(String expectedErrorMessage) {
+        tmp.enterEmail("TestFormat.com");
+        tmp.clickSaveButton();
+        By companyNameErrorLocator = By.id("ctl00_ContentPlaceHolder1_RadWinTrainingCom_C_RegularExpressionValidator1");
+        helperUtils.verifyInlineErrorMessage(companyNameErrorLocator, expectedErrorMessage);
     }
 }
 

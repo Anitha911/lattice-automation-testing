@@ -5,15 +5,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Utility class to handle Selenium interactions safely with logging and retry logic.
@@ -44,7 +48,7 @@ public class ElementUtils {
         }
     }
 
-    private WebElement waitUntilClickable(By locator) {
+    public WebElement waitUntilClickable(By locator) {
         try {
             return wait.until(ExpectedConditions.elementToBeClickable(locator));
         } catch (TimeoutException e) {
@@ -54,8 +58,7 @@ public class ElementUtils {
         }
     }
 
-
-    private void performJsClick(WebElement element) {
+    public void performJsClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
         LOGGER.info("[JS CLICK] EXECUTED JAVASCRIPT CLICK AS FALLBACK.");
     }
@@ -75,6 +78,11 @@ public class ElementUtils {
             LOGGER.warning("[ELEMENT NOT FOUND] " + locator);
             return null;
         }
+    }
+
+    public void waitForElementVisible(By firstItem, int i) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstItem));
     }
 
     /*
@@ -540,8 +548,109 @@ public class ElementUtils {
         LOGGER.info("[RESULT] CLEANED TEXT FOR ELEMENT " + locator + ": '" + cleanedText + "'");
         return cleanedText;
     }
-
     public List<WebElement> getElements(By locator) {
         return driver.findElements(locator);
     }
-}
+
+    public void clearAndType(By by, String value) {
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        el.click();
+        el.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        el.sendKeys(Keys.DELETE);
+        el.sendKeys(value);
+    }
+
+    public void clickUsingActions(By locator) {
+        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        new Actions(driver).moveToElement(el).pause(Duration.ofMillis(100)).click().perform();
+    }
+
+    public ElementUtils jsClick(By locator) {
+        WebElement element = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+        return this;
+    }
+
+    public ElementUtils waitForElementVisible(By locator) {
+        new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return this;
+    }
+
+    public void waitForElementClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void jsClick(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+    }
+
+    public void clear(By locator) {
+        waitForElementVisible(locator);
+        driver.findElement(locator).clear();
+    }
+
+//Asset Management
+
+//    public void doubleClick(By locator) {
+//        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("var evt = new MouseEvent('dblclick', {bubbles: true}); arguments[0].dispatchEvent(evt);", element);
+//    }
+
+    public void selectDropdownByVisibleText(By dropdown, String value) {
+        click(dropdown);
+        By option = By.xpath("//li[normalize-space()='" + value + "']");
+        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+    }
+
+    public void scrollToElement(By locator) {
+    }
+
+    public void waitForSeconds(int i) {
+    }
+
+    public void waitForElement(By locator)
+    {
+        waitUntilClickable(locator);
+    }
+
+
+    public void waitForInvisibility(By locator, int i)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
+//Asset - Master - Model
+    public void selectDropdownByText(By locator, String visibleText) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            Select select = new Select(element);
+            select.selectByVisibleText(visibleText);
+
+            System.out.println("Selected '" + visibleText + "' from the dropdown.");
+        } catch (Exception e) {
+            System.out.println("Failed to select '" + visibleText + "'. Error: " + e.getMessage());
+            throw e;
+        }
+    }
+    public static void waitForAjaxToComplete(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        wait.until(d ->
+                ((JavascriptExecutor) d).executeScript(
+                        "return (typeof jQuery !== 'undefined') ? jQuery.active == 0 : true"
+                )
+        );
+    }
+    }
+
+
+
+

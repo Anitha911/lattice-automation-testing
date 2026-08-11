@@ -43,7 +43,7 @@ Feature: Training Management Masters Automation
     Then User clicks on save button
     Then User verify if the company type is created or updated
     Then User clicks on first available company type to delete
-    Then User verify if the record is deleted
+    Then User verify if the company type is deleted
 
   @CheckingDuplicateCompanyTypeMasters
   Scenario: Should be able to delete a company

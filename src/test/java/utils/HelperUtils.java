@@ -13,6 +13,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
+import static groovy.xml.Entity.times;
+
 public class HelperUtils {
 
     private static WebDriver driver = null;
@@ -53,6 +55,7 @@ public class HelperUtils {
         String actualErrorMessage = errorElement.getText().trim();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Inline error message mismatch");
     }
+
     public void verifySpecialCharactersNotAllowed(By locator) {
         WebElement fieldElement = driver.findElement(locator);
 
@@ -73,6 +76,7 @@ public class HelperUtils {
             Assert.fail("Special characters were allowed in the field - Test Failed!");
         }
     }
+
     public String getAndStoreDefaultFieldValue(WebDriver driver, By fieldLocator) {
         WebElement fieldElement = driver.findElement(fieldLocator);
         String fieldValue = fieldElement.getAttribute("value");
@@ -153,7 +157,25 @@ public class HelperUtils {
         }
     }
 
+    public void enterSpecialCharacters(By locator) {
+        String specialChars = "@#$%^&*";
+        System.out.println("Entering special characters: " + specialChars);
+        driver.findElement(locator).sendKeys(specialChars);
+        System.out.println("Special characters entered successfully");
+    }
 
+    public void verifyActiveCheckboxSelected(By locator) {
+        WebElement checkbox = driver.findElement(locator);
+        String html = checkbox.getAttribute("innerHTML");
+        Assert.assertTrue(html.contains("rbToggleCheckboxChecked"),
+                "Active checkbox is not selected by default");
+        System.out.println("PASS: Active checkbox is selected by default");
+    }
 
-
+    public void verifyMaxLength(By locator, int maxLength) {
+        WebElement element = driver.findElement(locator);
+        String maxAttr = element.getAttribute("maxlength");
+        Assert.assertNotNull(maxAttr,"maxlength attribute is missing");
+        Assert.assertEquals(Integer.parseInt(maxAttr),maxLength,"maxlength value mismatch");
+    }
 }
