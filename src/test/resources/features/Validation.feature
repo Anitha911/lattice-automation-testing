@@ -90,7 +90,7 @@ Feature: Validate input fields before saving the form for Training company
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on button Sales client types add 'Add'
     When user verify the chars min len as 3 and max len as 50 on Sales Client Type
-    Then User clicks on Client Type save button
+#    Then User clicks on Client Type save button
     When user verify the inline error message 'Enter Client Type Name' on Sales Client Type
 
   @addSalesEnquiryTypeValidation

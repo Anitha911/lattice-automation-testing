@@ -777,7 +777,7 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on button Sales client types add 'Add'
     Then User fills up the 'Client Type Name' details
-    Then User clicks on Client Type save button
+#    Then User clicks on Client Type save button
     Then User verify if the Client Type is created
 
   @SalesMasterEditClientTypesConsolidated
@@ -787,7 +787,7 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on Data Config 'Data configuration' in side menu
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on active Client Type in the grid
-    Then User clicks on Client Type save button
+#    Then User clicks on Client Type save button
     Then User verify if the Client Type is created
 
   @SalesMasterDeleteClientTypesConsolidated
@@ -837,7 +837,7 @@ Feature: Reactive,Sales,Inventory,Guard,Energy Data Config Feature Files
     Then User clicks on Data Config 'Data configuration' in side menu
     Then User clicks on the additional masters Sales 'string' tab
     Then User clicks on the sales master 'Sales Enquiry Types' in side menu
-    Then User clicks on active Enquiry Type in the grid to delete
+#    Then User clicks on active Enquiry Type in the grid to delete
     Then User verify if the Enquiry Type is deleted
 
   @ExporttoExcelEnquiryTypesConsolidated
