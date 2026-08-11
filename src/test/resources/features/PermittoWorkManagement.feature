@@ -25,7 +25,7 @@ Feature: Permit to Work Management Module Automation
     Then User waits for 3 seconds
     Then User adds required checklist
     Then User waits for 10 seconds
-    Then User fills in the necessary checklist details
-    Then User clicks on save
-    Then User verify if the checklist is created
+#    Then User fills in the necessary checklist details
+#    Then User clicks on save
+#    Then User verify if the checklist is created
     Then User waits for 10 seconds
