@@ -63,13 +63,13 @@ public class ElementUtils {
         LOGGER.info("[JS CLICK] EXECUTED JAVASCRIPT CLICK AS FALLBACK.");
     }
 
-//    private void performJsDoubleClick(WebElement element) {
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript(
-//                "var evt = new MouseEvent('dblclick', {bubbles: true, cancelable: true, view: window});" +
-//                        "arguments[0].dispatchEvent(evt);", element);
-//        LOGGER.info("[SUCCESS] JS DOUBLE CLICKED ELEMENT");
-//    }
+    private void performJsDoubleClick(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+                "var evt = new MouseEvent('dblclick', {bubbles: true, cancelable: true, view: window});" +
+                        "arguments[0].dispatchEvent(evt);", element);
+        LOGGER.info("[SUCCESS] JS DOUBLE CLICKED ELEMENT");
+    }
 
     private WebElement findElementSafely(By locator) {
         try {
