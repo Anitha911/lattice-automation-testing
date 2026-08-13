@@ -1,7 +1,6 @@
 package utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -812,11 +811,6 @@ public class TestDataGenerator {
     public String generateTechnical_Parameters() {
         String[] Technical_Parameters = {"TP1", "TP2", "TP3", "TP4", "TP5", "TP6"};
         return Technical_Parameters[random.nextInt(Technical_Parameters.length)];
-    }
-
-    public int generateTechnical_Parameters_Max_Length() {
-        int[] Technical_Parameters_Max_Length = {1, 2, 3, 4, 5, 6};
-        return Technical_Parameters_Max_Length[random.nextInt(Technical_Parameters_Max_Length.length)];
     }
 
     public String generateMetering_Attributes() {

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import java.util.Random;
 
@@ -22,7 +21,6 @@ public class EssentialServicesMastersPage extends BasePage {
     public static final By REGULATORY_BODY_DESCRIPTION = By.id("Txt_RadRegDescription");
     public static final By CONNECTIVITY_CATEGORY = By.id("txtConnectionCategory");
     public static final By CONNECTIVITY = By.id("txtConnectivity");
-    public static final By CONNECTIVITY_CATEGORY_SELECT = By.cssSelector("[value='Enter Connectivity Category']");
     public static final By BUILDING_CATEGORY = By.id("txtBuildingCategory");
     public static final By STRUCTURE_TYPE = By.id("txtStructureType");
     public static final By BUILDING_TYPE = By.id("txtxBuldingType");
@@ -160,7 +158,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        } ;
+        }
         System.out.println("The Updated Regulatory Body is Verified Successfully");
     }
 
@@ -172,7 +170,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        };
+        }
         System.out.println("The Regulatory Body is Deleted Successfully");
     }
 
@@ -216,7 +214,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Connectivity Category is Verified Successfully");
     }
 
@@ -228,7 +226,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }    ;
+        }
         System.out.println("The Connectivity Category is Deleted Successfully");
     }
 
@@ -291,7 +289,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Connectivity is Verified Successfully");
     }
 
@@ -303,7 +301,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Connectivity is Deleted Successfully");
     }
 
@@ -347,7 +345,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Building Category is Verified Successfully");
     }
 
@@ -359,7 +357,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Building Category is Deleted Successfully");
     }
 
@@ -403,7 +401,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Structure Type is Verified Successfully");
     }
 
@@ -415,7 +413,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("The Structure Type is Deleted Successfully");
     }
 
@@ -459,7 +457,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Building Type is Verified Successfully");
     }
 
@@ -471,7 +469,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Building Type is Deleted Successfully");
     }
 
@@ -526,7 +524,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated SP Classification is Verified Successfully");
     }
 
@@ -538,7 +536,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The SP Classification is Deleted Successfully");
     }
 
@@ -640,7 +638,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Updated Violation Type is Verified Successfully");
     }
 
@@ -652,7 +650,7 @@ public class EssentialServicesMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("The Violation Type is Deleted Successfully");
     }
 

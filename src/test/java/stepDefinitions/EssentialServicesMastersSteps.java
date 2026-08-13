@@ -48,7 +48,7 @@ public class EssentialServicesMastersSteps {
 
  //    Essential Services - RegulatoryBody
     @Then("User fills the Regulatory Body details")
-    public void user_Add_Regulatory_Body_details() throws IOException {
+    public void user_Add_Regulatory_Body_details()  {
         Regulatory_Body = dataGen.generateRegulatoryBody();
         String Description = dataGen.generateRegulatoryBodyDescription();
         tmp.MasterEssentialServiceEnterRegulatoryBody(Regulatory_Body);
@@ -66,7 +66,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Regulatory Body details")
-    public void user_Updates_Regulatory_Body_details() throws IOException {
+    public void user_Updates_Regulatory_Body_details()  {
         Update_Regulatory_Body = dataGen.generateRegulatoryBody();
         tmp.MasterEssentialServiceUpdateRegulatoryBody(Update_Regulatory_Body);
         String Update_Regulatory_Body_Description = dataGen.generateRegulatoryBodyDescription();
@@ -85,7 +85,7 @@ public class EssentialServicesMastersSteps {
 
 //    Connectivity Category - Add , Update And Delete
     @Then("User fills the Connectivity Category details")
-    public void user_Add_Connectivity_Category_details() throws IOException {
+    public void user_Add_Connectivity_Category_details()  {
         Connectivity_Category = dataGen.generateConnectivityCategory();
         tmp.MasterEssentialServiceEnterConnectivityCategory(Connectivity_Category);
     }
@@ -101,7 +101,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Connectivity Category details")
-    public void user_Updates_Connectivity_Category_details() throws IOException {
+    public void user_Updates_Connectivity_Category_details() {
         Update_Connectivity_Category = dataGen.generateConnectivityCategory();
         tmp.MasterEssentialServiceUpdateConnectivityCategory(Update_Connectivity_Category);
     }
@@ -118,7 +118,7 @@ public class EssentialServicesMastersSteps {
 
     //    Connectivity - Add , Update And Delete
     @Then("User fills the Connectivity details")
-    public void user_Add_Connectivity_details() throws IOException {
+    public void user_Add_Connectivity_details()  {
         tmp.MasterEssentialServiceSelectConnectivityCategoryRandom();
         Connectivity = dataGen.generateConnectivity();
         tmp.MasterEssentialServiceEnterConnectivity(Connectivity);
@@ -135,7 +135,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Connectivity details")
-    public void user_Updates_Connectivity_details() throws IOException {
+    public void user_Updates_Connectivity_details() {
         Update_Connectivity = dataGen.generateConnectivity();
         tmp.MasterEssentialServiceUpdateConnectivity(Update_Connectivity);
     }
@@ -152,7 +152,7 @@ public class EssentialServicesMastersSteps {
 
     //    Building Category - Add , Update And Delete
     @Then("User fills the Building Category details")
-    public void user_Add_Building_Category_details() throws IOException {
+    public void user_Add_Building_Category_details() {
         Building_Category = dataGen.generateBuildingCategory();
         tmp.MasterEssentialServiceEnterBuildingCategory(Building_Category);
     }
@@ -168,7 +168,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Building Category details")
-    public void user_Updates_Building_Category_details() throws IOException {
+    public void user_Updates_Building_Category_details() {
         Update_Building_Category = dataGen.generateBuildingCategory();
         tmp.MasterEssentialServiceUpdateBuildingCategory(Update_Building_Category);
     }
@@ -185,7 +185,7 @@ public class EssentialServicesMastersSteps {
 
     //  Structure Type - Add , Update And Delete
     @Then("User fills the Structure Type details")
-    public void user_Add_Structure_Type_details() throws IOException {
+    public void user_Add_Structure_Type_details() {
         Structure_Type = dataGen.generateStructureType();
         tmp.MasterEssentialServiceEnterStructureType(Structure_Type);
     }
@@ -201,7 +201,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Structure Type details")
-    public void user_Updates_Structure_Type_details() throws IOException {
+    public void user_Updates_Structure_Type_details() {
         Update_Structure_Type = dataGen.generateStructureType();
         tmp.MasterEssentialServiceUpdateStructureType(Update_Structure_Type);
     }
@@ -218,7 +218,7 @@ public class EssentialServicesMastersSteps {
 
 //   Building Type - Add , Update And Delete
     @Then("User fills the Building Type details")
-    public void user_Add_Building_Type_details() throws IOException {
+    public void user_Add_Building_Type_details() {
         Building_Type = dataGen.generateBuildingType();
         tmp.MasterEssentialServiceEnterBuildingType(Building_Type);
     }
@@ -234,7 +234,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Building Type details")
-    public void user_Updates_Building_Type_details() throws IOException {
+    public void user_Updates_Building_Type_details()  {
         Update_Building_Type = dataGen.generateBuildingType();
         tmp.MasterEssentialServiceUpdateBuildingType(Update_Building_Type);
     }
@@ -251,7 +251,7 @@ public class EssentialServicesMastersSteps {
 
     //  SP Classification  - Add , Update And Delete
     @Then("User fills the SP Classification details")
-    public void user_Add_SP_Classification_details() throws IOException {
+    public void user_Add_SP_Classification_details() {
         SP_Classification = dataGen.generateSPClassification();
         tmp.MasterEssentialServiceEnterSPClassification(SP_Classification);
         tmp.MasterEssentialServiceSelectAllBuildingCategory();
@@ -268,7 +268,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the SP Classification details")
-    public void user_Updates_SP_Classification_details() throws IOException {
+    public void user_Updates_SP_Classification_details() {
         Update_SP_Classification = dataGen.generateSPClassification();
         tmp.MasterEssentialServiceUpdateSPClassification(Update_SP_Classification);
     }
@@ -285,7 +285,7 @@ public class EssentialServicesMastersSteps {
 
     // Violation Type - Add , Update And Delete
     @Then("User fills the Violation Type details")
-    public void user_Add_Violation_Type_details() throws IOException {
+    public void user_Add_Violation_Type_details() {
         Violation_Type = dataGen.generateViolationType();
         tmp.MasterEssentialServiceEnterViolationType(Violation_Type);
         tmp.selectServiceGroup("Additional Work");  // selects service + moves to next
@@ -306,7 +306,7 @@ public class EssentialServicesMastersSteps {
     }
 
     @And("User updates the Violation Type details")
-    public void user_Updates_Violation_Type_details() throws IOException {
+    public void user_Updates_Violation_Type_details() {
         Update_Violation_Type = dataGen.generateViolationType();
         tmp.MasterEssentialServiceUpdateViolationType(Update_Violation_Type);
     }
