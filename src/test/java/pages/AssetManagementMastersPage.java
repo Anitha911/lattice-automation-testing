@@ -2162,5 +2162,4 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
     public void MasterAssetManagementExporttoExcel() {
         utils.click(MASTER_ASSET_MANAGEMENT_EXPORT_TO_EXCEL_BUTTON);
         System.out.println("Downloaded file successfully");    }
-
 }

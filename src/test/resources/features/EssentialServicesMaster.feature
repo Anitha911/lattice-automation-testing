@@ -384,7 +384,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Regulatory Body' on Regulatory Body field in the Essential Services module
-#   When User verify the chars max len as 30 for Regulatory Body field in the Essential Services module
+   When User verify the chars max len as 30 for Regulatory Body field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Regulatory Body field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -417,9 +417,9 @@ Feature: Essential Services Master Module Automation
     Then User clicks on 'Connectivity' section in Essential Services
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
-#   When User verify the inline error message 'Select Connectivity Category' on Connectivity Category field in the Connectivity Essential Services module
+   When User verify the inline error message 'Select Connectivity Category' on Connectivity Category field in the Connectivity Essential Services module
     When User verify the inline error message 'Enter Connectivity' on Connectivity field in the Essential Services module
-#   When User verify the chars max len as 30 for Connectivity field in the Essential Services module
+   When User verify the chars max len as 30 for Connectivity field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Connectivity field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -436,7 +436,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Building Category' on Building Category field in the Essential Services module
-#   When User verify the chars max len as 30 for Building Category field in the Essential Services module
+   When User verify the chars max len as 30 for Building Category field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Building Category field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -453,7 +453,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Structure Type' on Structure Type field in the Essential Services module
-#   When User verify the chars max len as 30 for Structure Type field in the Essential Services module
+   When User verify the chars max len as 30 for Structure Type field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Structure Type field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -503,12 +503,12 @@ Feature: Essential Services Master Module Automation
     Then User clicks on 'Violation Type' section in Essential Services
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
-#    When User verify the inline error message 'Enter Question' on Question field in the Essential Services module
-#    When User verify the inline error message 'Select Service Group' on Service Group field in the Essential Services module
-#    When User verify the inline error message 'Select Fault Category' on Fault Category field in the Essential Services module
-#    When User verify the inline error message 'Select Fault Code' on Fault Code field in the Essential Services module
-#    When User verify the inline error message 'Select Priority' on Priority field in the Essential Services module
-#    When User verify the inline error message 'Select Generate Wo On' on Generate Wo On field in the Essential Services module
+    When User verify the inline error message 'Enter Question' on Question field in the Essential Services module
+    When User verify the inline error message 'Select Service Group' on Service Group field in the Essential Services module
+    When User verify the inline error message 'Select Fault Category' on Fault Category field in the Essential Services module
+    When User verify the inline error message 'Select Fault Code' on Fault Code field in the Essential Services module
+    When User verify the inline error message 'Select Priority' on Priority field in the Essential Services module
+    When User verify the inline error message 'Select Generate Wo On' on Generate Wo On field in the Essential Services module
     When User verify the chars max len as 200 for Question field in the Essential Services module
     When User enters special characters in Question field in the Essential Services module
     And User clicks on Master Essential Services Save button
