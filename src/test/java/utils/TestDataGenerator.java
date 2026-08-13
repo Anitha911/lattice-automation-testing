@@ -637,49 +637,41 @@ public class TestDataGenerator {
         return "LOV" + (int)(Math.random() * 100);
     }
 
-    public String generateRegulatory_Body() {
-        String[] Regulatory_Body = {"RGB1", "RGB2", "RGB3", "RGB4", "RGB5", "RGB6"};
-        return Regulatory_Body[random.nextInt(Regulatory_Body.length)];
+    //Generate Essential Services - Regulatory Body
+    public String generateRegulatoryBody() {
+        return "Regulatory Body " + random.nextInt(1000);
+    }
+    //Generate Essential Services - Regulatory Body
+    public String generateRegulatoryBodyDescription() {
+        return "Regulatory Body Description " + random.nextInt(100);
     }
 
-    public String generateDescription() {
-        String[] Description = {"RBD1", "RBD2", "RBD3", "RBD4", "RBD5", "RBD6"};
-        return Description[random.nextInt(Description.length)];
-    }
-
-    public String generateConnectivity_Category() {
-        String[] Connectivity_Category = {"CC1", "CC2", "CC3", "CC4", "CC5", "CC6"};
-        return Connectivity_Category[random.nextInt(Connectivity_Category.length)];
+    public String generateConnectivityCategory() {
+        return "Connectivity Category " + random.nextInt(100);
     }
 
     public String generateConnectivity() {
-        String[] Connectivity = {"C1", "C2", "C3", "C4", "C5", "C6"};
-        return Connectivity[random.nextInt(Connectivity.length)];
+        return "Connectivity  " + random.nextInt(1000);
     }
 
-    public String generateBuilding_Category() {
-        String[] Building_Category = {"BC1", "BC2", "BC3", "BC4", "BC5", "BC6"};
-        return Building_Category[random.nextInt(Building_Category.length)];
+    public String generateBuildingCategory() {
+        return "Building Category " + random.nextInt(1000);
     }
 
-    public String generateStructure_Type() {
-        String[] Structure_Type = {"ST1", "ST2", "ST3", "ST4", "ST5", "ST6"};
-        return Structure_Type[random.nextInt(Structure_Type.length)];
+    public String generateStructureType() {
+        return "Structure Type " + random.nextInt(1000);
     }
 
-    public String generateBuilding_Type() {
-        String[] Building_Type = {"BT1", "B2", "BT3", "BT4", "BT5", "B6"};
-        return Building_Type[random.nextInt(Building_Type.length)];
+    public String generateBuildingType() {
+        return "Building Type " + random.nextInt(1000);
     }
 
-    public String generateSP_Classification() {
-        String[] SP_Classification = {"SP1", "SP", "SP3", "SP4", "SP5", "SP6"};
-        return SP_Classification[random.nextInt(SP_Classification.length)];
+    public String generateSPClassification() {
+        return "SP Classification " + random.nextInt(1000);
     }
 
-    public String generateViolation_Type() {
-        String[] Violation_Type = {"VT1", "VT2", "VT3", "VT4", "VT5", "VT6"};
-        return Violation_Type[random.nextInt(Violation_Type.length)];
+    public String generateViolationType() {
+        return "Violation Type " + random.nextInt(1000);
     }
 
     // Administration
