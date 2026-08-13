@@ -189,7 +189,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 }
 
     @And("User updates the Asset Sub Category details")
-    public void user_Updates_Asset_Sub_Category_details() throws IOException {
+    public void user_Updates_Asset_Sub_Category_details() {
         Update_Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
         tmp.MasterAssetupdateAssetSubCategory(Update_Asset_Sub_Category);
     }

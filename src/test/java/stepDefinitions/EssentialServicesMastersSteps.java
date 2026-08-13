@@ -9,8 +9,6 @@ import utils.DriverFactory;
 import utils.HelperUtils;
 import utils.TestDataGenerator;
 
-
-import java.io.IOException;
 public class EssentialServicesMastersSteps {
     public static String Regulatory_Body;
     public static String Update_Regulatory_Body;

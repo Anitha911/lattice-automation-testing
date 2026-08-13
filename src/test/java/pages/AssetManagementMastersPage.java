@@ -530,31 +530,17 @@ public void MasterAssetclickAssetubCategorytoEdit(){
 }
 
  public void MasterAssetClickOnSectioninAssetSubCategoryDetailpage(String sectionName) {
-        By locator;
-        switch (sectionName) {
-            case "Applicable Fault Category":
-                locator = By.id("mnuApplicableFaultCategory");
-                break;
-            case "Technical Parameters":
-                locator = By.id("mnuTechnicalParameter");
-                break;
-            case "Metering Parameters":
-                locator = By.id("mnuParameterLinkSetup");
-                break;
-            case "Triggers":
-                locator = By.id("mnuTriggers");
-                break;
-            case "Life Cycle Setup":
-                locator = By.id("mnuLifeCycleSetup");
-                break;
-            case "Applicable Trades":
-                locator = By.id("mnuApplicableTrade");
-                break;
-            default:
-                throw new IllegalArgumentException(
-                        "Unknown section: " + sectionName);
-        }
-        utils.scrollToElement(locator);
+        By locator = switch (sectionName) {
+            case "Applicable Fault Category" -> By.id("mnuApplicableFaultCategory");
+            case "Technical Parameters" -> By.id("mnuTechnicalParameter");
+            case "Metering Parameters" -> By.id("mnuParameterLinkSetup");
+            case "Triggers" -> By.id("mnuTriggers");
+            case "Life Cycle Setup" -> By.id("mnuLifeCycleSetup");
+            case "Applicable Trades" -> By.id("mnuApplicableTrade");
+            default -> throw new IllegalArgumentException(
+                    "Unknown section: " + sectionName);
+        };
+     utils.scrollToElement(locator);
         utils.click(locator);
         System.out.println("Clicked on section: " + sectionName);
     }
@@ -1276,7 +1262,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         }
         catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
     }
 
