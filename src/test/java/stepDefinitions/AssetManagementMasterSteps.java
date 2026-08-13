@@ -173,7 +173,7 @@ public class AssetManagementMasterSteps {
         Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
         tmp.MasterAssetenterAsset_Sub_Category(Asset_Sub_Category);
         tmp.MasterAssetselectSubCategoryMasterCategory("ak electronic items");
-        tmp.MasterAssetselectSubCategoryCategory("ak office electronic items");
+        tmp.MasterAssetselectSubCategoryCategory();
         tmp.MasterAssetselectCriticalityRandom();
     }
 
@@ -419,7 +419,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
         Model = dataGen.generateModel();
         tmp.MasterAssetenterModel(Model);
         tmp.MasterAssetModelselectOEM("TVS");
-        tmp.MasterAssetModelselectMake("Jupiter");
+        tmp.MasterAssetModelselectMake();
         tmp.MasterAssetModelselectAssetMasterCategory("ak electronic items");
         tmp.MasterAssetModelselectAssetCategory();
         tmp.MasterAssetModelselectAssetSubCategory();

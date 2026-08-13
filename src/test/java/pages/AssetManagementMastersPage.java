@@ -454,7 +454,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
         }
     }
 
-    public void MasterAssetselectSubCategoryCategory(String value)
+    public void MasterAssetselectSubCategoryCategory()
             throws InterruptedException {
       Thread.sleep(5000);
         By categoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_raddrpAsscate_Input");
@@ -1493,7 +1493,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
         }
            }
 
-     public void MasterAssetModelselectMake(String make)
+     public void MasterAssetModelselectMake()
          throws InterruptedException {
          Thread.sleep(5000);
          By categoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpBrand_Input");
@@ -1800,7 +1800,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("Thread interrupted: " + e.getMessage());
                 }
                 utils.typeText(
                         MASTER_ASSET_TECHNICAL_PARAMETER_MAX_LENGTH,
@@ -1810,7 +1810,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("Thread interrupted: " + e.getMessage());
                 }
                 utils.typeText(
                         MASTER_ASSET_TECHNICAL_PARAMETER_NO_OF_DECIMALS,
@@ -1832,7 +1832,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
         try {
             Thread.sleep(5000);   // Demo fix
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
         String[] boxNames = {
                 "Section I",
@@ -1845,7 +1845,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
         By option = By.xpath("//li[normalize-space()='" + selectedType + "']");
         utils.click(option);
