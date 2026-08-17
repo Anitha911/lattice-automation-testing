@@ -68,7 +68,7 @@ Feature: Essential Services Master Module Automation
     Then User updates the Connectivity Category details
     Then User clicks on Master Essential Services Save button
     Then User verify if the Connectivity Category is updated
-    Then User waits for 3 seconds
+    Then User waits for 10 seconds
 
   @deleteConnectivityCategory
   Scenario: Should be able to delete a Connectivity Category
@@ -80,6 +80,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on 'Connectivity Category' section in Essential Services
     Then User waits for 3 seconds
     Then User clicks on first available Connectivity Category to delete
+    Then User waits for 3 seconds
 
  # Connectivity - Add , Update And Delete
   @addConnectivity
@@ -122,6 +123,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on 'Connectivity' section in Essential Services
     Then User waits for 3 seconds
     Then User clicks on first available Connectivity to delete
+    Then User waits for 3 seconds
 
   #Building Category - Add , Update And Delete
   @addBuildingCategory
@@ -225,7 +227,7 @@ Feature: Essential Services Master Module Automation
     And User clicks on Master Essential Services Save button
     Then User waits for 5 seconds
     Then User verify if the Building Type is created
-    Then User waits for 10 seconds
+#    Then User waits for 10 seconds
 
   @updateBuildingType
   Scenario: Should be able to edit a Building Type
@@ -328,6 +330,7 @@ Feature: Essential Services Master Module Automation
     Then User waits for 3 seconds
     Then User updates the Violation Type details
     Then User clicks on Master Essential Services Save button
+    Then User waits for 10 seconds
     Then User verify if the Violation Type is updated
     Then User waits for 3 seconds
 
@@ -384,9 +387,10 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Regulatory Body' on Regulatory Body field in the Essential Services module
-   When User verify the chars max len as 30 for Regulatory Body field in the Essential Services module
+    When User verify the chars max len as 50 for Regulatory Description field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Regulatory Body field in the Essential Services module
+    When User enters special characters in Regulatory Description field in the Essential Services module
     And User clicks on Master Essential Services Save button
     Then User waits for 10 seconds
 
@@ -401,7 +405,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Connectivity Category' on Connectivity Category field in the Essential Services module
-   When User verify the chars max len as 30 for Connectivity Category field in the Essential Services module
+    When User verify the chars max len as 30 for Connectivity Category field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Connectivity Category field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -417,9 +421,9 @@ Feature: Essential Services Master Module Automation
     Then User clicks on 'Connectivity' section in Essential Services
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
-   When User verify the inline error message 'Select Connectivity Category' on Connectivity Category field in the Connectivity Essential Services module
+    When User verify the inline error message 'Select Connectivity Category' on Connectivity Category field in the Connectivity Essential Services module
     When User verify the inline error message 'Enter Connectivity' on Connectivity field in the Essential Services module
-   When User verify the chars max len as 30 for Connectivity field in the Essential Services module
+    When User verify the chars max len as 30 for Connectivity field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Connectivity field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -436,7 +440,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Building Category' on Building Category field in the Essential Services module
-   When User verify the chars max len as 30 for Building Category field in the Essential Services module
+    When User verify the chars max len as 50 for Building Category field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Building Category field in the Essential Services module
     And User clicks on Master Essential Services Save button
@@ -453,7 +457,7 @@ Feature: Essential Services Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Master Essential Services Save button
     When User verify the inline error message 'Enter Structure Type' on Structure Type field in the Essential Services module
-   When User verify the chars max len as 30 for Structure Type field in the Essential Services module
+    When User verify the chars max len as 30 for Structure Type field in the Essential Services module
     Then User waits for 2 seconds
     When User enters special characters in Structure Type field in the Essential Services module
     And User clicks on Master Essential Services Save button

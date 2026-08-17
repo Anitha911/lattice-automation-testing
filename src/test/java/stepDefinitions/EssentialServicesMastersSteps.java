@@ -286,11 +286,11 @@ public class EssentialServicesMastersSteps {
     public void user_Add_Violation_Type_details() {
         Violation_Type = dataGen.generateViolationType();
         tmp.MasterEssentialServiceEnterViolationType(Violation_Type);
-        tmp.selectServiceGroup("Additional Work");  // selects service + moves to next
-        tmp.selectFaultCategory("Additional Code Fault"); // selects fault + moves next
-        tmp.selectFaultCode("Civil Works-AW");
-        tmp.selectPriority("P3");
-        tmp.selectGenerateWoOn("True");
+        tmp.MasterEssentialServiceSelectServiceGroup("Additional Work");
+        tmp.MasterEssentialServiceSelectFaultCategory("Additional Code Fault");
+        tmp.MasterEssentialServiceSelectFaultCode("Civil Works-AW");
+        tmp.MasterEssentialServiceSelectPriority("P3");
+        tmp.MasterEssentialServiceSelectRandomGenerateWoOn();
     }
 
     @Then("User verify if the Violation Type is created")
@@ -333,17 +333,23 @@ public class EssentialServicesMastersSteps {
         helperUtils.verifyInlineErrorMessage(errorLocator, expectedMessage);
         System.out.println("Inline error message verified successfully: " + expectedMessage);
     }
-    @When("User verify the chars max len as {int} for Regulatory Body field in the Essential Services module")
-    public void user_verify_chars_len_Regulatory_Body_field(int maxLen) {
-        System.out.println("Verifying Regulatory Body field length validation.Expected Max Length: " + maxLen);
-        helperUtils.verifyMaxLength(By.id("txtRegulatoryBody"),maxLen);
-        System.out.println("Regulatory Body field length validation verified successfully.");
+    @When("User verify the chars max len as {int} for Regulatory Description field in the Essential Services module")
+    public void user_verify_chars_len_Regulatory_Description_field(int maxLen) {
+        System.out.println("Verifying Regulatory Description field length validation.Expected Max Length: " + maxLen);
+        helperUtils.verifyMaxLength(By.id("Txt_RadRegDescription"),maxLen);
+        System.out.println("Regulatory Description field length validation verified successfully.");
     }
     @When("User enters special characters in Regulatory Body field in the Essential Services module")
     public void enter_Special_Characters_In_Regulatory_Body_field() {
         System.out.println("Verifying Regulatory Body field accepts/rejects special characters");
         helperUtils.enterSpecialCharacters(By.id("txtRegulatoryBody"));
         System.out.println("Special character validation completed for Regulatory Body field");
+    }
+    @When("User enters special characters in Regulatory Description field in the Essential Services module")
+    public void enter_Special_Characters_In_Regulatory_Description_field() {
+        System.out.println("Verifying Regulatory Description field accepts/rejects special characters");
+        helperUtils.enterSpecialCharacters(By.id("Txt_RadRegDescription"));
+        System.out.println("Special character validation completed for Regulatory Description field");
     }
 
     // Validation Connectivity Category

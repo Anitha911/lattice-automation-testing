@@ -1,16 +1,11 @@
 package pages;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import java.util.List;
 import java.util.Random;
-
 
 public class EssentialServicesMastersPage extends BasePage {
     public EssentialServicesMastersPage(WebDriver driver) {
@@ -27,11 +22,18 @@ public class EssentialServicesMastersPage extends BasePage {
     public static final By SP_CLASSIFICATION = By.id("txtSpClassification");
     public static final By CHECK_ALL_BUILDING_CATEGORY = By.cssSelector("#listBuildingCategory input.rlbCheckAllItemsCheckBox");
     public static final By VIOLATION_TYPE = By.id("txtViolatinQuestion");
-    public static final By SERVICE_GROUP_SELECT = By.cssSelector("[value='Enter Service Group']");
-    public static final By FAULT_CATEGORY_SELECT = By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_RadCmbFaultCategory_Input");
-    public static final By FAULT_CODE_SELECT = By.cssSelector("[value='Enter Fault Code']");
-    public static final By PRIORITY_SELECT = By.cssSelector("[value='Enter Priority']");
-    public static final By GENERATE_WO_ON_SELECT = By.cssSelector("[value='Enter Generate Wo On']");
+    public static final By ESSENTIAL_SERVICE_MASTER_SERVICE_GROUP_SELECT =
+            By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_RadCmbServiceGroup_Input");
+
+    public static final By ESSENTIAL_SERVICE_MASTER_FAULT_CATEGORY_SELECT =
+            By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_RadCmbFaultCategory_Input");
+
+    public static final By ESSENTIAL_SERVICE_MASTER_FAULT_CODE_SELECT =
+            By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_RadCmbFaultCode_Input");
+
+    public static final By ESSENTIAL_SERVICE_MASTER_PRIORITY_SELECT =
+            By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_radcmbPriority_Input");
+    public static final By ESSENTIAL_SERVICE_MASTER_GENERATE_WO_ON_SELECT = By.id("ctl00_ContentPlaceHolder1_RadWinViolation_C_RadCmbWoGenerateOn_Input");
     public static final By SAVE_BUTTON_REGULATORY_BODY = By.id("ctl00_ContentPlaceHolder1_Radwin_RegulatoryBody_C_btn_Add_RegBody");
     public static final By SAVE_BUTTON_CONNECTIVITY_CATEGORY = By.id("ctl00_ContentPlaceHolder1_RadWinConnectivityCategory_C_BtnAddConnectivity");
     public static final By SAVE_BUTTON_CONNECTIVITY = By.id("ctl00_ContentPlaceHolder1_RadWinConnectivity_C_btnAddConntivity");
@@ -545,62 +547,81 @@ public class EssentialServicesMastersPage extends BasePage {
         utils.typeText(VIOLATION_TYPE, ViolationType);
         System.out.println("The Entered Violation Type is : " + ViolationType);
     }
-
-    public void selectServiceGroup(String ServiceGroup) {
+    public void ViolationTypeSelectRadComboBoxValue(By dropdown, String value) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         try {
-            utils.click(SERVICE_GROUP_SELECT);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", ServiceGroup));
-            utils.click(locator);
-            System.out.println("Clicked on the tab: " + ServiceGroup);
+         wait.until(ExpectedConditions.elementToBeClickable(dropdown)).click();
+         By option = By.xpath(
+                    "//li[contains(@class,'rcbItem') and normalize-space()='" + value + "']"
+            );
+            wait.until(ExpectedConditions.visibilityOfElementLocated(option));
+            wait.until(driver -> {
+            try {
+                    WebElement element = driver.findElement(option);
+                    if (element.isDisplayed() && element.isEnabled()) {
+                        ((JavascriptExecutor) driver).executeScript(
+                                "arguments[0].scrollIntoView({block:'center'});",
+                                element);
+                        element.click();
+                        return true;
+                    }
+                    return false;
+                } catch (StaleElementReferenceException e) {
+                    return false;
+                }
+            });
+            System.out.println("Selected: " + value);
+            Thread.sleep(1500);
         } catch (Exception e) {
-            System.out.println("Failed to click on the tab: " + ServiceGroup);
-            throw e;
-        }
-    }
-    public void selectFaultCategory(String FaultCategory) {
-        try {
-             utils.click(FAULT_CATEGORY_SELECT);
-             By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]",FaultCategory));
-             utils.click(locator);
-                       System.out.println("Selected Fault Category: " + FaultCategory);
-        } catch (Exception e) {
-            System.out.println("Failed to select Fault Category: " + FaultCategory);
-            throw e;
-        }
-    }
-    public void selectFaultCode(String FaultCode) {
-        try {
-              utils.click(FAULT_CODE_SELECT);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", FaultCode));
-            utils.click(locator);
-            System.out.println("Clicked on the tab: " + FaultCode);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the tab: " + FaultCode);
-            throw e;
+            System.out.println("Failed to select: " + value);
+            throw new RuntimeException("Failed to select: " + value, e);
         }
     }
 
-    public void selectPriority(String Priority) {
-        try {
-            utils.click(PRIORITY_SELECT);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", Priority));
-            utils.click(locator);
-            System.out.println("Clicked on the tab: " + Priority);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the tab: " + Priority);
-            throw e;
-        }
+    public void MasterEssentialServiceSelectServiceGroup(String serviceGroup) {
+     ViolationTypeSelectRadComboBoxValue(ESSENTIAL_SERVICE_MASTER_SERVICE_GROUP_SELECT, serviceGroup);
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+     wait.until(ExpectedConditions.elementToBeClickable(
+                ESSENTIAL_SERVICE_MASTER_FAULT_CATEGORY_SELECT));
+     System.out.println("Fault Category is ready.");
+   }
+
+    public void MasterEssentialServiceSelectFaultCategory(String faultCategory) {
+    ViolationTypeSelectRadComboBoxValue(ESSENTIAL_SERVICE_MASTER_FAULT_CATEGORY_SELECT ,
+                faultCategory);
+    ViolationTypeWaitForTelerikLoadingToComplete();
+    System.out.println("Fault Code is ready.");
     }
 
-    public void selectGenerateWoOn(String GenerateWoOn) {
-        try {
-            utils.click(GENERATE_WO_ON_SELECT);
-            By locator = By.xpath(String.format("//li[@class='rcbItem' and contains(text(), '%s')]", GenerateWoOn));
-            utils.click(locator);
-            System.out.println("Clicked on the tab: " + GenerateWoOn);
-        } catch (Exception e) {
-            System.out.println("Failed to click on the tab: " + GenerateWoOn);
-            throw e;
+    public void MasterEssentialServiceSelectFaultCode(String faultCode) {
+    ViolationTypeSelectRadComboBoxValue(ESSENTIAL_SERVICE_MASTER_FAULT_CODE_SELECT,faultCode);
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+     wait.until(ExpectedConditions.elementToBeClickable(
+                ESSENTIAL_SERVICE_MASTER_PRIORITY_SELECT ));
+        System.out.println("Priority is ready.");
+    }
+
+    public void MasterEssentialServiceSelectPriority(String priority) {
+    ViolationTypeSelectRadComboBoxValue(ESSENTIAL_SERVICE_MASTER_PRIORITY_SELECT,  priority);
+   }
+
+    public void MasterEssentialServiceSelectRandomGenerateWoOn() {
+    String[] woValues = {"True", "False"};
+    Random woRandom = new Random();
+    String woValue = woValues[woRandom.nextInt(woValues.length)];
+    ViolationTypeSelectRadComboBoxValue(ESSENTIAL_SERVICE_MASTER_GENERATE_WO_ON_SELECT,woValue);
+    System.out.println("Selected Generate WO On: " + woValue);
+    }
+
+    public void ViolationTypeWaitForTelerikLoadingToComplete() {
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+     try {
+       By loadingMessage = By.xpath( "//*[normalize-space()='Loading...']" );
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingMessage));
+        System.out.println("Telerik loading completed.");
+        } catch (TimeoutException e) {
+        System.out.println("Telerik loading did not complete within 30 seconds.");
+        throw e;
         }
     }
 

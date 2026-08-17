@@ -245,14 +245,12 @@ Scenario: Should be able to edit a Email Listener Setup
 #    Then User waits for 5 seconds
     Then User move to 'Annual Holiday List' section
     Then User click on the Master Administration Export to Excel button
-#    Then User waits for 5 seconds
     Then User move to 'Announcement' section
     Then User click on the Master Administration Export to Excel button
-#    Then User waits for 5 seconds
     Then User move to 'Email Listener Setup' section
-#    Then User waits for 5 seconds
-#    Then User click on the Master Administration Export to Excel button
-#    Then User waits for 5 seconds
+    Then User waits for 5 seconds
+    Then User click on the Master Administration Export to Excel button
+    Then User waits for 5 seconds
     Then User move to 'Working Days / Time' section
 #    Then User waits for 5 seconds
     Then User click on the Master Administration Export to Excel button
@@ -271,12 +269,12 @@ Scenario: Should be able to edit a Email Listener Setup
 #    Then User waits for 3 seconds
     And User clicks on Administration Save button
     When User verify the inline error message 'Enter Note Type / Category' on Note Type Category
-#    Then User waits for 10 seconds
-#    When user verify the chars min len as 3 and max len as 100 for Note Type Category
-#    Then User waits for 10 seconds
-#    When User enters special characters in Note Type Category
-#    And User clicks on Administration Save button
-#    Then User waits for 10 seconds
+    Then User waits for 10 seconds
+    When user verify the chars min len as 3 and max len as 100 for Note Type Category
+    Then User waits for 10 seconds
+    When User enters special characters in Note Type Category
+    And User clicks on Administration Save button
+    Then User waits for 10 seconds
 
   @ValidationDocumentType
   Scenario: User should not be able to save Document Type form with invalid inputs
@@ -286,20 +284,19 @@ Scenario: Should be able to edit a Email Listener Setup
     Then User clicks on hamburger icon
     And User clicks on the 'Administration' tab in data configuration page
     Then User move to 'Document Type' section
-#    Then User waits for 3 seconds
+#   Then User waits for 3 seconds
     Then User clicks on button 'Add'
-#    Then User waits for 3 seconds
     Then User verify Active checkbox is selected by default in Document Type
     Then User waits for 5 seconds
     And User clicks on Administration Save button
-#    When User verify the inline error message 'Enter Document Type' on Document Type
-#    Then User waits for 10 seconds
-#    When User verify the inline error message 'Select Document Related To' on Document Related To
-#    Then User waits for 10 seconds
-##    When user verify the chars min len as 3 and max len as 100 for Document Type
-##    Then User waits for 10 seconds
-#    When User enters special characters in Document Type
-#    And User clicks on Administration Save button
+    When User verify the inline error message 'Enter Document Type' on Document Type
+    Then User waits for 10 seconds
+    When User verify the inline error message 'Select Document Related To' on Document Related To
+    Then User waits for 10 seconds
+    When user verify the chars min len as 3 and max len as 100 for Document Type
+    Then User waits for 10 seconds
+    When User enters special characters in Document Type
+    And User clicks on Administration Save button
     Then User waits for 10 seconds
 
   @ValidationAnnualHoliday
@@ -343,9 +340,9 @@ Scenario: Should be able to edit a Email Listener Setup
     Then User waits for 10 seconds
     When user verify the chars min len as 3 and max len as 100 for Announcement Title
     When user verify the chars min len as 3 and max len as 5000 for Description
-#    When User enters special characters in Announcement Title
-#    When User enters special characters in Description
-#    And User clicks on Administration Save button
+    When User enters special characters in Announcement Title
+    When User enters special characters in Description
+    And User clicks on Administration Save button
     Then User waits for 10 seconds
 
   @ValidationEmailListenerSetup
@@ -359,24 +356,24 @@ Scenario: Should be able to edit a Email Listener Setup
 #    Then User waits for 3 seconds
     Then User clicks on button 'Add'
     Then User waits for 3 seconds
-#    And User clicks on Administration Save button
-#    When User verify the inline error message 'Enter Email Server' on Email Server
-#    When User verify the inline error message 'Enter Port Number' on Port Number
-#    When User verify the inline error message 'Enter Client Id' on Client Id
-#    When User verify the inline error message 'Enter Client Secret' on Client Secret
-#    When User verify the inline error message 'Enter Email Account' on Email Account
-#    When User verify the inline error message 'Enter Account Password' on Account Password
-#    When User verify the inline error message 'Enter Redirection URL' on Redirection URL
-#    When User verify the inline error message 'Enter Auth Code URL' on Auth Code URL
-#    When User verify the inline error message 'Enter Token Exchange URL' on Token Exchange URL
-#    When User verify the inline error message 'Enter Device URL' on Device URL
-#    When User verify the inline error message 'Select Encryption Method' on Encryption Method
-#    When User verify the inline error message 'Enter Scope' on Scope
-#    When user verify the chars min len as 3 and max len as 100 for Email Server
-#    When user verify the chars min len as 3 and max len as 100 for Port Number
-#    When user verify the chars min len as 3 and max len as 100 for Email Account
-#    When user verify the chars min len as 3 and max len as 100 for Account Password
-#    Then User waits for 10 seconds
+    And User clicks on Administration Save button
+    When User verify the inline error message 'Enter Email Server' on Email Server
+    When User verify the inline error message 'Enter Port Number' on Port Number
+    When User verify the inline error message 'Enter Client Id' on Client Id
+    When User verify the inline error message 'Enter Client Secret' on Client Secret
+    When User verify the inline error message 'Enter Email Account' on Email Account
+    When User verify the inline error message 'Enter Account Password' on Account Password
+    When User verify the inline error message 'Enter Redirection URL' on Redirection URL
+    When User verify the inline error message 'Enter Auth Code URL' on Auth Code URL
+    When User verify the inline error message 'Enter Token Exchange URL' on Token Exchange URL
+    When User verify the inline error message 'Enter Device URL' on Device URL
+    When User verify the inline error message 'Select Encryption Method' on Encryption Method
+    When User verify the inline error message 'Enter Scope' on Scope
+    When user verify the chars min len as 3 and max len as 100 for Email Server
+    When user verify the chars min len as 3 and max len as 100 for Port Number
+    When user verify the chars min len as 3 and max len as 100 for Email Account
+    When user verify the chars min len as 3 and max len as 100 for Account Password
+    Then User waits for 10 seconds
     When User enters special characters in Email Server
     When User enters special characters in Port Number
     And User clicks on Administration Save button
