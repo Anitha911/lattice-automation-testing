@@ -44,8 +44,6 @@ public class AssetManagementMasterSteps {
     public static String Master_Trigger_Name;
     public static String Master_Asset_Trigger_Comparison_Type;
     public static String Master_Asset_Trigger_Work_Order_Type;
-    public static String Master_Asset_Trigger_Description;
-
 
     private final WebDriver driver = DriverFactory.getDriver();
     AssetManagementMastersPage tmp = new AssetManagementMastersPage(driver);
@@ -63,7 +61,7 @@ public class AssetManagementMasterSteps {
     }
 
     @Then("User fills the Asset Class details")
-    public void user_Add_Asset_Class_details() throws IOException {
+    public void user_Add_Asset_Class_details()  {
         Asset_Class = dataGen.generateAsset_Class();
         tmp.MasterAssetenterAssetClass(Asset_Class);
     }
@@ -79,7 +77,7 @@ public class AssetManagementMasterSteps {
     }
 
     @And("User updates the Asset Class details")
-    public void user_Updates_Asset_Class_details() throws IOException {
+    public void user_Updates_Asset_Class_details() {
         Update_Asset_Class = dataGen.generateAsset_Class();
         tmp.MasterAssetupdateAssetClass(Update_Asset_Class);
     }
@@ -101,7 +99,7 @@ public class AssetManagementMasterSteps {
     }
 
     @Then("User fills the Asset Master Category details")
-    public void user_Add_Asset_Master_Category_details() throws IOException {
+    public void user_Add_Asset_Master_Category_details() {
         Asset_Master_Category = dataGen.generateAsset_Master_Category();
         tmp.MasterAssetenterAssetMasterCategory(Asset_Master_Category);
         tmp.MasterAssetselectAssetClassrando();
@@ -118,7 +116,7 @@ public class AssetManagementMasterSteps {
     }
 
     @And("User updates the Asset Master Category details")
-    public void user_Updates_Asset_Master_Category_details() throws IOException {
+    public void user_Updates_Asset_Master_Category_details() {
         Update_Asset_Master_Category = dataGen.generateAsset_Master_Category();
         tmp.MasterAssetupdateAssetMasterCategory(Update_Asset_Master_Category);
     }
@@ -136,7 +134,7 @@ public class AssetManagementMasterSteps {
     // Asset Category
 
     @Then("User fills the Asset Category details")
-    public void user_Add_Asset_Category_details() throws IOException {
+    public void user_Add_Asset_Category_details() {
         Asset_Category = dataGen.generateAsset_Category();
         tmp.MasterAssetenterAssetCategory(Asset_Category);
         tmp.MasterAssetselectAssetMasterCategoryRandom();
@@ -153,7 +151,7 @@ public class AssetManagementMasterSteps {
     }
 
     @And("User updates the Asset Category details")
-    public void user_Updates_Asset_Category_details() throws IOException {
+    public void user_Updates_Asset_Category_details() {
         Update_Asset_Category = dataGen.generateAsset_Category();
         tmp.MasterAssetupdateAssetCategory(Update_Asset_Category);
     }
@@ -175,7 +173,7 @@ public class AssetManagementMasterSteps {
         Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
         tmp.MasterAssetenterAsset_Sub_Category(Asset_Sub_Category);
         tmp.MasterAssetselectSubCategoryMasterCategory("ak electronic items");
-        tmp.MasterAssetselectSubCategoryCategory("ak office electronic items");
+        tmp.MasterAssetselectSubCategoryCategory();
         tmp.MasterAssetselectCriticalityRandom();
     }
 
@@ -191,13 +189,13 @@ public void user_click_on_Manage_Asset_Subcategory() {
 }
 
     @And("User updates the Asset Sub Category details")
-    public void user_Updates_Asset_Sub_Category_details() throws IOException {
+    public void user_Updates_Asset_Sub_Category_details() {
         Update_Asset_Sub_Category = dataGen.generateAsset_Sub_Category();
         tmp.MasterAssetupdateAssetSubCategory(Update_Asset_Sub_Category);
     }
 
     @And("User need to click the back icon to move to the Asset Sub Category grid list")
-    public void user_click_back_icon_to_move_Asset_Sub_Category_grid_list() throws IOException {
+    public void user_click_back_icon_to_move_Asset_Sub_Category_grid_list() {
          tmp.MasterAssetclickbackicontomoveAssetSubCategorygridlist();
     }
 
@@ -350,7 +348,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 //    OEM
 
     @Then("User fills the OEM details")
-    public void user_Add_OEM_details() throws IOException {
+    public void user_Add_OEM_details()  {
         OEM = dataGen.generateOEM();
         tmp.MasterAssetenterOEM(OEM);
     }
@@ -366,7 +364,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the OEM details")
-    public void user_Updates_OEM_details() throws IOException {
+    public void user_Updates_OEM_details() {
         Update_OEM = dataGen.generateOEM();
         tmp.MasterAssetupdateOEM(Update_OEM);
     }
@@ -383,7 +381,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 
     //Make / Brand
     @Then("User fills the Make details")
-    public void user_Add_Make_details() throws IOException {
+    public void user_Add_Make_details() {
         Make = dataGen.generateMake();
         tmp.MasterAssetenterMake(Make);
         tmp.MasterAssetselectOEMRandom();
@@ -400,7 +398,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Make details")
-    public void user_Updates_Make_details() throws IOException {
+    public void user_Updates_Make_details() {
         Update_Make = dataGen.generateMake();
         tmp.MasterAssetupdateMake(Update_Make);
     }
@@ -421,10 +419,10 @@ public void user_click_on_Manage_Asset_Subcategory() {
         Model = dataGen.generateModel();
         tmp.MasterAssetenterModel(Model);
         tmp.MasterAssetModelselectOEM("TVS");
-        tmp.MasterAssetModelselectMake("Jupiter");
+        tmp.MasterAssetModelselectMake();
         tmp.MasterAssetModelselectAssetMasterCategory("ak electronic items");
-        tmp.MasterAssetModelselectAssetCategory("ak office electronic items");
-        tmp.MasterAssetModelselectAssetSubCategory("ak laptop");
+        tmp.MasterAssetModelselectAssetCategory();
+        tmp.MasterAssetModelselectAssetSubCategory();
     }
 
     @Then("User verify if the Model is created")
@@ -438,7 +436,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Model details")
-    public void user_Updates_Model_details() throws IOException {
+    public void user_Updates_Model_details() {
         Update_Model = dataGen.generateModel();
         tmp.MasterAssetupdateModel(Update_Model);
     }
@@ -457,7 +455,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     //    Derating Factor
 
     @Then("User fills the Derating Factor details")
-    public void user_Add_Derating_Factor_details() throws IOException {
+    public void user_Add_Derating_Factor_details()  {
         Derating_Factor_Code = dataGen.generateDerating_Factor_Code();
         tmp.MasterAssetenterDeratingFactorCode(Derating_Factor_Code);
         Derating_Factor_Description = dataGen.generateDerating_Factor_Description();
@@ -476,7 +474,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Derating Factor details")
-    public void user_Updates_Derating_Factor_details() throws IOException {
+    public void user_Updates_Derating_Factor_details() {
         Update_Derating_Factor_Code = dataGen.generateDerating_Factor_Code();
         tmp.MasterAssetupdateDeratingFactor(Update_Derating_Factor_Code);
     }
@@ -494,7 +492,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 
     //    Reading Unit
     @Then("User fills the Reading Unit details")
-    public void user_Add_Reading_Unit_details() throws IOException {
+    public void user_Add_Reading_Unit_details()  {
         Short_Code_Reading_Unit = dataGen.generateShort_Code_Reading_Unit();
         tmp.MasterAssetenterShortCodeReadingUnit(Short_Code_Reading_Unit);
         Reading_Unit = dataGen.generateReading_Unit();
@@ -514,7 +512,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Reading Unit details")
-    public void user_Updates_Reading_Unit_details() throws IOException {
+    public void user_Updates_Reading_Unit_details() {
         Update_Reading_Unit = dataGen.generateReading_Unit();
         tmp.MasterAsseUpdateReadingUnit(Update_Reading_Unit);
     }
@@ -531,7 +529,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 
     //    Technical Parameters
     @Then("User fills the Technical Parameters details")
-    public void user_Add_Technical_Parameters_details() throws IOException {
+    public void user_Add_Technical_Parameters_details() {
         Technical_Parameters = dataGen.generateTechnical_Parameters();
         tmp.MasterAssetenterTechnicalParameters(Technical_Parameters);
         tmp.MasterAssetselectTechnicalParametersReadingUnitRandom();
@@ -550,7 +548,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Technical Parameters details")
-    public void user_Updates_Technical_Parameters_details() throws IOException {
+    public void user_Updates_Technical_Parameters_details() {
         Update_Technical_Parameters = dataGen.generateTechnical_Parameters();
         tmp.MasterAssetUpdateTechnicalParameters(Update_Technical_Parameters);
     }
@@ -567,7 +565,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 
     //   Metering Attributes
     @Then("User fills the Metering Attributes details")
-    public void user_Add_Metering_Attributes_details() throws IOException {
+    public void user_Add_Metering_Attributes_details() {
         Metering_Attributes = dataGen.generateMetering_Attributes();
         tmp.MasterAssetenterMeteringAttributes(Metering_Attributes);
         tmp.MasterAssetselectMeteringAttributesReadingUnitRandom();
@@ -585,7 +583,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Metering Attributes details")
-    public void user_Updates_Metering_Attributes_details() throws IOException {
+    public void user_Updates_Metering_Attributes_details() {
         Update_Metering_Attributes = dataGen.generateMetering_Attributes();
         tmp.MasterAssetUpdateMeteringAttributes(Update_Metering_Attributes);
     }
@@ -602,7 +600,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
 
     //  Metering Parameters
     @Then("User fills the Metering Parameters details")
-    public void user_Add_Metering_Parameters_details() throws IOException {
+    public void user_Add_Metering_Parameters_details() {
         Metering_Parameters = dataGen.generateMetering_Parameters();
         tmp.MasterAssetenterMeteringParameters(Metering_Parameters);
         tmp.MasterAssetselectMeteringParameterAttributeRandom();
@@ -621,7 +619,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Metering Parameters details")
-    public void user_Updates_Metering_Parameters_details() throws IOException {
+    public void user_Updates_Metering_Parameters_details() {
         Update_Metering_Parameters = dataGen.generateMetering_Parameters();
         tmp.MasterAssetUpdateMeteringParameters(Update_Metering_Parameters);
     }
@@ -640,7 +638,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     //   ToolsandEquipments
 
     @Then("User fills the Tools & Equipments details")
-    public void user_Add_Tools_And_Equipments_details() throws IOException {
+    public void user_Add_Tools_And_Equipments_details() {
         Equipment_Name = dataGen.generateTools_And_Equipments();
         tmp.MasterAssetenterEquipmentName(Equipment_Name);
         Hourly_Charges_AED = dataGen.generateTools_And_Equipments_Hourly_Charges();
@@ -659,7 +657,7 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
     @And("User updates the Tools & Equipments details")
-    public void user_Updates_Tools_And_Equipments_details() throws IOException {
+    public void user_Updates_Tools_And_Equipments_details() {
         Update_Equipment_Name = dataGen.generateTools_And_Equipments();
         tmp.MasterAssetUpdateToolsAndEquipments(Update_Equipment_Name);
     }
@@ -675,7 +673,6 @@ public void user_click_on_Manage_Asset_Subcategory() {
     }
 
 //    Export to Excel
-
     @Then("User click on the Master Asset Management Export to Excel button")
     public void user_clicks_on_Master_Asset_Management_Export_to_Excel_button() {
         tmp.MasterAssetManagementExporttoExcel();

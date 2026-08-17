@@ -16,7 +16,7 @@ Feature: Asset Management Master Module Automation
     Then User waits for 10 seconds
     Then User verify if the Asset Class is created
     Then User waits for 3 seconds
-
+#
   @updateAssetClass
   Scenario: Should be able to edit a Asset Class
     Given User navigates to 'lattice.url' page
@@ -176,7 +176,7 @@ Feature: Asset Management Master Module Automation
     Then User verify if the Asset Sub Category is updated
     Then User waits for 3 seconds
 
-     # Asset Sub Category -  Applicable Fault Category
+   # Asset Sub Category -  Applicable Fault Category
   @AssetSubCategoryApplicableFaultCategory
   Scenario: Should be able to link Fault Category to Asset Sub Category
     Given User navigates to 'lattice.url' page
@@ -197,8 +197,7 @@ Feature: Asset Management Master Module Automation
     Then User click Fault Category save button in the Fault Category pop up of the Asset Sub Category detail page
     Then User waits for 10 seconds
 
-
-     # Asset Sub Category -  Technical Parameters
+   # Asset Sub Category -  Technical Parameters
   @AssetSubCategoryTechnicalParameter
   Scenario: Should be able to link Technical Parameter to Asset Sub Category
     Given User navigates to 'lattice.url' page
@@ -238,8 +237,8 @@ Feature: Asset Management Master Module Automation
     Then User waits for 5 seconds
     Then User click Link Parameter Setup save button in the Asset Sub Category Metering Parameters section
     Then User waits for 10 seconds
-
-      # Asset Sub Category -  Link Trigger
+#
+  # Asset Sub Category -  Link Trigger
   @AssetSubCategoryTrigger
   Scenario: Should be able to create Trigger to Asset Sub Category
     Given User navigates to 'lattice.url' page
@@ -665,7 +664,7 @@ Feature: Asset Management Master Module Automation
     Then User clicks on Asset Management Save button
     Then User verify if the Metering Parameters is updated
     Then User waits for 3 seconds
-#
+
   @deleteMeteringParameters
   Scenario: Should be able to delete a Metering Parameters
     Given User navigates to 'lattice.url' page
@@ -678,7 +677,7 @@ Feature: Asset Management Master Module Automation
     Then User clicks on first available Metering Parameter to delete
     Then User waits for 10 seconds
 
-  # Tools & Equipments - Add , Update And Delete
+#   Tools & Equipments - Add , Update And Delete
   @addTools&Equipments
   Scenario: Should be able to create a new Tools & Equipments
     Given User navigates to 'lattice.url' page
@@ -875,8 +874,8 @@ Feature: Asset Management Master Module Automation
     When User verify the inline error message 'Enter Make/Brand' on Make field
     When User verify the inline error message 'Select OEM' on OEM field in Make page
     When User verify the chars min len as 3 and max len as 50 for Make field
-    Then User waits for 2 seconds
-    When User enters special characters in Make field
+      Then User waits for 2 seconds
+      When User enters special characters in Make field
     And User clicks on Asset Management Save button
     Then User waits for 10 seconds
 
@@ -896,7 +895,7 @@ Feature: Asset Management Master Module Automation
     When User verify the inline error message 'Select Make / Brand' on Make field in Model page
     When User verify the inline error message 'Select Asset Master Category' on Asset Master Category field in Model page
     When User verify the inline error message 'Select Asset Category' on Asset Category field in Model page
-    When User verify the inline error message 'Select Asset Subcategory ' on Asset Subcategory field in Model page
+    When User verify the inline error message 'Select Asset Subcategory' on Asset Subcategory field in Model page
     When User verify the chars min len as 3 and max len as 50 for Model field
     Then User waits for 2 seconds
     When User enters special characters in Model field
@@ -951,15 +950,15 @@ Feature: Asset Management Master Module Automation
     Then User is at home screen after login with "username" and "password"
     Then User clicks on 'Data Configurations' in navigation panel
     Then User clicks on hamburger icon
-    And User clicks on the 'Asset Management' tab in data configuration page
-    Then User move to 'Technical Parameters' Asset Management Element
-    Then User waits for 5 seconds
-    Then User clicks on button 'Add'
-    And User clicks on Asset Management Save button
-    When User verify the inline error message 'Enter Parameter' on Parameter field in Technical Parameter page
-    When User verify the inline error message 'Select Parameter Type' on Parameter Type field in Technical Parameter page
-    When User verify the inline error message 'Select Box Name' on Box Name field in Technical Parameter page
-     When User verify the chars min len as 3 and max len as 100 for Parameter field in Technical Parameter page
+     And User clicks on the 'Asset Management' tab in data configuration page
+     Then User move to 'Technical Parameters' Asset Management Element
+     Then User waits for 5 seconds
+     Then User clicks on button 'Add'
+     And User clicks on Asset Management Save button
+     When User verify the inline error message 'Enter Parameter' on Parameter field in Technical Parameter page
+     When User verify the inline error message 'Select Parameter Type' on Parameter Type field in Technical Parameter page
+     When User verify the inline error message 'Select Box Name' on Box Name field in Technical Parameter page
+       When User verify the chars min len as 3 and max len as 100 for Parameter field in Technical Parameter page
      Then User waits for 2 seconds
      When User enters special characters in Parameter field in Technical Parameter page
      And User clicks on Asset Management Save button

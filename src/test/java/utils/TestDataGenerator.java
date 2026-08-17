@@ -1,7 +1,6 @@
 package utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -607,7 +606,7 @@ public class TestDataGenerator {
     //Generate Incident Impact Type
     public String generateIncidentImpactType() {
         String[] ImpactType = {"Critical", "Low", "None", "High", "Informational", "Maintenance"};
-        return ImpactType[random.nextInt(ImpactType.length)] + (1000 + random.nextInt(9000));
+        return ImpactType[random.nextInt(ImpactType.length)] + (1000 + random.nextInt(900));
     }
 
     //Generate Incident Impact Type Sort Order
@@ -637,49 +636,41 @@ public class TestDataGenerator {
         return "LOV" + (int)(Math.random() * 100);
     }
 
-    public String generateRegulatory_Body() {
-        String[] Regulatory_Body = {"RGB1", "RGB2", "RGB3", "RGB4", "RGB5", "RGB6"};
-        return Regulatory_Body[random.nextInt(Regulatory_Body.length)];
+    // Essential Services - Master
+    public String generateRegulatoryBody() {
+        return "Regulatory Body " + random.nextInt(1000);
     }
 
-    public String generateDescription() {
-        String[] Description = {"RBD1", "RBD2", "RBD3", "RBD4", "RBD5", "RBD6"};
-        return Description[random.nextInt(Description.length)];
+    public String generateRegulatoryBodyDescription() {
+        return "Regulatory Body Description " + random.nextInt(100);
     }
 
-    public String generateConnectivity_Category() {
-        String[] Connectivity_Category = {"CC1", "CC2", "CC3", "CC4", "CC5", "CC6"};
-        return Connectivity_Category[random.nextInt(Connectivity_Category.length)];
+    public String generateConnectivityCategory() {
+        return "Connectivity Category " + random.nextInt(100);
     }
 
     public String generateConnectivity() {
-        String[] Connectivity = {"C1", "C2", "C3", "C4", "C5", "C6"};
-        return Connectivity[random.nextInt(Connectivity.length)];
+        return "Connectivity  " + random.nextInt(1000);
     }
 
-    public String generateBuilding_Category() {
-        String[] Building_Category = {"BC1", "BC2", "BC3", "BC4", "BC5", "BC6"};
-        return Building_Category[random.nextInt(Building_Category.length)];
+    public String generateBuildingCategory() {
+        return "Building Category " + random.nextInt(1000);
     }
 
-    public String generateStructure_Type() {
-        String[] Structure_Type = {"ST1", "ST2", "ST3", "ST4", "ST5", "ST6"};
-        return Structure_Type[random.nextInt(Structure_Type.length)];
+    public String generateStructureType() {
+        return "Structure Type " + random.nextInt(1000);
     }
 
-    public String generateBuilding_Type() {
-        String[] Building_Type = {"BT1", "B2", "BT3", "BT4", "BT5", "B6"};
-        return Building_Type[random.nextInt(Building_Type.length)];
+    public String generateBuildingType() {
+        return "Building Type " + random.nextInt(1000);
     }
 
-    public String generateSP_Classification() {
-        String[] SP_Classification = {"SP1", "SP", "SP3", "SP4", "SP5", "SP6"};
-        return SP_Classification[random.nextInt(SP_Classification.length)];
+    public String generateSPClassification() {
+        return "SP Classification " + random.nextInt(1000);
     }
 
-    public String generateViolation_Type() {
-        String[] Violation_Type = {"VT1", "VT2", "VT3", "VT4", "VT5", "VT6"};
-        return Violation_Type[random.nextInt(Violation_Type.length)];
+    public String generateViolationType() {
+        return "Violation Type " + random.nextInt(1000);
     }
 
     // Administration
@@ -757,94 +748,75 @@ public class TestDataGenerator {
         return Master_Administration_Scope[random.nextInt(Master_Administration_Scope.length)];
     }
 
-        //ASSET MANAGEMENT
+   // ASSET MANAGEMENT - MASTER
     public String generateAsset_Class() {
-        String[] Asset_Class = {"Asset Class1", "Asset Class2", "Asset Class3", "Asset Class4", "Asset Class5", "Asset ClassS6"};
-        return Asset_Class[random.nextInt(Asset_Class.length)];
+        return "Asset Class " + random.nextInt(1000);
     }
 
     public String generateAsset_Master_Category() {
-        String[] Asset_Master_Category = {"AMC1", "AMC2", "AMC3", "AMC4", "AMC5", "AMC6"};
-        return Asset_Master_Category[random.nextInt(Asset_Master_Category.length)];
+        return "Asset Master Category " + random.nextInt(1000);
     }
 
     public String generateAsset_Category() {
-        String[] Asset_Category = {"Asset Category1", "Asset Category2", "Asset Category3", "Asset Category4", "Asset Category5", "Asset Category6"};
-        return Asset_Category[random.nextInt(Asset_Category.length)];
+        return "Asset Category " + random.nextInt(1000);
     }
 
     public String generateAsset_Sub_Category() {
-        String[] Asset_Sub_Category = {"ASC1", "ASC2", "ASC3", "ASC4", "ASC5", "ASC6"};
-        return Asset_Sub_Category[random.nextInt(Asset_Sub_Category.length)];
+        return "Asset Sub Category " + random.nextInt(1000);
     }
 
     public String generateMaster_Asset_Trigger_Name() {
-        return "Trigger_" + System.currentTimeMillis();
+        return "Trigger " + System.currentTimeMillis();
     }
 
     public String generateOEM() {
-        String[] OEM = {"OEM1", "OEM2", "OEM3", "OEM4", "OEM5", "OEM6"};
-        return OEM[random.nextInt(OEM.length)];
+        return "Asset OEM " + random.nextInt(1000);
     }
 
     public String generateMake() {
-        String[] Make = {"Make1", "Make2", "Make3", "Make4", "Make5", "Make6"};
-        return Make[random.nextInt(Make.length)];
+        return "Asset Make " + random.nextInt(1000);
     }
 
     public String generateModel() {
-        String[] Model = {"Model1", "Model2", "Model3", "Model4", "Model5", "Model6"};
-        return Model[random.nextInt(Model.length)];
+        return "Asset Model " + random.nextInt(1000);
     }
 
     public String generateDerating_Factor_Code() {
-        String[] Derating_Factor = {"DF1", "DF2", "DF3", "DF4", "DF5", "DF6"};
-        return Derating_Factor[random.nextInt(Derating_Factor.length)];
+        return "Asset Derating Factor " + random.nextInt(1000);
     }
 
     public String generateDerating_Factor_Description() {
-        String[] Derating_Factor_Description = {"Description1", "Description2", "Description3", "Description4", "Description5", "Description6"};
-        return Derating_Factor_Description[random.nextInt(Derating_Factor_Description.length)];
+        return "Asset Derating Factor Description " + random.nextInt(1000);
     }
 
     public String generateShort_Code_Reading_Unit() {
-        String[] Short_Code_Reading_Unit = {"SCU1", "SCU2", "SCU3", "SCU4", "SCU5", "SCU6"};
-        return Short_Code_Reading_Unit[random.nextInt(Short_Code_Reading_Unit.length)];
+        return "Reading Unit Short Code " + random.nextInt(100);
     }
 
     public String generateReading_Unit() {
-        String[] Reading_Unit = {"RU1", "RU2", "RU3", "RU4", "RU5", "RU6"};
-        return Reading_Unit[random.nextInt(Reading_Unit.length)];
+        return "Asset Reading Unit " + random.nextInt(100);
     }
 
     public String generateTechnical_Parameters() {
-        String[] Technical_Parameters = {"TP1", "TP2", "TP3", "TP4", "TP5", "TP6"};
-        return Technical_Parameters[random.nextInt(Technical_Parameters.length)];
-    }
-
-    public int generateTechnical_Parameters_Max_Length() {
-        int[] Technical_Parameters_Max_Length = {1, 2, 3, 4, 5, 6};
-        return Technical_Parameters_Max_Length[random.nextInt(Technical_Parameters_Max_Length.length)];
+        return "Asset Technical Parameter " + random.nextInt(100);
     }
 
     public String generateMetering_Attributes() {
-        String[] Metering_Attributes = {"Metering Attribute1", "Metering Attribute3", "Metering Attribute4", "Metering Attribute5", "Metering Attribute6", "Metering Attribute7"};
-        return Metering_Attributes[random.nextInt(Metering_Attributes.length)];
+        return "Asset Metering Attibute " + random.nextInt(100);
     }
 
       public String generateMetering_Parameters() {
-        String[] Metering_Attributes = {"Metering Parameter1", "Metering Parameter2", "Metering Parameter3", "Metering Parameter4", "Metering Parameter5", "Metering Parameter6"};
-        return Metering_Attributes[random.nextInt(Metering_Attributes.length)];
+          return "Asset Metering Parameter " + random.nextInt(100);
     }
 
     public String generateTools_And_Equipments() {
-        String[] Tools_And_Equipments = {"Tools1", "Tool2", "Tool3", "Tool4", "Tool5", "Tool6"};
-        return Tools_And_Equipments[random.nextInt(Tools_And_Equipments.length)];
+        return "Asset Tools " + random.nextInt(1000);
     }
 
     public int generateTools_And_Equipments_Hourly_Charges() {
-        int[] Hourly_Charges = {100, 250, 300, 450, 500, 600};
-        return Hourly_Charges[random.nextInt(Hourly_Charges.length)];
+        int tools_value =  random.nextInt(50000);
+        tools_value = (tools_value / 5) * 5;
+        return tools_value;
     }
 
 //    Transaction Incident

@@ -1,11 +1,8 @@
 package pages;
-import com.microsoft.schemas.office.visio.x2012.main.TriggerType;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
-
 import java.time.Duration;
 import java.util.*;
 
@@ -125,7 +122,7 @@ public class AssetManagementMastersPage extends BasePage {
             By.xpath("//div[contains(@class,'k-multiselect')]");
 
     private static final By MASTER_ASSET_FAULT_CATEGORY_VALUES =
-            By.xpath("//ul[@role='listbox']//li");;
+            By.xpath("//ul[@role='listbox']//li");
 
 
     public static final By MASTER_ASSET_SUBCATEGORY_CLICK_APPLICABLE_FAULT_CATEGORY_SAVE_BUTTON= By.id("ctl00_ContentPlaceHolder1_RadWinApplicableFaultCategory_C_btnSaveApplicableFaultCategory");
@@ -266,7 +263,7 @@ public class AssetManagementMastersPage extends BasePage {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("Verified Updated Asset Class Successfully");
     }
 
@@ -278,7 +275,7 @@ public class AssetManagementMastersPage extends BasePage {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        };
+        }
         System.out.println("Asset Class Deleted Successfully");
 
     }
@@ -347,7 +344,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }       ;
+        }
         System.out.println("Verified Updated Asset Master Category Successfully");
     }
 
@@ -359,7 +356,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("Asset Master Category Deleted Successfully");
     }
 
@@ -424,7 +421,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("Updated Asset Category is Verified Successfully");
     }
 
@@ -436,7 +433,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("Asset Category Deleted Successfully");
     }
 
@@ -457,7 +454,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
         }
     }
 
-    public void MasterAssetselectSubCategoryCategory(String value)
+    public void MasterAssetselectSubCategoryCategory()
             throws InterruptedException {
       Thread.sleep(5000);
         By categoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinAssSubCat_C_raddrpAsscate_Input");
@@ -519,7 +516,7 @@ public void MasterAssetclickAddAssetMasterCategory() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("Updated Asset Sub Category is Verified Successfully");
     }
 
@@ -533,31 +530,17 @@ public void MasterAssetclickAssetubCategorytoEdit(){
 }
 
  public void MasterAssetClickOnSectioninAssetSubCategoryDetailpage(String sectionName) {
-        By locator;
-        switch (sectionName) {
-            case "Applicable Fault Category":
-                locator = By.id("mnuApplicableFaultCategory");
-                break;
-            case "Technical Parameters":
-                locator = By.id("mnuTechnicalParameter");
-                break;
-            case "Metering Parameters":
-                locator = By.id("mnuParameterLinkSetup");
-                break;
-            case "Triggers":
-                locator = By.id("mnuTriggers");
-                break;
-            case "Life Cycle Setup":
-                locator = By.id("mnuLifeCycleSetup");
-                break;
-            case "Applicable Trades":
-                locator = By.id("mnuApplicableTrade");
-                break;
-            default:
-                throw new IllegalArgumentException(
-                        "Unknown section: " + sectionName);
-        }
-        utils.scrollToElement(locator);
+        By locator = switch (sectionName) {
+            case "Applicable Fault Category" -> By.id("mnuApplicableFaultCategory");
+            case "Technical Parameters" -> By.id("mnuTechnicalParameter");
+            case "Metering Parameters" -> By.id("mnuParameterLinkSetup");
+            case "Triggers" -> By.id("mnuTriggers");
+            case "Life Cycle Setup" -> By.id("mnuLifeCycleSetup");
+            case "Applicable Trades" -> By.id("mnuApplicableTrade");
+            default -> throw new IllegalArgumentException(
+                    "Unknown section: " + sectionName);
+        };
+     utils.scrollToElement(locator);
         utils.click(locator);
         System.out.println("Clicked on section: " + sectionName);
     }
@@ -666,11 +649,11 @@ public void MasterAssetclickAssetubCategorytoEdit(){
         System.out.println("Checkboxes found: " + checkBoxes.size());
         System.out.println("Percentages found: " + percentageBoxes.size());
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        utils.jsClick(checkBoxes.get(0));
+        utils.jsClick(checkBoxes.getFirst());
         js.executeScript("arguments[0].removeAttribute('disabled');",
-                percentageBoxes.get(0));
-        percentageBoxes.get(0).clear();
-        percentageBoxes.get(0).sendKeys("2");
+                percentageBoxes.getFirst());
+        percentageBoxes.getFirst().clear();
+        percentageBoxes.getFirst().sendKeys("2");
         utils.waitForSeconds(1);
 
         utils.jsClick(checkBoxes.get(1));
@@ -920,7 +903,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
         List<WebElement> allOptions =
                 wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(options));
         System.out.println("Trigger Reason count: " + allOptions.size());
-        if (allOptions.size() == 0) {
+        if (allOptions.isEmpty()) {
             throw new RuntimeException("No Trigger Reason values found");
         }
         // Random selection
@@ -1279,7 +1262,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         }
         catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
     }
 
@@ -1348,7 +1331,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        };
+        }
     }
 
     // OEM
@@ -1392,7 +1375,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        };
+        }
         System.out.println("Updated OEM is Verified Successfully");
     }
 
@@ -1404,7 +1387,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        } ;
+        }
         System.out.println("OEM is Deleted Successfully");
     }
 
@@ -1465,7 +1448,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }    ;
+        }
     }
 
     public void MasterAssetclickMakeToDelete() {
@@ -1476,7 +1459,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        } ;
+        }
         System.out.println("Make is Deleted Successfully");
     }
 
@@ -1496,7 +1479,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
         }
            }
 
-     public void MasterAssetModelselectMake(String make)
+     public void MasterAssetModelselectMake()
          throws InterruptedException {
          Thread.sleep(5000);
          By categoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpBrand_Input");
@@ -1524,7 +1507,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
         utils.waitForSeconds(5);
     }
 
-    public void MasterAssetModelselectAssetCategory(String value)
+    public void MasterAssetModelselectAssetCategory()
          throws InterruptedException {
             Thread.sleep(5000);
             By categoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpCategory_Input");
@@ -1545,7 +1528,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             }
     }
 
-    public void MasterAssetModelselectAssetSubCategory(String value)
+    public void MasterAssetModelselectAssetSubCategory()
             throws InterruptedException {
         Thread.sleep(5000);
         By subcategoryDropdown = By.id("ctl00_ContentPlaceHolder1_RadWinModel_C_radDrpSubCate_Input");
@@ -1601,7 +1584,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Updated Model Verified Successfully");
     }
 
@@ -1613,7 +1596,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }  ;
+        }
         System.out.println("Model Deleted Successfully");
     }
 
@@ -1667,7 +1650,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-        }        ;
+        }
         System.out.println("Updated Derating Factor Verified Successfully");
     }
 
@@ -1679,7 +1662,7 @@ public void MasterAssetClickOnAddbuttoninSubCategoryTriggerSection() {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }    ;
+        }
         System.out.println("Derating Factor Deleted Successfully");
     }
 
@@ -1749,7 +1732,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Updated Reading Unit Verified Successfully");
     }
 
@@ -1761,7 +1744,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Reading Unit Deleted Successfully");
 
     }
@@ -1803,7 +1786,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("Thread interrupted: " + e.getMessage());
                 }
                 utils.typeText(
                         MASTER_ASSET_TECHNICAL_PARAMETER_MAX_LENGTH,
@@ -1813,7 +1796,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("Thread interrupted: " + e.getMessage());
                 }
                 utils.typeText(
                         MASTER_ASSET_TECHNICAL_PARAMETER_NO_OF_DECIMALS,
@@ -1835,7 +1818,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
         try {
             Thread.sleep(5000);   // Demo fix
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
         String[] boxNames = {
                 "Section I",
@@ -1848,7 +1831,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Thread interrupted: " + e.getMessage());
         }
         By option = By.xpath("//li[normalize-space()='" + selectedType + "']");
         utils.click(option);
@@ -1888,7 +1871,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Updated Technical_Parameter Verified Successfully");
     }
 
@@ -1900,7 +1883,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Technical Parameter Deleted Successfully");
     }
 
@@ -1962,7 +1945,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Metering Attributes Updated Successfully");
     }
 
@@ -1974,7 +1957,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Metering Attributes Deleted Successfully");
     }
 
@@ -2062,7 +2045,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Updated Metering Parameter Verified Successfully");
     }
 
@@ -2075,7 +2058,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Metering Parameter Deleted Successfully");
     }
 
@@ -2142,7 +2125,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Verified Updated Tool Successfully");
     }
 
@@ -2154,7 +2137,7 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); // best practice
-        }  ;
+        }
         System.out.println("Tool Deleted Successfully");
     }
 
@@ -2162,5 +2145,4 @@ public void MasterAssetenterShortCodeReadingUnit(String Short_Code) {
     public void MasterAssetManagementExporttoExcel() {
         utils.click(MASTER_ASSET_MANAGEMENT_EXPORT_TO_EXCEL_BUTTON);
         System.out.println("Downloaded file successfully");    }
-
 }

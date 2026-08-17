@@ -149,7 +149,7 @@ Feature: Scheduled Maintenance Master Module Automation
     And User clicks on Scheduled Maintenance Save button
     When User verify the inline error message 'Enter Parameter' on Parameter
     When User verify the chars min len as 3 and max len as 100 for Parameter
-#   Then User waits for 10 seconds
-#   When User enters special characters in Parameter
-#   And User clicks on Scheduled Maintenance Save button
-    Then User waits for 10 seconds
+   Then User waits for 10 seconds
+   When User enters special characters in Parameter
+   And User clicks on Scheduled Maintenance Save button
+   Then User waits for 10 seconds

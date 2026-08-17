@@ -432,7 +432,7 @@ Feature: Incident Management Master Module Automation
     Then User clicks on button 'Add'
     And User clicks on Incident Save button
     When User verify the inline error message 'Enter Incident Type Code' on Incident Type Code field
-    When User verify the inline error message 'Enter Incident type' on Incident Type field
+    When User verify the inline error message 'Enter Incident Type' on Incident Type field
     When User verify the chars max len as 10 for Incident Type Code field
     When User verify the chars max len as 50 for Incident Type field
     Then User waits for 2 seconds
@@ -506,7 +506,7 @@ Feature: Incident Management Master Module Automation
     Then User clicks on Incident 'Caused By' tab
     Then User clicks on button 'Add'
     And User clicks on Incident Save button
-    When User verify the inline error message 'Enter Caused by' on Incident Caused By field
+    When User verify the inline error message 'Enter Caused By' on Incident Caused By field
     When User verify the chars max len as 50 for Incident Caused By field
     Then User waits for 2 seconds
     When User enters special characters in Incident Caused By field
@@ -523,8 +523,8 @@ Feature: Incident Management Master Module Automation
     Then User clicks on Incident 'Incident-Impact Type' tab
     Then User clicks on button 'Add'
     And User clicks on Incident Save button
-    When User verify the inline error message 'Enter Impact type' on Incident Impact Type field
-    When User verify the inline error message 'Enter Sort order' on Incident Impact Type Sort Order field
+    When User verify the inline error message 'Enter Impact Type' on Incident Impact Type field
+    When User verify the inline error message 'Enter Sort Order' on Incident Impact Type Sort Order field
     When User verify the chars max len as 30 for Incident Impact Type field
     Then User waits for 2 seconds
     When User enters special characters in Incident Impact Type field
@@ -543,7 +543,7 @@ Feature: Incident Management Master Module Automation
     And User clicks on Incident Save button
     When User verify the inline error message 'Enter Section' on Incident Section field
     When User verify the inline error message 'Select Type' on Incident Section Type field
-    When User verify the inline error message 'Enter Sort order' on Incident Section Sort Order field
+    When User verify the inline error message 'Enter Sort Order' on Incident Section Sort Order field
     When User verify the chars max len as 30 for Incident Section field
     When User verify the chars max len as 4 for Incident Section Sort Order field
     Then User waits for 2 seconds
@@ -564,9 +564,9 @@ Feature: Incident Management Master Module Automation
     And User clicks on Incident Save button
     When User verify the inline error message 'Select Type' on Incident Field Type field
     When User verify the inline error message 'Select Section' on Incident Field Section field
-    When User verify the inline error message 'Enter Field name' on Incident Field Field Name field
-    When User verify the inline error message 'Select Datatype' on Incident Field Data Type field
-    When User verify the inline error message 'Enter Sort order' on Incident Field Sort Order field
+    When User verify the inline error message 'Enter Field Name' on Incident Field Field Name field
+    When User verify the inline error message 'Select Data Type' on Incident Field Data Type field
+    When User verify the inline error message 'Enter Sort Order' on Incident Field Sort Order field
     When User verify the chars max len as 40 for Incident Field Field Name field
     Then User waits for 2 seconds
     When User enters special characters in Incident Field Field Name field
